@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILiteView2Ctrl — LiteView2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Site Header -->
+<header class="site-header">
+    <a href="index.html" class="brand">
+        <div class="brand-icon">LV</div>
+        <span>LiteView2</span>
+    </a>
+    <nav class="header-nav">
+        <a href="landing.html">Home</a>
+        <a href="index.html">Overview</a>
+        <a href="enums.html">Enums</a>
+        <a href="iliteview2ctrl.html" class="active">ILiteView2Ctrl</a>
+        <a href="events.html">Events</a>
+        <a href="ibrowserpool.html">IBrowserPool</a>
+    </nav>
+    <div class="header-actions">
+        <button class="theme-toggle" aria-label="Toggle theme"></button>
+        <span class="version-badge">v1.0</span>
+    </div>
+    <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <nav class="page-links">
+        <a href="landing.html" class="page-link"><span class="icon">&#8962;</span> Home</a>
+        <a href="index.html" class="page-link"><span class="icon">&#9776;</span> Overview</a>
+        <a href="enums.html" class="page-link"><span class="icon">&#69;</span> Enums</a>
+        <a href="iliteview2ctrl.html" class="page-link current"><span class="icon">&#73;</span> ILiteView2Ctrl</a>
+        <a href="events.html" class="page-link"><span class="icon">&#9889;</span> Events</a>
+        <a href="ibrowserpool.html" class="page-link"><span class="icon">&#66;</span> IBrowserPool</a>
+    </nav>
+    <input type="search" class="sidebar-search" placeholder="Search members...">
+    <nav>
+        <!-- Navigation -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Navigation</div>
+            <div class="nav-group-items">
+                <a href="#navigation" class="nav-link">Navigation <span class="member-count">11</span></a>
+                <a href="#local-content" class="nav-link">Local Content <span class="member-count">4</span></a>
+                <a href="#state-properties" class="nav-link">State Properties <span class="member-count">14</span></a>
+                <a href="#readiness" class="nav-link">Readiness <span class="member-count">1</span></a>
+            </div>
+        </div>
+        <!-- Script & Data -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Script &amp; Data</div>
+            <div class="nav-group-items">
+                <a href="#script-execution" class="nav-link">Script Execution <span class="member-count">6</span></a>
+                <a href="#data-bridge" class="nav-link">Data Bridge <span class="member-count">7</span></a>
+                <a href="#lv-facade" class="nav-link">window.lv Facade <span class="member-count">2</span></a>
+                <a href="#json-helpers" class="nav-link">JSON Helpers <span class="member-count">7</span></a>
+            </div>
+        </div>
+        <!-- DOM & Forms -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> DOM &amp; Forms</div>
+            <div class="nav-group-items">
+                <a href="#dom-manipulation" class="nav-link">DOM Manipulation <span class="member-count">24</span></a>
+                <a href="#form-automation" class="nav-link">Form Automation <span class="member-count">5</span></a>
+            </div>
+        </div>
+        <!-- Output -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Output</div>
+            <div class="nav-group-items">
+                <a href="#printing-pdf" class="nav-link">Printing &amp; PDF <span class="member-count">6</span></a>
+                <a href="#print-settings" class="nav-link">Print Settings <span class="member-count">18</span></a>
+            </div>
+        </div>
+        <!-- Configuration -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Configuration</div>
+            <div class="nav-group-items">
+                <a href="#settings" class="nav-link">Settings <span class="member-count">20</span></a>
+                <a href="#pre-init" class="nav-link">Pre-Init Properties <span class="member-count">10</span></a>
+                <a href="#version-diagnostics" class="nav-link">Version &amp; Diagnostics <span class="member-count">5</span></a>
+            </div>
+        </div>
+        <!-- Communication -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Communication</div>
+            <div class="nav-group-items">
+                <a href="#host-objects" class="nav-link">Host Objects <span class="member-count">4</span></a>
+                <a href="#web-message-callback" class="nav-link">Web Message Callback <span class="member-count">2</span></a>
+                <a href="#cookies-storage" class="nav-link">Cookies &amp; Storage <span class="member-count">7</span></a>
+                <a href="#auth-proxy" class="nav-link">Auth &amp; Proxy <span class="member-count">5</span></a>
+            </div>
+        </div>
+        <!-- Advanced -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Advanced</div>
+            <div class="nav-group-items">
+                <a href="#web-resources" class="nav-link">Web Resources <span class="member-count">11</span></a>
+                <a href="#downloads" class="nav-link">Downloads <span class="member-count">13</span></a>
+                <a href="#find-in-page" class="nav-link">Find in Page <span class="member-count">9</span></a>
+                <a href="#lifecycle" class="nav-link">Lifecycle <span class="member-count">11</span></a>
+                <a href="#stealth-mode" class="nav-link">Privacy <span class="member-count">9</span></a>
+                <a href="#captcha" class="nav-link">CAPTCHA <span class="member-count">6</span></a>
+            </div>
+        </div>
+        <!-- Embedding & Docs -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Embedding &amp; Docs</div>
+            <div class="nav-group-items">
+                <a href="#embedding" class="nav-link">Embedding <span class="member-count">7</span></a>
+                <a href="#document-hosting" class="nav-link">Document Hosting <span class="member-count">16</span></a>
+                <a href="#devtools" class="nav-link">DevTools <span class="member-count">6</span></a>
+                <a href="#profile" class="nav-link">Profile <span class="member-count">7</span></a>
+                <a href="#licensing" class="nav-link">Licensing <span class="member-count">7</span></a>
+                <a href="#bridge-inspector" class="nav-link">Bridge Inspector <span class="member-count">1</span></a>
+                <a href="#sync-navigation" class="nav-link">Sync Navigation <span class="member-count">1</span></a>
+            </div>
+        </div>
+    </nav>
+</aside>
+<div class="sidebar-overlay"></div>
+
+<!-- Main Content -->
+<div class="page-wrapper">
+    <main class="main-content">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <span>LiteView2</span>
+            <span class="sep">/</span>
+            <span>API Reference</span>
+            <span class="sep">/</span>
+            <span class="current">ILiteView2Ctrl</span>
+        </nav>
+
+        <!-- Page Title -->
+        <h1>ILiteView2Ctrl Interface
+            <span class="subtitle">coclass LiteView2Ctrl | Design-time OCX pattern | No browserIndex parameter</span>
+        </h1>
+
+        <div class="callout callout-note">
+            <span class="callout-title">Note</span>
+            <p>Default dispinterface: <code>_LiteView2Ctrl</code> | Event source: <code>_DLiteView2CtrlEvents</code></p>
+        </div>
+
+        <button class="expand-all-btn">Expand All</button>
+
+        <!-- ================================================================== -->
+        <!-- Section 1: Navigation -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="navigation" data-section-id="navigation">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Navigation</span>
+                <span class="section-count">11 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Core navigation methods for loading pages, HTML strings, and controlling browser history.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">Navigate</td><td class="param-type">url <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Navigate to URL</td></tr>
+                        <tr><td class="member-name">NavigateToString</td><td class="param-type">html <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Load HTML string directly</td></tr>
+                        <tr><td class="member-name">NavigateSync</td><td class="param-type">url <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Navigate and block until load or timeout</td></tr>
+                        <tr><td class="member-name">NavigateToStringSync</td><td class="param-type">html <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Load HTML and block until load or timeout</td></tr>
+                        <tr><td class="member-name">NavigateWithWebResourceRequest</td><td class="param-type">uri, httpMethod, postData, headers <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Navigate with custom HTTP method/headers/body</td></tr>
+                        <tr><td class="member-name">NavigateWithCustomRequest</td><td class="param-type">requestHandle <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Navigate using a CreateWebResourceRequest handle</td></tr>
+                        <tr><td class="member-name">NavigateToLocalFile</td><td class="param-type">filename <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Navigate to file under SetLocalContentRoot folder. Equivalent to <code>Navigate("https://lv2.local/" + filename)</code></td></tr>
+                        <tr><td class="member-name">GoBack</td><td class="param-type"></td><td class="param-type"></td><td>Navigate back</td></tr>
+                        <tr><td class="member-name">GoForward</td><td class="param-type"></td><td class="param-type"></td><td>Navigate forward</td></tr>
+                        <tr><td class="member-name">Refresh</td><td class="param-type"></td><td class="param-type"></td><td>Reload current page</td></tr>
+                        <tr><td class="member-name">Stop</td><td class="param-type"></td><td class="param-type"></td><td>Stop loading</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' Navigate — load a URL</span>
+m_lv.Navigate <span class="str">"https://www.example.com"</span>
+
+<span class="cmt">' NavigateToString — load raw HTML</span>
+m_lv.NavigateToString <span class="str">"&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;"</span>
+
+<span class="cmt">' NavigateSync — blocks VBA until page loads (VB6/VFP only, see Sync Navigation)</span>
+m_lv.NavigateSync <span class="str">"https://www.example.com"</span>
+
+<span class="cmt">' NavigateToStringSync — blocks VBA until HTML loads</span>
+m_lv.NavigateToStringSync <span class="str">"&lt;html&gt;&lt;body&gt;Loaded&lt;/body&gt;&lt;/html&gt;"</span>
+
+<span class="cmt">' NavigateWithWebResourceRequest — custom HTTP method, headers, body</span>
+m_lv.NavigateWithWebResourceRequest <span class="str">"https://api.example.com/data"</span>, <span class="str">"POST"</span>, _
+    <span class="str">"{""key"":""value""}"</span>, <span class="str">"Content-Type: application/json"</span>
+
+<span class="cmt">' NavigateWithCustomRequest — use a handle from CreateWebResourceRequest</span>
+<span class="kw">Dim</span> hReq <span class="kw">As</span> <span class="typ">Long</span>
+hReq = m_lv.CreateWebResourceRequest(<span class="str">"GET"</span>, <span class="str">"https://example.com"</span>, <span class="str">""</span>, <span class="str">""</span>)
+m_lv.NavigateWithCustomRequest hReq
+
+<span class="cmt">' NavigateToLocalFile — shortcut for Navigate("https://lv2.local/" + filename)</span>
+m_lv.SetLocalContentRoot CurrentProject.Path &amp; <span class="str">"\demos"</span>
+m_lv.NavigateToLocalFile <span class="str">"dashboard.html"</span>
+
+<span class="cmt">' GoBack / GoForward — browser history</span>
+<span class="kw">If</span> m_lv.CanGoBack <span class="kw">Then</span> m_lv.GoBack
+<span class="kw">If</span> m_lv.CanGoForward <span class="kw">Then</span> m_lv.GoForward
+
+<span class="cmt">' Refresh — reload current page</span>
+m_lv.Refresh
+
+<span class="cmt">' Stop — cancel loading</span>
+<span class="kw">If</span> m_lv.IsLoading <span class="kw">Then</span> m_lv.Stop</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 2: Local Content Mapping -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="local-content" data-section-id="local-content">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Local Content Mapping</span>
+                <span class="section-count">4 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Map local folders and custom URI schemes to virtual hostnames for secure local content serving.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">SetLocalContentRoot</td><td class="param-type">folderPath <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Map local folder to <code>https://lv2.local/</code> virtual hostname</td></tr>
+                        <tr><td class="member-name">SetVirtualHostNameToFolderMapping</td><td class="param-type">hostName, folderPath <span class="kw">As</span> <span class="typ">String</span>, accessKind <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Map any hostname to local folder</td></tr>
+                        <tr><td class="member-name">ClearVirtualHostNameToFolderMapping</td><td class="param-type">hostName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Remove virtual hostname mapping</td></tr>
+                        <tr><td class="member-name">AddCustomSchemeRegistration</td><td class="param-type">schemeName <span class="kw">As</span> <span class="typ">String</span>, treatAsSecure <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Register custom URI scheme (e.g., myapp://)</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' SetLocalContentRoot — map folder to https://lv2.local/</span>
+m_lv.SetLocalContentRoot CurrentProject.Path &amp; <span class="str">"\demos"</span>
+m_lv.Navigate <span class="str">"https://lv2.local/index.html"</span>
+
+<span class="cmt">' SetVirtualHostNameToFolderMapping — map any hostname</span>
+m_lv.SetVirtualHostNameToFolderMapping <span class="str">"assets.local"</span>, <span class="str">"C:\MyApp\Assets"</span>, <span class="num">0</span>
+<span class="cmt">' accessKind: 0=Deny, 1=Allow, 2=DenyCors</span>
+<span class="cmt">' Now use: https://assets.local/images/logo.png</span>
+
+<span class="cmt">' ClearVirtualHostNameToFolderMapping — remove mapping</span>
+m_lv.ClearVirtualHostNameToFolderMapping <span class="str">"assets.local"</span>
+
+<span class="cmt">' AddCustomSchemeRegistration — register custom URI scheme</span>
+m_lv.AddCustomSchemeRegistration <span class="str">"myapp"</span>, <span class="kw">True</span>
+<span class="cmt">' Now myapp://resource/path will be handled by WebResourceRequested event</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 3: State Properties -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="state-properties" data-section-id="state-properties">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">State Properties</span>
+                <span class="section-count">14 properties</span>
+            </div>
+            <div class="section-body">
+                <p>Read-only and read/write properties reflecting the current state of the WebView2 browser instance.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Property</th><th>Type</th><th>R/W</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">Url</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>Current URL (default property)</td></tr>
+                        <tr><td class="member-name">DocumentTitle</td><td class="param-type">String</td><td><span class="badge badge-ro">R</span></td><td>Current page title</td></tr>
+                        <tr><td class="member-name">IsLoading</td><td class="param-type">Boolean</td><td><span class="badge badge-ro">R</span></td><td>Whether page is currently loading</td></tr>
+                        <tr><td class="member-name">CanGoBack</td><td class="param-type">Boolean</td><td><span class="badge badge-ro">R</span></td><td>Whether back navigation is available</td></tr>
+                        <tr><td class="member-name">CanGoForward</td><td class="param-type">Boolean</td><td><span class="badge badge-ro">R</span></td><td>Whether forward navigation is available</td></tr>
+                        <tr><td class="member-name">LastError</td><td class="param-type">String</td><td><span class="badge badge-ro">R</span></td><td>Last error message</td></tr>
+                        <tr><td class="member-name">LastErrorCode</td><td class="param-type">Long</td><td><span class="badge badge-ro">R</span></td><td>Last error code (numeric)</td></tr>
+                        <tr><td class="member-name">ContainsFullScreenElement</td><td class="param-type">Boolean</td><td><span class="badge badge-ro">R</span></td><td>Whether page has fullscreen element</td></tr>
+                        <tr><td class="member-name">StatusBarText</td><td class="param-type">String</td><td><span class="badge badge-ro">R</span></td><td>Current status bar text</td></tr>
+                        <tr><td class="member-name">WebViewCreated</td><td class="param-type">Boolean</td><td><span class="badge badge-ro">R</span></td><td>Whether WebView has been created and is ready</td></tr>
+                        <tr><td class="member-name">InPrivateMode</td><td class="param-type">Boolean</td><td><span class="badge badge-ro">R</span></td><td>Whether browser is in InPrivate mode</td></tr>
+                        <tr><td class="member-name">FaviconUri</td><td class="param-type">String</td><td><span class="badge badge-ro">R</span></td><td>Favicon URI of current page</td></tr>
+                        <tr><td class="member-name">BrowserProcessId</td><td class="param-type">Long</td><td><span class="badge badge-ro">R</span></td><td>Browser subprocess PID</td></tr>
+                        <tr><td class="member-name">BrowserProcessIDLong</td><td class="param-type">Long</td><td><span class="badge badge-ro">R</span></td><td>VB6-friendly alias for BrowserProcessId</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' Url (R/W) — current URL; also the default property</span>
+Debug.Print m_lv.Url                        <span class="cmt">' "https://lv2.local/page.html"</span>
+m_lv.Url = <span class="str">"https://www.example.com"</span>       <span class="cmt">' same as Navigate</span>
+
+<span class="cmt">' DocumentTitle (R) — page &lt;title&gt;</span>
+Debug.Print <span class="str">"Title: "</span> &amp; m_lv.DocumentTitle
+
+<span class="cmt">' IsLoading (R) — True while page is loading</span>
+<span class="kw">If</span> m_lv.IsLoading <span class="kw">Then</span> m_lv.Stop
+
+<span class="cmt">' CanGoBack / CanGoForward (R) — history state</span>
+btnBack.Enabled = m_lv.CanGoBack
+btnFwd.Enabled = m_lv.CanGoForward
+
+<span class="cmt">' LastError / LastErrorCode (R) — last error info</span>
+<span class="kw">If</span> m_lv.LastErrorCode &lt;&gt; <span class="num">0</span> <span class="kw">Then</span>
+    MsgBox <span class="str">"Error "</span> &amp; m_lv.LastErrorCode &amp; <span class="str">": "</span> &amp; m_lv.LastError
+<span class="kw">End If</span>
+
+<span class="cmt">' ContainsFullScreenElement (R) — fullscreen video etc.</span>
+Debug.Print <span class="str">"Fullscreen: "</span> &amp; m_lv.ContainsFullScreenElement
+
+<span class="cmt">' StatusBarText (R) — hover-link text</span>
+lblStatus.Caption = m_lv.StatusBarText
+
+<span class="cmt">' WebViewCreated (R) — True after WebView2 is ready</span>
+<span class="kw">If</span> m_lv.WebViewCreated <span class="kw">Then</span> m_lv.Navigate <span class="str">"https://example.com"</span>
+
+<span class="cmt">' InPrivateMode (R) — InPrivate browsing</span>
+Debug.Print <span class="str">"InPrivate: "</span> &amp; m_lv.InPrivateMode
+
+<span class="cmt">' FaviconUri (R) — page favicon URL</span>
+Debug.Print <span class="str">"Favicon: "</span> &amp; m_lv.FaviconUri
+
+<span class="cmt">' BrowserProcessId / BrowserProcessIDLong (R) — PID</span>
+Debug.Print <span class="str">"PID: "</span> &amp; m_lv.BrowserProcessId
+Debug.Print <span class="str">"PID (VB6): "</span> &amp; m_lv.BrowserProcessIDLong  <span class="cmt">' same value, VB6-friendly</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 4: Readiness Check -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="readiness" data-section-id="readiness">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Readiness Check</span>
+                <span class="section-count">1 method</span>
+            </div>
+            <div class="section-body">
+                <p>Check whether the WebView2 engine has been fully initialized.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">IsReady</td><td class="param-type"></td><td class="param-type">Boolean</td><td>Check if WebView2 is ready</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="callout callout-tip">
+                    <span class="callout-title">Tip</span>
+                    <p>Primary readiness signal is the <code>WebViewReady</code> event. Use <code>IsReady</code> only as a guard clause or polling fallback.</p>
+                </div>
+
+                <h4>Timer Fallback Pattern</h4>
+                <p class="code-source">Source: frmCustomerDetail_Code.txt</p>
+<pre><code><span class="cmt">' Timer fallback pattern (optional &mdash; not needed on correctly registered OCX)</span>
+<span class="kw">Private Sub</span> tmrReady_Timer()
+    <span class="kw">If</span> m_lv.IsReady <span class="kw">Then</span>
+        tmrReady.Enabled = <span class="kw">False</span>
+        LoadCustomerData
+    <span class="kw">End If</span>
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 5: Script Execution -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="script-execution" data-section-id="script-execution">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Script Execution</span>
+                <span class="section-count">6 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Execute JavaScript in the WebView2 browser and retrieve results.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">ExecuteScript</td><td class="param-type">script <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Execute JS synchronously, return result</td></tr>
+                        <tr><td class="member-name">ExecuteScriptAsync</td><td class="param-type">script <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Execute JS asynchronously (fire and forget)</td></tr>
+                        <tr><td class="member-name">ExecuteScriptWithArgs</td><td class="param-type">functionName <span class="kw">As</span> <span class="typ">String</span>, arguments <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Call JS function with VBA arguments (Array, Recordset, or scalar). Auto-serializes to JSON.</td></tr>
+                        <tr><td class="member-name">ExecuteScriptWithResult</td><td class="param-type">script <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">resultAsJson <span class="kw">As</span> <span class="typ">String</span>, succeeded <span class="kw">As</span> <span class="typ">Boolean</span>, exceptionMessage <span class="kw">As</span> <span class="typ">String</span></td><td>Execute script with detailed result + exception info</td></tr>
+                        <tr><td class="member-name">AddScriptToExecuteOnDocumentCreated</td><td class="param-type">script <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String (scriptId)</td><td>Inject JS that runs on every page load</td></tr>
+                        <tr><td class="member-name">RemoveScriptToExecuteOnDocumentCreated</td><td class="param-type">id <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Remove injected script</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' ExecuteScript — run JS synchronously, get return value</span>
+<span class="kw">Dim</span> title <span class="kw">As</span> <span class="typ">String</span>
+title = m_lv.ExecuteScript(<span class="str">"document.title"</span>)
+
+<span class="cmt">' ExecuteScriptAsync — fire-and-forget (no return value)</span>
+m_lv.ExecuteScriptAsync <span class="str">"console.log('Hello from VBA')"</span>
+
+<span class="cmt">' ExecuteScriptWithArgs — call JS function with auto-serialized VBA args</span>
+<span class="kw">Dim</span> result <span class="kw">As</span> <span class="typ">String</span>
+result = m_lv.ExecuteScriptWithArgs(<span class="str">"testFunction"</span>, Array(<span class="str">"Hello"</span>, <span class="num">42</span>, <span class="kw">True</span>))
+
+<span class="cmt">' ExecuteScriptWithResult — detailed result + exception info (ByRef params)</span>
+<span class="kw">Dim</span> resultJson <span class="kw">As</span> <span class="typ">String</span>, succeeded <span class="kw">As</span> <span class="typ">Boolean</span>, exMsg <span class="kw">As</span> <span class="typ">String</span>
+m_lv.ExecuteScriptWithResult <span class="str">"1 + 2"</span>, resultJson, succeeded, exMsg
+<span class="kw">If</span> succeeded <span class="kw">Then</span> Debug.Print resultJson  <span class="cmt">' "3"</span>
+
+<span class="cmt">' AddScriptToExecuteOnDocumentCreated — inject JS on every page load</span>
+<span class="kw">Dim</span> scriptId <span class="kw">As</span> <span class="typ">String</span>
+scriptId = m_lv.AddScriptToExecuteOnDocumentCreated(<span class="str">"document.title += ' [LV2]';"</span>)
+
+<span class="cmt">' RemoveScriptToExecuteOnDocumentCreated — remove injected script by ID</span>
+m_lv.RemoveScriptToExecuteOnDocumentCreated scriptId</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 6: Data Bridge -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="data-bridge" data-section-id="data-bridge">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Data Bridge &mdash; VBA to JS</span>
+                <span class="section-count">7 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Send data from VBA to JavaScript. Includes native recordset serialization and JSON messaging.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">PostWebMessageAsJson</td><td class="param-type">webMessageAsJson <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Post JSON message to JS. JS receives via <code>window.chrome.webview.addEventListener('message', ...)</code></td></tr>
+                        <tr><td class="member-name">PostWebMessageAsString</td><td class="param-type">webMessageAsString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Post string message to JS</td></tr>
+                        <tr><td class="member-name">PushRecordset</td><td class="param-type">recordset <span class="kw">As</span> <span class="typ">Object</span>, jsCallback <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Push DAO/ADO Recordset as JSON array. Calls <code>window[jsCallback](jsonArray)</code> in JS. Native C++ serialization.</td></tr>
+                        <tr><td class="member-name">BuildJson</td><td class="param-type">inputData <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Convert any VBA data (string, number, array) to JSON string. Works without WebView2.</td></tr>
+                        <tr><td class="member-name">FireJsEvent</td><td class="param-type">eventName <span class="kw">As</span> <span class="typ">String</span>, jsonData <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Fire a CustomEvent in the page. JS listens with <code>addEventListener</code> or <code>window.lv.on()</code></td></tr>
+                        <tr><td class="member-name">CallJsFunction</td><td class="param-type">funcPath <span class="kw">As</span> <span class="typ">String</span>, jsonArgs <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Call JS function by dot-path with JSON args</td></tr>
+                        <tr><td class="member-name">SetJsVariable</td><td class="param-type">path <span class="kw">As</span> <span class="typ">String</span>, jsonValue <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set a JS variable</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' PostWebMessageAsJson — send JSON to JS (received via chrome.webview message event)</span>
+m_lv.PostWebMessageAsJson <span class="str">"{""type"":""update"",""id"":42}"</span>
+
+<span class="cmt">' PostWebMessageAsString — send plain string to JS</span>
+m_lv.PostWebMessageAsString <span class="str">"Hello from VBA"</span>
+
+<span class="cmt">' PushRecordset — push DAO/ADO Recordset as JSON array to a JS callback</span>
+<span class="kw">Dim</span> rs <span class="kw">As</span> <span class="typ">DAO.Recordset</span>
+<span class="kw">Set</span> rs = db.OpenRecordset(<span class="str">"SELECT * FROM tblSales"</span>, dbOpenSnapshot)
+m_lv.PushRecordset rs, <span class="str">"onSalesData"</span>    <span class="cmt">' JS: window.onSalesData(jsonArray)</span>
+rs.Close
+
+<span class="cmt">' BuildJson — convert VBA value/array to JSON string (no WebView2 needed)</span>
+<span class="kw">Dim</span> json <span class="kw">As</span> <span class="typ">String</span>
+json = m_lv.BuildJson(Array(<span class="str">"apple"</span>, <span class="str">"banana"</span>))  <span class="cmt">' '["apple","banana"]'</span>
+
+<span class="cmt">' FireJsEvent — dispatch a CustomEvent in the page</span>
+m_lv.FireJsEvent <span class="str">"vbaDataReady"</span>, <span class="str">"{""source"":""VBA""}"</span>
+<span class="cmt">' JS: document.addEventListener("vbaDataReady", e => console.log(e.detail))</span>
+
+<span class="cmt">' CallJsFunction — call JS function by dot-path with JSON args</span>
+m_lv.CallJsFunction <span class="str">"app.handlers.onData"</span>, <span class="str">"{""action"":""refresh""}"</span>
+
+<span class="cmt">' SetJsVariable — set a JS variable from VBA</span>
+m_lv.SetJsVariable <span class="str">"window.vbaConfig"</span>, <span class="str">"{""theme"":""dark""}"</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 7: window.lv Facade -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="lv-facade" data-section-id="lv-facade">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">window.lv Facade</span>
+                <span class="section-count">2 members</span>
+            </div>
+            <div class="section-body">
+                <p>Enable or check the <code>window.lv</code> global JavaScript facade for simplified messaging.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">EnableLvFacade</td><td class="param-type">enabled <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Inject <code>window.lv</code> global JS facade. Call BEFORE first Navigate.</td></tr>
+                        <tr><td class="member-name">IsLvFacadeEnabled</td><td class="param-type"></td><td class="param-type">Boolean</td><td>Whether <code>window.lv</code> facade is active</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Facade Example</h4>
+                <p class="code-source">Source: frmScriptBridge_Code.txt</p>
+<pre><code><span class="cmt">' Enable the window.lv facade BEFORE first Navigate</span>
+m_lv.EnableLvFacade <span class="kw">True</span>
+m_lv.Navigate <span class="str">"https://lv2.local/my_page.html"</span>
+
+<span class="cmt">' Check if facade is active</span>
+<span class="kw">If</span> m_lv.IsLvFacadeEnabled <span class="kw">Then</span> Debug.Print <span class="str">"window.lv is available in JS"</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 8: JSON Helpers -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="json-helpers" data-section-id="json-helpers">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">JSON Helpers</span>
+                <span class="section-count">7 methods</span>
+            </div>
+            <div class="section-body">
+                <div class="callout callout-note">
+                    <span class="callout-title">Note</span>
+                    <p>These methods work without WebView2 &mdash; pure VBA JSON utilities.</p>
+                </div>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">BuildJson</td><td class="param-type">inputData <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Convert VBA value/array to JSON</td></tr>
+                        <tr><td class="member-name">JsonGetValue</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Variant</td><td>Extract value by JSONPath</td></tr>
+                        <tr><td class="member-name">JsonGetArrayLength</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Get array length at path</td></tr>
+                        <tr><td class="member-name">JsonGetArrayItem</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span>, index <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">String</td><td>Get array item as JSON string</td></tr>
+                        <tr><td class="member-name">JsonGetKeys</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Get all keys from object at path</td></tr>
+                        <tr><td class="member-name">JsonIsValid</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Boolean</td><td>Validate JSON syntax</td></tr>
+                        <tr><td class="member-name">JsonToArray</td><td class="param-type">jsonArrayString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Variant (2D array)</td><td>Convert JSON array to VBA 2D array</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="callout callout-danger">
+                    <span class="callout-title">Danger</span>
+                    <p><strong>NEVER</strong> call <code>JsonGetValue</code> inside the <code>WebMessageReceived</code> event handler &mdash; it executes async script internally and will deadlock WebView2.</p>
+                </div>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' BuildJson — convert VBA value/array to JSON string</span>
+<span class="kw">Dim</span> j <span class="kw">As</span> <span class="typ">String</span>
+j = m_lv.BuildJson(Array(<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>))        <span class="cmt">' "[1,2,3]"</span>
+j = m_lv.BuildJson(<span class="str">"hello"</span>)               <span class="cmt">' "\"hello\""</span>
+
+<span class="cmt">' JsonGetValue — extract value by JSONPath</span>
+<span class="kw">Dim</span> v <span class="kw">As</span> <span class="typ">Variant</span>
+v = m_lv.JsonGetValue(<span class="str">"{""name"":""Jane"",""age"":30}"</span>, <span class="str">"name"</span>)  <span class="cmt">' "Jane"</span>
+v = m_lv.JsonGetValue(<span class="str">"{""a"":{""b"":5}}"</span>, <span class="str">"a.b"</span>)              <span class="cmt">' 5</span>
+
+<span class="cmt">' JsonGetArrayLength — count elements at path</span>
+<span class="kw">Dim</span> count <span class="kw">As</span> <span class="typ">Long</span>
+count = m_lv.JsonGetArrayLength(<span class="str">"[10,20,30]"</span>, <span class="str">""</span>)  <span class="cmt">' 3</span>
+
+<span class="cmt">' JsonGetArrayItem — get array element as JSON string</span>
+<span class="kw">Dim</span> item <span class="kw">As</span> <span class="typ">String</span>
+item = m_lv.JsonGetArrayItem(<span class="str">"[{""id"":1},{""id"":2}]"</span>, <span class="str">""</span>, <span class="num">0</span>)  <span class="cmt">' '{"id":1}'</span>
+
+<span class="cmt">' JsonGetKeys — list all keys from a JSON object</span>
+<span class="kw">Dim</span> keys <span class="kw">As</span> <span class="typ">String</span>
+keys = m_lv.JsonGetKeys(<span class="str">"{""name"":""Jane"",""age"":30}"</span>, <span class="str">""</span>)  <span class="cmt">' '["name","age"]'</span>
+
+<span class="cmt">' JsonIsValid — check if string is valid JSON</span>
+<span class="kw">If</span> m_lv.JsonIsValid(myJson) <span class="kw">Then</span> Debug.Print <span class="str">"Valid!"</span>
+
+<span class="cmt">' JsonToArray — convert JSON array to VBA 2D array</span>
+<span class="kw">Dim</span> arr <span class="kw">As</span> <span class="typ">Variant</span>
+arr = m_lv.JsonToArray(<span class="str">"[{""name"":""Alice"",""age"":25},{""name"":""Bob"",""age"":30}]"</span>)
+<span class="cmt">' arr(0,0)="Alice", arr(0,1)=25, arr(1,0)="Bob", arr(1,1)=30</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 9: DOM Manipulation -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="dom-manipulation" data-section-id="dom-manipulation">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">DOM Manipulation</span>
+                <span class="section-count">24 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Get and set element values, attributes, and HTML content without writing JavaScript.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">GetElementValueById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Get element value by ID</td></tr>
+                        <tr><td class="member-name">SetElementValueById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span>, value <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set element value by ID</td></tr>
+                        <tr><td class="member-name">GetElementValueByName</td><td class="param-type">elementName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Get element value by name</td></tr>
+                        <tr><td class="member-name">SetElementValueByName</td><td class="param-type">elementName <span class="kw">As</span> <span class="typ">String</span>, value <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set element value by name</td></tr>
+                        <tr><td class="member-name">ClickElementById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Click element by ID</td></tr>
+                        <tr><td class="member-name">ClickElementByName</td><td class="param-type">elementName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Click element by name</td></tr>
+                        <tr><td class="member-name">ClickElementBySelector</td><td class="param-type">cssSelector <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Click element by CSS selector</td></tr>
+                        <tr><td class="member-name">GetInnerHtmlById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Get innerHTML</td></tr>
+                        <tr><td class="member-name">SetInnerHtmlById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span>, html <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set innerHTML</td></tr>
+                        <tr><td class="member-name">GetOuterHtmlById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Get outerHTML</td></tr>
+                        <tr><td class="member-name">SetOuterHtmlById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span>, html <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set outerHTML</td></tr>
+                        <tr><td class="member-name">GetOuterHtmlByName</td><td class="param-type">elementName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Get outerHTML by name</td></tr>
+                        <tr><td class="member-name">SetOuterHtmlByName</td><td class="param-type">elementName <span class="kw">As</span> <span class="typ">String</span>, html <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set outerHTML by name</td></tr>
+                        <tr><td class="member-name">GetPageHtml</td><td class="param-type"></td><td class="param-type">String</td><td>Get complete page HTML</td></tr>
+                        <tr><td class="member-name">GetPageText</td><td class="param-type"></td><td class="param-type">String</td><td>Get page text (no tags)</td></tr>
+                        <tr><td class="member-name">ElementExistsById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Boolean</td><td>Check if element exists</td></tr>
+                        <tr><td class="member-name">ElementExistsBySelector</td><td class="param-type">cssSelector <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Boolean</td><td>Check if element exists by selector</td></tr>
+                        <tr><td class="member-name">GetElementTextById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Get text content (not HTML)</td></tr>
+                        <tr><td class="member-name">SetElementTextById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span>, text <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set text content</td></tr>
+                        <tr><td class="member-name">GetElementAttributeById</td><td class="param-type">elementId, attrName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Get attribute value</td></tr>
+                        <tr><td class="member-name">SetElementAttributeById</td><td class="param-type">elementId, attrName, value <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set attribute value</td></tr>
+                        <tr><td class="member-name">RemoveElementAttributeById</td><td class="param-type">elementId, attrName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Remove attribute</td></tr>
+                        <tr><td class="member-name">FocusElementById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Focus element</td></tr>
+                        <tr><td class="member-name">ScrollToElementById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Scroll element into view</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' ── Get/Set Values ──</span>
+<span class="cmt">' GetElementValueById / SetElementValueById — by element id</span>
+m_lv.SetElementValueById <span class="str">"firstName"</span>, <span class="str">"John"</span>
+<span class="kw">Dim</span> val <span class="kw">As</span> <span class="typ">String</span>: val = m_lv.GetElementValueById(<span class="str">"firstName"</span>)
+
+<span class="cmt">' GetElementValueByName / SetElementValueByName — by name attribute</span>
+m_lv.SetElementValueByName <span class="str">"address"</span>, <span class="str">"123 Main St"</span>
+val = m_lv.GetElementValueByName(<span class="str">"address"</span>)
+
+<span class="cmt">' ── Click ──</span>
+<span class="cmt">' ClickElementById — click by id</span>
+m_lv.ClickElementById <span class="str">"submitBtn"</span>
+
+<span class="cmt">' ClickElementByName — click by name attribute</span>
+m_lv.ClickElementByName <span class="str">"resetButton"</span>
+
+<span class="cmt">' ClickElementBySelector — click by CSS selector</span>
+m_lv.ClickElementBySelector <span class="str">"form#regForm button[type='submit']"</span>
+
+<span class="cmt">' ── innerHTML / outerHTML ──</span>
+<span class="cmt">' GetInnerHtmlById / SetInnerHtmlById</span>
+<span class="kw">Dim</span> inner <span class="kw">As</span> <span class="typ">String</span>: inner = m_lv.GetInnerHtmlById(<span class="str">"header"</span>)
+m_lv.SetInnerHtmlById <span class="str">"header"</span>, <span class="str">"&lt;strong&gt;Updated!&lt;/strong&gt;"</span>
+
+<span class="cmt">' GetOuterHtmlById / SetOuterHtmlById</span>
+<span class="kw">Dim</span> outer <span class="kw">As</span> <span class="typ">String</span>: outer = m_lv.GetOuterHtmlById(<span class="str">"myDiv"</span>)
+m_lv.SetOuterHtmlById <span class="str">"myDiv"</span>, <span class="str">"&lt;div id='myDiv' class='new'&gt;Replaced&lt;/div&gt;"</span>
+
+<span class="cmt">' GetOuterHtmlByName / SetOuterHtmlByName</span>
+outer = m_lv.GetOuterHtmlByName(<span class="str">"address"</span>)
+m_lv.SetOuterHtmlByName <span class="str">"address"</span>, <span class="str">"&lt;input name='address' value='New'&gt;"</span>
+
+<span class="cmt">' ── Page Content ──</span>
+<span class="cmt">' GetPageHtml — full page HTML</span>
+<span class="kw">Dim</span> html <span class="kw">As</span> <span class="typ">String</span>: html = m_lv.GetPageHtml
+
+<span class="cmt">' GetPageText — text only (no tags)</span>
+<span class="kw">Dim</span> txt <span class="kw">As</span> <span class="typ">String</span>: txt = m_lv.GetPageText
+
+<span class="cmt">' ── Existence Checks ──</span>
+<span class="cmt">' ElementExistsById</span>
+<span class="kw">If</span> m_lv.ElementExistsById(<span class="str">"loginForm"</span>) <span class="kw">Then</span> Debug.Print <span class="str">"Found"</span>
+
+<span class="cmt">' ElementExistsBySelector</span>
+<span class="kw">If</span> m_lv.ElementExistsBySelector(<span class="str">"div.error-message"</span>) <span class="kw">Then</span> Debug.Print <span class="str">"Error visible"</span>
+
+<span class="cmt">' ── Text Content ──</span>
+<span class="cmt">' GetElementTextById / SetElementTextById — textContent (not HTML)</span>
+<span class="kw">Dim</span> t <span class="kw">As</span> <span class="typ">String</span>: t = m_lv.GetElementTextById(<span class="str">"heading"</span>)
+m_lv.SetElementTextById <span class="str">"heading"</span>, <span class="str">"New Heading Text"</span>
+
+<span class="cmt">' ── Attributes ──</span>
+<span class="cmt">' GetElementAttributeById</span>
+<span class="kw">Dim</span> attrVal <span class="kw">As</span> <span class="typ">String</span>: attrVal = m_lv.GetElementAttributeById(<span class="str">"email"</span>, <span class="str">"placeholder"</span>)
+
+<span class="cmt">' SetElementAttributeById</span>
+m_lv.SetElementAttributeById <span class="str">"email"</span>, <span class="str">"style"</span>, <span class="str">"border-color: green;"</span>
+
+<span class="cmt">' RemoveElementAttributeById</span>
+m_lv.RemoveElementAttributeById <span class="str">"email"</span>, <span class="str">"disabled"</span>
+
+<span class="cmt">' ── Focus / Scroll ──</span>
+<span class="cmt">' FocusElementById</span>
+m_lv.FocusElementById <span class="str">"email"</span>
+
+<span class="cmt">' ScrollToElementById — scroll element into view</span>
+m_lv.ScrollToElementById <span class="str">"footer"</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 10: Form Automation -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="form-automation" data-section-id="form-automation">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Form Automation</span>
+                <span class="section-count">5 methods</span>
+            </div>
+            <div class="section-body">
+                <p>High-level form helpers for checkboxes, dropdowns, and form submission.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">SubmitFormById</td><td class="param-type">formId <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Submit form</td></tr>
+                        <tr><td class="member-name">SetCheckboxById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span>, checked <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Set checkbox state</td></tr>
+                        <tr><td class="member-name">GetCheckboxById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Boolean</td><td>Get checkbox state</td></tr>
+                        <tr><td class="member-name">SelectOptionById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span>, optionValue <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Select dropdown option</td></tr>
+                        <tr><td class="member-name">GetSelectedOptionById</td><td class="param-type">elementId <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Get selected option value</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' SubmitFormById — submit a &lt;form&gt; by its id</span>
+m_lv.SubmitFormById <span class="str">"regForm"</span>
+
+<span class="cmt">' SetCheckboxById — set checkbox checked/unchecked</span>
+m_lv.SetCheckboxById <span class="str">"agreeTerms"</span>, <span class="kw">True</span>
+
+<span class="cmt">' GetCheckboxById — read checkbox state</span>
+<span class="kw">Dim</span> agreed <span class="kw">As</span> <span class="typ">Boolean</span>
+agreed = m_lv.GetCheckboxById(<span class="str">"agreeTerms"</span>)  <span class="cmt">' True / False</span>
+
+<span class="cmt">' SelectOptionById — select &lt;option&gt; in a &lt;select&gt; dropdown</span>
+m_lv.SelectOptionById <span class="str">"country"</span>, <span class="str">"us"</span>
+
+<span class="cmt">' GetSelectedOptionById — read selected option value</span>
+<span class="kw">Dim</span> country <span class="kw">As</span> <span class="typ">String</span>
+country = m_lv.GetSelectedOptionById(<span class="str">"country"</span>)  <span class="cmt">' "us"</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 11: Printing & PDF -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="printing-pdf" data-section-id="printing-pdf">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Printing &amp; PDF</span>
+                <span class="section-count">6 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Print pages, generate PDFs, and capture screenshots.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">PrintPage</td><td class="param-type"></td><td class="param-type"></td><td>Print to default printer</td></tr>
+                        <tr><td class="member-name">ShowPrintDialog</td><td class="param-type"></td><td class="param-type"></td><td>Show system print dialog</td></tr>
+                        <tr><td class="member-name">PrintToPdf</td><td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Print to PDF file (async, fires <code>PrintToPdfCompleted</code>)</td></tr>
+                        <tr><td class="member-name">PrintWithSettings</td><td class="param-type"></td><td class="param-type"></td><td>Print using current print settings</td></tr>
+                        <tr><td class="member-name">PrintToPdfWithSettings</td><td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Print to PDF using current print settings</td></tr>
+                        <tr><td class="member-name">CaptureScreenshot</td><td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Capture screenshot (fires <code>CaptureScreenshotCompleted</code>)</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' PrintPage — send to default printer (no dialog)</span>
+m_lv.PrintPage
+
+<span class="cmt">' ShowPrintDialog — open the system print dialog</span>
+m_lv.ShowPrintDialog
+
+<span class="cmt">' PrintToPdf — export PDF (async, fires PrintToPdfCompleted event)</span>
+m_lv.PrintToPdf Environ(<span class="str">"USERPROFILE"</span>) &amp; <span class="str">"\Desktop\Report.pdf"</span>
+
+<span class="cmt">' PrintWithSettings — print using current Print Settings properties</span>
+m_lv.PrintOrientation = <span class="num">1</span>  <span class="cmt">' Landscape</span>
+m_lv.PrintWithSettings
+
+<span class="cmt">' PrintToPdfWithSettings — PDF with current Print Settings</span>
+m_lv.PrintScaleFactor = <span class="num">0.85</span>
+m_lv.PrintToPdfWithSettings <span class="str">"C:\Reports\output.pdf"</span>
+
+<span class="cmt">' CaptureScreenshot — save page image (fires CaptureScreenshotCompleted)</span>
+m_lv.CaptureScreenshot <span class="str">"C:\Screenshots\page.png"</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 12: Print Settings -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="print-settings" data-section-id="print-settings">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Print Settings</span>
+                <span class="section-count">18 properties</span>
+            </div>
+            <div class="section-body">
+                <p>Configure page layout, margins, headers/footers, and other print parameters before calling <code>PrintWithSettings</code> or <code>PrintToPdfWithSettings</code>.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Property</th><th>Type</th><th>R/W</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">PrintOrientation</td><td class="param-type">LV2_PRINT_ORIENTATION</td><td><span class="badge badge-rw">R/W</span></td><td>Portrait (0) or Landscape (1)</td></tr>
+                        <tr><td class="member-name">PrintScaleFactor</td><td class="param-type">Double</td><td><span class="badge badge-rw">R/W</span></td><td>Scale factor</td></tr>
+                        <tr><td class="member-name">PrintMarginTop</td><td class="param-type">Double</td><td><span class="badge badge-rw">R/W</span></td><td>Top margin (inches)</td></tr>
+                        <tr><td class="member-name">PrintMarginBottom</td><td class="param-type">Double</td><td><span class="badge badge-rw">R/W</span></td><td>Bottom margin (inches)</td></tr>
+                        <tr><td class="member-name">PrintMarginLeft</td><td class="param-type">Double</td><td><span class="badge badge-rw">R/W</span></td><td>Left margin (inches)</td></tr>
+                        <tr><td class="member-name">PrintMarginRight</td><td class="param-type">Double</td><td><span class="badge badge-rw">R/W</span></td><td>Right margin (inches)</td></tr>
+                        <tr><td class="member-name">PrintPageWidth</td><td class="param-type">Double</td><td><span class="badge badge-rw">R/W</span></td><td>Page width (inches)</td></tr>
+                        <tr><td class="member-name">PrintPageHeight</td><td class="param-type">Double</td><td><span class="badge badge-rw">R/W</span></td><td>Page height (inches)</td></tr>
+                        <tr><td class="member-name">PrintShouldPrintBackgrounds</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Print background graphics</td></tr>
+                        <tr><td class="member-name">PrintShouldPrintSelectionOnly</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Print selection only</td></tr>
+                        <tr><td class="member-name">PrintShouldPrintHeaderAndFooter</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Print header and footer</td></tr>
+                        <tr><td class="member-name">PrintHeaderTitle</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>Header title text</td></tr>
+                        <tr><td class="member-name">PrintFooterUri</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>Footer URI text</td></tr>
+                        <tr><td class="member-name">PrintCopies</td><td class="param-type">Long</td><td><span class="badge badge-rw">R/W</span></td><td>Number of copies</td></tr>
+                        <tr><td class="member-name">PrintPagesPerSide</td><td class="param-type">Long</td><td><span class="badge badge-rw">R/W</span></td><td>Pages per side</td></tr>
+                        <tr><td class="member-name">PrintPageRanges</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>Page ranges (e.g. "1-3,5,7")</td></tr>
+                        <tr><td class="member-name">HasPrintToPdf</td><td class="param-type">Boolean</td><td><span class="badge badge-ro">R</span></td><td>Whether PrintToPdf is supported by runtime</td></tr>
+                        <tr><td class="member-name">HasCapturePreview</td><td class="param-type">Boolean</td><td><span class="badge badge-ro">R</span></td><td>Whether CapturePreview is supported</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' PrintOrientation — 0=Portrait, 1=Landscape</span>
+m_lv.PrintOrientation = <span class="num">1</span>
+
+<span class="cmt">' PrintScaleFactor — scale (1.0 = 100%, 0.5 = 50%)</span>
+m_lv.PrintScaleFactor = <span class="num">0.85</span>
+
+<span class="cmt">' PrintMarginTop/Bottom/Left/Right — margins in inches</span>
+m_lv.PrintMarginTop = <span class="num">0.5</span>
+m_lv.PrintMarginBottom = <span class="num">0.5</span>
+m_lv.PrintMarginLeft = <span class="num">0.75</span>
+m_lv.PrintMarginRight = <span class="num">0.75</span>
+
+<span class="cmt">' PrintPageWidth / PrintPageHeight — page size in inches</span>
+m_lv.PrintPageWidth = <span class="num">8.5</span>     <span class="cmt">' Letter width</span>
+m_lv.PrintPageHeight = <span class="num">11</span>     <span class="cmt">' Letter height</span>
+
+<span class="cmt">' PrintShouldPrintBackgrounds — include background graphics/colors</span>
+m_lv.PrintShouldPrintBackgrounds = <span class="kw">True</span>
+
+<span class="cmt">' PrintShouldPrintSelectionOnly — print selected content only</span>
+m_lv.PrintShouldPrintSelectionOnly = <span class="kw">False</span>
+
+<span class="cmt">' PrintShouldPrintHeaderAndFooter — enable header/footer</span>
+m_lv.PrintShouldPrintHeaderAndFooter = <span class="kw">True</span>
+
+<span class="cmt">' PrintHeaderTitle — header template (&amp;T=title, &amp;U=URL, &amp;D=date)</span>
+m_lv.PrintHeaderTitle = <span class="str">"&amp;T"</span>
+
+<span class="cmt">' PrintFooterUri — footer template (&amp;P=page, &amp;N=total pages)</span>
+m_lv.PrintFooterUri = <span class="str">"Page &amp;P of &amp;N"</span>
+
+<span class="cmt">' PrintCopies — number of copies</span>
+m_lv.PrintCopies = <span class="num">2</span>
+
+<span class="cmt">' PrintPagesPerSide — n-up printing</span>
+m_lv.PrintPagesPerSide = <span class="num">1</span>
+
+<span class="cmt">' PrintPageRanges — specific pages to print</span>
+m_lv.PrintPageRanges = <span class="str">"1-3,5,7-9"</span>
+
+<span class="cmt">' HasPrintToPdf (R) — check runtime support</span>
+<span class="kw">If</span> m_lv.HasPrintToPdf <span class="kw">Then</span> m_lv.PrintToPdfWithSettings <span class="str">"output.pdf"</span>
+
+<span class="cmt">' HasCapturePreview (R) — check screenshot support</span>
+Debug.Print <span class="str">"CapturePreview: "</span> &amp; m_lv.HasCapturePreview</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 13: Settings -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="settings" data-section-id="settings">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Settings &amp; Configuration</span>
+                <span class="section-count">20 properties</span>
+            </div>
+            <div class="section-body">
+                <p>Runtime settings that control browser behavior, security, and UI features.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Property</th><th>Type</th><th>R/W</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">IsScriptEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>JavaScript enabled</td></tr>
+                        <tr><td class="member-name">AreDefaultContextMenusEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Right-click menus enabled</td></tr>
+                        <tr><td class="member-name">AreDevToolsEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>DevTools (F12) enabled</td></tr>
+                        <tr><td class="member-name">IsStatusBarEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Status bar enabled</td></tr>
+                        <tr><td class="member-name">ZoomFactor</td><td class="param-type">Double</td><td><span class="badge badge-rw">R/W</span></td><td>Zoom (1.0 = 100%)</td></tr>
+                        <tr><td class="member-name">UserAgent</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>Custom user agent</td></tr>
+                        <tr><td class="member-name">IsWebMessageEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Web messaging enabled</td></tr>
+                        <tr><td class="member-name">IsBuiltInErrorPageEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Built-in error pages</td></tr>
+                        <tr><td class="member-name">AreBrowserAcceleratorKeysEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Ctrl+F, F5, etc.</td></tr>
+                        <tr><td class="member-name">IsPasswordAutosaveEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Password autosave</td></tr>
+                        <tr><td class="member-name">IsGeneralAutofillEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>General autofill</td></tr>
+                        <tr><td class="member-name">IsPinchZoomEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Pinch zoom</td></tr>
+                        <tr><td class="member-name">IsSwipeNavigationEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Swipe navigation</td></tr>
+                        <tr><td class="member-name">HiddenPdfToolbarItems</td><td class="param-type">Long</td><td><span class="badge badge-rw">R/W</span></td><td>PDF toolbar flags (see <code>LV2_PDF_TOOLBAR_ITEMS</code> enum)</td></tr>
+                        <tr><td class="member-name">IsReputationCheckingRequired</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>SmartScreen reputation checking</td></tr>
+                        <tr><td class="member-name">NonClientRegionSupportEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Custom title bar support</td></tr>
+                        <tr><td class="member-name">DefaultScriptDialogsEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>alert/confirm/prompt dialogs</td></tr>
+                        <tr><td class="member-name">IsZoomControlEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Ctrl+scroll zoom</td></tr>
+                        <tr><td class="member-name">IsDragDropEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">W</span></td><td>Drag and drop</td></tr>
+                        <tr><td class="member-name">SmartResize</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Auto-fit on resize (default True)</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' IsScriptEnabled — enable/disable JavaScript</span>
+m_lv.IsScriptEnabled = <span class="kw">True</span>
+
+<span class="cmt">' AreDefaultContextMenusEnabled — right-click menus</span>
+m_lv.AreDefaultContextMenusEnabled = <span class="kw">False</span>   <span class="cmt">' disable right-click</span>
+
+<span class="cmt">' AreDevToolsEnabled — F12 DevTools</span>
+m_lv.AreDevToolsEnabled = <span class="kw">False</span>              <span class="cmt">' disable F12</span>
+
+<span class="cmt">' IsStatusBarEnabled — link preview on hover</span>
+m_lv.IsStatusBarEnabled = <span class="kw">True</span>
+
+<span class="cmt">' ZoomFactor — zoom level (1.0 = 100%)</span>
+m_lv.ZoomFactor = <span class="num">1.25</span>                       <span class="cmt">' 125%</span>
+
+<span class="cmt">' UserAgent — custom user agent string</span>
+m_lv.UserAgent = <span class="str">"MyApp/1.0 (LiteView2)"</span>
+
+<span class="cmt">' IsWebMessageEnabled — chrome.webview.postMessage</span>
+m_lv.IsWebMessageEnabled = <span class="kw">True</span>
+
+<span class="cmt">' IsBuiltInErrorPageEnabled — browser error pages</span>
+m_lv.IsBuiltInErrorPageEnabled = <span class="kw">False</span>      <span class="cmt">' show custom errors</span>
+
+<span class="cmt">' AreBrowserAcceleratorKeysEnabled — Ctrl+F, F5, etc.</span>
+m_lv.AreBrowserAcceleratorKeysEnabled = <span class="kw">False</span> <span class="cmt">' disable browser shortcuts</span>
+
+<span class="cmt">' IsPasswordAutosaveEnabled — password save prompts</span>
+m_lv.IsPasswordAutosaveEnabled = <span class="kw">False</span>
+
+<span class="cmt">' IsGeneralAutofillEnabled — form autofill</span>
+m_lv.IsGeneralAutofillEnabled = <span class="kw">False</span>
+
+<span class="cmt">' IsPinchZoomEnabled — touch pinch zoom</span>
+m_lv.IsPinchZoomEnabled = <span class="kw">True</span>
+
+<span class="cmt">' IsSwipeNavigationEnabled — swipe back/forward</span>
+m_lv.IsSwipeNavigationEnabled = <span class="kw">False</span>
+
+<span class="cmt">' HiddenPdfToolbarItems — hide PDF toolbar buttons (flags)</span>
+m_lv.HiddenPdfToolbarItems = <span class="num">0</span>              <span class="cmt">' show all</span>
+
+<span class="cmt">' IsReputationCheckingRequired — SmartScreen</span>
+m_lv.IsReputationCheckingRequired = <span class="kw">True</span>
+
+<span class="cmt">' NonClientRegionSupportEnabled — custom title bar</span>
+m_lv.NonClientRegionSupportEnabled = <span class="kw">False</span>
+
+<span class="cmt">' DefaultScriptDialogsEnabled — alert/confirm/prompt</span>
+m_lv.DefaultScriptDialogsEnabled = <span class="kw">True</span>
+
+<span class="cmt">' IsZoomControlEnabled — Ctrl+scroll zoom</span>
+m_lv.IsZoomControlEnabled = <span class="kw">True</span>
+
+<span class="cmt">' IsDragDropEnabled — drag and drop (write-only)</span>
+m_lv.IsDragDropEnabled = <span class="kw">False</span>
+
+<span class="cmt">' SmartResize — auto-fit WebView on resize (default True)</span>
+m_lv.SmartResize = <span class="kw">True</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 14: Pre-Init Properties -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="pre-init" data-section-id="pre-init">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Pre-Init Properties</span>
+                <span class="section-count">10 properties</span>
+            </div>
+            <div class="section-body">
+                <div class="callout callout-warning">
+                    <span class="callout-title">Warning</span>
+                    <p>These properties must be set <strong>BEFORE</strong> WebView2 creation (before <code>WebViewReady</code> fires). Setting them after has no effect.</p>
+                </div>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Property</th><th>Type</th><th>R/W</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">AdditionalBrowserArguments</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>e.g. "--disable-gpu"</td></tr>
+                        <tr><td class="member-name">EnableHardwareAcceleration</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>GPU acceleration</td></tr>
+                        <tr><td class="member-name">BrowserExecutableFolder</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>Fixed-version browser folder</td></tr>
+                        <tr><td class="member-name">Language</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>BCP 47 language code</td></tr>
+                        <tr><td class="member-name">ProxyServer</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>Proxy address</td></tr>
+                        <tr><td class="member-name">ProxyBypassList</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>Bypass list</td></tr>
+                        <tr><td class="member-name">RequiredMinimumVersion</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>Min runtime version</td></tr>
+                        <tr><td class="member-name">AutoRecoverOnCrash</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Auto-recreate on crash</td></tr>
+                        <tr><td class="member-name">EventsUseHexadecimal</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>VB6 Int64 workaround</td></tr>
+                        <tr><td class="member-name">JsonToArrayMaxSize</td><td class="param-type">Long</td><td><span class="badge badge-rw">R/W</span></td><td>Max JSON size (default 50MB)</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' All pre-init properties must be set BEFORE WebViewReady fires.</span>
+<span class="cmt">' Typically set in Form_Load or Form_Open.</span>
+
+<span class="cmt">' AdditionalBrowserArguments — pass Chromium command-line flags</span>
+m_lv.AdditionalBrowserArguments = <span class="str">"--disable-gpu --disable-extensions"</span>
+
+<span class="cmt">' EnableHardwareAcceleration — GPU rendering</span>
+m_lv.EnableHardwareAcceleration = <span class="kw">True</span>
+
+<span class="cmt">' BrowserExecutableFolder — use fixed-version WebView2 runtime</span>
+m_lv.BrowserExecutableFolder = <span class="str">"C:\WebView2Runtime\130.0.2849.80"</span>
+
+<span class="cmt">' Language — set BCP 47 language code</span>
+m_lv.Language = <span class="str">"fr-FR"</span>
+
+<span class="cmt">' ProxyServer / ProxyBypassList — proxy configuration</span>
+m_lv.ProxyServer = <span class="str">"http://proxy.corp.local:8080"</span>
+m_lv.ProxyBypassList = <span class="str">"*.local;intranet.corp.local"</span>
+
+<span class="cmt">' RequiredMinimumVersion — fail if runtime is too old</span>
+m_lv.RequiredMinimumVersion = <span class="str">"120.0.0.0"</span>
+
+<span class="cmt">' AutoRecoverOnCrash — auto-recreate WebView on crash</span>
+m_lv.AutoRecoverOnCrash = <span class="kw">True</span>
+
+<span class="cmt">' EventsUseHexadecimal — VB6 workaround for Int64 event params</span>
+m_lv.EventsUseHexadecimal = <span class="kw">True</span>  <span class="cmt">' sends Long params as hex strings</span>
+
+<span class="cmt">' JsonToArrayMaxSize — max JSON parse size for JsonToArray</span>
+m_lv.JsonToArrayMaxSize = <span class="num">104857600</span>  <span class="cmt">' 100 MB</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 15: Version & Diagnostics -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="version-diagnostics" data-section-id="version-diagnostics">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Version &amp; Diagnostics</span>
+                <span class="section-count">5 members</span>
+            </div>
+            <div class="section-body">
+                <p>Version information and diagnostic utilities.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Type / Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">ControlVersion</td><td class="param-type">String <span class="badge badge-ro">R</span></td><td class="param-type"></td><td>OCX version (e.g. "1.0.0.1")</td></tr>
+                        <tr><td class="member-name">BrowserVersionString</td><td class="param-type">String <span class="badge badge-ro">R</span></td><td class="param-type"></td><td>WebView2 runtime version</td></tr>
+                        <tr><td class="member-name">UserDataFolder</td><td class="param-type">String <span class="badge badge-ro">R</span></td><td class="param-type"></td><td>User data folder path</td></tr>
+                        <tr><td class="member-name">GetDiagnostics</td><td class="param-type">(method)</td><td class="param-type">String</td><td>Diagnostic info JSON</td></tr>
+                        <tr><td class="member-name">GetDefaultOcxPath</td><td class="param-type">(method)</td><td class="param-type">String</td><td>Default OCX path for current Office app</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' ControlVersion (R) — OCX version string</span>
+Debug.Print <span class="str">"OCX: "</span> &amp; m_lv.ControlVersion       <span class="cmt">' "1.0.0.1"</span>
+
+<span class="cmt">' BrowserVersionString (R) — WebView2 runtime version</span>
+Debug.Print <span class="str">"Runtime: "</span> &amp; m_lv.BrowserVersionString <span class="cmt">' "130.0.2849.80"</span>
+
+<span class="cmt">' UserDataFolder (R) — browser data folder path</span>
+Debug.Print <span class="str">"Data: "</span> &amp; m_lv.UserDataFolder
+
+<span class="cmt">' GetDiagnostics — full diagnostic info as JSON</span>
+<span class="kw">Dim</span> diag <span class="kw">As</span> <span class="typ">String</span>
+diag = m_lv.GetDiagnostics  <span class="cmt">' JSON with version, paths, settings, etc.</span>
+
+<span class="cmt">' GetDefaultOcxPath — default OCX registration path for current Office app</span>
+Debug.Print <span class="str">"OCX path: "</span> &amp; m_lv.GetDefaultOcxPath</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 16: Host Objects -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="host-objects" data-section-id="host-objects">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Host Object Bridge</span>
+                <span class="section-count">4 members</span>
+            </div>
+            <div class="section-body">
+                <p>Expose COM objects to JavaScript for direct automation from the page.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">AddHostObjectToScript</td><td class="param-type">name <span class="kw">As</span> <span class="typ">String</span>, object <span class="kw">As</span> <span class="typ">Object</span></td><td class="param-type"></td><td>Expose COM object to JS</td></tr>
+                        <tr><td class="member-name">RemoveHostObjectToScript</td><td class="param-type">name <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Remove host object</td></tr>
+                        <tr><td class="member-name">RemoveHostObjectFromScript</td><td class="param-type">name <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Remove host object (alias)</td></tr>
+                        <tr><td class="member-name">AreHostObjectsAllowed</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-rw">R/W</span></td><td>Must be True for AddHostObjectToScript</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' AreHostObjectsAllowed (R/W) — must be True for host objects to work</span>
+Debug.Print <span class="str">"Host objects: "</span> &amp; m_lv.AreHostObjectsAllowed
+
+<span class="cmt">' AddHostObjectToScript — expose COM object to JS</span>
+<span class="kw">Dim</span> dict <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> dict = CreateObject(<span class="str">"Scripting.Dictionary"</span>)
+dict.Add <span class="str">"greeting"</span>, <span class="str">"Hello from VBA"</span>
+m_lv.AddHostObjectToScript <span class="str">"vbaHelper"</span>, dict
+<span class="cmt">' JS: let obj = await chrome.webview.hostObjects.vbaHelper</span>
+
+<span class="cmt">' RemoveHostObjectToScript — remove host object (original name)</span>
+m_lv.RemoveHostObjectToScript <span class="str">"vbaHelper"</span>
+
+<span class="cmt">' RemoveHostObjectFromScript — remove host object (alias, same effect)</span>
+m_lv.RemoveHostObjectFromScript <span class="str">"vbaHelper"</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 17: Web Message Callback -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="web-message-callback" data-section-id="web-message-callback">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Web Message Callback</span>
+                <span class="section-count">2 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Route JS messages to a VBA macro in a standard module instead of using OCX events.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">SetWebMessageCallback</td><td class="param-type">vbaApplication <span class="kw">As</span> <span class="typ">Object</span>, macroName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Register VBA macro for JS messages</td></tr>
+                        <tr><td class="member-name">ClearWebMessageCallback</td><td class="param-type"></td><td class="param-type"></td><td>Clear callback</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' SetWebMessageCallback — route JS messages to a VBA macro (standard module)</span>
+m_lv.SetWebMessageCallback Application, <span class="str">"OnWebMessage"</span>
+<span class="cmt">' In a standard module:</span>
+<span class="cmt">' Public Sub OnWebMessage(ByVal message As String)</span>
+<span class="cmt">'     Debug.Print "Received: " &amp; message</span>
+<span class="cmt">' End Sub</span>
+
+<span class="cmt">' ClearWebMessageCallback — stop routing to macro</span>
+m_lv.ClearWebMessageCallback</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 18: Cookies & Storage -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="cookies-storage" data-section-id="cookies-storage">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Cookies &amp; Storage</span>
+                <span class="section-count">7 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Manage browser cache, cookies, and browsing data.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">ClearCache</td><td class="param-type"></td><td class="param-type"></td><td>Clear browser cache</td></tr>
+                        <tr><td class="member-name">ClearCookies</td><td class="param-type"></td><td class="param-type"></td><td>Clear all cookies</td></tr>
+                        <tr><td class="member-name">ClearBrowsingData</td><td class="param-type">dataKinds <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Clear data by kind flags (see <code>LiteView2BrowsingDataKinds</code> enum)</td></tr>
+                        <tr><td class="member-name">GetCookies</td><td class="param-type">url <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String (JSON)</td><td>Get cookies for URL</td></tr>
+                        <tr><td class="member-name">SetCookie</td><td class="param-type">name, value, domain, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set a cookie</td></tr>
+                        <tr><td class="member-name">ClearProfileCookies</td><td class="param-type"></td><td class="param-type"></td><td>Clear profile cookies</td></tr>
+                        <tr><td class="member-name">ClearBrowsingDataInTimeRange</td><td class="param-type">dataKinds <span class="kw">As</span> <span class="typ">Long</span>, startTime <span class="kw">As</span> <span class="typ">Date</span>, endTime <span class="kw">As</span> <span class="typ">Date</span></td><td class="param-type"></td><td>Clear data in time range</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' ClearCache — clear browser cache</span>
+m_lv.ClearCache
+
+<span class="cmt">' ClearCookies — clear all cookies</span>
+m_lv.ClearCookies
+
+<span class="cmt">' ClearBrowsingData — clear by kind flags (bitwise OR)</span>
+m_lv.ClearBrowsingData <span class="num">1</span> + <span class="num">2</span> + <span class="num">4</span>  <span class="cmt">' see LiteView2BrowsingDataKinds enum</span>
+
+<span class="cmt">' GetCookies — get cookies for URL (returns JSON)</span>
+<span class="kw">Dim</span> cookies <span class="kw">As</span> <span class="typ">String</span>
+cookies = m_lv.GetCookies(<span class="str">"https://lv2.local/"</span>)
+
+<span class="cmt">' SetCookie — set a cookie (name, value, domain, path)</span>
+m_lv.SetCookie <span class="str">"session_id"</span>, <span class="str">"abc123"</span>, <span class="str">"lv2.local"</span>, <span class="str">"/"</span>
+
+<span class="cmt">' ClearProfileCookies — clear profile-level cookies</span>
+m_lv.ClearProfileCookies
+
+<span class="cmt">' ClearBrowsingDataInTimeRange — clear data within date range</span>
+m_lv.ClearBrowsingDataInTimeRange <span class="num">1</span>, DateAdd(<span class="str">"d"</span>, -<span class="num">7</span>, Now()), Now()</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 19: Auth & Proxy -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="auth-proxy" data-section-id="auth-proxy">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Authentication &amp; Proxy</span>
+                <span class="section-count">5 members</span>
+            </div>
+            <div class="section-body">
+                <p>Configure HTTP authentication, SSL handling, and single sign-on.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">SetBasicAuthCredentials</td><td class="param-type">uriPattern, username, password <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set HTTP Basic Auth</td></tr>
+                        <tr><td class="member-name">ClearBasicAuthCredentials</td><td class="param-type"></td><td class="param-type"></td><td>Clear stored auth</td></tr>
+                        <tr><td class="member-name">IgnoreCertificateErrors</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-rw">R/W</span></td><td>Ignore SSL errors</td></tr>
+                        <tr><td class="member-name">AllowSingleSignOnUsingOSPrimaryAccount</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-rw">R/W</span></td><td>SSO using OS account</td></tr>
+                        <tr><td class="member-name">HasAuthenticationSupport</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-ro">R</span></td><td>Enhanced auth available</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' SetBasicAuthCredentials — auto-respond to HTTP Basic Auth challenges</span>
+m_lv.SetBasicAuthCredentials <span class="str">"*"</span>, <span class="str">"admin"</span>, <span class="str">"password123"</span>
+<span class="cmt">' uriPattern: "*" = all, "*.corp.local" = specific domain</span>
+
+<span class="cmt">' ClearBasicAuthCredentials — remove stored auth</span>
+m_lv.ClearBasicAuthCredentials
+
+<span class="cmt">' IgnoreCertificateErrors (R/W) — skip SSL validation</span>
+m_lv.IgnoreCertificateErrors = <span class="kw">True</span>   <span class="cmt">' for self-signed certs</span>
+
+<span class="cmt">' AllowSingleSignOnUsingOSPrimaryAccount (R/W) — Windows SSO</span>
+m_lv.AllowSingleSignOnUsingOSPrimaryAccount = <span class="kw">True</span>
+
+<span class="cmt">' HasAuthenticationSupport (R) — enhanced auth available</span>
+<span class="kw">If</span> m_lv.HasAuthenticationSupport <span class="kw">Then</span>
+    m_lv.SetBasicAuthCredentials <span class="str">"*.corp.local"</span>, <span class="str">"user"</span>, <span class="str">"pass"</span>
+<span class="kw">End If</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 20: Web Resources -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="web-resources" data-section-id="web-resources">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Web Resource Interception</span>
+                <span class="section-count">11 members</span>
+            </div>
+            <div class="section-body">
+                <p>Intercept, filter, and block web requests. Create custom requests and responses.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">AddWebResourceRequestedFilter</td><td class="param-type">uriPattern <span class="kw">As</span> <span class="typ">String</span>, resourceContext <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Add request filter</td></tr>
+                        <tr><td class="member-name">RemoveWebResourceRequestedFilter</td><td class="param-type">uriPattern <span class="kw">As</span> <span class="typ">String</span>, resourceContext <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Remove filter</td></tr>
+                        <tr><td class="member-name">ClearAllWebResourceRequestedFilters</td><td class="param-type"></td><td class="param-type"></td><td>Remove all filters</td></tr>
+                        <tr><td class="member-name">GetWebResourceRequestedFilters</td><td class="param-type"></td><td class="param-type">String (JSON)</td><td>Get active filters</td></tr>
+                        <tr><td class="member-name">SetWebResourceBlocking</td><td class="param-type">enabled <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Enable/disable blocking</td></tr>
+                        <tr><td class="member-name">IsWebResourceBlockingEnabled</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-ro">R</span></td><td>Is blocking on</td></tr>
+                        <tr><td class="member-name">BlockedRequestCount</td><td class="param-type"></td><td class="param-type">Long <span class="badge badge-ro">R</span></td><td>Blocked requests since reset</td></tr>
+                        <tr><td class="member-name">ResetBlockedRequestCount</td><td class="param-type"></td><td class="param-type"></td><td>Reset counter</td></tr>
+                        <tr><td class="member-name">EnableWebResourceResponseTracking</td><td class="param-type">enabled <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Enable response events</td></tr>
+                        <tr><td class="member-name">CreateWebResourceRequest</td><td class="param-type">method, uri, headers, body <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Create request handle</td></tr>
+                        <tr><td class="member-name">CreateWebResourceResponse</td><td class="param-type">content <span class="kw">As</span> <span class="typ">String</span>, statusCode <span class="kw">As</span> <span class="typ">Long</span>, reasonPhrase, headers <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Create response handle</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' AddWebResourceRequestedFilter — subscribe to requests matching pattern</span>
+m_lv.AddWebResourceRequestedFilter <span class="str">"*://ads.example.com/*"</span>, <span class="num">0</span>  <span class="cmt">' 0=All</span>
+
+<span class="cmt">' RemoveWebResourceRequestedFilter — unsubscribe</span>
+m_lv.RemoveWebResourceRequestedFilter <span class="str">"*://ads.example.com/*"</span>, <span class="num">0</span>
+
+<span class="cmt">' ClearAllWebResourceRequestedFilters — remove all filters</span>
+m_lv.ClearAllWebResourceRequestedFilters
+
+<span class="cmt">' GetWebResourceRequestedFilters — list active filters (JSON)</span>
+<span class="kw">Dim</span> filters <span class="kw">As</span> <span class="typ">String</span>
+filters = m_lv.GetWebResourceRequestedFilters
+
+<span class="cmt">' SetWebResourceBlocking — enable/disable blocking mode</span>
+m_lv.SetWebResourceBlocking <span class="kw">True</span>
+
+<span class="cmt">' IsWebResourceBlockingEnabled (R) — check if blocking is on</span>
+Debug.Print <span class="str">"Blocking: "</span> &amp; m_lv.IsWebResourceBlockingEnabled
+
+<span class="cmt">' BlockedRequestCount (R) — count of blocked requests</span>
+Debug.Print <span class="str">"Blocked: "</span> &amp; m_lv.BlockedRequestCount
+
+<span class="cmt">' ResetBlockedRequestCount — reset counter to 0</span>
+m_lv.ResetBlockedRequestCount
+
+<span class="cmt">' EnableWebResourceResponseTracking — enable WebResourceResponseReceived events</span>
+m_lv.EnableWebResourceResponseTracking <span class="kw">True</span>
+
+<span class="cmt">' CreateWebResourceRequest — create a custom HTTP request handle</span>
+<span class="kw">Dim</span> hReq <span class="kw">As</span> <span class="typ">Long</span>
+hReq = m_lv.CreateWebResourceRequest(<span class="str">"POST"</span>, <span class="str">"https://api.example.com"</span>, _
+    <span class="str">"Content-Type: application/json"</span>, <span class="str">"{""data"":1}"</span>)
+
+<span class="cmt">' CreateWebResourceResponse — create a custom HTTP response handle</span>
+<span class="kw">Dim</span> hResp <span class="kw">As</span> <span class="typ">Long</span>
+hResp = m_lv.CreateWebResourceResponse(<span class="str">"&lt;h1&gt;Blocked&lt;/h1&gt;"</span>, <span class="num">403</span>, _
+    <span class="str">"Forbidden"</span>, <span class="str">"Content-Type: text/html"</span>)</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 21: Downloads -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="downloads" data-section-id="downloads">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Downloads</span>
+                <span class="section-count">13 members</span>
+            </div>
+            <div class="section-body">
+                <p>Control file downloads, download dialog position, and silent download mode.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Type / Parameters</th><th>R/W or Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">DefaultDownloadFolderPath</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>Download folder</td></tr>
+                        <tr><td class="member-name">AllowDownloads</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Allow downloads</td></tr>
+                        <tr><td class="member-name">IsDownloadDialogOpen</td><td class="param-type">Boolean</td><td><span class="badge badge-ro">R</span></td><td>Dialog state</td></tr>
+                        <tr><td class="member-name">OpenDownloadDialog</td><td class="param-type">(method)</td><td class="param-type"></td><td>Open dialog</td></tr>
+                        <tr><td class="member-name">CloseDownloadDialog</td><td class="param-type">(method)</td><td class="param-type"></td><td>Close dialog</td></tr>
+                        <tr><td class="member-name">PauseDownload</td><td class="param-type">downloadId <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Pause download</td></tr>
+                        <tr><td class="member-name">ResumeDownload</td><td class="param-type">downloadId <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Resume download</td></tr>
+                        <tr><td class="member-name">CancelDownload</td><td class="param-type">downloadId <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Cancel download</td></tr>
+                        <tr><td class="member-name">ShowSaveAsDialog</td><td class="param-type">(method)</td><td class="param-type"></td><td>Show Save As</td></tr>
+                        <tr><td class="member-name">HiddenDownloadUI</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Silent downloads</td></tr>
+                        <tr><td class="member-name">DefaultDownloadDialogCornerAlignment</td><td class="param-type">LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT</td><td><span class="badge badge-rw">R/W</span></td><td>Dialog position</td></tr>
+                        <tr><td class="member-name">DefaultDownloadDialogMarginX</td><td class="param-type">Long</td><td><span class="badge badge-rw">R/W</span></td><td>Dialog margin X</td></tr>
+                        <tr><td class="member-name">DefaultDownloadDialogMarginY</td><td class="param-type">Long</td><td><span class="badge badge-rw">R/W</span></td><td>Dialog margin Y</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' DefaultDownloadFolderPath (R/W) — set/get download folder</span>
+m_lv.DefaultDownloadFolderPath = <span class="str">"C:\Downloads"</span>
+Debug.Print m_lv.DefaultDownloadFolderPath
+
+<span class="cmt">' AllowDownloads (R/W) — enable/disable downloads</span>
+m_lv.AllowDownloads = <span class="kw">True</span>
+
+<span class="cmt">' IsDownloadDialogOpen (R) — check dialog state</span>
+Debug.Print <span class="str">"Dialog open: "</span> &amp; m_lv.IsDownloadDialogOpen
+
+<span class="cmt">' OpenDownloadDialog / CloseDownloadDialog</span>
+m_lv.OpenDownloadDialog
+m_lv.CloseDownloadDialog
+
+<span class="cmt">' PauseDownload — pause by download ID</span>
+m_lv.PauseDownload m_lastDownloadId
+
+<span class="cmt">' ResumeDownload — resume paused download</span>
+m_lv.ResumeDownload m_lastDownloadId
+
+<span class="cmt">' CancelDownload — cancel download</span>
+m_lv.CancelDownload m_lastDownloadId
+
+<span class="cmt">' ShowSaveAsDialog — prompt user for save location</span>
+m_lv.ShowSaveAsDialog
+
+<span class="cmt">' HiddenDownloadUI (R/W) — silent downloads (no UI)</span>
+m_lv.HiddenDownloadUI = <span class="kw">True</span>
+
+<span class="cmt">' DefaultDownloadDialogCornerAlignment (R/W) — dialog position</span>
+m_lv.DefaultDownloadDialogCornerAlignment = <span class="num">0</span>  <span class="cmt">' see LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT</span>
+
+<span class="cmt">' DefaultDownloadDialogMarginX / MarginY (R/W) — dialog offset</span>
+m_lv.DefaultDownloadDialogMarginX = <span class="num">20</span>
+m_lv.DefaultDownloadDialogMarginY = <span class="num">20</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 22: Find in Page -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="find-in-page" data-section-id="find-in-page">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Find in Page</span>
+                <span class="section-count">9 members</span>
+            </div>
+            <div class="section-body">
+                <p>Programmatic find-in-page with match counting and navigation.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">StartFind</td><td class="param-type">searchText <span class="kw">As</span> <span class="typ">String</span>, caseSensitive <span class="kw">As</span> <span class="typ">Boolean</span>, matchWholeWord <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Start finding</td></tr>
+                        <tr><td class="member-name">FindNext</td><td class="param-type"></td><td class="param-type"></td><td>Next match</td></tr>
+                        <tr><td class="member-name">FindPrevious</td><td class="param-type"></td><td class="param-type"></td><td>Previous match</td></tr>
+                        <tr><td class="member-name">StopFind</td><td class="param-type">cancel <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Stop finding</td></tr>
+                        <tr><td class="member-name">FindMatchCount</td><td class="param-type"></td><td class="param-type">Long <span class="badge badge-ro">R</span></td><td>Total matches</td></tr>
+                        <tr><td class="member-name">FindActiveMatchIndex</td><td class="param-type"></td><td class="param-type">Long <span class="badge badge-ro">R</span></td><td>Current match (1-based)</td></tr>
+                        <tr><td class="member-name">IsFindActive</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-ro">R</span></td><td>Session active</td></tr>
+                        <tr><td class="member-name">SuppressFindUI</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-rw">R/W</span></td><td>Hide default Find UI</td></tr>
+                        <tr><td class="member-name">FindHighlightAllMatches</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-rw">R/W</span></td><td>Highlight all</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' StartFind — begin a find session (text, caseSensitive, matchWholeWord)</span>
+m_lv.StartFind <span class="str">"webview2"</span>, <span class="kw">False</span>, <span class="kw">False</span>
+
+<span class="cmt">' FindNext — go to next match</span>
+m_lv.FindNext
+
+<span class="cmt">' FindPrevious — go to previous match</span>
+m_lv.FindPrevious
+
+<span class="cmt">' StopFind — end session (True=clear highlights, False=keep last highlight)</span>
+m_lv.StopFind <span class="kw">True</span>
+
+<span class="cmt">' FindMatchCount (R) — total matches found</span>
+Debug.Print <span class="str">"Matches: "</span> &amp; m_lv.FindMatchCount
+
+<span class="cmt">' FindActiveMatchIndex (R) — current match index (1-based)</span>
+Debug.Print <span class="str">"Current: "</span> &amp; m_lv.FindActiveMatchIndex
+
+<span class="cmt">' IsFindActive (R) — True if a find session is running</span>
+<span class="kw">If</span> m_lv.IsFindActive <span class="kw">Then</span> m_lv.StopFind <span class="kw">True</span>
+
+<span class="cmt">' SuppressFindUI (R/W) — hide the default browser Find bar</span>
+m_lv.SuppressFindUI = <span class="kw">True</span>   <span class="cmt">' use your own UI instead</span>
+
+<span class="cmt">' FindHighlightAllMatches (R/W) — highlight all matches at once</span>
+m_lv.FindHighlightAllMatches = <span class="kw">True</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 23: Lifecycle -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="lifecycle" data-section-id="lifecycle">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Lifecycle &amp; Resources</span>
+                <span class="section-count">11 members</span>
+            </div>
+            <div class="section-body">
+                <p>Suspend, resume, and manage WebView2 memory and lifecycle.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">TrySuspend</td><td class="param-type"></td><td class="param-type"></td><td>Suspend WebView to reduce resources</td></tr>
+                        <tr><td class="member-name">Resume</td><td class="param-type"></td><td class="param-type"></td><td>Resume after suspend</td></tr>
+                        <tr><td class="member-name">IsSuspended</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-ro">R</span></td><td>Check if suspended</td></tr>
+                        <tr><td class="member-name">GetMemoryUsage</td><td class="param-type"></td><td class="param-type">Long</td><td>Approximate memory in bytes</td></tr>
+                        <tr><td class="member-name">ForceGarbageCollection</td><td class="param-type"></td><td class="param-type"></td><td>Force JS GC</td></tr>
+                        <tr><td class="member-name">Dispose</td><td class="param-type"></td><td class="param-type"></td><td>Release all WebView resources</td></tr>
+                        <tr><td class="member-name">CloseBrowserProcess</td><td class="param-type"></td><td class="param-type"></td><td>Force close browser</td></tr>
+                        <tr><td class="member-name">IsVisible</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-rw">R/W</span></td><td>Visibility state</td></tr>
+                        <tr><td class="member-name">MemoryUsageTargetLevel</td><td class="param-type"></td><td class="param-type">Long <span class="badge badge-rw">R/W</span></td><td>0=Normal, 1=Low</td></tr>
+                        <tr><td class="member-name">MoveFocus</td><td class="param-type">reason <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Move focus in/out of WebView</td></tr>
+                        <tr><td class="member-name">NotifyParentWindowPositionChanged</td><td class="param-type"></td><td class="param-type"></td><td>Fix DPI/rendering after move</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' TrySuspend — suspend WebView to reduce resource usage</span>
+m_lv.TrySuspend
+
+<span class="cmt">' Resume — resume after suspend</span>
+m_lv.Resume
+
+<span class="cmt">' IsSuspended (R) — check if suspended</span>
+<span class="kw">If</span> m_lv.IsSuspended <span class="kw">Then</span> m_lv.Resume
+
+<span class="cmt">' GetMemoryUsage — approximate memory in bytes</span>
+Debug.Print <span class="str">"Memory: "</span> &amp; Format(m_lv.GetMemoryUsage / <span class="num">1048576</span>, <span class="str">"0.0"</span>) &amp; <span class="str">" MB"</span>
+
+<span class="cmt">' ForceGarbageCollection — trigger JS garbage collection</span>
+m_lv.ForceGarbageCollection
+
+<span class="cmt">' Dispose — release all WebView2 resources (cannot be undone)</span>
+m_lv.Dispose
+
+<span class="cmt">' CloseBrowserProcess — force-close the browser subprocess</span>
+m_lv.CloseBrowserProcess
+
+<span class="cmt">' IsVisible (R/W) — show/hide the WebView</span>
+m_lv.IsVisible = <span class="kw">False</span>   <span class="cmt">' hide browser while loading</span>
+m_lv.IsVisible = <span class="kw">True</span>    <span class="cmt">' show when ready</span>
+
+<span class="cmt">' MemoryUsageTargetLevel (R/W) — 0=Normal, 1=Low</span>
+m_lv.MemoryUsageTargetLevel = <span class="num">1</span>  <span class="cmt">' reduce memory footprint</span>
+
+<span class="cmt">' MoveFocus — move focus in/out of WebView</span>
+m_lv.MoveFocus <span class="num">0</span>  <span class="cmt">' 0=Next, 1=Previous, 2=Programmatic</span>
+
+<span class="cmt">' NotifyParentWindowPositionChanged — fix DPI/rendering after move</span>
+m_lv.NotifyParentWindowPositionChanged</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 24: Stealth Mode -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="stealth-mode" data-section-id="stealth-mode">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Privacy &amp; Compatibility</span>
+                <span class="section-count">9 members</span>
+            </div>
+            <div class="section-body">
+                <p>Browser privacy controls and compatibility settings for enterprise and testing environments.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">EnableStealthMode</td><td class="param-type">enabled <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Enable comprehensive privacy protection mode</td></tr>
+                        <tr><td class="member-name">HideWebDriver</td><td class="param-type">hide <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Remove automation indicators for browser compatibility</td></tr>
+                        <tr><td class="member-name">SpoofWebGL</td><td class="param-type">vendor <span class="kw">As</span> <span class="typ">String</span>, renderer <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set custom WebGL renderer strings for compatibility testing</td></tr>
+                        <tr><td class="member-name">RandomizeCanvasFingerprint</td><td class="param-type">enabled <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Protect against cross-site canvas fingerprint tracking</td></tr>
+                        <tr><td class="member-name">SpoofScreenSize</td><td class="param-type">width <span class="kw">As</span> <span class="typ">Long</span>, height <span class="kw">As</span> <span class="typ">Long</span>, colorDepth <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Set custom screen dimensions for responsive testing</td></tr>
+                        <tr><td class="member-name">DisableWebRTC</td><td class="param-type">disabled <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Prevent WebRTC IP address exposure for privacy</td></tr>
+                        <tr><td class="member-name">EnableMouseNoise</td><td class="param-type">enabled <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Natural mouse movement simulation for UI testing</td></tr>
+                        <tr><td class="member-name">EnableTimingNoise</td><td class="param-type">minMs <span class="kw">As</span> <span class="typ">Long</span>, maxMs <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Randomized timing for realistic interaction testing</td></tr>
+                        <tr><td class="member-name">IsStealthEnabled</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-ro">R</span></td><td>Check if privacy mode is active</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' EnableStealthMode — comprehensive privacy protection</span>
+m_lv.EnableStealthMode <span class="kw">True</span>
+
+<span class="cmt">' HideWebDriver — remove navigator.webdriver indicator</span>
+m_lv.HideWebDriver <span class="kw">True</span>
+
+<span class="cmt">' SpoofWebGL — custom WebGL renderer strings</span>
+m_lv.SpoofWebGL <span class="str">"NVIDIA Corporation"</span>, <span class="str">"NVIDIA GeForce RTX 4090"</span>
+
+<span class="cmt">' RandomizeCanvasFingerprint — protect against canvas tracking</span>
+m_lv.RandomizeCanvasFingerprint <span class="kw">True</span>
+
+<span class="cmt">' SpoofScreenSize — custom screen dimensions for responsive testing</span>
+m_lv.SpoofScreenSize <span class="num">1920</span>, <span class="num">1080</span>, <span class="num">24</span>  <span class="cmt">' width, height, colorDepth</span>
+
+<span class="cmt">' DisableWebRTC — prevent IP address exposure</span>
+m_lv.DisableWebRTC <span class="kw">True</span>
+
+<span class="cmt">' EnableMouseNoise — natural mouse movement simulation</span>
+m_lv.EnableMouseNoise <span class="kw">True</span>
+
+<span class="cmt">' EnableTimingNoise — randomized timing for realistic interactions</span>
+m_lv.EnableTimingNoise <span class="num">50</span>, <span class="num">200</span>  <span class="cmt">' minMs, maxMs</span>
+
+<span class="cmt">' IsStealthEnabled (R) — check if privacy mode is active</span>
+Debug.Print <span class="str">"Stealth: "</span> &amp; m_lv.IsStealthEnabled</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 25: CAPTCHA -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="captcha" data-section-id="captcha">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">CAPTCHA Handling</span>
+                <span class="section-count">6 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Tools for handling CAPTCHA challenges in automated testing and QA workflows.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">SetCaptchaService</td><td class="param-type">serviceName <span class="kw">As</span> <span class="typ">String</span>, apiKey <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Configure CAPTCHA solving service for automated testing</td></tr>
+                        <tr><td class="member-name">DetectCaptcha</td><td class="param-type"></td><td class="param-type">String</td><td>Detect CAPTCHA presence on page (returns JSON)</td></tr>
+                        <tr><td class="member-name">SolveCaptcha</td><td class="param-type">timeoutMs <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Boolean</td><td>Resolve detected CAPTCHA challenge</td></tr>
+                        <tr><td class="member-name">SolveRecaptchaV2</td><td class="param-type">siteKey <span class="kw">As</span> <span class="typ">String</span>, pageUrl <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Handle reCAPTCHA v2 challenge</td></tr>
+                        <tr><td class="member-name">SolveHCaptcha</td><td class="param-type">siteKey <span class="kw">As</span> <span class="typ">String</span>, pageUrl <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Handle hCaptcha challenge</td></tr>
+                        <tr><td class="member-name">SubmitCaptchaToken</td><td class="param-type">token <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Submit resolved token to page</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' SetCaptchaService — configure solving service (e.g. 2captcha)</span>
+m_lv.SetCaptchaService <span class="str">"2captcha"</span>, <span class="str">"YOUR_API_KEY"</span>
+
+<span class="cmt">' DetectCaptcha — check if page has a CAPTCHA (returns JSON)</span>
+<span class="kw">Dim</span> info <span class="kw">As</span> <span class="typ">String</span>
+info = m_lv.DetectCaptcha  <span class="cmt">' e.g. '{"type":"recaptcha_v2","siteKey":"..."}'</span>
+
+<span class="cmt">' SolveCaptcha — resolve detected CAPTCHA (timeout in ms)</span>
+<span class="kw">Dim</span> solved <span class="kw">As</span> <span class="typ">Boolean</span>
+solved = m_lv.SolveCaptcha(<span class="num">30000</span>)
+
+<span class="cmt">' SolveRecaptchaV2 — handle reCAPTCHA v2 specifically</span>
+<span class="kw">Dim</span> token <span class="kw">As</span> <span class="typ">String</span>
+token = m_lv.SolveRecaptchaV2(<span class="str">"6Le-SITE-KEY"</span>, <span class="str">"https://example.com/login"</span>)
+
+<span class="cmt">' SolveHCaptcha — handle hCaptcha specifically</span>
+token = m_lv.SolveHCaptcha(<span class="str">"HCAPTCHA-SITE-KEY"</span>, <span class="str">"https://example.com/login"</span>)
+
+<span class="cmt">' SubmitCaptchaToken — inject resolved token into page</span>
+m_lv.SubmitCaptchaToken token</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 26: Embedding -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="embedding" data-section-id="embedding">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Embedding</span>
+                <span class="section-count">7 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Embed the WebView2 browser in external window handles (HWND) or Access Frames.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">EmbedInHwnd</td><td class="param-type">hwndParent <span class="kw">As</span> <span class="typ">Long</span>, width <span class="kw">As</span> <span class="typ">Long</span>, height <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Embed in external HWND</td></tr>
+                        <tr><td class="member-name">EmbedInHwndByLong</td><td class="param-type">hwndParent <span class="kw">As</span> <span class="typ">Long</span>, width <span class="kw">As</span> <span class="typ">Long</span>, height <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>VB6/VFP compatibility</td></tr>
+                        <tr><td class="member-name">ResizeEmbedded</td><td class="param-type">width <span class="kw">As</span> <span class="typ">Long</span>, height <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Resize embedded browser</td></tr>
+                        <tr><td class="member-name">MoveEmbedded</td><td class="param-type">left <span class="kw">As</span> <span class="typ">Long</span>, top <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Reposition embedded browser</td></tr>
+                        <tr><td class="member-name">CloseEmbedded</td><td class="param-type"></td><td class="param-type"></td><td>Destroy embedded browser</td></tr>
+                        <tr><td class="member-name">QuickInitInFrame</td><td class="param-type">parentForm <span class="kw">As</span> <span class="typ">Object</span>, targetFrame <span class="kw">As</span> <span class="typ">Object</span></td><td class="param-type"></td><td>Auto DPI/handle init in Frame</td></tr>
+                        <tr><td class="member-name">PointsToPixels</td><td class="param-type">points <span class="kw">As</span> <span class="typ">Long</span>, isHorizontal <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type">Long</td><td>DPI conversion</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' EmbedInHwnd — embed WebView2 in an external window handle</span>
+m_lv.EmbedInHwnd hwndParent, <span class="num">800</span>, <span class="num">600</span>
+
+<span class="cmt">' EmbedInHwndByLong — VB6/VFP compatibility version</span>
+m_lv.EmbedInHwndByLong hwndParent, <span class="num">800</span>, <span class="num">600</span>
+
+<span class="cmt">' ResizeEmbedded — resize embedded browser</span>
+m_lv.ResizeEmbedded <span class="num">1024</span>, <span class="num">768</span>
+
+<span class="cmt">' MoveEmbedded — reposition embedded browser</span>
+m_lv.MoveEmbedded <span class="num">10</span>, <span class="num">50</span>   <span class="cmt">' left, top in pixels</span>
+
+<span class="cmt">' CloseEmbedded — destroy embedded browser instance</span>
+m_lv.CloseEmbedded
+
+<span class="cmt">' QuickInitInFrame — auto DPI/handle init inside an Access Frame control</span>
+m_lv.QuickInitInFrame Me, Me.Frame1
+
+<span class="cmt">' PointsToPixels — convert Access twips/points to screen pixels</span>
+<span class="kw">Dim</span> px <span class="kw">As</span> <span class="typ">Long</span>
+px = m_lv.PointsToPixels(<span class="num">400</span>, <span class="kw">True</span>)  <span class="cmt">' horizontal DPI conversion</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 27: Document Hosting -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="document-hosting" data-section-id="document-hosting">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Document Hosting</span>
+                <span class="section-count">16 members</span>
+            </div>
+            <div class="section-body">
+                <p>Open, edit, and preview documents (Office, PDF, images, video) inside the WebView2 control.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">OpenDocument</td><td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span>, viewMode <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Open any document. viewMode: 0=Auto, 1=ForceHTML, 2=ForcePDF</td></tr>
+                        <tr><td class="member-name">OpenOfficeDocument</td><td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Open Office doc for editing</td></tr>
+                        <tr><td class="member-name">CloseOfficeDocument</td><td class="param-type"></td><td class="param-type"></td><td>Close embedded Office doc</td></tr>
+                        <tr><td class="member-name">SaveOfficeDocument</td><td class="param-type"></td><td class="param-type"></td><td>Save</td></tr>
+                        <tr><td class="member-name">SaveOfficeDocumentAs</td><td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Save As</td></tr>
+                        <tr><td class="member-name">IsOfficeDocumentOpen</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-ro">R</span></td><td>Is doc open</td></tr>
+                        <tr><td class="member-name">OfficeDocumentPath</td><td class="param-type"></td><td class="param-type">String <span class="badge badge-ro">R</span></td><td>Current doc path</td></tr>
+                        <tr><td class="member-name">OfficeDocumentType</td><td class="param-type"></td><td class="param-type">String <span class="badge badge-ro">R</span></td><td>Word/Excel/PowerPoint/Unknown</td></tr>
+                        <tr><td class="member-name">CurrentDocumentPath</td><td class="param-type"></td><td class="param-type">String <span class="badge badge-ro">R</span></td><td>Current doc path (universal)</td></tr>
+                        <tr><td class="member-name">CurrentDocumentType</td><td class="param-type"></td><td class="param-type">String <span class="badge badge-ro">R</span></td><td>Image/PDF/Video/Audio/Text/Word/Excel/PowerPoint</td></tr>
+                        <tr><td class="member-name">WordApplication</td><td class="param-type"></td><td class="param-type">Object <span class="badge badge-ro">R</span></td><td>Word.Application for automation</td></tr>
+                        <tr><td class="member-name">WordDocument</td><td class="param-type"></td><td class="param-type">Object <span class="badge badge-ro">R</span></td><td>Active Word.Document</td></tr>
+                        <tr><td class="member-name">ShowDocumentPreview</td><td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span>, hwndTarget <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Preview in separate window</td></tr>
+                        <tr><td class="member-name">ShowDocumentPreviewInBrowserFrame</td><td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Preview in same Frame as WebView2</td></tr>
+                        <tr><td class="member-name">CloseDocumentPreview</td><td class="param-type"></td><td class="param-type"></td><td>Close preview</td></tr>
+                        <tr><td class="member-name">EmbeddedParentHwnd</td><td class="param-type"></td><td class="param-type">Long <span class="badge badge-ro">R</span></td><td>Frame window handle</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' OpenDocument — open any file (viewMode: 0=Auto, 1=ForceHTML, 2=ForcePDF)</span>
+m_lv.OpenDocument <span class="str">"C:\Reports\invoice.pdf"</span>, <span class="num">0</span>
+
+<span class="cmt">' OpenOfficeDocument — open Word/Excel/PowerPoint for editing</span>
+m_lv.OpenOfficeDocument <span class="str">"C:\Docs\template.docx"</span>
+
+<span class="cmt">' CloseOfficeDocument — close the embedded Office document</span>
+m_lv.CloseOfficeDocument
+
+<span class="cmt">' SaveOfficeDocument — save changes</span>
+m_lv.SaveOfficeDocument
+
+<span class="cmt">' SaveOfficeDocumentAs — save to new path</span>
+m_lv.SaveOfficeDocumentAs <span class="str">"C:\Docs\copy.docx"</span>
+
+<span class="cmt">' IsOfficeDocumentOpen (R) — check if doc is open</span>
+<span class="kw">If</span> m_lv.IsOfficeDocumentOpen <span class="kw">Then</span> m_lv.SaveOfficeDocument
+
+<span class="cmt">' OfficeDocumentPath (R) — current document path</span>
+Debug.Print m_lv.OfficeDocumentPath
+
+<span class="cmt">' OfficeDocumentType (R) — Word/Excel/PowerPoint/Unknown</span>
+Debug.Print m_lv.OfficeDocumentType
+
+<span class="cmt">' CurrentDocumentPath (R) — universal (any doc type)</span>
+Debug.Print m_lv.CurrentDocumentPath
+
+<span class="cmt">' CurrentDocumentType (R) — Image/PDF/Video/Audio/Text/Word/Excel/etc.</span>
+Debug.Print m_lv.CurrentDocumentType
+
+<span class="cmt">' WordApplication (R) — get Word.Application for automation</span>
+<span class="kw">Dim</span> wdApp <span class="kw">As</span> <span class="typ">Object</span>: <span class="kw">Set</span> wdApp = m_lv.WordApplication
+
+<span class="cmt">' WordDocument (R) — get active Word.Document</span>
+<span class="kw">Dim</span> wdDoc <span class="kw">As</span> <span class="typ">Object</span>: <span class="kw">Set</span> wdDoc = m_lv.WordDocument
+
+<span class="cmt">' ShowDocumentPreview — preview in external window</span>
+m_lv.ShowDocumentPreview <span class="str">"C:\Reports\chart.png"</span>, hwndTarget
+
+<span class="cmt">' ShowDocumentPreviewInBrowserFrame — preview in same frame</span>
+m_lv.ShowDocumentPreviewInBrowserFrame <span class="str">"C:\Reports\chart.png"</span>
+
+<span class="cmt">' CloseDocumentPreview — close preview</span>
+m_lv.CloseDocumentPreview
+
+<span class="cmt">' EmbeddedParentHwnd (R) — frame window handle</span>
+Debug.Print <span class="str">"Frame HWND: "</span> &amp; m_lv.EmbeddedParentHwnd</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 28: DevTools -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="devtools" data-section-id="devtools">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">DevTools Protocol</span>
+                <span class="section-count">6 members</span>
+            </div>
+            <div class="section-body">
+                <p>Access Chrome DevTools Protocol (CDP) for advanced browser automation.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">OpenDevToolsWindow</td><td class="param-type"></td><td class="param-type"></td><td>Open F12 DevTools</td></tr>
+                        <tr><td class="member-name">CallDevToolsProtocolMethod</td><td class="param-type">methodName <span class="kw">As</span> <span class="typ">String</span>, params <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Call CDP method</td></tr>
+                        <tr><td class="member-name">AddDevToolsProtocolEventHandler</td><td class="param-type">eventName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Subscribe to CDP event</td></tr>
+                        <tr><td class="member-name">RemoveDevToolsProtocolEventHandler</td><td class="param-type">eventName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Unsubscribe</td></tr>
+                        <tr><td class="member-name">HasDevToolsProtocol</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-ro">R</span></td><td>CDP available</td></tr>
+                        <tr><td class="member-name">OpenTaskManagerWindow</td><td class="param-type"></td><td class="param-type"></td><td>Browser task manager</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' OpenDevToolsWindow — open F12 DevTools</span>
+m_lv.OpenDevToolsWindow
+
+<span class="cmt">' CallDevToolsProtocolMethod — call any CDP method</span>
+<span class="kw">Dim</span> result <span class="kw">As</span> <span class="typ">String</span>
+result = m_lv.CallDevToolsProtocolMethod(<span class="str">"Browser.getVersion"</span>, <span class="str">"{}"</span>)
+result = m_lv.CallDevToolsProtocolMethod(<span class="str">"Page.captureScreenshot"</span>, <span class="str">"{""format"":""png""}"</span>)
+
+<span class="cmt">' AddDevToolsProtocolEventHandler — subscribe to CDP event</span>
+m_lv.AddDevToolsProtocolEventHandler <span class="str">"Page.loadEventFired"</span>
+
+<span class="cmt">' RemoveDevToolsProtocolEventHandler — unsubscribe</span>
+m_lv.RemoveDevToolsProtocolEventHandler <span class="str">"Page.loadEventFired"</span>
+
+<span class="cmt">' HasDevToolsProtocol (R) — check if CDP is available</span>
+<span class="kw">If</span> m_lv.HasDevToolsProtocol <span class="kw">Then</span>
+    result = m_lv.CallDevToolsProtocolMethod(<span class="str">"Runtime.evaluate"</span>, _
+        <span class="str">"{""expression"":""1+1""}"</span>)
+<span class="kw">End If</span>
+
+<span class="cmt">' OpenTaskManagerWindow — open browser task manager</span>
+m_lv.OpenTaskManagerWindow</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 29: Profile -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="profile" data-section-id="profile">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Profile Settings</span>
+                <span class="section-count">7 members</span>
+            </div>
+            <div class="section-body">
+                <p>Browser profile preferences including color scheme, tracking prevention, and popup handling.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Property</th><th>Type</th><th>R/W</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">PreferredColorScheme</td><td class="param-type">LV2_COLOR_SCHEME</td><td><span class="badge badge-rw">R/W</span></td><td>Auto/Light/Dark</td></tr>
+                        <tr><td class="member-name">PreferredTrackingPreventionLevel</td><td class="param-type">LV2_TRACKING_PREVENTION</td><td><span class="badge badge-rw">R/W</span></td><td>Tracking prevention</td></tr>
+                        <tr><td class="member-name">ProfileIsPasswordAutosaveEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Profile password save</td></tr>
+                        <tr><td class="member-name">ProfileIsGeneralAutofillEnabled</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Profile autofill</td></tr>
+                        <tr><td class="member-name">GetBrowserExtensionList</td><td class="param-type">(method)</td><td class="param-type">String (JSON)</td><td>Extensions</td></tr>
+                        <tr><td class="member-name">PopupMode</td><td class="param-type">LV2_POPUP_MODE</td><td><span class="badge badge-rw">R/W</span></td><td>Popup handling</td></tr>
+                        <tr><td class="member-name">OpenPopupsInSameWindow</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Legacy popup control</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' PreferredColorScheme (R/W) — 0=Auto, 1=Light, 2=Dark</span>
+m_lv.PreferredColorScheme = <span class="num">2</span>  <span class="cmt">' force dark mode</span>
+
+<span class="cmt">' PreferredTrackingPreventionLevel (R/W) — 0=None, 1=Basic, 2=Balanced, 3=Strict</span>
+m_lv.PreferredTrackingPreventionLevel = <span class="num">2</span>
+
+<span class="cmt">' ProfileIsPasswordAutosaveEnabled (R/W) — profile-level password save</span>
+m_lv.ProfileIsPasswordAutosaveEnabled = <span class="kw">False</span>
+
+<span class="cmt">' ProfileIsGeneralAutofillEnabled (R/W) — profile-level autofill</span>
+m_lv.ProfileIsGeneralAutofillEnabled = <span class="kw">False</span>
+
+<span class="cmt">' GetBrowserExtensionList — installed extensions (JSON array)</span>
+<span class="kw">Dim</span> ext <span class="kw">As</span> <span class="typ">String</span>
+ext = m_lv.GetBrowserExtensionList
+
+<span class="cmt">' PopupMode (R/W) — 0=Allow, 1=BlockAll, 2=SameWindow</span>
+m_lv.PopupMode = <span class="num">1</span>  <span class="cmt">' block all popups</span>
+
+<span class="cmt">' OpenPopupsInSameWindow (R/W) — legacy popup control</span>
+m_lv.OpenPopupsInSameWindow = <span class="kw">True</span>  <span class="cmt">' load popups in same WebView</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 30: Licensing -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="licensing" data-section-id="licensing">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Licensing</span>
+                <span class="section-count">7 members</span>
+            </div>
+            <div class="section-body">
+                <p>Query license status and activate product keys.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Type / Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">LicenseStatus</td><td class="param-type">String <span class="badge badge-ro">R</span></td><td class="param-type"></td><td>VALID, TRIAL, EXPIRED, UNLICENSED</td></tr>
+                        <tr><td class="member-name">LicenseType</td><td class="param-type">String <span class="badge badge-ro">R</span></td><td class="param-type"></td><td>TRIAL, PRO, ENTERPRISE, NONE</td></tr>
+                        <tr><td class="member-name">TrialDaysRemaining</td><td class="param-type">Long <span class="badge badge-ro">R</span></td><td class="param-type"></td><td>Days left in trial</td></tr>
+                        <tr><td class="member-name">LicenseExpiry</td><td class="param-type">Date <span class="badge badge-ro">R</span></td><td class="param-type"></td><td>Expiry date</td></tr>
+                        <tr><td class="member-name">LicenseVersion</td><td class="param-type">String <span class="badge badge-ro">R</span></td><td class="param-type"></td><td>Licensed version range</td></tr>
+                        <tr><td class="member-name">LicenseState</td><td class="param-type">LV2_LICENSE_STATE <span class="badge badge-ro">R</span></td><td class="param-type"></td><td>Enum state</td></tr>
+                        <tr><td class="member-name">ActivateLicense</td><td class="param-type">company <span class="kw">As</span> <span class="typ">String</span>, key <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Activate with HMAC key</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Licensing Example</h4>
+                <p class="code-source">Source: frmAdvancedFeatures_Code.txt</p>
+<pre><code><span class="cmt">' Check license status</span>
+Debug.Print <span class="str">"Status: "</span> &amp; m_lv.LicenseStatus       <span class="cmt">' VALID, TRIAL, EXPIRED</span>
+Debug.Print <span class="str">"Type:   "</span> &amp; m_lv.LicenseType         <span class="cmt">' TRIAL, PRO, ENTERPRISE</span>
+Debug.Print <span class="str">"Days:   "</span> &amp; m_lv.TrialDaysRemaining
+Debug.Print <span class="str">"State:  "</span> &amp; m_lv.LicenseState        <span class="cmt">' LV2_LICENSE_STATE enum</span>
+
+<span class="cmt">' Activate with license key</span>
+m_lv.ActivateLicense <span class="str">"MyCompany"</span>, <span class="str">"XXXXX-XXXXX-XXXXX"</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 31: Bridge Inspector -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="bridge-inspector" data-section-id="bridge-inspector">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Bridge Inspector</span>
+                <span class="section-count">1 method</span>
+            </div>
+            <div class="section-body">
+                <p>Debug VBA/JS communication with a live message traffic HUD.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">ToggleBridgeInspector</td><td class="param-type"></td><td class="param-type"></td><td>Toggle HUD showing live JS/VBA message traffic</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Bridge Inspector Example</h4>
+                <p class="code-source">Source: frmScriptBridge_Code.txt</p>
+<pre><code><span class="cmt">' Toggle the live message traffic HUD overlay</span>
+m_lv.ToggleBridgeInspector
+<span class="cmt">' A floating panel appears showing all JS/VBA messages in real time</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 32: Synchronous Navigation -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="sync-navigation" data-section-id="sync-navigation">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Synchronous Navigation</span>
+                <span class="section-count">1 property</span>
+            </div>
+            <div class="section-body">
+                <p>Configure timeout for synchronous navigation methods (<code>NavigateSync</code>, <code>NavigateToStringSync</code>).</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Property</th><th>Type</th><th>R/W</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">SynchronousTimeOut</td><td class="param-type">Long</td><td><span class="badge badge-rw">R/W</span></td><td>Timeout in ms for NavigateSync etc. (default 30000)</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Sync Navigation Example</h4>
+                <p class="code-source">Source: frmBrowserExplorer_Code.txt</p>
+<pre><code><span class="cmt">' Set timeout and navigate synchronously (blocks VBA until loaded)</span>
+m_lv.SynchronousTimeOut = <span class="num">15000</span>
+m_lv.NavigateSync <span class="str">"https://www.example.com"</span>
+<span class="cmt">' VBA execution resumes here after page fully loads</span>
+Debug.Print <span class="str">"Loaded: "</span> &amp; m_lv.Url</code></pre>
+
+                <div class="callout callout-warning">
+                    <span class="callout-title">Warning</span>
+                    <p><code>NavigateSync</code> and <code>NavigateToStringSync</code> use a re-entrant message loop that <strong>conflicts with Access VBA</strong> (COM STA limitation). They work in VB6/VFP but may hang in Access. Use async <code>Navigate</code> + <code>NavigationCompleted</code> event instead.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+    <p>Generated from <code>LiteView2.idl</code></p>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<script src="docs.js"></script>
+</body>
+</html>

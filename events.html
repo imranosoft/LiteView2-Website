@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events — LiteView2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Site Header -->
+<header class="site-header">
+    <a href="index.html" class="brand">
+        <span class="brand-icon">LV2</span>
+        <span>LiteView2</span>
+    </a>
+    <nav class="header-nav">
+        <a href="landing.html">Home</a>
+        <a href="index.html">Overview</a>
+        <a href="enums.html">Enums</a>
+        <a href="iliteview2ctrl.html">ILiteView2Ctrl</a>
+        <a href="events.html" class="active">Events</a>
+        <a href="ibrowserpool.html">IBrowserPool</a>
+    </nav>
+    <div class="header-actions">
+        <button class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <span class="version-badge">v1.0</span>
+    </div>
+    <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <nav class="page-links">
+        <a href="landing.html" class="page-link"><span class="icon">&#8962;</span> Home</a>
+        <a href="index.html" class="page-link"><span class="icon">&#9776;</span> Overview</a>
+        <a href="enums.html" class="page-link"><span class="icon">E</span> Enums</a>
+        <a href="iliteview2ctrl.html" class="page-link"><span class="icon">I</span> ILiteView2Ctrl</a>
+        <a href="events.html" class="page-link current"><span class="icon">&#9889;</span> Events</a>
+        <a href="ibrowserpool.html" class="page-link">IBrowserPool</a>
+    </nav>
+    <div class="sidebar-search">
+        <input type="search" placeholder="Search events...">
+    </div>
+    <nav>
+        <!-- Core -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Core</div>
+            <div class="nav-group-items">
+                <a href="#WebViewReady" class="nav-link">WebViewReady</a>
+                <a href="#NavigationStarting" class="nav-link">NavigationStarting</a>
+                <a href="#NavigationCompleted" class="nav-link">NavigationCompleted</a>
+                <a href="#WebMessageReceived" class="nav-link">WebMessageReceived</a>
+                <a href="#DocumentTitleChanged" class="nav-link">DocumentTitleChanged</a>
+                <a href="#SourceChanged" class="nav-link">SourceChanged</a>
+                <a href="#CreateWebViewCompleted" class="nav-link">CreateWebViewCompleted</a>
+            </div>
+        </div>
+        <!-- Print & Capture -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Print &amp; Capture</div>
+            <div class="nav-group-items">
+                <a href="#PrintToPdfCompleted" class="nav-link">PrintToPdfCompleted</a>
+                <a href="#CaptureScreenshotCompleted" class="nav-link">CaptureScreenshotCompleted</a>
+            </div>
+        </div>
+        <!-- Navigation Detail -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Navigation Detail</div>
+            <div class="nav-group-items">
+                <a href="#DOMContentLoaded" class="nav-link">DOMContentLoaded</a>
+                <a href="#ContentLoading" class="nav-link">ContentLoading</a>
+                <a href="#HistoryChanged" class="nav-link">HistoryChanged</a>
+            </div>
+        </div>
+        <!-- Window & UI -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Window &amp; UI</div>
+            <div class="nav-group-items">
+                <a href="#NewWindowRequested" class="nav-link">NewWindowRequested</a>
+                <a href="#WindowCloseRequested" class="nav-link">WindowCloseRequested</a>
+                <a href="#ScriptDialogOpening" class="nav-link">ScriptDialogOpening</a>
+                <a href="#ContainsFullScreenElementChanged" class="nav-link">ContainsFullScreenElementChanged</a>
+                <a href="#StatusBarTextChanged" class="nav-link">StatusBarTextChanged</a>
+                <a href="#ZoomFactorChanged" class="nav-link">ZoomFactorChanged</a>
+                <a href="#FaviconChanged" class="nav-link">FaviconChanged</a>
+            </div>
+        </div>
+        <!-- Download -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Download</div>
+            <div class="nav-group-items">
+                <a href="#DownloadStarting" class="nav-link">DownloadStarting</a>
+                <a href="#DownloadProgressChanged" class="nav-link">DownloadProgressChanged</a>
+                <a href="#DownloadCompleted" class="nav-link">DownloadCompleted</a>
+                <a href="#IsDefaultDownloadDialogOpenChanged" class="nav-link">IsDefaultDownloadDialogOpenChanged</a>
+                <a href="#SaveAsUIShowing" class="nav-link">SaveAsUIShowing</a>
+            </div>
+        </div>
+        <!-- Authentication -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Authentication</div>
+            <div class="nav-group-items">
+                <a href="#BasicAuthenticationRequested" class="nav-link">BasicAuthenticationRequested</a>
+                <a href="#ClientCertificateRequested" class="nav-link">ClientCertificateRequested</a>
+                <a href="#ServerCertificateErrorDetected" class="nav-link">ServerCertificateErrorDetected</a>
+            </div>
+        </div>
+        <!-- Process -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Process</div>
+            <div class="nav-group-items">
+                <a href="#ProcessFailed" class="nav-link">ProcessFailed</a>
+                <a href="#BrowserProcessExited" class="nav-link">BrowserProcessExited</a>
+            </div>
+        </div>
+        <!-- Web Resource -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Web Resource</div>
+            <div class="nav-group-items">
+                <a href="#WebResourceRequested" class="nav-link">WebResourceRequested</a>
+                <a href="#WebResourceResponseReceived" class="nav-link">WebResourceResponseReceived</a>
+            </div>
+        </div>
+        <!-- Find -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Find</div>
+            <div class="nav-group-items">
+                <a href="#FindMatchCountChanged" class="nav-link">FindMatchCountChanged</a>
+                <a href="#FindActiveMatchChanged" class="nav-link">FindActiveMatchChanged</a>
+                <a href="#FindCompleted" class="nav-link">FindCompleted</a>
+            </div>
+        </div>
+        <!-- Frame -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Frame (iFrame)</div>
+            <div class="nav-group-items">
+                <a href="#FrameCreated" class="nav-link">FrameCreated</a>
+                <a href="#FrameNavigationStarting" class="nav-link">FrameNavigationStarting</a>
+                <a href="#FrameNavigationCompleted" class="nav-link">FrameNavigationCompleted</a>
+                <a href="#FrameDestroyed" class="nav-link">FrameDestroyed</a>
+            </div>
+        </div>
+        <!-- Input -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Input</div>
+            <div class="nav-group-items">
+                <a href="#Click" class="nav-link">Click</a>
+                <a href="#DblClick" class="nav-link">DblClick</a>
+                <a href="#KeyPress" class="nav-link">KeyPress</a>
+                <a href="#MouseEnter" class="nav-link">MouseEnter</a>
+                <a href="#MouseLeave" class="nav-link">MouseLeave</a>
+                <a href="#GotFocus" class="nav-link">GotFocus</a>
+                <a href="#LostFocus" class="nav-link">LostFocus</a>
+                <a href="#AcceleratorKeyPressed" class="nav-link">AcceleratorKeyPressed</a>
+                <a href="#MoveFocusRequested" class="nav-link">MoveFocusRequested</a>
+            </div>
+        </div>
+        <!-- Permission & Security -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Permission &amp; Security</div>
+            <div class="nav-group-items">
+                <a href="#PermissionRequested" class="nav-link">PermissionRequested</a>
+                <a href="#ContextMenuRequested" class="nav-link">ContextMenuRequested</a>
+                <a href="#LaunchingExternalUriScheme" class="nav-link">LaunchingExternalUriScheme</a>
+                <a href="#NotificationReceived" class="nav-link">NotificationReceived</a>
+                <a href="#ScreenCaptureStarting" class="nav-link">ScreenCaptureStarting</a>
+                <a href="#SaveFileSecurityCheckStarting" class="nav-link">SaveFileSecurityCheckStarting</a>
+            </div>
+        </div>
+        <!-- Audio -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Audio</div>
+            <div class="nav-group-items">
+                <a href="#IsMutedChanged" class="nav-link">IsMutedChanged</a>
+                <a href="#IsDocumentPlayingAudioChanged" class="nav-link">IsDocumentPlayingAudioChanged</a>
+            </div>
+        </div>
+        <!-- CAPTCHA -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> CAPTCHA</div>
+            <div class="nav-group-items">
+                <a href="#CaptchaDetected" class="nav-link">CaptchaDetected</a>
+                <a href="#CaptchaSolved" class="nav-link">CaptchaSolved</a>
+            </div>
+        </div>
+        <!-- VB6/Hex -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> VB6/Hex</div>
+            <div class="nav-group-items">
+                <a href="#NavigationCompletedHex" class="nav-link">NavigationCompletedHex</a>
+                <a href="#ContentLoadingHex" class="nav-link">ContentLoadingHex</a>
+                <a href="#DownloadStartingHex" class="nav-link">DownloadStartingHex</a>
+                <a href="#DownloadProgressChangedHex" class="nav-link">DownloadProgressChangedHex</a>
+                <a href="#DownloadCompletedHex" class="nav-link">DownloadCompletedHex</a>
+            </div>
+        </div>
+    </nav>
+</aside>
+<div class="sidebar-overlay"></div>
+
+<!-- Main Content -->
+<div class="page-wrapper">
+    <main class="main-content">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <span>LiteView2</span>
+            <span class="sep">/</span>
+            <span>API Reference</span>
+            <span class="sep">/</span>
+            <span class="current">Events</span>
+        </nav>
+
+        <!-- Page Title -->
+        <h1>_DLiteView2CtrlEvents
+            <span class="subtitle">60+ events fired by the LiteView2 OCX control</span>
+        </h1>
+
+        <div class="callout callout-note">
+            <span class="callout-title">Note</span>
+            <p>In VBA, name handler subs as <code>LiteView2Ctrl1_EventName</code> (matching the control's Name property). Events use the design-time OCX naming convention, not <code>WithEvents</code>.</p>
+        </div>
+
+        <div class="callout callout-danger">
+            <span class="callout-title">Danger</span>
+            <p><strong>NEVER</strong> call <code>JsonGetValue</code> inside <code>WebMessageReceived</code> &mdash; this executes async script internally and deadlocks WebView2. Use <code>InStr()</code> for all action parsing.</p>
+        </div>
+
+        <div class="callout callout-tip">
+            <span class="callout-title">Tip</span>
+            <p>Events with a <code>Cancel As Boolean</code> parameter are cancelable &mdash; set <code>Cancel = True</code> to block the action.</p>
+        </div>
+
+        <button class="expand-all-btn">Expand All</button>
+
+        <!-- ================================================================== -->
+        <!-- Core Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section expanded" id="core-events" data-section-id="core-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Core Events</span>
+                <span class="section-count">7 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="WebViewReady" data-section-id="WebViewReady">
+                            <td class="member-name">WebViewReady</td>
+                            <td class="param-type">(none)</td>
+                            <td class="desc">WebView2 engine initialized. Safe to call <code>SetLocalContentRoot</code>, <code>Navigate</code>, etc. Primary readiness signal.</td>
+                        </tr>
+                        <tr id="NavigationStarting" data-section-id="NavigationStarting">
+                            <td class="member-name">NavigationStarting <span class="badge badge-cancel">Cancelable</span></td>
+                            <td class="param-type">url <span class="kw">As</span> <span class="typ">String</span>, Cancel <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Before navigation begins. Set <code>Cancel = True</code> to block.</td>
+                        </tr>
+                        <tr id="NavigationCompleted" data-section-id="NavigationCompleted">
+                            <td class="member-name">NavigationCompleted</td>
+                            <td class="param-type">url <span class="kw">As</span> <span class="typ">String</span>, success <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">After navigation completes. Fires AFTER <code>window.onload</code>.</td>
+                        </tr>
+                        <tr id="WebMessageReceived" data-section-id="WebMessageReceived">
+                            <td class="member-name">WebMessageReceived</td>
+                            <td class="param-type">message <span class="kw">As</span> <span class="typ">String</span>, source <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">JS called <code>window.chrome.webview.postMessage()</code>. <strong>NEVER</strong> call <code>JsonGetValue</code> here.</td>
+                        </tr>
+                        <tr id="DocumentTitleChanged" data-section-id="DocumentTitleChanged">
+                            <td class="member-name">DocumentTitleChanged</td>
+                            <td class="param-type">title <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">Page title changed.</td>
+                        </tr>
+                        <tr id="SourceChanged" data-section-id="SourceChanged">
+                            <td class="member-name">SourceChanged</td>
+                            <td class="param-type">url <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">Source URL changed.</td>
+                        </tr>
+                        <tr id="CreateWebViewCompleted" data-section-id="CreateWebViewCompleted">
+                            <td class="member-name">CreateWebViewCompleted</td>
+                            <td class="param-type">hResult <span class="kw">As</span> <span class="typ">Long</span>, success <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Controller creation complete.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' WebViewReady — engine initialized, safe to navigate</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_WebViewReady()
+    m_lv.SetLocalContentRoot CurrentProject.Path &amp; <span class="str">"\demos"</span>
+    m_lv.Navigate <span class="str">"https://lv2.local/index.html"</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' NavigationStarting — before navigation (cancelable)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_NavigationStarting(<span class="kw">ByVal</span> url <span class="kw">As</span> <span class="typ">String</span>, Cancel <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If</span> InStr(url, <span class="str">"blocked-site.com"</span>) &gt; <span class="num">0</span> <span class="kw">Then</span> Cancel = <span class="kw">True</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' NavigationCompleted — after page loads</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_NavigationCompleted(<span class="kw">ByVal</span> url <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> success <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If Not</span> success <span class="kw">Then</span> lblStatus.Caption = <span class="str">"Failed: "</span> &amp; m_lv.LastError
+<span class="kw">End Sub</span>
+
+<span class="cmt">' WebMessageReceived — JS called postMessage(). NEVER use JsonGetValue here!</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_WebMessageReceived(<span class="kw">ByVal</span> message <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> source <span class="kw">As</span> <span class="typ">String</span>)
+    <span class="kw">If</span> InStr(message, <span class="str">"""action"":""ready"""</span>) &gt; <span class="num">0</span> <span class="kw">Then</span> m_pageReady = <span class="kw">True</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' DocumentTitleChanged — page &lt;title&gt; changed</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_DocumentTitleChanged(<span class="kw">ByVal</span> title <span class="kw">As</span> <span class="typ">String</span>)
+    Me.Caption = title
+<span class="kw">End Sub</span>
+
+<span class="cmt">' SourceChanged — URL changed</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_SourceChanged(<span class="kw">ByVal</span> url <span class="kw">As</span> <span class="typ">String</span>)
+    txtUrl.Value = url
+<span class="kw">End Sub</span>
+
+<span class="cmt">' CreateWebViewCompleted — controller creation finished</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_CreateWebViewCompleted(<span class="kw">ByVal</span> hResult <span class="kw">As</span> <span class="typ">Long</span>, <span class="kw">ByVal</span> success <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If Not</span> success <span class="kw">Then</span> MsgBox <span class="str">"WebView2 creation failed: 0x"</span> &amp; Hex(hResult)
+<span class="kw">End Sub</span></code></pre>
+
+                <h4>WebMessageReceived Antipattern</h4>
+<pre class="antipattern"><code><span class="cmt">' DEADLOCK: JsonGetValue executes async script internally</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_WebMessageReceived(<span class="kw">ByVal</span> message <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> source <span class="kw">As</span> <span class="typ">String</span>)
+    <span class="kw">Dim</span> action <span class="kw">As</span> <span class="typ">String</span>
+    action = m_lv.JsonGetValue(message, <span class="str">"action"</span>)  <span class="cmt">' &lt;-- DEADLOCK!</span>
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Print & Capture Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="print-capture-events" data-section-id="print-capture-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Print &amp; Capture Events</span>
+                <span class="section-count">2 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="PrintToPdfCompleted" data-section-id="PrintToPdfCompleted">
+                            <td class="member-name">PrintToPdfCompleted</td>
+                            <td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span>, success <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">PDF generation finished.</td>
+                        </tr>
+                        <tr id="CaptureScreenshotCompleted" data-section-id="CaptureScreenshotCompleted">
+                            <td class="member-name">CaptureScreenshotCompleted</td>
+                            <td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span>, success <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Screenshot captured.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' PrintToPdfCompleted — PDF generation finished</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_PrintToPdfCompleted(<span class="kw">ByVal</span> filePath <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> success <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If</span> success <span class="kw">Then</span>
+        lblStatus.Caption = <span class="str">"PDF: "</span> &amp; filePath
+    <span class="kw">Else</span>
+        lblStatus.Caption = <span class="str">"PDF generation failed."</span>
+    <span class="kw">End If</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' CaptureScreenshotCompleted — screenshot saved</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_CaptureScreenshotCompleted(<span class="kw">ByVal</span> filePath <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> success <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If</span> success <span class="kw">Then</span> Shell <span class="str">"explorer """</span> &amp; filePath &amp; <span class="str">""""</span>, vbNormalFocus
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Navigation Detail Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="nav-detail-events" data-section-id="nav-detail-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Navigation Detail Events</span>
+                <span class="section-count">3 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="DOMContentLoaded" data-section-id="DOMContentLoaded">
+                            <td class="member-name">DOMContentLoaded</td>
+                            <td class="param-type">navigationId <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">DOMContentLoaded fired in page.</td>
+                        </tr>
+                        <tr id="ContentLoading" data-section-id="ContentLoading">
+                            <td class="member-name">ContentLoading</td>
+                            <td class="param-type">navigationId <span class="kw">As</span> <span class="typ">String</span>, isErrorPage <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Content starting to load.</td>
+                        </tr>
+                        <tr id="HistoryChanged" data-section-id="HistoryChanged">
+                            <td class="member-name">HistoryChanged</td>
+                            <td class="param-type">(none)</td>
+                            <td class="desc">Back/forward availability changed.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+                <p class="code-source">Lifecycle: NavigationStarting &rarr; SourceChanged &rarr; ContentLoading &rarr; HistoryChanged &rarr; DOMContentLoaded &rarr; DocumentTitleChanged &rarr; NavigationCompleted</p>
+<pre><code><span class="cmt">' DOMContentLoaded — DOM ready (before images/stylesheets finish)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_DOMContentLoaded(<span class="kw">ByVal</span> navigationId <span class="kw">As</span> <span class="typ">String</span>)
+    Debug.Print <span class="str">"DOM ready, navId="</span> &amp; navigationId
+<span class="kw">End Sub</span>
+
+<span class="cmt">' ContentLoading — content starting to load</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_ContentLoading(<span class="kw">ByVal</span> navigationId <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> isErrorPage <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If</span> isErrorPage <span class="kw">Then</span> Debug.Print <span class="str">"Loading error page"</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' HistoryChanged — back/forward availability changed</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_HistoryChanged()
+    btnBack.Enabled = m_lv.CanGoBack
+    btnFwd.Enabled = m_lv.CanGoForward
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Window & UI Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="window-ui-events" data-section-id="window-ui-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Window &amp; UI Events</span>
+                <span class="section-count">7 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="NewWindowRequested" data-section-id="NewWindowRequested">
+                            <td class="member-name">NewWindowRequested <span class="badge badge-cancel">Cancelable</span></td>
+                            <td class="param-type">url <span class="kw">As</span> <span class="typ">String</span>, Cancel <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Popup window requested. Set <code>Cancel = True</code> to block.</td>
+                        </tr>
+                        <tr id="WindowCloseRequested" data-section-id="WindowCloseRequested">
+                            <td class="member-name">WindowCloseRequested</td>
+                            <td class="param-type">(none)</td>
+                            <td class="desc"><code>window.close()</code> called from JS.</td>
+                        </tr>
+                        <tr id="ScriptDialogOpening" data-section-id="ScriptDialogOpening">
+                            <td class="member-name">ScriptDialogOpening</td>
+                            <td class="param-type">message <span class="kw">As</span> <span class="typ">String</span>, dialogType <span class="kw">As</span> <span class="typ">Long</span></td>
+                            <td class="desc">alert/confirm/prompt dialog.</td>
+                        </tr>
+                        <tr id="ContainsFullScreenElementChanged" data-section-id="ContainsFullScreenElementChanged">
+                            <td class="member-name">ContainsFullScreenElementChanged</td>
+                            <td class="param-type">containsFullScreenElement <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Fullscreen state changed.</td>
+                        </tr>
+                        <tr id="StatusBarTextChanged" data-section-id="StatusBarTextChanged">
+                            <td class="member-name">StatusBarTextChanged</td>
+                            <td class="param-type">statusText <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">Status bar text changed.</td>
+                        </tr>
+                        <tr id="ZoomFactorChanged" data-section-id="ZoomFactorChanged">
+                            <td class="member-name">ZoomFactorChanged</td>
+                            <td class="param-type">newZoomFactor <span class="kw">As</span> <span class="typ">Double</span></td>
+                            <td class="desc">Zoom level changed.</td>
+                        </tr>
+                        <tr id="FaviconChanged" data-section-id="FaviconChanged">
+                            <td class="member-name">FaviconChanged</td>
+                            <td class="param-type">faviconUri <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">Page favicon changed.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' NewWindowRequested — popup requested (cancelable)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_NewWindowRequested(<span class="kw">ByVal</span> url <span class="kw">As</span> <span class="typ">String</span>, Cancel <span class="kw">As</span> <span class="typ">Boolean</span>)
+    Cancel = <span class="kw">True</span>       <span class="cmt">' block popup</span>
+    m_lv.Navigate url  <span class="cmt">' load in same window instead</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' WindowCloseRequested — window.close() called from JS</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_WindowCloseRequested()
+    DoCmd.Close acForm, Me.Name
+<span class="kw">End Sub</span>
+
+<span class="cmt">' ScriptDialogOpening — alert/confirm/prompt (type: 0=alert,1=confirm,2=prompt)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_ScriptDialogOpening(<span class="kw">ByVal</span> message <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> dialogType <span class="kw">As</span> <span class="typ">Long</span>)
+    Debug.Print <span class="str">"Dialog type "</span> &amp; dialogType &amp; <span class="str">": "</span> &amp; message
+<span class="kw">End Sub</span>
+
+<span class="cmt">' ContainsFullScreenElementChanged — fullscreen video etc.</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_ContainsFullScreenElementChanged( _
+        <span class="kw">ByVal</span> containsFullScreenElement <span class="kw">As</span> <span class="typ">Boolean</span>)
+    Debug.Print <span class="str">"Fullscreen: "</span> &amp; containsFullScreenElement
+<span class="kw">End Sub</span>
+
+<span class="cmt">' StatusBarTextChanged — hover link text</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_StatusBarTextChanged(<span class="kw">ByVal</span> statusText <span class="kw">As</span> <span class="typ">String</span>)
+    lblStatus.Caption = statusText
+<span class="kw">End Sub</span>
+
+<span class="cmt">' ZoomFactorChanged — zoom level changed</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_ZoomFactorChanged(<span class="kw">ByVal</span> newZoomFactor <span class="kw">As</span> <span class="typ">Double</span>)
+    lblZoom.Caption = Format(newZoomFactor * <span class="num">100</span>, <span class="str">"0"</span>) &amp; <span class="str">"%"</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' FaviconChanged — page favicon updated</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_FaviconChanged(<span class="kw">ByVal</span> faviconUri <span class="kw">As</span> <span class="typ">String</span>)
+    Debug.Print <span class="str">"Favicon: "</span> &amp; faviconUri
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Download Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="download-events" data-section-id="download-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Download Events</span>
+                <span class="section-count">5 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="DownloadStarting" data-section-id="DownloadStarting">
+                            <td class="member-name">DownloadStarting <span class="badge badge-cancel">Cancelable</span></td>
+                            <td class="param-type">url, suggestedFileName <span class="kw">As</span> <span class="typ">String</span>, totalBytes <span class="kw">As</span> <span class="typ">Long</span>, mimeType <span class="kw">As</span> <span class="typ">String</span>, Cancel <span class="kw">As</span> <span class="typ">Boolean</span>, resultFilePath <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">Download about to begin. <code>Cancel = True</code> to block. Set <code>resultFilePath</code> to change save location.</td>
+                        </tr>
+                        <tr id="DownloadProgressChanged" data-section-id="DownloadProgressChanged">
+                            <td class="member-name">DownloadProgressChanged</td>
+                            <td class="param-type">downloadId <span class="kw">As</span> <span class="typ">Long</span>, bytesReceived <span class="kw">As</span> <span class="typ">Long</span>, totalBytes <span class="kw">As</span> <span class="typ">Long</span>, state <span class="kw">As</span> <span class="typ">Long</span></td>
+                            <td class="desc">Download progress update.</td>
+                        </tr>
+                        <tr id="DownloadCompleted" data-section-id="DownloadCompleted">
+                            <td class="member-name">DownloadCompleted</td>
+                            <td class="param-type">downloadId <span class="kw">As</span> <span class="typ">Long</span>, filePath <span class="kw">As</span> <span class="typ">String</span>, success <span class="kw">As</span> <span class="typ">Boolean</span>, interruptReason <span class="kw">As</span> <span class="typ">Long</span></td>
+                            <td class="desc">Download finished.</td>
+                        </tr>
+                        <tr id="IsDefaultDownloadDialogOpenChanged" data-section-id="IsDefaultDownloadDialogOpenChanged">
+                            <td class="member-name">IsDefaultDownloadDialogOpenChanged</td>
+                            <td class="param-type">(none)</td>
+                            <td class="desc">Download dialog state changed.</td>
+                        </tr>
+                        <tr id="SaveAsUIShowing" data-section-id="SaveAsUIShowing">
+                            <td class="member-name">SaveAsUIShowing <span class="badge badge-cancel">Cancelable</span></td>
+                            <td class="param-type">Cancel <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Save As dialog about to show.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' DownloadStarting — download about to begin (cancelable)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_DownloadStarting(<span class="kw">ByVal</span> url <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> suggestedFileName <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> totalBytes <span class="kw">As</span> <span class="typ">Long</span>, _
+        <span class="kw">ByVal</span> mimeType <span class="kw">As</span> <span class="typ">String</span>, Cancel <span class="kw">As</span> <span class="typ">Boolean</span>, resultFilePath <span class="kw">As</span> <span class="typ">String</span>)
+    Debug.Print suggestedFileName &amp; <span class="str">" ("</span> &amp; totalBytes &amp; <span class="str">" bytes, "</span> &amp; mimeType &amp; <span class="str">")"</span>
+    <span class="cmt">' Cancel = True to block; set resultFilePath to redirect save location</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' DownloadProgressChanged — progress update (state: 0=InProgress,1=Interrupted,2=Completed)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_DownloadProgressChanged(<span class="kw">ByVal</span> downloadId <span class="kw">As</span> <span class="typ">Long</span>, _
+        <span class="kw">ByVal</span> bytesReceived <span class="kw">As</span> <span class="typ">Long</span>, <span class="kw">ByVal</span> totalBytes <span class="kw">As</span> <span class="typ">Long</span>, <span class="kw">ByVal</span> state <span class="kw">As</span> <span class="typ">Long</span>)
+    <span class="kw">If</span> totalBytes &gt; <span class="num">0</span> <span class="kw">Then</span>
+        lblProgress.Caption = Format(bytesReceived / totalBytes * <span class="num">100</span>, <span class="str">"0"</span>) &amp; <span class="str">"%"</span>
+    <span class="kw">End If</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' DownloadCompleted — download finished</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_DownloadCompleted(<span class="kw">ByVal</span> downloadId <span class="kw">As</span> <span class="typ">Long</span>, _
+        <span class="kw">ByVal</span> resultFilePath <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> success <span class="kw">As</span> <span class="typ">Boolean</span>, _
+        <span class="kw">ByVal</span> interruptReason <span class="kw">As</span> <span class="typ">Long</span>)
+    <span class="kw">If</span> success <span class="kw">Then</span> Debug.Print <span class="str">"Saved: "</span> &amp; resultFilePath
+<span class="kw">End Sub</span>
+
+<span class="cmt">' IsDefaultDownloadDialogOpenChanged — download dialog toggled</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_IsDefaultDownloadDialogOpenChanged()
+    Debug.Print <span class="str">"Dialog open: "</span> &amp; m_lv.IsDownloadDialogOpen
+<span class="kw">End Sub</span>
+
+<span class="cmt">' SaveAsUIShowing — Save As dialog about to show (cancelable)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_SaveAsUIShowing(Cancel <span class="kw">As</span> <span class="typ">Boolean</span>)
+    Cancel = <span class="kw">True</span>  <span class="cmt">' suppress Save As dialog</span>
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Authentication Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="auth-events" data-section-id="auth-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Authentication Events</span>
+                <span class="section-count">3 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="BasicAuthenticationRequested" data-section-id="BasicAuthenticationRequested">
+                            <td class="member-name">BasicAuthenticationRequested</td>
+                            <td class="param-type">uri, challenge <span class="kw">As</span> <span class="typ">String</span>, username <span class="kw">As</span> <span class="typ">String</span>, password <span class="kw">As</span> <span class="typ">String</span>, handled <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Server requests HTTP Basic Auth credentials.</td>
+                        </tr>
+                        <tr id="ClientCertificateRequested" data-section-id="ClientCertificateRequested">
+                            <td class="member-name">ClientCertificateRequested</td>
+                            <td class="param-type">uri <span class="kw">As</span> <span class="typ">String</span>, handled <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Client certificate requested.</td>
+                        </tr>
+                        <tr id="ServerCertificateErrorDetected" data-section-id="ServerCertificateErrorDetected">
+                            <td class="member-name">ServerCertificateErrorDetected</td>
+                            <td class="param-type">uri <span class="kw">As</span> <span class="typ">String</span>, errorStatus <span class="kw">As</span> <span class="typ">Long</span>, certificateSubject <span class="kw">As</span> <span class="typ">String</span>, action <span class="kw">As</span> <span class="typ">Long</span></td>
+                            <td class="desc">SSL/TLS certificate error.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' BasicAuthenticationRequested — HTTP Basic Auth challenge</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_BasicAuthenticationRequested(<span class="kw">ByVal</span> uri <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> challenge <span class="kw">As</span> <span class="typ">String</span>, username <span class="kw">As</span> <span class="typ">String</span>, _
+        password <span class="kw">As</span> <span class="typ">String</span>, handled <span class="kw">As</span> <span class="typ">Boolean</span>)
+    username = <span class="str">"admin"</span>: password = <span class="str">"secret"</span>: handled = <span class="kw">True</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' ClientCertificateRequested — client certificate needed</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_ClientCertificateRequested(<span class="kw">ByVal</span> uri <span class="kw">As</span> <span class="typ">String</span>, _
+        handled <span class="kw">As</span> <span class="typ">Boolean</span>)
+    Debug.Print <span class="str">"Client cert requested for: "</span> &amp; uri
+<span class="kw">End Sub</span>
+
+<span class="cmt">' ServerCertificateErrorDetected — SSL/TLS error (action: 0=Default, 1=AlwaysAllow)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_ServerCertificateErrorDetected(<span class="kw">ByVal</span> uri <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> errorStatus <span class="kw">As</span> <span class="typ">Long</span>, <span class="kw">ByVal</span> certificateSubject <span class="kw">As</span> <span class="typ">String</span>, _
+        action <span class="kw">As</span> <span class="typ">Long</span>)
+    Debug.Print <span class="str">"SSL error "</span> &amp; errorStatus &amp; <span class="str">" for "</span> &amp; certificateSubject
+    action = <span class="num">1</span>  <span class="cmt">' allow (for dev/testing only)</span>
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Process Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="process-events" data-section-id="process-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Process Events</span>
+                <span class="section-count">2 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="ProcessFailed" data-section-id="ProcessFailed">
+                            <td class="member-name">ProcessFailed</td>
+                            <td class="param-type">processKind <span class="kw">As</span> <span class="typ">Long</span>, reason <span class="kw">As</span> <span class="typ">Long</span>, exitCode <span class="kw">As</span> <span class="typ">Long</span>, reasonMessage <span class="kw">As</span> <span class="typ">String</span>, frameInfo <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">Browser process crashed or exited unexpectedly.</td>
+                        </tr>
+                        <tr id="BrowserProcessExited" data-section-id="BrowserProcessExited">
+                            <td class="member-name">BrowserProcessExited</td>
+                            <td class="param-type">exitKind <span class="kw">As</span> <span class="typ">Long</span>, processId <span class="kw">As</span> <span class="typ">Long</span></td>
+                            <td class="desc">Browser process exited.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' ProcessFailed — browser crashed or exited unexpectedly</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_ProcessFailed(<span class="kw">ByVal</span> processKind <span class="kw">As</span> <span class="typ">Long</span>, _
+        <span class="kw">ByVal</span> reason <span class="kw">As</span> <span class="typ">Long</span>, <span class="kw">ByVal</span> exitCode <span class="kw">As</span> <span class="typ">Long</span>, _
+        <span class="kw">ByVal</span> reasonMessage <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> frameInfo <span class="kw">As</span> <span class="typ">String</span>)
+    MsgBox <span class="str">"Process crashed: "</span> &amp; reasonMessage, vbCritical
+<span class="kw">End Sub</span>
+
+<span class="cmt">' BrowserProcessExited — browser process terminated</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_BrowserProcessExited(<span class="kw">ByVal</span> exitKind <span class="kw">As</span> <span class="typ">Long</span>, _
+        <span class="kw">ByVal</span> processId <span class="kw">As</span> <span class="typ">Long</span>)
+    Debug.Print <span class="str">"Process "</span> &amp; processId &amp; <span class="str">" exited (kind="</span> &amp; exitKind &amp; <span class="str">")"</span>
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Web Resource Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="resource-events" data-section-id="resource-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Web Resource Events</span>
+                <span class="section-count">2 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="WebResourceRequested" data-section-id="WebResourceRequested">
+                            <td class="member-name">WebResourceRequested <span class="badge badge-cancel">Cancelable</span></td>
+                            <td class="param-type">uri, method <span class="kw">As</span> <span class="typ">String</span>, resourceContext <span class="kw">As</span> <span class="typ">Long</span>, Cancel <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Intercepted request (requires <code>AddWebResourceRequestedFilter</code>). <code>Cancel = True</code> to block.</td>
+                        </tr>
+                        <tr id="WebResourceResponseReceived" data-section-id="WebResourceResponseReceived">
+                            <td class="member-name">WebResourceResponseReceived</td>
+                            <td class="param-type">uri <span class="kw">As</span> <span class="typ">String</span>, statusCode <span class="kw">As</span> <span class="typ">Long</span>, reasonPhrase <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">Response received for tracked request.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' WebResourceRequested — intercepted request (cancelable)</span>
+<span class="cmt">' Requires AddWebResourceRequestedFilter to be called first</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_WebResourceRequested(<span class="kw">ByVal</span> uri <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> method <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> resourceContext <span class="kw">As</span> <span class="typ">Long</span>, _
+        Cancel <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If</span> InStr(uri, <span class="str">"tracking.js"</span>) &gt; <span class="num">0</span> <span class="kw">Then</span> Cancel = <span class="kw">True</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' WebResourceResponseReceived — response info for tracked request</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_WebResourceResponseReceived(<span class="kw">ByVal</span> uri <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> statusCode <span class="kw">As</span> <span class="typ">Long</span>, <span class="kw">ByVal</span> reasonPhrase <span class="kw">As</span> <span class="typ">String</span>)
+    <span class="kw">If</span> statusCode &gt;= <span class="num">400</span> <span class="kw">Then</span> Debug.Print <span class="str">"HTTP "</span> &amp; statusCode &amp; <span class="str">": "</span> &amp; uri
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Find Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="find-events" data-section-id="find-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Find Events</span>
+                <span class="section-count">3 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="FindMatchCountChanged" data-section-id="FindMatchCountChanged">
+                            <td class="member-name">FindMatchCountChanged</td>
+                            <td class="param-type">matchCount <span class="kw">As</span> <span class="typ">Long</span></td>
+                            <td class="desc">Total match count updated during find.</td>
+                        </tr>
+                        <tr id="FindActiveMatchChanged" data-section-id="FindActiveMatchChanged">
+                            <td class="member-name">FindActiveMatchChanged</td>
+                            <td class="param-type">activeMatchIndex <span class="kw">As</span> <span class="typ">Long</span></td>
+                            <td class="desc">Active/current match changed.</td>
+                        </tr>
+                        <tr id="FindCompleted" data-section-id="FindCompleted">
+                            <td class="member-name">FindCompleted</td>
+                            <td class="param-type">matchCount <span class="kw">As</span> <span class="typ">Long</span></td>
+                            <td class="desc">Find session completed.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' FindMatchCountChanged — total match count updated</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_FindMatchCountChanged(<span class="kw">ByVal</span> matchCount <span class="kw">As</span> <span class="typ">Long</span>)
+    lblMatchCount.Caption = m_lv.FindActiveMatchIndex &amp; <span class="str">" of "</span> &amp; matchCount
+<span class="kw">End Sub</span>
+
+<span class="cmt">' FindActiveMatchChanged — current highlighted match changed</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_FindActiveMatchChanged(<span class="kw">ByVal</span> activeMatchIndex <span class="kw">As</span> <span class="typ">Long</span>)
+    lblMatchCount.Caption = activeMatchIndex &amp; <span class="str">" of "</span> &amp; m_lv.FindMatchCount
+<span class="kw">End Sub</span>
+
+<span class="cmt">' FindCompleted — find session finished</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_FindCompleted(<span class="kw">ByVal</span> matchCount <span class="kw">As</span> <span class="typ">Long</span>)
+    <span class="kw">If</span> matchCount = <span class="num">0</span> <span class="kw">Then</span> lblStatus.Caption = <span class="str">"No matches."</span>
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Frame (iFrame) Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="frame-events" data-section-id="frame-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Frame (iFrame) Events</span>
+                <span class="section-count">4 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="FrameCreated" data-section-id="FrameCreated">
+                            <td class="member-name">FrameCreated</td>
+                            <td class="param-type">frameName, frameId <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">New iFrame created in page.</td>
+                        </tr>
+                        <tr id="FrameNavigationStarting" data-section-id="FrameNavigationStarting">
+                            <td class="member-name">FrameNavigationStarting <span class="badge badge-cancel">Cancelable</span></td>
+                            <td class="param-type">frameId, uri <span class="kw">As</span> <span class="typ">String</span>, isRedirected <span class="kw">As</span> <span class="typ">Boolean</span>, Cancel <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">iFrame navigating. <code>Cancel = True</code> to block.</td>
+                        </tr>
+                        <tr id="FrameNavigationCompleted" data-section-id="FrameNavigationCompleted">
+                            <td class="member-name">FrameNavigationCompleted</td>
+                            <td class="param-type">frameId, uri <span class="kw">As</span> <span class="typ">String</span>, success <span class="kw">As</span> <span class="typ">Boolean</span>, webErrorStatus <span class="kw">As</span> <span class="typ">Long</span></td>
+                            <td class="desc">iFrame navigation completed.</td>
+                        </tr>
+                        <tr id="FrameDestroyed" data-section-id="FrameDestroyed">
+                            <td class="member-name">FrameDestroyed</td>
+                            <td class="param-type">frameId <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">iFrame removed from DOM.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' FrameCreated — new iFrame created</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_FrameCreated(<span class="kw">ByVal</span> frameName <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> frameId <span class="kw">As</span> <span class="typ">String</span>)
+    Debug.Print <span class="str">"Frame created: "</span> &amp; frameName &amp; <span class="str">" (id="</span> &amp; frameId &amp; <span class="str">")"</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' FrameNavigationStarting — iFrame navigating (cancelable)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_FrameNavigationStarting(<span class="kw">ByVal</span> frameId <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> uri <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> isRedirected <span class="kw">As</span> <span class="typ">Boolean</span>, Cancel <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If</span> InStr(uri, <span class="str">"ads.example.com"</span>) &gt; <span class="num">0</span> <span class="kw">Then</span> Cancel = <span class="kw">True</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' FrameNavigationCompleted — iFrame finished loading</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_FrameNavigationCompleted(<span class="kw">ByVal</span> frameId <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> uri <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> success <span class="kw">As</span> <span class="typ">Boolean</span>, _
+        <span class="kw">ByVal</span> webErrorStatus <span class="kw">As</span> <span class="typ">Long</span>)
+    <span class="kw">If Not</span> success <span class="kw">Then</span> Debug.Print <span class="str">"Frame failed: "</span> &amp; uri
+<span class="kw">End Sub</span>
+
+<span class="cmt">' FrameDestroyed — iFrame removed</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_FrameDestroyed(<span class="kw">ByVal</span> frameId <span class="kw">As</span> <span class="typ">String</span>)
+    Debug.Print <span class="str">"Frame destroyed: "</span> &amp; frameId
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Input Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="input-events" data-section-id="input-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Input Events</span>
+                <span class="section-count">9 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="Click" data-section-id="Click">
+                            <td class="member-name">Click</td>
+                            <td class="param-type">(none)</td>
+                            <td class="desc">Control clicked.</td>
+                        </tr>
+                        <tr id="DblClick" data-section-id="DblClick">
+                            <td class="member-name">DblClick</td>
+                            <td class="param-type">(none)</td>
+                            <td class="desc">Control double-clicked.</td>
+                        </tr>
+                        <tr id="KeyPress" data-section-id="KeyPress">
+                            <td class="member-name">KeyPress</td>
+                            <td class="param-type">keyCode <span class="kw">As</span> <span class="typ">Long</span></td>
+                            <td class="desc">Key pressed while control has focus.</td>
+                        </tr>
+                        <tr id="MouseEnter" data-section-id="MouseEnter">
+                            <td class="member-name">MouseEnter</td>
+                            <td class="param-type">(none)</td>
+                            <td class="desc">Mouse entered control area.</td>
+                        </tr>
+                        <tr id="MouseLeave" data-section-id="MouseLeave">
+                            <td class="member-name">MouseLeave</td>
+                            <td class="param-type">(none)</td>
+                            <td class="desc">Mouse left control area.</td>
+                        </tr>
+                        <tr id="GotFocus" data-section-id="GotFocus">
+                            <td class="member-name">GotFocus</td>
+                            <td class="param-type">(none)</td>
+                            <td class="desc">Control received focus.</td>
+                        </tr>
+                        <tr id="LostFocus" data-section-id="LostFocus">
+                            <td class="member-name">LostFocus</td>
+                            <td class="param-type">(none)</td>
+                            <td class="desc">Control lost focus.</td>
+                        </tr>
+                        <tr id="AcceleratorKeyPressed" data-section-id="AcceleratorKeyPressed">
+                            <td class="member-name">AcceleratorKeyPressed</td>
+                            <td class="param-type">keyEventKind <span class="kw">As</span> <span class="typ">Long</span>, virtualKey <span class="kw">As</span> <span class="typ">Long</span>, keyEventLParam <span class="kw">As</span> <span class="typ">Long</span>, handled <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Keyboard accelerator pressed.</td>
+                        </tr>
+                        <tr id="MoveFocusRequested" data-section-id="MoveFocusRequested">
+                            <td class="member-name">MoveFocusRequested</td>
+                            <td class="param-type">reason <span class="kw">As</span> <span class="typ">Long</span>, Handled <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Focus move requested (Tab/Shift+Tab).</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' Click / DblClick — control mouse events</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_Click()
+    Debug.Print <span class="str">"Click"</span>
+<span class="kw">End Sub</span>
+
+<span class="kw">Private Sub</span> LiteView2Ctrl1_DblClick()
+    Debug.Print <span class="str">"Double-click"</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' KeyPress — key pressed while control has focus</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_KeyPress(<span class="kw">ByVal</span> keyCode <span class="kw">As</span> <span class="typ">Long</span>)
+    Debug.Print <span class="str">"Key: "</span> &amp; keyCode &amp; <span class="str">" ("</span> &amp; Chr(keyCode) &amp; <span class="str">")"</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' MouseEnter / MouseLeave — mouse hover tracking</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_MouseEnter()
+    Me.LiteView2Ctrl1.BorderColor = vbBlue
+<span class="kw">End Sub</span>
+
+<span class="kw">Private Sub</span> LiteView2Ctrl1_MouseLeave()
+    Me.LiteView2Ctrl1.BorderColor = vbBlack
+<span class="kw">End Sub</span>
+
+<span class="cmt">' GotFocus / LostFocus — focus tracking</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_GotFocus()
+    Debug.Print <span class="str">"WebView got focus"</span>
+<span class="kw">End Sub</span>
+
+<span class="kw">Private Sub</span> LiteView2Ctrl1_LostFocus()
+    Debug.Print <span class="str">"WebView lost focus"</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' AcceleratorKeyPressed — keyboard shortcut (handled=True to consume)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_AcceleratorKeyPressed(<span class="kw">ByVal</span> keyEventKind <span class="kw">As</span> <span class="typ">Long</span>, _
+        <span class="kw">ByVal</span> virtualKey <span class="kw">As</span> <span class="typ">Long</span>, <span class="kw">ByVal</span> keyEventLParam <span class="kw">As</span> <span class="typ">Long</span>, _
+        handled <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If</span> virtualKey = <span class="num">116</span> <span class="kw">Then</span> handled = <span class="kw">True</span>  <span class="cmt">' block F5 refresh</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' MoveFocusRequested — Tab/Shift+Tab out of WebView</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_MoveFocusRequested(<span class="kw">ByVal</span> reason <span class="kw">As</span> <span class="typ">Long</span>, _
+        Handled <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="cmt">' reason: 0=Next, 1=Previous</span>
+    Handled = <span class="kw">True</span>  <span class="cmt">' keep focus in WebView</span>
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Permission & Security Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="permission-events" data-section-id="permission-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Permission &amp; Security Events</span>
+                <span class="section-count">6 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="PermissionRequested" data-section-id="PermissionRequested">
+                            <td class="member-name">PermissionRequested</td>
+                            <td class="param-type">uri <span class="kw">As</span> <span class="typ">String</span>, permissionKind <span class="kw">As</span> <span class="typ">Long</span>, isUserInitiated <span class="kw">As</span> <span class="typ">Boolean</span>, state <span class="kw">As</span> <span class="typ">Long</span></td>
+                            <td class="desc">Permission requested (camera, mic, location, etc.).</td>
+                        </tr>
+                        <tr id="ContextMenuRequested" data-section-id="ContextMenuRequested">
+                            <td class="member-name">ContextMenuRequested</td>
+                            <td class="param-type">args <span class="kw">As</span> <span class="typ">Object</span></td>
+                            <td class="desc">Right-click context menu. <code>args</code> has <code>LocationX</code>, <code>LocationY</code>, <code>PageUri</code>, <code>LinkUri</code>, <code>Handled</code> properties.</td>
+                        </tr>
+                        <tr id="LaunchingExternalUriScheme" data-section-id="LaunchingExternalUriScheme">
+                            <td class="member-name">LaunchingExternalUriScheme <span class="badge badge-cancel">Cancelable</span></td>
+                            <td class="param-type">uri <span class="kw">As</span> <span class="typ">String</span>, Cancel <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Navigation to external scheme (<code>mailto:</code>, <code>tel:</code>, etc.).</td>
+                        </tr>
+                        <tr id="NotificationReceived" data-section-id="NotificationReceived">
+                            <td class="member-name">NotificationReceived</td>
+                            <td class="param-type">notification <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">Browser notification received.</td>
+                        </tr>
+                        <tr id="ScreenCaptureStarting" data-section-id="ScreenCaptureStarting">
+                            <td class="member-name">ScreenCaptureStarting <span class="badge badge-cancel">Cancelable</span></td>
+                            <td class="param-type">Cancel <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Screen capture about to start.</td>
+                        </tr>
+                        <tr id="SaveFileSecurityCheckStarting" data-section-id="SaveFileSecurityCheckStarting">
+                            <td class="member-name">SaveFileSecurityCheckStarting <span class="badge badge-cancel">Cancelable</span></td>
+                            <td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span>, Cancel <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Save file security check.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' PermissionRequested — camera, mic, location, etc.</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_PermissionRequested(<span class="kw">ByVal</span> uri <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> permissionKind <span class="kw">As</span> <span class="typ">Long</span>, <span class="kw">ByVal</span> isUserInitiated <span class="kw">As</span> <span class="typ">Boolean</span>, _
+        state <span class="kw">As</span> <span class="typ">Long</span>)
+    <span class="cmt">' state: 0=Default, 1=Allow, 2=Deny</span>
+    state = <span class="num">2</span>  <span class="cmt">' deny all permissions</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' ContextMenuRequested — right-click menu</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_ContextMenuRequested(<span class="kw">ByVal</span> args <span class="kw">As</span> <span class="typ">Object</span>)
+    Debug.Print <span class="str">"Right-click at "</span> &amp; args.LocationX &amp; <span class="str">","</span> &amp; args.LocationY
+    args.Handled = <span class="kw">True</span>  <span class="cmt">' suppress default menu</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' LaunchingExternalUriScheme — mailto:, tel:, etc. (cancelable)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_LaunchingExternalUriScheme(<span class="kw">ByVal</span> uri <span class="kw">As</span> <span class="typ">String</span>, _
+        Cancel <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If</span> Left(uri, <span class="num">4</span>) &lt;&gt; <span class="str">"tel:"</span> <span class="kw">Then</span> Cancel = <span class="kw">True</span>  <span class="cmt">' only allow tel: links</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' NotificationReceived — browser notification</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_NotificationReceived(<span class="kw">ByVal</span> notification <span class="kw">As</span> <span class="typ">String</span>)
+    Debug.Print <span class="str">"Notification: "</span> &amp; notification
+<span class="kw">End Sub</span>
+
+<span class="cmt">' ScreenCaptureStarting — screen capture about to start (cancelable)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_ScreenCaptureStarting(Cancel <span class="kw">As</span> <span class="typ">Boolean</span>)
+    Cancel = <span class="kw">True</span>  <span class="cmt">' block screen sharing</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' SaveFileSecurityCheckStarting — file save security check (cancelable)</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_SaveFileSecurityCheckStarting(<span class="kw">ByVal</span> filePath <span class="kw">As</span> <span class="typ">String</span>, _
+        Cancel <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If</span> Right(filePath, <span class="num">4</span>) = <span class="str">".exe"</span> <span class="kw">Then</span> Cancel = <span class="kw">True</span>  <span class="cmt">' block exe downloads</span>
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Audio Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="audio-events" data-section-id="audio-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Audio Events</span>
+                <span class="section-count">2 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="IsMutedChanged" data-section-id="IsMutedChanged">
+                            <td class="member-name">IsMutedChanged</td>
+                            <td class="param-type">isMuted <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Mute state changed.</td>
+                        </tr>
+                        <tr id="IsDocumentPlayingAudioChanged" data-section-id="IsDocumentPlayingAudioChanged">
+                            <td class="member-name">IsDocumentPlayingAudioChanged</td>
+                            <td class="param-type">isPlayingAudio <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">Audio playback state changed.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' IsMutedChanged — mute state toggled</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_IsMutedChanged(<span class="kw">ByVal</span> isMuted <span class="kw">As</span> <span class="typ">Boolean</span>)
+    btnMute.Caption = <span class="kw">IIf</span>(isMuted, <span class="str">"Unmute"</span>, <span class="str">"Mute"</span>)
+<span class="kw">End Sub</span>
+
+<span class="cmt">' IsDocumentPlayingAudioChanged — audio playback started/stopped</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_IsDocumentPlayingAudioChanged(<span class="kw">ByVal</span> isPlayingAudio <span class="kw">As</span> <span class="typ">Boolean</span>)
+    lblAudio.Visible = isPlayingAudio
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- CAPTCHA Events -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="captcha-events" data-section-id="captcha-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">CAPTCHA Events</span>
+                <span class="section-count">2 events</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="CaptchaDetected" data-section-id="CaptchaDetected">
+                            <td class="member-name">CaptchaDetected</td>
+                            <td class="param-type">captchaType, siteKey, pageUrl <span class="kw">As</span> <span class="typ">String</span></td>
+                            <td class="desc">CAPTCHA challenge detected on current page.</td>
+                        </tr>
+                        <tr id="CaptchaSolved" data-section-id="CaptchaSolved">
+                            <td class="member-name">CaptchaSolved</td>
+                            <td class="param-type">token <span class="kw">As</span> <span class="typ">String</span>, success <span class="kw">As</span> <span class="typ">Boolean</span></td>
+                            <td class="desc">CAPTCHA challenge resolution completed.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Per-Event Usage</h4>
+<pre><code><span class="cmt">' CaptchaDetected — CAPTCHA found on page</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_CaptchaDetected(<span class="kw">ByVal</span> captchaType <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> siteKey <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> pageUrl <span class="kw">As</span> <span class="typ">String</span>)
+    Debug.Print captchaType &amp; <span class="str">" detected on "</span> &amp; pageUrl
+    m_lv.SolveCaptcha <span class="num">30000</span>  <span class="cmt">' auto-solve with 30s timeout</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' CaptchaSolved — CAPTCHA resolution completed</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_CaptchaSolved(<span class="kw">ByVal</span> token <span class="kw">As</span> <span class="typ">String</span>, _
+        <span class="kw">ByVal</span> success <span class="kw">As</span> <span class="typ">Boolean</span>)
+    <span class="kw">If</span> success <span class="kw">Then</span> m_lv.SubmitCaptchaToken token
+<span class="kw">End Sub</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- VB6/Hex Variants -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="hex-events" data-section-id="hex-events">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">VB6/Hex Variants</span>
+                <span class="section-count">5 events</span>
+            </div>
+            <div class="section-body">
+                <div class="callout callout-note">
+                    <span class="callout-title">Note</span>
+                    <p>These events fire instead of their standard counterparts when <code>EventsUseHexadecimal = True</code>. They provide Int64 values as hex BSTR strings for VB6 compatibility.</p>
+                </div>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Event</th><th>Parameters</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr id="NavigationCompletedHex" data-section-id="NavigationCompletedHex">
+                            <td class="member-name">NavigationCompletedHex</td>
+                            <td class="param-type">NavigationId as hex BSTR</td>
+                            <td class="desc">Hex variant of NavigationCompleted.</td>
+                        </tr>
+                        <tr id="ContentLoadingHex" data-section-id="ContentLoadingHex">
+                            <td class="member-name">ContentLoadingHex</td>
+                            <td class="param-type">NavigationId as hex BSTR</td>
+                            <td class="desc">Hex variant of ContentLoading.</td>
+                        </tr>
+                        <tr id="DownloadStartingHex" data-section-id="DownloadStartingHex">
+                            <td class="member-name">DownloadStartingHex</td>
+                            <td class="param-type">totalBytes as hex BSTR</td>
+                            <td class="desc">Hex variant of DownloadStarting.</td>
+                        </tr>
+                        <tr id="DownloadProgressChangedHex" data-section-id="DownloadProgressChangedHex">
+                            <td class="member-name">DownloadProgressChangedHex</td>
+                            <td class="param-type">downloadId/bytes as hex BSTR</td>
+                            <td class="desc">Hex variant of DownloadProgressChanged.</td>
+                        </tr>
+                        <tr id="DownloadCompletedHex" data-section-id="DownloadCompletedHex">
+                            <td class="member-name">DownloadCompletedHex</td>
+                            <td class="param-type">downloadId as hex BSTR</td>
+                            <td class="desc">Hex variant of DownloadCompleted.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>VB6/Hex Usage</h4>
+<pre><code><span class="cmt">' Enable hex mode BEFORE WebView2 init (Pre-Init property)</span>
+m_lv.EventsUseHexadecimal = <span class="kw">True</span>
+
+<span class="cmt">' NavigationCompletedHex — NavigationId as hex string instead of Long</span>
+<span class="kw">Private Sub</span> LiteView2Ctrl1_NavigationCompletedHex(<span class="kw">ByVal</span> NavigationId <span class="kw">As</span> <span class="typ">String</span>)
+    Debug.Print <span class="str">"NavId (hex): "</span> &amp; NavigationId  <span class="cmt">' e.g. "0x1A2B3C"</span>
+<span class="kw">End Sub</span>
+
+<span class="cmt">' ContentLoadingHex — same pattern</span>
+<span class="cmt">' DownloadStartingHex — totalBytes as hex BSTR</span>
+<span class="cmt">' DownloadProgressChangedHex — downloadId/bytes as hex BSTR</span>
+<span class="cmt">' DownloadCompletedHex — downloadId as hex BSTR</span>
+<span class="cmt">' All fire INSTEAD OF their standard counterparts when hex mode is on</span></code></pre>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+    <p>Generated from <code>LiteView2.idl</code> &mdash; <a href="https://github.com">View source on GitHub</a></p>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<script src="docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBrowserPool — LiteView2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Site Header -->
+<header class="site-header">
+    <a href="index.html" class="brand">
+        <div class="brand-icon">LV</div>
+        <span>LiteView2</span>
+    </a>
+    <nav class="header-nav">
+        <a href="landing.html">Home</a>
+        <a href="index.html">Overview</a>
+        <a href="enums.html">Enums</a>
+        <a href="iliteview2ctrl.html">ILiteView2Ctrl</a>
+        <a href="events.html">Events</a>
+        <a href="ibrowserpool.html" class="active">IBrowserPool</a>
+    </nav>
+    <div class="header-actions">
+        <button class="theme-toggle" aria-label="Toggle theme"></button>
+        <span class="version-badge">v1.0</span>
+    </div>
+    <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <nav class="page-links">
+        <a href="landing.html" class="page-link"><span class="icon">&#8962;</span> Home</a>
+        <a href="index.html" class="page-link"><span class="icon">&#9776;</span> Overview</a>
+        <a href="enums.html" class="page-link"><span class="icon">&#69;</span> Enums</a>
+        <a href="iliteview2ctrl.html" class="page-link"><span class="icon">&#73;</span> ILiteView2Ctrl</a>
+        <a href="events.html" class="page-link"><span class="icon">&#9889;</span> Events</a>
+        <a href="ibrowserpool.html" class="page-link current"><span class="icon">&#66;</span> IBrowserPool</a>
+    </nav>
+    <input type="search" class="sidebar-search" placeholder="Search members...">
+    <nav>
+        <!-- Overview -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Overview</div>
+            <div class="nav-group-items">
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#key-difference" class="nav-link">Key Difference</a>
+            </div>
+        </div>
+        <!-- Pool Lifecycle -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Pool Lifecycle</div>
+            <div class="nav-group-items">
+                <a href="#create-destroy" class="nav-link">Create &amp; Destroy <span class="member-count">5</span></a>
+                <a href="#parking" class="nav-link">Parking <span class="member-count">3</span></a>
+                <a href="#pool-embedding" class="nav-link">Embedding <span class="member-count">4</span></a>
+                <a href="#profiles" class="nav-link">Profiles <span class="member-count">5</span></a>
+                <a href="#management" class="nav-link">Management <span class="member-count">7</span></a>
+            </div>
+        </div>
+        <!-- Runtime -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Runtime</div>
+            <div class="nav-group-items">
+                <a href="#runtime-detection" class="nav-link">Runtime Detection <span class="member-count">3</span></a>
+            </div>
+        </div>
+        <!-- Shared Methods -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Shared Methods</div>
+            <div class="nav-group-items">
+                <a href="#shared-methods" class="nav-link">Shared with ILiteView2Ctrl</a>
+            </div>
+        </div>
+    </nav>
+</aside>
+<div class="sidebar-overlay"></div>
+
+<!-- Main Content -->
+<div class="page-wrapper">
+    <main class="main-content">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <span>LiteView2</span>
+            <span class="sep">/</span>
+            <span>API Reference</span>
+            <span class="sep">/</span>
+            <span class="current">IBrowserPool</span>
+        </nav>
+
+        <!-- Page Title -->
+        <h1>IBrowserPool Interface
+            <span class="subtitle">coclass BrowserPool | Multi-browser pool pattern | All methods take browserIndex As Long</span>
+        </h1>
+
+        <div class="callout callout-note" id="overview">
+            <span class="callout-title">Note</span>
+            <p>IBrowserPool mirrors most of ILiteView2Ctrl's functionality but adds <code>browserIndex As Long</code> as the first parameter to every method. This page documents only the pool-specific methods. For shared methods (Navigate, ExecuteScript, PushRecordset, etc.), see the <a href="iliteview2ctrl.html">ILiteView2Ctrl reference</a> &mdash; just add <code>browserIndex</code> as the first argument.</p>
+        </div>
+
+        <button class="expand-all-btn">Expand All</button>
+
+        <!-- ================================================================== -->
+        <!-- Key Difference -->
+        <!-- ================================================================== -->
+        <section id="key-difference">
+            <h2>Key Difference</h2>
+            <p>Every ILiteView2Ctrl method gains a <code>browserIndex As Long</code> first parameter on IBrowserPool:</p>
+<pre><code><span class="cmt">' ILiteView2Ctrl (design-time OCX &mdash; single browser)</span>
+m_lv.Navigate <span class="str">"https://example.com"</span>
+m_lv.PushRecordset rs, <span class="str">"onData"</span>
+
+<span class="cmt">' IBrowserPool (multi-browser pool &mdash; add browserIndex)</span>
+pool.Navigate browserIndex, <span class="str">"https://example.com"</span>
+pool.PushRecordset browserIndex, rs, <span class="str">"onData"</span></code></pre>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- Create & Destroy -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="create-destroy" data-section-id="create-destroy">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Create &amp; Destroy</span>
+                <span class="section-count">5 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Create and destroy browser instances in the pool. Each <code>Create</code> call returns a unique index (1, 2, 3...) or 0 on failure.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">Create</td><td class="param-type">hwndParent <span class="kw">As</span> <span class="typ">Long</span>, url <span class="kw">As</span> <span class="typ">String</span>, x <span class="kw">As</span> <span class="typ">Long</span>, y <span class="kw">As</span> <span class="typ">Long</span>, width <span class="kw">As</span> <span class="typ">Long</span>, height <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Long</td><td>Create browser, returns index (1,2,3...) or 0 on failure</td></tr>
+                        <tr><td class="member-name">Destroy</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Destroy browser</td></tr>
+                        <tr><td class="member-name">DestroySync</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Destroy synchronously</td></tr>
+                        <tr><td class="member-name">CreateWithProfile</td><td class="param-type">hwndParent <span class="kw">As</span> <span class="typ">Long</span>, url <span class="kw">As</span> <span class="typ">String</span>, x <span class="kw">As</span> <span class="typ">Long</span>, y <span class="kw">As</span> <span class="typ">Long</span>, w <span class="kw">As</span> <span class="typ">Long</span>, h <span class="kw">As</span> <span class="typ">Long</span>, profileName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Create with named profile</td></tr>
+                        <tr><td class="member-name">CreateWithProfileInPrivate</td><td class="param-type">hwndParent <span class="kw">As</span> <span class="typ">Long</span>, url <span class="kw">As</span> <span class="typ">String</span>, x <span class="kw">As</span> <span class="typ">Long</span>, y <span class="kw">As</span> <span class="typ">Long</span>, w <span class="kw">As</span> <span class="typ">Long</span>, h <span class="kw">As</span> <span class="typ">Long</span>, profileName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Create with InPrivate profile</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Create &amp; Destroy Example</h4>
+                <p class="code-source">Source: frmLifecycleCore_Code.txt</p>
+<pre><code><span class="cmt">' Create a browser in the pool</span>
+<span class="kw">Dim</span> idx <span class="kw">As</span> <span class="typ">Long</span>
+idx = pool.Create(Me.hwnd, <span class="str">"about:blank"</span>, <span class="num">0</span>, <span class="num">0</span>, <span class="num">800</span>, <span class="num">600</span>)
+<span class="kw">If</span> idx = <span class="num">0</span> <span class="kw">Then</span>
+    MsgBox <span class="str">"Failed to create browser"</span>
+    <span class="kw">Exit Sub</span>
+<span class="kw">End If</span>
+
+<span class="cmt">' Navigate</span>
+pool.Navigate idx, <span class="str">"https://lv2.local/dashboard.html"</span>
+
+<span class="cmt">' Cleanup</span>
+pool.Destroy idx</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Parking -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="parking" data-section-id="parking">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Parking</span>
+                <span class="section-count">3 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Park browsers to hide them while preserving state for later reuse, or destroy all parked browsers at once.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">Park</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Hide browser (park) &mdash; preserves state for reuse</td></tr>
+                        <tr><td class="member-name">DestroyAllParked</td><td class="param-type"></td><td class="param-type">Long</td><td>Destroy all parked browsers, returns count destroyed</td></tr>
+                        <tr><td class="member-name">GetParkedBrowserCount</td><td class="param-type"></td><td class="param-type">Long</td><td>Count of currently parked browsers</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Parking Example</h4>
+<pre><code><span class="cmt">' Park a browser to free resources but keep state</span>
+pool.Park browserIndex
+<span class="kw">Debug</span>.Print <span class="str">"Parked browsers: "</span> &amp; pool.GetParkedBrowserCount
+
+<span class="cmt">' Later: destroy all parked browsers</span>
+<span class="kw">Dim</span> freed <span class="kw">As</span> <span class="typ">Long</span>
+freed = pool.DestroyAllParked
+<span class="kw">Debug</span>.Print <span class="str">"Freed "</span> &amp; freed &amp; <span class="str">" browsers"</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Embedding -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="pool-embedding" data-section-id="pool-embedding">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Embedding</span>
+                <span class="section-count">4 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Embed browsers into VBA Frame controls or reparent them to different windows.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">EmbedInControl</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span>, control <span class="kw">As</span> <span class="typ">Object</span></td><td class="param-type"></td><td>Embed browser in VBA Frame control</td></tr>
+                        <tr><td class="member-name">CreateInControl</td><td class="param-type">url <span class="kw">As</span> <span class="typ">String</span>, control <span class="kw">As</span> <span class="typ">Object</span></td><td class="param-type">Long</td><td>Create + embed in one call, returns index</td></tr>
+                        <tr><td class="member-name">CreateInControlWithProfile</td><td class="param-type">url <span class="kw">As</span> <span class="typ">String</span>, control <span class="kw">As</span> <span class="typ">Object</span>, profileName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Create + embed with named profile</td></tr>
+                        <tr><td class="member-name">Reparent</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span>, hwndNewParent <span class="kw">As</span> <span class="typ">Long</span>, x <span class="kw">As</span> <span class="typ">Long</span>, y <span class="kw">As</span> <span class="typ">Long</span>, w <span class="kw">As</span> <span class="typ">Long</span>, h <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Move browser to new parent window</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Embedding Example</h4>
+                <p class="code-source">Source: src\frmBrowser.cls</p>
+<pre><code><span class="cmt">' Create and embed in an Access Frame control in one call</span>
+<span class="kw">Dim</span> idx <span class="kw">As</span> <span class="typ">Long</span>
+idx = pool.CreateInControl(<span class="str">"https://lv2.local/app.html"</span>, Me.fraWebView)
+<span class="kw">If</span> idx > <span class="num">0</span> <span class="kw">Then</span>
+    m_browserIndex = idx
+<span class="kw">End If</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Profiles -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="profiles" data-section-id="profiles">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Profiles</span>
+                <span class="section-count">5 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Manage browser profiles, InPrivate mode, and browsing data per browser instance.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">GetProfileName</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">String</td><td>Get profile name for browser</td></tr>
+                        <tr><td class="member-name">IsInPrivateMode</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Boolean</td><td>Check if browser is InPrivate</td></tr>
+                        <tr><td class="member-name">GetProfilePath</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">String</td><td>On-disk profile folder path</td></tr>
+                        <tr><td class="member-name">ClearProfileBrowsingData</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span>, dataKinds <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Clear browsing data by kind flags</td></tr>
+                        <tr><td class="member-name">ClearProfileBrowsingDataAll</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Clear all browsing data for profile</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Management -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="management" data-section-id="management">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Management</span>
+                <span class="section-count">7 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Manage browser lifecycle, visibility, sizing, and suspension state.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">IsValidIndex</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Boolean</td><td>Check if browser index is still valid</td></tr>
+                        <tr><td class="member-name">GetBrowserCount</td><td class="param-type"></td><td class="param-type">Long</td><td>Count of active browsers in pool</td></tr>
+                        <tr><td class="member-name">Resize</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span>, x <span class="kw">As</span> <span class="typ">Long</span>, y <span class="kw">As</span> <span class="typ">Long</span>, width <span class="kw">As</span> <span class="typ">Long</span>, height <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Resize browser</td></tr>
+                        <tr><td class="member-name">SetVisible</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span>, visible <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Set browser visibility</td></tr>
+                        <tr><td class="member-name">TrySuspend</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Suspend browser to save resources</td></tr>
+                        <tr><td class="member-name">ResumeBrowser</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Resume suspended browser</td></tr>
+                        <tr><td class="member-name">IsSuspended</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Boolean</td><td>Check if browser is suspended</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Runtime Detection -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="runtime-detection" data-section-id="runtime-detection">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Runtime Detection</span>
+                <span class="section-count">3 methods</span>
+            </div>
+            <div class="section-body">
+                <div class="callout callout-note">
+                    <span class="callout-title">Note</span>
+                    <p>These methods do <strong>NOT</strong> take a <code>browserIndex</code> parameter &mdash; they query the system.</p>
+                </div>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">IsWebView2RuntimeInstalled</td><td class="param-type"></td><td class="param-type">Boolean</td><td>Check if WebView2 runtime is installed</td></tr>
+                        <tr><td class="member-name">GetWebView2RuntimeVersion</td><td class="param-type"></td><td class="param-type">String</td><td>Get installed runtime version string</td></tr>
+                        <tr><td class="member-name">GetWebView2RuntimePath</td><td class="param-type"></td><td class="param-type">String</td><td>Get runtime installation path</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Runtime Detection Example</h4>
+<pre><code><span class="cmt">' Check runtime before creating browsers</span>
+<span class="kw">If Not</span> pool.IsWebView2RuntimeInstalled <span class="kw">Then</span>
+    MsgBox <span class="str">"WebView2 runtime not found. Please install it."</span>
+    <span class="kw">Exit Sub</span>
+<span class="kw">End If</span>
+<span class="kw">Debug</span>.Print <span class="str">"Runtime version: "</span> &amp; pool.GetWebView2RuntimeVersion</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Shared Methods Reference -->
+        <!-- ================================================================== -->
+        <section id="shared-methods">
+            <h2>Shared Methods Reference</h2>
+            <p>All other ILiteView2Ctrl methods are available on IBrowserPool with <code>browserIndex</code> as the first parameter. See the <a href="iliteview2ctrl.html">ILiteView2Ctrl reference</a> for full documentation.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Category</th><th>Methods</th><th>Reference</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">Navigation</td><td>Navigate, GoBack, GoForward, etc.</td><td><a href="iliteview2ctrl.html#navigation">ILiteView2Ctrl &rsaquo; Navigation</a></td></tr>
+                    <tr><td class="member-name">Script Execution</td><td>ExecuteScript, ExecuteScriptWithArgs, etc.</td><td><a href="iliteview2ctrl.html#script-execution">ILiteView2Ctrl &rsaquo; Script Execution</a></td></tr>
+                    <tr><td class="member-name">Data Bridge</td><td>PostWebMessageAsJson, PushRecordset, etc.</td><td><a href="iliteview2ctrl.html#data-bridge">ILiteView2Ctrl &rsaquo; Data Bridge</a></td></tr>
+                    <tr><td class="member-name">JSON Helpers</td><td>BuildJson, JsonGetValue, etc.</td><td><a href="iliteview2ctrl.html#json-helpers">ILiteView2Ctrl &rsaquo; JSON Helpers</a></td></tr>
+                    <tr><td class="member-name">DOM Manipulation</td><td>GetElementValueById, SetInnerHtmlById, etc.</td><td><a href="iliteview2ctrl.html#dom-manipulation">ILiteView2Ctrl &rsaquo; DOM Manipulation</a></td></tr>
+                    <tr><td class="member-name">Printing &amp; PDF</td><td>PrintToPdf, CaptureScreenshot, etc.</td><td><a href="iliteview2ctrl.html#printing-pdf">ILiteView2Ctrl &rsaquo; Printing &amp; PDF</a></td></tr>
+                    <tr><td class="member-name">Settings</td><td>IsScriptEnabled, UserAgent, etc.</td><td><a href="iliteview2ctrl.html#settings">ILiteView2Ctrl &rsaquo; Settings</a></td></tr>
+                    <tr><td class="member-name">Cookies &amp; Storage</td><td>GetCookies, SetCookie, etc.</td><td><a href="iliteview2ctrl.html#cookies-storage">ILiteView2Ctrl &rsaquo; Cookies &amp; Storage</a></td></tr>
+                    <tr><td class="member-name">Stealth Mode</td><td>EnableStealthMode, SpoofWebGL, etc.</td><td><a href="iliteview2ctrl.html#stealth-mode">ILiteView2Ctrl &rsaquo; Stealth Mode</a></td></tr>
+                    <tr><td class="member-name">Document Hosting</td><td>OpenDocument, OpenOfficeDocument, etc.</td><td><a href="iliteview2ctrl.html#document-hosting">ILiteView2Ctrl &rsaquo; Document Hosting</a></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+    <p>Generated from <code>LiteView2.idl</code></p>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<script src="docs.js"></script>
+</body>
+</html>

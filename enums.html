@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enumerations — LiteView2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Site Header -->
+<header class="site-header">
+    <a href="index.html" class="brand">
+        <span class="brand-icon">LV2</span>
+        <span>LiteView2</span>
+    </a>
+    <nav class="header-nav">
+        <a href="landing.html">Home</a>
+        <a href="index.html">Overview</a>
+        <a href="enums.html" class="current">Enums</a>
+        <a href="iliteview2ctrl.html">ILiteView2Ctrl</a>
+        <a href="events.html">Events</a>
+        <a href="ibrowserpool.html">IBrowserPool</a>
+    </nav>
+    <div class="header-actions">
+        <button class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <span class="version-badge">v1.0</span>
+    </div>
+    <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <nav class="page-links">
+        <a href="landing.html" class="page-link"><span class="icon">&#8962;</span> Home</a>
+        <a href="index.html" class="page-link"><span class="icon">&#9776;</span> Overview</a>
+        <a href="enums.html" class="page-link current"><span class="icon">E</span> Enums</a>
+        <a href="iliteview2ctrl.html" class="page-link">ILiteView2Ctrl</a>
+        <a href="events.html" class="page-link">Events</a>
+        <a href="ibrowserpool.html" class="page-link">IBrowserPool</a>
+    </nav>
+    <input type="search" class="sidebar-search" placeholder="Search enums...">
+    <nav>
+        <a href="#BrowsingDataKinds" class="nav-link">LiteView2BrowsingDataKinds</a>
+        <a href="#ResourceContext" class="nav-link">LiteView2ResourceContext</a>
+        <a href="#FocusReason" class="nav-link">LV2_FOCUS_REASON</a>
+        <a href="#PopupMode" class="nav-link">LV2_POPUP_MODE</a>
+        <a href="#LicenseState" class="nav-link">LV2_LICENSE_STATE</a>
+        <a href="#ColorScheme" class="nav-link">LV2_COLOR_SCHEME</a>
+        <a href="#PrintOrientation" class="nav-link">LV2_PRINT_ORIENTATION</a>
+        <a href="#TrackingPrevention" class="nav-link">LV2_TRACKING_PREVENTION</a>
+        <a href="#MemoryUsage" class="nav-link">LV2_MEMORY_USAGE</a>
+        <a href="#ScrollbarStyle" class="nav-link">LV2_SCROLLBAR_STYLE</a>
+        <a href="#DownloadCorner" class="nav-link">LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT</a>
+        <a href="#PdfToolbar" class="nav-link">LV2_PDF_TOOLBAR_ITEMS</a>
+    </nav>
+</aside>
+<div class="sidebar-overlay"></div>
+
+<!-- Main Content -->
+<div class="page-wrapper">
+    <main class="main-content">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <span>LiteView2</span>
+            <span>API Reference</span>
+            <span>Enumerations</span>
+        </nav>
+
+        <!-- Page Title -->
+        <h1>Enumerations</h1>
+        <p class="subtitle">12 enums defining constants used across the LiteView2 API</p>
+
+        <div class="callout callout-note">
+            <span class="callout-title">Note</span>
+            <p>Flag enums (marked with <span class="badge badge-flags">Flags</span>) can be combined using bitwise OR.</p>
+        </div>
+
+        <!-- LiteView2BrowsingDataKinds -->
+        <section id="BrowsingDataKinds" data-section-id="BrowsingDataKinds">
+            <h2>LiteView2BrowsingDataKinds <span class="badge badge-flags">Flags</span></h2>
+            <p>Bitfield flags for <code>ClearBrowsingData</code>. Combine with OR (e.g., <code>LV2_DATA_COOKIES Or LV2_DATA_CACHE_STORAGE</code>).</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_DATA_FILE_SYSTEMS</td><td>1</td><td>File systems</td></tr>
+                    <tr><td class="member-name">LV2_DATA_INDEXED_DB</td><td>2</td><td>IndexedDB</td></tr>
+                    <tr><td class="member-name">LV2_DATA_LOCAL_STORAGE</td><td>4</td><td>Local storage</td></tr>
+                    <tr><td class="member-name">LV2_DATA_WEB_SQL</td><td>8</td><td>Web SQL</td></tr>
+                    <tr><td class="member-name">LV2_DATA_CACHE_STORAGE</td><td>16</td><td>Cache storage</td></tr>
+                    <tr><td class="member-name">LV2_DATA_DOM_STORAGE</td><td>32</td><td>DOM storage</td></tr>
+                    <tr><td class="member-name">LV2_DATA_COOKIES</td><td>64</td><td>Cookies</td></tr>
+                    <tr><td class="member-name">LV2_DATA_ALL_SITE</td><td>128</td><td>All site data</td></tr>
+                    <tr><td class="member-name">LV2_DATA_DISK_CACHE</td><td>256</td><td>Disk cache</td></tr>
+                    <tr><td class="member-name">LV2_DATA_DOWNLOAD_HISTORY</td><td>512</td><td>Download history</td></tr>
+                    <tr><td class="member-name">LV2_DATA_GENERAL_AUTOFILL</td><td>1024</td><td>Autofill data</td></tr>
+                    <tr><td class="member-name">LV2_DATA_PASSWORD_AUTOSAVE</td><td>2048</td><td>Saved passwords</td></tr>
+                    <tr><td class="member-name">LV2_DATA_BROWSING_HISTORY</td><td>4096</td><td>Browsing history</td></tr>
+                    <tr><td class="member-name">LV2_DATA_SETTINGS</td><td>8192</td><td>Settings</td></tr>
+                    <tr><td class="member-name">LV2_DATA_ALL_PROFILE</td><td>16384</td><td>All profile data</td></tr>
+                </tbody>
+            </table>
+<pre><code><span class="cmt">' Clear cookies and cache</span>
+m_lv.ClearBrowsingData <span class="kw">LV2_DATA_COOKIES</span> <span class="kw">Or</span> <span class="kw">LV2_DATA_CACHE_STORAGE</span></code></pre>
+        </section>
+
+        <!-- LiteView2ResourceContext -->
+        <section id="ResourceContext" data-section-id="ResourceContext">
+            <h2>LiteView2ResourceContext</h2>
+            <p>Resource types for <code>AddWebResourceRequestedFilter</code>.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_RESOURCE_ALL</td><td>0</td><td>All resources</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_DOCUMENT</td><td>1</td><td>HTML documents</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_STYLESHEET</td><td>2</td><td>CSS</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_IMAGE</td><td>3</td><td>Images</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_MEDIA</td><td>4</td><td>Audio/Video</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_FONT</td><td>5</td><td>Web fonts</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_SCRIPT</td><td>6</td><td>JavaScript</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_XHR</td><td>7</td><td>XMLHttpRequest</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_FETCH</td><td>8</td><td>Fetch API</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_TEXTTRACK</td><td>9</td><td>WebVTT</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_EVENTSOURCE</td><td>10</td><td>Server-sent events</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_WEBSOCKET</td><td>11</td><td>WebSocket</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_MANIFEST</td><td>12</td><td>Web App manifests</td></tr>
+                    <tr><td class="member-name">LV2_RESOURCE_OTHER</td><td>13</td><td>Other</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LV2_FOCUS_REASON -->
+        <section id="FocusReason" data-section-id="FocusReason">
+            <h2>LV2_FOCUS_REASON</h2>
+            <p>Specifies the reason for a focus change.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_FOCUS_TABFORWARD</td><td>0</td><td>Tab forward</td></tr>
+                    <tr><td class="member-name">LV2_FOCUS_TABBACKWARD</td><td>1</td><td>Tab backward</td></tr>
+                    <tr><td class="member-name">LV2_FOCUS_PROGRAMMATIC</td><td>2</td><td>Programmatic focus</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LV2_POPUP_MODE -->
+        <section id="PopupMode" data-section-id="PopupMode">
+            <h2>LV2_POPUP_MODE</h2>
+            <p>Controls how popup windows are handled.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_POPUP_ALLOW</td><td>0</td><td>Allow popups</td></tr>
+                    <tr><td class="member-name">LV2_POPUP_BLOCK</td><td>1</td><td>Block popups</td></tr>
+                    <tr><td class="member-name">LV2_POPUP_SAME_WINDOW</td><td>2</td><td>Open in same window</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LV2_LICENSE_STATE -->
+        <section id="LicenseState" data-section-id="LicenseState">
+            <h2>LV2_LICENSE_STATE</h2>
+            <p>Indicates the current license status.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_LICENSE_VALID</td><td>0</td><td>License valid</td></tr>
+                    <tr><td class="member-name">LV2_LICENSE_TRIAL</td><td>1</td><td>Trial mode</td></tr>
+                    <tr><td class="member-name">LV2_LICENSE_EXPIRED</td><td>2</td><td>License expired</td></tr>
+                    <tr><td class="member-name">LV2_LICENSE_INVALID</td><td>3</td><td>Invalid license</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LV2_COLOR_SCHEME -->
+        <section id="ColorScheme" data-section-id="ColorScheme">
+            <h2>LV2_COLOR_SCHEME</h2>
+            <p>Sets the preferred color scheme for web content.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_COLOR_AUTO</td><td>0</td><td>Follow system</td></tr>
+                    <tr><td class="member-name">LV2_COLOR_LIGHT</td><td>1</td><td>Force light</td></tr>
+                    <tr><td class="member-name">LV2_COLOR_DARK</td><td>2</td><td>Force dark</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LV2_PRINT_ORIENTATION -->
+        <section id="PrintOrientation" data-section-id="PrintOrientation">
+            <h2>LV2_PRINT_ORIENTATION</h2>
+            <p>Page orientation for printing and PDF export.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_PRINT_PORTRAIT</td><td>0</td><td>Portrait</td></tr>
+                    <tr><td class="member-name">LV2_PRINT_LANDSCAPE</td><td>1</td><td>Landscape</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LV2_TRACKING_PREVENTION -->
+        <section id="TrackingPrevention" data-section-id="TrackingPrevention">
+            <h2>LV2_TRACKING_PREVENTION</h2>
+            <p>Tracking prevention level for the browser profile.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_TRACKING_NONE</td><td>0</td><td>No prevention</td></tr>
+                    <tr><td class="member-name">LV2_TRACKING_BASIC</td><td>1</td><td>Basic</td></tr>
+                    <tr><td class="member-name">LV2_TRACKING_BALANCED</td><td>2</td><td>Balanced</td></tr>
+                    <tr><td class="member-name">LV2_TRACKING_STRICT</td><td>3</td><td>Strict</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LV2_MEMORY_USAGE -->
+        <section id="MemoryUsage" data-section-id="MemoryUsage">
+            <h2>LV2_MEMORY_USAGE</h2>
+            <p>Memory usage target level.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_MEMORY_NORMAL</td><td>0</td><td>Normal</td></tr>
+                    <tr><td class="member-name">LV2_MEMORY_LOW</td><td>1</td><td>Low memory target</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LV2_SCROLLBAR_STYLE -->
+        <section id="ScrollbarStyle" data-section-id="ScrollbarStyle">
+            <h2>LV2_SCROLLBAR_STYLE</h2>
+            <p>Scrollbar rendering style.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_SCROLLBAR_DEFAULT</td><td>0</td><td>Default scrollbar</td></tr>
+                    <tr><td class="member-name">LV2_SCROLLBAR_FLUENT_OVERLAY</td><td>1</td><td>Fluent overlay</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT -->
+        <section id="DownloadCorner" data-section-id="DownloadCorner">
+            <h2>LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT</h2>
+            <p>Corner alignment for the download dialog.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_DOWNLOAD_CORNER_TOP_LEFT</td><td>0</td><td>Top left</td></tr>
+                    <tr><td class="member-name">LV2_DOWNLOAD_CORNER_TOP_RIGHT</td><td>1</td><td>Top right</td></tr>
+                    <tr><td class="member-name">LV2_DOWNLOAD_CORNER_BOTTOM_LEFT</td><td>2</td><td>Bottom left</td></tr>
+                    <tr><td class="member-name">LV2_DOWNLOAD_CORNER_BOTTOM_RIGHT</td><td>3</td><td>Bottom right</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LV2_PDF_TOOLBAR_ITEMS -->
+        <section id="PdfToolbar" data-section-id="PdfToolbar">
+            <h2>LV2_PDF_TOOLBAR_ITEMS <span class="badge badge-flags">Flags</span></h2>
+            <p>Bitfield flags for controlling PDF viewer toolbar visibility.</p>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_PDF_NONE</td><td>0</td><td>No items</td></tr>
+                    <tr><td class="member-name">LV2_PDF_SAVE</td><td>1</td><td>Save button</td></tr>
+                    <tr><td class="member-name">LV2_PDF_PRINT</td><td>2</td><td>Print button</td></tr>
+                    <tr><td class="member-name">LV2_PDF_SAVE_AS</td><td>4</td><td>Save As button</td></tr>
+                    <tr><td class="member-name">LV2_PDF_ZOOM_IN</td><td>8</td><td>Zoom In button</td></tr>
+                    <tr><td class="member-name">LV2_PDF_ZOOM_OUT</td><td>16</td><td>Zoom Out button</td></tr>
+                </tbody>
+            </table>
+<pre><code><span class="cmt">' Hide Save and Print buttons from PDF toolbar</span>
+m_lv.HiddenPdfToolbarItems = <span class="kw">LV2_PDF_SAVE</span> <span class="kw">Or</span> <span class="kw">LV2_PDF_PRINT</span></code></pre>
+        </section>
+
+    </main>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+    <p>Generated from <code>LiteView2.idl</code> &mdash; <a href="https://github.com">View source on GitHub</a></p>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<script src="docs.js"></script>
+</body>
+</html>

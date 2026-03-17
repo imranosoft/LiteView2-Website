@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Model Reference — LiteView2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Site Header -->
+<header class="site-header">
+    <a href="index.html" class="brand">
+        <span class="brand-icon">LV2</span>
+        <span>LiteView2</span>
+    </a>
+    <nav class="header-nav">
+        <a href="landing.html">Home</a>
+        <a href="index.html" class="current">Overview</a>
+        <a href="enums.html">Enums</a>
+        <a href="iliteview2ctrl.html">ILiteView2Ctrl</a>
+        <a href="events.html">Events</a>
+        <a href="ibrowserpool.html">IBrowserPool</a>
+    </nav>
+    <div class="header-actions">
+        <button class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <span class="version-badge">v1.0</span>
+    </div>
+    <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <nav class="page-links">
+        <a href="landing.html" class="page-link"><span class="icon">&#8962;</span> Home</a>
+        <a href="index.html" class="page-link current"><span class="icon">&#9776;</span> Overview</a>
+        <a href="enums.html" class="page-link">Enums</a>
+        <a href="iliteview2ctrl.html" class="page-link">ILiteView2Ctrl</a>
+        <a href="events.html" class="page-link">Events</a>
+        <a href="ibrowserpool.html" class="page-link">IBrowserPool</a>
+    </nav>
+</aside>
+<div class="sidebar-overlay"></div>
+
+<!-- Main Content -->
+<div class="page-wrapper">
+    <main class="main-content">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <span>LiteView2</span>
+            <span>API Reference</span>
+            <span>Object Model</span>
+        </nav>
+
+        <!-- Page Title -->
+        <h1>LiteView2 Object Model Reference</h1>
+        <p class="subtitle">Complete API reference for the LiteView2 WebView2 ActiveX control</p>
+
+        <!-- Architecture Diagram -->
+        <h2>Architecture</h2>
+<pre class="arch-diagram">LiteView2Lib
+  |
+  +-- IBrowserPool          (Multi-browser, reg-free pattern)
+  |     coclass: BrowserPool
+  |     All methods take browserIndex As Long
+  |
+  +-- ILiteView2Ctrl        (Single-browser, design-time OCX)
+  |     coclass: LiteView2Ctrl
+  |     No browserIndex &mdash; operates on embedded WebView
+  |
+  +-- _DLiteView2CtrlEvents (Event dispinterface)
+  |     Source of all OCX events
+  |
+  +-- _LiteView2Ctrl        (Pure dispatch mirror)
+        Default interface for Access IntelliSense</pre>
+
+        <!-- When to Use Which -->
+        <h2>When to Use Which</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Pattern</th>
+                    <th>Interface</th>
+                    <th>When</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Design-Time OCX</td>
+                    <td><a href="iliteview2ctrl.html">ILiteView2Ctrl</a></td>
+                    <td>Drop OCX on Access/Excel/VB6 form. Single browser per control. Events via <code>LiteView2Ctrl1_EventName</code>.</td>
+                </tr>
+                <tr>
+                    <td>BrowserPool</td>
+                    <td><a href="ibrowserpool.html">IBrowserPool</a></td>
+                    <td>Multiple browsers, reg-free, Access Frame embedding. Events via <code>SetWebMessageCallback</code>.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Key difference:</strong> <code>IBrowserPool</code> methods all take <code>browserIndex</code> (<code>Long</code>) as first parameter. <code>ILiteView2Ctrl</code> methods omit it.</p>
+
+        <!-- Card Grid -->
+        <div class="card-grid">
+            <a href="enums.html" class="card">
+                <span class="card-icon">E</span>
+                <span class="card-title">Enums</span>
+                <span class="card-desc">12 enumerations with 60+ constants</span>
+                <span class="card-count">12 Enums</span>
+            </a>
+            <a href="iliteview2ctrl.html" class="card">
+                <span class="card-icon">I</span>
+                <span class="card-title">ILiteView2Ctrl</span>
+                <span class="card-desc">245+ methods and properties across 32 categories</span>
+                <span class="card-count">245+ Members</span>
+            </a>
+            <a href="events.html" class="card">
+                <span class="card-icon">E</span>
+                <span class="card-title">Events</span>
+                <span class="card-desc">60+ events across 15 categories</span>
+                <span class="card-count">60+ Events</span>
+            </a>
+            <a href="ibrowserpool.html" class="card">
+                <span class="card-icon">B</span>
+                <span class="card-title">IBrowserPool</span>
+                <span class="card-desc">Multi-browser pool with 17 additional lifecycle methods</span>
+                <span class="card-count">17+ Methods</span>
+            </a>
+        </div>
+
+        <!-- Key Rules -->
+        <h2>Key Rules</h2>
+
+        <div class="callout callout-danger">
+            <span class="callout-title">Danger</span>
+            <p><strong>NEVER</strong> call <code>JsonGetValue</code> inside <code>WebMessageReceived</code> &mdash; causes WebView2 deadlock. Use <code>InStr()</code> for all action parsing.</p>
+        </div>
+
+        <div class="callout callout-warning">
+            <span class="callout-title">Warning</span>
+            <p>Always use late binding (<code>Private m_lv As Object</code>) for design-time OCX to avoid <code>Err 91</code> on first form open.</p>
+        </div>
+
+        <div class="callout callout-tip">
+            <span class="callout-title">Tip</span>
+            <p>Primary readiness signal is the <code>WebViewReady</code> event. <code>IsReady</code> is a polling fallback only.</p>
+        </div>
+
+        <!-- Getting Started -->
+        <h2>Getting Started</h2>
+        <p>The basic design-time OCX pattern used across all production demos:</p>
+
+<pre><code><span class="cmt">' Late-bound pattern &mdash; avoids type library dependency</span>
+<span class="kw">Private</span> m_lv <span class="kw">As</span> <span class="typ">Object</span>
+
+<span class="kw">Private Sub</span> Form_Load()
+    <span class="kw">On Error Resume Next</span>
+    <span class="kw">Set</span> m_lv = Me.Controls(<span class="str">"LiteView2Ctrl1"</span>).Object
+    <span class="kw">On Error GoTo</span> 0
+<span class="kw">End Sub</span>
+
+<span class="kw">Private Sub</span> LiteView2Ctrl1_WebViewReady()
+    m_lv.SetLocalContentRoot CurrentProject.Path &amp; <span class="str">"\html"</span>
+    m_lv.Navigate <span class="str">"https://lv2.local/index.html"</span>
+<span class="kw">End Sub</span></code></pre>
+        <p><small>Source: Proven pattern from production demos</small></p>
+
+    </main>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+    <p>Generated from <code>LiteView2.idl</code> &mdash; <a href="https://github.com">View source on GitHub</a></p>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<script src="docs.js"></script>
+</body>
+</html>
