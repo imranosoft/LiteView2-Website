@@ -176,6 +176,7 @@
                         <tr><td class="member-name">NavigateToStringSync</td><td class="param-type">html <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Load HTML and block until load or timeout</td></tr>
                         <tr><td class="member-name">NavigateWithWebResourceRequest</td><td class="param-type">uri, httpMethod, postData, headers <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Navigate with custom HTTP method/headers/body</td></tr>
                         <tr><td class="member-name">NavigateWithCustomRequest</td><td class="param-type">requestHandle <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Navigate using a CreateWebResourceRequest handle</td></tr>
+                        <tr><td class="member-name">NavigateWithWebResourceRequestSync</td><td class="param-type">requestHandle <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Navigate with custom request, block until load or <code>SynchronousTimeOut</code></td></tr>
                         <tr><td class="member-name">NavigateToLocalFile</td><td class="param-type">filename <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Navigate to file under SetLocalContentRoot folder. Equivalent to <code>Navigate("https://lv2.local/" + filename)</code></td></tr>
                         <tr><td class="member-name">GoBack</td><td class="param-type"></td><td class="param-type"></td><td>Navigate back</td></tr>
                         <tr><td class="member-name">GoForward</td><td class="param-type"></td><td class="param-type"></td><td>Navigate forward</td></tr>
@@ -1645,7 +1646,7 @@ m_lv.SubmitCaptchaToken token</code></pre>
                         <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="member-name">EmbedInHwnd</td><td class="param-type">hwndParent <span class="kw">As</span> <span class="typ">Long</span>, width <span class="kw">As</span> <span class="typ">Long</span>, height <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Embed in external HWND</td></tr>
+                        <tr><td class="member-name">EmbedInHwnd</td><td class="param-type">hwndParent <span class="kw">As</span> <span class="typ">LongLong</span>, width <span class="kw">As</span> <span class="typ">Long</span>, height <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Embed in external HWND (64-bit VBA only — use EmbedInHwndByLong for 32-bit)</td></tr>
                         <tr><td class="member-name">EmbedInHwndByLong</td><td class="param-type">hwndParent <span class="kw">As</span> <span class="typ">Long</span>, width <span class="kw">As</span> <span class="typ">Long</span>, height <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>VB6/VFP compatibility</td></tr>
                         <tr><td class="member-name">ResizeEmbedded</td><td class="param-type">width <span class="kw">As</span> <span class="typ">Long</span>, height <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Resize embedded browser</td></tr>
                         <tr><td class="member-name">MoveEmbedded</td><td class="param-type">left <span class="kw">As</span> <span class="typ">Long</span>, top <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Reposition embedded browser</td></tr>
@@ -1708,10 +1709,10 @@ px = m_lv.PointsToPixels(<span class="num">400</span>, <span class="kw">True</sp
                         <tr><td class="member-name">CurrentDocumentType</td><td class="param-type"></td><td class="param-type">String <span class="badge badge-ro">R</span></td><td>Image/PDF/Video/Audio/Text/Word/Excel/PowerPoint</td></tr>
                         <tr><td class="member-name">WordApplication</td><td class="param-type"></td><td class="param-type">Object <span class="badge badge-ro">R</span></td><td>Word.Application for automation</td></tr>
                         <tr><td class="member-name">WordDocument</td><td class="param-type"></td><td class="param-type">Object <span class="badge badge-ro">R</span></td><td>Active Word.Document</td></tr>
-                        <tr><td class="member-name">ShowDocumentPreview</td><td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span>, hwndTarget <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Preview in separate window</td></tr>
+                        <tr><td class="member-name">ShowDocumentPreview</td><td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span>, hwndTarget <span class="kw">As</span> <span class="typ">LongPtr</span></td><td class="param-type"></td><td>Preview in separate window</td></tr>
                         <tr><td class="member-name">ShowDocumentPreviewInBrowserFrame</td><td class="param-type">filePath <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Preview in same Frame as WebView2</td></tr>
                         <tr><td class="member-name">CloseDocumentPreview</td><td class="param-type"></td><td class="param-type"></td><td>Close preview</td></tr>
-                        <tr><td class="member-name">EmbeddedParentHwnd</td><td class="param-type"></td><td class="param-type">Long <span class="badge badge-ro">R</span></td><td>Frame window handle</td></tr>
+                        <tr><td class="member-name">EmbeddedParentHwnd</td><td class="param-type"></td><td class="param-type">LongPtr <span class="badge badge-ro">R</span></td><td>Frame window handle</td></tr>
                     </tbody>
                 </table>
 
@@ -1783,7 +1784,7 @@ Debug.Print <span class="str">"Frame HWND: "</span> &amp; m_lv.EmbeddedParentHwn
                     </thead>
                     <tbody>
                         <tr><td class="member-name">OpenDevToolsWindow</td><td class="param-type"></td><td class="param-type"></td><td>Open F12 DevTools</td></tr>
-                        <tr><td class="member-name">CallDevToolsProtocolMethod</td><td class="param-type">methodName <span class="kw">As</span> <span class="typ">String</span>, params <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Call CDP method</td></tr>
+                        <tr><td class="member-name">CallDevToolsProtocolMethod</td><td class="param-type">methodName <span class="kw">As</span> <span class="typ">String</span>, parametersAsJson <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Call CDP method</td></tr>
                         <tr><td class="member-name">AddDevToolsProtocolEventHandler</td><td class="param-type">eventName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Subscribe to CDP event</td></tr>
                         <tr><td class="member-name">RemoveDevToolsProtocolEventHandler</td><td class="param-type">eventName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Unsubscribe</td></tr>
                         <tr><td class="member-name">HasDevToolsProtocol</td><td class="param-type"></td><td class="param-type">Boolean <span class="badge badge-ro">R</span></td><td>CDP available</td></tr>
