@@ -167,12 +167,10 @@
                             style="color:var(--accent-light);background:rgba(59,130,246,0.1);padding:2px 6px;border-radius:4px;font-size:13px">regsvr32</code>,
                         no admin rights, no registry entries. Your app runs instantly on any machine.</p>
                     <p style="margin-top:10px;font-size:13px;color:var(--text-mid);line-height:1.6;">
-                        <strong style="color:var(--text-bright);">How it works:</strong> The OCX contains an embedded
-                        SxS manifest (Resource&nbsp;ID&nbsp;2) that declares its COM classes. Your VBA code calls
-                        <code style="color:var(--accent-light);background:rgba(59,130,246,0.1);padding:2px 6px;border-radius:4px;font-size:12px">SetDllDirectory</code>
-                        to point Windows at the OCX folder, then
-                        <code style="color:var(--accent-light);background:rgba(59,130,246,0.1);padding:2px 6px;border-radius:4px;font-size:12px">LiteView2_ActivateManifest</code>
-                        creates a Windows Activation Context — enabling COM object creation without any registry entries. See the Quick&nbsp;Start code below for the complete bootstrap.
+                        <strong style="color:var(--text-bright);">How it works:</strong> Add a small bootstrap module
+                        (included below) that calls two functions from the OCX — one to set the folder path, one to
+                        activate the control. After that, create browsers and use them from any form.
+                        Everything is handled internally — no manual configuration needed.
                     </p>
                     <ul class="deploy-list">
                         <li><span>&#10003;</span> No COM registration required</li>
