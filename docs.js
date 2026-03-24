@@ -181,6 +181,15 @@
             }
         }
 
+        // ── Cross-page search: scroll to member from sessionStorage ──────
+        var pendingMember = sessionStorage.getItem('lv2-search-member');
+        if (pendingMember) {
+            sessionStorage.removeItem('lv2-search-member');
+            setTimeout(function () {
+                scrollToMember(pendingMember);
+            }, 300);
+        }
+
         // ── Expand section when clicking sidebar link ───────────────────────
         document.querySelectorAll('.sidebar .nav-link[href^="#"]').forEach(function (link) {
             link.addEventListener('click', function (e) {
@@ -228,6 +237,52 @@
             'enums.html': 'Enums'
         };
 
+        // Map section display names → HTML element IDs for deep linking
+        var sectionAnchors = {
+            'Navigation': 'navigation', 'Local Content Mapping': 'local-content',
+            'State Properties': 'state-properties', 'Readiness Check': 'readiness',
+            'Script Execution': 'script-execution', 'Data Bridge': 'data-bridge',
+            'Data Bridge — VBA to JS': 'data-bridge',
+            'window.lv Facade': 'lv-facade', 'JSON Helpers': 'json-helpers',
+            'DOM Manipulation': 'dom-manipulation', 'Form Automation': 'form-automation',
+            'Printing & PDF': 'printing-pdf', 'Print Settings': 'print-settings',
+            'Settings & Configuration': 'settings', 'Pre-Init Properties': 'pre-init',
+            'Version & Diagnostics': 'version-diagnostics',
+            'Host Object Bridge': 'host-objects', 'Web Message Callback': 'web-message-callback',
+            'Cookies & Storage': 'cookies-storage', 'Authentication & Proxy': 'auth-proxy',
+            'Web Resource Interception': 'web-resources', 'Downloads': 'downloads',
+            'Find in Page': 'find-in-page', 'Lifecycle & Resources': 'lifecycle',
+            'Privacy & Compatibility': 'stealth-mode', 'CAPTCHA Handling': 'captcha',
+            'Embedding': 'embedding', 'Document Hosting': 'document-hosting',
+            'DevTools Protocol': 'devtools', 'Profile Settings': 'profile',
+            'Licensing': 'licensing', 'Bridge Inspector': 'bridge-inspector',
+            'Synchronous Navigation': 'sync-navigation',
+            'Create & Destroy': 'create-destroy', 'Parking': 'parking',
+            'Pool Embedding': 'pool-embedding', 'Profiles': 'profiles',
+            'Management': 'management', 'Runtime Detection': 'runtime-detection',
+            'Shared Methods Reference': 'shared-methods',
+            'Getting Started — Reg-Free Setup': 'getting-started',
+            'Key Difference': 'key-difference',
+            'Core Events': 'core-events', 'Print & Capture Events': 'print-capture-events',
+            'Navigation Detail Events': 'nav-detail-events',
+            'Window & UI Events': 'window-ui-events', 'Download Events': 'download-events',
+            'Authentication Events': 'auth-events', 'Process Events': 'process-events',
+            'Web Resource Events': 'resource-events', 'Find Events': 'find-events',
+            'Frame (iFrame) Events': 'frame-events', 'Input Events': 'input-events',
+            'Permission & Security Events': 'permission-events',
+            'Audio Events': 'audio-events', 'CAPTCHA Events': 'captcha-events',
+            'VB6/Hex Variants': 'hex-events',
+            'LiteView2BrowsingDataKinds': 'BrowsingDataKinds',
+            'LiteView2ResourceContext': 'ResourceContext',
+            'LV2_FOCUS_REASON': 'FocusReason', 'LV2_POPUP_MODE': 'PopupMode',
+            'LV2_LICENSE_STATE': 'LicenseState', 'LV2_COLOR_SCHEME': 'ColorScheme',
+            'LV2_PRINT_ORIENTATION': 'PrintOrientation',
+            'LV2_TRACKING_PREVENTION': 'TrackingPrevention',
+            'LV2_MEMORY_USAGE': 'MemoryUsage', 'LV2_SCROLLBAR_STYLE': 'ScrollbarStyle',
+            'LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT': 'DownloadCorner',
+            'LV2_PDF_TOOLBAR_ITEMS': 'PdfToolbar'
+        };
+
         function loadSearchIndex(cb) {
             if (searchIndex) return cb(searchIndex);
             var xhr = new XMLHttpRequest();
@@ -247,6 +302,53 @@
             return text.substring(0, idx) + '<mark>' + text.substring(idx, idx + query.length) + '</mark>' + text.substring(idx + query.length);
         }
 
+        function buildResultUrl(item) {
+            var anchor = sectionAnchors[item.s] || '';
+            return item.p + (anchor ? '#' + anchor : '');
+        }
+
+        function scrollToMember(memberName) {
+            // Find the member-name cell and highlight it
+            var cells = document.querySelectorAll('.member-name');
+            for (var i = 0; i < cells.length; i++) {
+                if (cells[i].textContent.trim() === memberName) {
+                    var row = cells[i].closest('tr');
+                    // Expand parent collapsible section if needed
+                    var section = cells[i].closest('.collapsible-section');
+                    if (section && !section.classList.contains('expanded')) {
+                        section.classList.add('expanded');
+                    }
+                    // Scroll to the row
+                    setTimeout(function () {
+                        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        // Flash highlight
+                        row.style.transition = 'background 0.3s';
+                        row.style.background = 'rgba(99, 102, 241, 0.2)';
+                        setTimeout(function () { row.style.background = ''; }, 2000);
+                    }, 100);
+                    return true;
+                }
+            }
+            // Also check for event names or enum names (non-table items)
+            var allNames = document.querySelectorAll('.event-name, .enum-name, h3');
+            for (var j = 0; j < allNames.length; j++) {
+                if (allNames[j].textContent.trim() === memberName) {
+                    var sec = allNames[j].closest('.collapsible-section');
+                    if (sec && !sec.classList.contains('expanded')) {
+                        sec.classList.add('expanded');
+                    }
+                    setTimeout(function () {
+                        allNames[j].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        allNames[j].style.transition = 'background 0.3s';
+                        allNames[j].style.background = 'rgba(99, 102, 241, 0.2)';
+                        setTimeout(function () { allNames[j].style.background = ''; }, 2000);
+                    }, 100);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         function renderResults(results, query) {
             activeResultIdx = -1;
             if (results.length === 0) {
@@ -255,12 +357,10 @@
                 return;
             }
             var html = '';
+            var currentPage = window.location.pathname.split('/').pop() || 'index.html';
             results.forEach(function (r, i) {
-                var url = r.p;
-                // Build anchor: for same page use hash, for other pages use full URL
-                var currentPage = window.location.pathname.split('/').pop() || 'index.html';
-                var nameId = r.n.replace(/[^a-zA-Z0-9_]/g, '');
-                html += '<a class="search-result" href="' + url + '" data-idx="' + i + '">' +
+                var url = buildResultUrl(r);
+                html += '<a class="search-result" href="' + url + '" data-member="' + r.n.replace(/"/g, '&quot;') + '" data-page="' + r.p + '" data-idx="' + i + '">' +
                     '<span class="search-result-name">' + highlightMatch(r.n, query) + '</span>' +
                     '<span class="search-result-desc">' + highlightMatch(r.d, query) + '</span>' +
                     '<span class="search-result-meta">' + (pageLabels[r.p] || r.p) + ' &rsaquo; ' + r.s + '</span>' +
@@ -268,6 +368,26 @@
             });
             globalResults.innerHTML = html;
             globalResults.classList.add('visible');
+
+            // Attach click handlers for same-page navigation
+            globalResults.querySelectorAll('.search-result').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    var memberName = this.getAttribute('data-member');
+                    var page = this.getAttribute('data-page');
+                    var isSamePage = (currentPage === page) ||
+                        (currentPage === '' && page === 'index.html');
+
+                    if (isSamePage) {
+                        e.preventDefault();
+                        globalResults.classList.remove('visible');
+                        globalInput.blur();
+                        scrollToMember(memberName);
+                    } else {
+                        // For cross-page: store member name, the target page will pick it up
+                        sessionStorage.setItem('lv2-search-member', memberName);
+                    }
+                });
+            });
         }
 
         function doSearch(query) {
