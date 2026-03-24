@@ -182,12 +182,20 @@ idx = pool.CreateInControl(<span class="str">"https://lv2.local/dashboard.html"<
                 <p>A 30-day trial starts automatically — all features are fully functional with no limitations. After trial expiry, the control displays a watermark and API methods return <code>E_ACCESSDENIED</code>. Add the <code>ActivateLicense</code> line with your purchased key to activate immediately. No license files, no registry entries — just one line of VBA code.</p>
             </div>
 
+            <h4>Reg-Free (IBrowserPool)</h4>
+<pre><code><span class="cmt">' Inside GetPool(), right after LiteView2_CreateBrowserPool()</span>
+m_Pool.ActivateLicense <span class="str">"My Company"</span>, <span class="str">"LICENSE-KEY-HERE"</span></code></pre>
+
+            <h4>Registered (Design-Time Control)</h4>
+<pre><code><span class="cmt">' In your Form_Load or WebViewReady event</span>
+m_lv.ActivateLicense <span class="str">"My Company"</span>, <span class="str">"LICENSE-KEY-HERE"</span></code></pre>
+
             <h4>License Status Properties</h4>
-<pre><code>pool.ActivateLicense <span class="str">"My Company"</span>, <span class="str">"LICENSE-KEY-HERE"</span>
-Debug.Print <span class="str">"Status: "</span> &amp; pool.LicenseStatus
-Debug.Print <span class="str">"Type: "</span>   &amp; pool.LicenseType
-Debug.Print <span class="str">"State: "</span>  &amp; pool.LicenseState       <span class="cmt">' 0=Valid, 1=Trial, 2=Expired, 3=Invalid</span>
-Debug.Print <span class="str">"Days: "</span>   &amp; pool.TrialDaysRemaining</code></pre>
+<pre><code><span class="cmt">' Works on both pool and control objects</span>
+Debug.Print <span class="str">"Status: "</span> &amp; obj.LicenseStatus
+Debug.Print <span class="str">"Type: "</span>   &amp; obj.LicenseType
+Debug.Print <span class="str">"State: "</span>  &amp; obj.LicenseState       <span class="cmt">' 0=Valid, 1=Trial, 2=Expired, 3=Invalid</span>
+Debug.Print <span class="str">"Days: "</span>   &amp; obj.TrialDaysRemaining</code></pre>
         </section>
 
         <!-- ================================================================== -->
