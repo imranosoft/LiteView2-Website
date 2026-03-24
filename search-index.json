@@ -1,0 +1,2570 @@
+[
+  {
+    "n": "Navigate",
+    "d": "Navigate to URL",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "NavigateToString",
+    "d": "Load HTML string directly",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "NavigateSync",
+    "d": "Navigate and block until load or timeout",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "NavigateToStringSync",
+    "d": "Load HTML and block until load or timeout",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "NavigateWithWebResourceRequest",
+    "d": "Navigate with custom HTTP method/headers/body",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "NavigateWithCustomRequest",
+    "d": "Navigate using a CreateWebResourceRequest handle",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "NavigateWithWebResourceRequestSync",
+    "d": "Navigate with custom request, block until load or SynchronousTimeOut",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "NavigateToLocalFile",
+    "d": "Navigate to file under SetLocalContentRoot folder. Equivalent to Navigate(\"https://lv2.local/\" + filename)",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "GoBack",
+    "d": "Navigate back",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "GoForward",
+    "d": "Navigate forward",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "Refresh",
+    "d": "Reload current page",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "Stop",
+    "d": "Stop loading",
+    "p": "iliteview2ctrl.html",
+    "s": "Navigation"
+  },
+  {
+    "n": "SetLocalContentRoot",
+    "d": "Map local folder to https://lv2.local/ virtual hostname",
+    "p": "iliteview2ctrl.html",
+    "s": "Local Content Mapping"
+  },
+  {
+    "n": "SetVirtualHostNameToFolderMapping",
+    "d": "Map any hostname to local folder",
+    "p": "iliteview2ctrl.html",
+    "s": "Local Content Mapping"
+  },
+  {
+    "n": "ClearVirtualHostNameToFolderMapping",
+    "d": "Remove virtual hostname mapping",
+    "p": "iliteview2ctrl.html",
+    "s": "Local Content Mapping"
+  },
+  {
+    "n": "AddCustomSchemeRegistration",
+    "d": "Register custom URI scheme (e.g., myapp://)",
+    "p": "iliteview2ctrl.html",
+    "s": "Local Content Mapping"
+  },
+  {
+    "n": "Url",
+    "d": "Current URL (default property)",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "DocumentTitle",
+    "d": "Current page title",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "IsLoading",
+    "d": "Whether page is currently loading",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "CanGoBack",
+    "d": "Whether back navigation is available",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "CanGoForward",
+    "d": "Whether forward navigation is available",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "LastError",
+    "d": "Last error message",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "LastErrorCode",
+    "d": "Last error code (numeric)",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "ContainsFullScreenElement",
+    "d": "Whether page has fullscreen element",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "StatusBarText",
+    "d": "Current status bar text",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "WebViewCreated",
+    "d": "Whether WebView has been created and is ready",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "InPrivateMode",
+    "d": "Whether browser is in InPrivate mode",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "FaviconUri",
+    "d": "Favicon URI of current page",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "BrowserProcessId",
+    "d": "Browser subprocess PID",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "BrowserProcessIDLong",
+    "d": "VB6-friendly alias for BrowserProcessId",
+    "p": "iliteview2ctrl.html",
+    "s": "State Properties"
+  },
+  {
+    "n": "IsReady",
+    "d": "Check if WebView2 is ready",
+    "p": "iliteview2ctrl.html",
+    "s": "Readiness Check"
+  },
+  {
+    "n": "ExecuteScript",
+    "d": "Execute JS synchronously, return result",
+    "p": "iliteview2ctrl.html",
+    "s": "Script Execution"
+  },
+  {
+    "n": "ExecuteScriptAsync",
+    "d": "Execute JS asynchronously (fire and forget)",
+    "p": "iliteview2ctrl.html",
+    "s": "Script Execution"
+  },
+  {
+    "n": "ExecuteScriptWithArgs",
+    "d": "Call JS function with VBA arguments (Array, Recordset, or scalar). Auto-serializes to JSON.",
+    "p": "iliteview2ctrl.html",
+    "s": "Script Execution"
+  },
+  {
+    "n": "ExecuteScriptWithResult",
+    "d": "Execute script with detailed result + exception info",
+    "p": "iliteview2ctrl.html",
+    "s": "Script Execution"
+  },
+  {
+    "n": "AddScriptToExecuteOnDocumentCreated",
+    "d": "Inject JS that runs on every page load",
+    "p": "iliteview2ctrl.html",
+    "s": "Script Execution"
+  },
+  {
+    "n": "RemoveScriptToExecuteOnDocumentCreated",
+    "d": "Remove injected script",
+    "p": "iliteview2ctrl.html",
+    "s": "Script Execution"
+  },
+  {
+    "n": "PostWebMessageAsJson",
+    "d": "Post JSON message to JS. JS receives via window.chrome.webview.addEventListener('message', ...)",
+    "p": "iliteview2ctrl.html",
+    "s": "Data Bridge  -  VBA to JS"
+  },
+  {
+    "n": "PostWebMessageAsString",
+    "d": "Post string message to JS",
+    "p": "iliteview2ctrl.html",
+    "s": "Data Bridge  -  VBA to JS"
+  },
+  {
+    "n": "PushRecordset",
+    "d": "Push DAO/ADO Recordset as JSON array. Calls window[jsCallback](jsonArray) in JS. Native C++ serialization.",
+    "p": "iliteview2ctrl.html",
+    "s": "Data Bridge  -  VBA to JS"
+  },
+  {
+    "n": "BuildJson",
+    "d": "Convert any VBA data (string, number, array) to JSON string. Works without WebView2.",
+    "p": "iliteview2ctrl.html",
+    "s": "Data Bridge  -  VBA to JS"
+  },
+  {
+    "n": "FireJsEvent",
+    "d": "Fire a CustomEvent in the page. JS listens with addEventListener or window.lv.on()",
+    "p": "iliteview2ctrl.html",
+    "s": "Data Bridge  -  VBA to JS"
+  },
+  {
+    "n": "CallJsFunction",
+    "d": "Call JS function by dot-path with JSON args",
+    "p": "iliteview2ctrl.html",
+    "s": "Data Bridge  -  VBA to JS"
+  },
+  {
+    "n": "SetJsVariable",
+    "d": "Set a JS variable",
+    "p": "iliteview2ctrl.html",
+    "s": "Data Bridge  -  VBA to JS"
+  },
+  {
+    "n": "EnableLvFacade",
+    "d": "Inject window.lv global JS facade. Call BEFORE first Navigate.",
+    "p": "iliteview2ctrl.html",
+    "s": "window.lv Facade"
+  },
+  {
+    "n": "IsLvFacadeEnabled",
+    "d": "Whether window.lv facade is active",
+    "p": "iliteview2ctrl.html",
+    "s": "window.lv Facade"
+  },
+  {
+    "n": "BuildJson",
+    "d": "Convert VBA value/array to JSON",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Helpers"
+  },
+  {
+    "n": "JsonGetValue",
+    "d": "Extract value by JSONPath",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Helpers"
+  },
+  {
+    "n": "JsonGetArrayLength",
+    "d": "Get array length at path",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Helpers"
+  },
+  {
+    "n": "JsonGetArrayItem",
+    "d": "Get array item as JSON string",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Helpers"
+  },
+  {
+    "n": "JsonGetKeys",
+    "d": "Get all keys from object at path",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Helpers"
+  },
+  {
+    "n": "JsonIsValid",
+    "d": "Validate JSON syntax",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Helpers"
+  },
+  {
+    "n": "JsonToArray",
+    "d": "Convert JSON array to VBA 2D array",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Helpers"
+  },
+  {
+    "n": "GetElementValueById",
+    "d": "Get element value by ID",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "SetElementValueById",
+    "d": "Set element value by ID",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "GetElementValueByName",
+    "d": "Get element value by name",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "SetElementValueByName",
+    "d": "Set element value by name",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "ClickElementById",
+    "d": "Click element by ID",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "ClickElementByName",
+    "d": "Click element by name",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "ClickElementBySelector",
+    "d": "Click element by CSS selector",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "GetInnerHtmlById",
+    "d": "Get innerHTML",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "SetInnerHtmlById",
+    "d": "Set innerHTML",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "GetOuterHtmlById",
+    "d": "Get outerHTML",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "SetOuterHtmlById",
+    "d": "Set outerHTML",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "GetOuterHtmlByName",
+    "d": "Get outerHTML by name",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "SetOuterHtmlByName",
+    "d": "Set outerHTML by name",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "GetPageHtml",
+    "d": "Get complete page HTML",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "GetPageText",
+    "d": "Get page text (no tags)",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "ElementExistsById",
+    "d": "Check if element exists",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "ElementExistsBySelector",
+    "d": "Check if element exists by selector",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "GetElementTextById",
+    "d": "Get text content (not HTML)",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "SetElementTextById",
+    "d": "Set text content",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "GetElementAttributeById",
+    "d": "Get attribute value",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "SetElementAttributeById",
+    "d": "Set attribute value",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "RemoveElementAttributeById",
+    "d": "Remove attribute",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "FocusElementById",
+    "d": "Focus element",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "ScrollToElementById",
+    "d": "Scroll element into view",
+    "p": "iliteview2ctrl.html",
+    "s": "DOM Manipulation"
+  },
+  {
+    "n": "SubmitFormById",
+    "d": "Submit form",
+    "p": "iliteview2ctrl.html",
+    "s": "Form Automation"
+  },
+  {
+    "n": "SetCheckboxById",
+    "d": "Set checkbox state",
+    "p": "iliteview2ctrl.html",
+    "s": "Form Automation"
+  },
+  {
+    "n": "GetCheckboxById",
+    "d": "Get checkbox state",
+    "p": "iliteview2ctrl.html",
+    "s": "Form Automation"
+  },
+  {
+    "n": "SelectOptionById",
+    "d": "Select dropdown option",
+    "p": "iliteview2ctrl.html",
+    "s": "Form Automation"
+  },
+  {
+    "n": "GetSelectedOptionById",
+    "d": "Get selected option value",
+    "p": "iliteview2ctrl.html",
+    "s": "Form Automation"
+  },
+  {
+    "n": "PrintPage",
+    "d": "Print to default printer",
+    "p": "iliteview2ctrl.html",
+    "s": "Printing & PDF"
+  },
+  {
+    "n": "ShowPrintDialog",
+    "d": "Show system print dialog",
+    "p": "iliteview2ctrl.html",
+    "s": "Printing & PDF"
+  },
+  {
+    "n": "PrintToPdf",
+    "d": "Print to PDF file (async, fires PrintToPdfCompleted)",
+    "p": "iliteview2ctrl.html",
+    "s": "Printing & PDF"
+  },
+  {
+    "n": "PrintWithSettings",
+    "d": "Print using current print settings",
+    "p": "iliteview2ctrl.html",
+    "s": "Printing & PDF"
+  },
+  {
+    "n": "PrintToPdfWithSettings",
+    "d": "Print to PDF using current print settings",
+    "p": "iliteview2ctrl.html",
+    "s": "Printing & PDF"
+  },
+  {
+    "n": "CaptureScreenshot",
+    "d": "Capture screenshot (fires CaptureScreenshotCompleted)",
+    "p": "iliteview2ctrl.html",
+    "s": "Printing & PDF"
+  },
+  {
+    "n": "PrintOrientation",
+    "d": "Portrait (0) or Landscape (1)",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintScaleFactor",
+    "d": "Scale factor",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintMarginTop",
+    "d": "Top margin (inches)",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintMarginBottom",
+    "d": "Bottom margin (inches)",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintMarginLeft",
+    "d": "Left margin (inches)",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintMarginRight",
+    "d": "Right margin (inches)",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintPageWidth",
+    "d": "Page width (inches)",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintPageHeight",
+    "d": "Page height (inches)",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintShouldPrintBackgrounds",
+    "d": "Print background graphics",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintShouldPrintSelectionOnly",
+    "d": "Print selection only",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintShouldPrintHeaderAndFooter",
+    "d": "Print header and footer",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintHeaderTitle",
+    "d": "Header title text",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintFooterUri",
+    "d": "Footer URI text",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintCopies",
+    "d": "Number of copies",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintPagesPerSide",
+    "d": "Pages per side",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "PrintPageRanges",
+    "d": "Page ranges (e.g. \"1-3,5,7\")",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "HasPrintToPdf",
+    "d": "Whether PrintToPdf is supported by runtime",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "HasCapturePreview",
+    "d": "Whether CapturePreview is supported",
+    "p": "iliteview2ctrl.html",
+    "s": "Print Settings"
+  },
+  {
+    "n": "IsScriptEnabled",
+    "d": "JavaScript enabled",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "AreDefaultContextMenusEnabled",
+    "d": "Right-click menus enabled",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "AreDevToolsEnabled",
+    "d": "DevTools (F12) enabled",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "IsStatusBarEnabled",
+    "d": "Status bar enabled",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "ZoomFactor",
+    "d": "Zoom (1.0 = 100%)",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "UserAgent",
+    "d": "Custom user agent",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "IsWebMessageEnabled",
+    "d": "Web messaging enabled",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "IsBuiltInErrorPageEnabled",
+    "d": "Built-in error pages",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "AreBrowserAcceleratorKeysEnabled",
+    "d": "Ctrl+F, F5, etc.",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "IsPasswordAutosaveEnabled",
+    "d": "Password autosave",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "IsGeneralAutofillEnabled",
+    "d": "General autofill",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "IsPinchZoomEnabled",
+    "d": "Pinch zoom",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "IsSwipeNavigationEnabled",
+    "d": "Swipe navigation",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "HiddenPdfToolbarItems",
+    "d": "PDF toolbar flags (see LV2_PDF_TOOLBAR_ITEMS enum)",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "IsReputationCheckingRequired",
+    "d": "SmartScreen reputation checking",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "NonClientRegionSupportEnabled",
+    "d": "Custom title bar support",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "DefaultScriptDialogsEnabled",
+    "d": "alert/confirm/prompt dialogs",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "IsZoomControlEnabled",
+    "d": "Ctrl+scroll zoom",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "IsDragDropEnabled",
+    "d": "Drag and drop",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "SmartResize",
+    "d": "Auto-fit on resize (default True)",
+    "p": "iliteview2ctrl.html",
+    "s": "Settings & Configuration"
+  },
+  {
+    "n": "AdditionalBrowserArguments",
+    "d": "e.g. \"--disable-gpu\"",
+    "p": "iliteview2ctrl.html",
+    "s": "Pre-Init Properties"
+  },
+  {
+    "n": "EnableHardwareAcceleration",
+    "d": "GPU acceleration",
+    "p": "iliteview2ctrl.html",
+    "s": "Pre-Init Properties"
+  },
+  {
+    "n": "BrowserExecutableFolder",
+    "d": "Fixed-version browser folder",
+    "p": "iliteview2ctrl.html",
+    "s": "Pre-Init Properties"
+  },
+  {
+    "n": "Language",
+    "d": "BCP 47 language code",
+    "p": "iliteview2ctrl.html",
+    "s": "Pre-Init Properties"
+  },
+  {
+    "n": "ProxyServer",
+    "d": "Proxy address",
+    "p": "iliteview2ctrl.html",
+    "s": "Pre-Init Properties"
+  },
+  {
+    "n": "ProxyBypassList",
+    "d": "Bypass list",
+    "p": "iliteview2ctrl.html",
+    "s": "Pre-Init Properties"
+  },
+  {
+    "n": "RequiredMinimumVersion",
+    "d": "Min runtime version",
+    "p": "iliteview2ctrl.html",
+    "s": "Pre-Init Properties"
+  },
+  {
+    "n": "AutoRecoverOnCrash",
+    "d": "Auto-recreate on crash",
+    "p": "iliteview2ctrl.html",
+    "s": "Pre-Init Properties"
+  },
+  {
+    "n": "EventsUseHexadecimal",
+    "d": "VB6 Int64 workaround",
+    "p": "iliteview2ctrl.html",
+    "s": "Pre-Init Properties"
+  },
+  {
+    "n": "JsonToArrayMaxSize",
+    "d": "Max JSON size (default 50MB)",
+    "p": "iliteview2ctrl.html",
+    "s": "Pre-Init Properties"
+  },
+  {
+    "n": "ControlVersion",
+    "d": "OCX version (e.g. \"1.0.0.1\")",
+    "p": "iliteview2ctrl.html",
+    "s": "Version & Diagnostics"
+  },
+  {
+    "n": "BrowserVersionString",
+    "d": "WebView2 runtime version",
+    "p": "iliteview2ctrl.html",
+    "s": "Version & Diagnostics"
+  },
+  {
+    "n": "UserDataFolder",
+    "d": "User data folder path",
+    "p": "iliteview2ctrl.html",
+    "s": "Version & Diagnostics"
+  },
+  {
+    "n": "GetDiagnostics",
+    "d": "Diagnostic info JSON",
+    "p": "iliteview2ctrl.html",
+    "s": "Version & Diagnostics"
+  },
+  {
+    "n": "GetDefaultOcxPath",
+    "d": "Default OCX path for current Office app",
+    "p": "iliteview2ctrl.html",
+    "s": "Version & Diagnostics"
+  },
+  {
+    "n": "AddHostObjectToScript",
+    "d": "Expose COM object to JS",
+    "p": "iliteview2ctrl.html",
+    "s": "Host Object Bridge"
+  },
+  {
+    "n": "RemoveHostObjectToScript",
+    "d": "Remove host object",
+    "p": "iliteview2ctrl.html",
+    "s": "Host Object Bridge"
+  },
+  {
+    "n": "RemoveHostObjectFromScript",
+    "d": "Remove host object (alias)",
+    "p": "iliteview2ctrl.html",
+    "s": "Host Object Bridge"
+  },
+  {
+    "n": "AreHostObjectsAllowed",
+    "d": "Must be True for AddHostObjectToScript",
+    "p": "iliteview2ctrl.html",
+    "s": "Host Object Bridge"
+  },
+  {
+    "n": "SetWebMessageCallback",
+    "d": "Register VBA macro for JS messages",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Message Callback"
+  },
+  {
+    "n": "ClearWebMessageCallback",
+    "d": "Clear callback",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Message Callback"
+  },
+  {
+    "n": "ClearCache",
+    "d": "Clear browser cache",
+    "p": "iliteview2ctrl.html",
+    "s": "Cookies & Storage"
+  },
+  {
+    "n": "ClearCookies",
+    "d": "Clear all cookies",
+    "p": "iliteview2ctrl.html",
+    "s": "Cookies & Storage"
+  },
+  {
+    "n": "ClearBrowsingData",
+    "d": "Clear data by kind flags (see LiteView2BrowsingDataKinds enum)",
+    "p": "iliteview2ctrl.html",
+    "s": "Cookies & Storage"
+  },
+  {
+    "n": "GetCookies",
+    "d": "Get cookies for URL",
+    "p": "iliteview2ctrl.html",
+    "s": "Cookies & Storage"
+  },
+  {
+    "n": "SetCookie",
+    "d": "Set a cookie",
+    "p": "iliteview2ctrl.html",
+    "s": "Cookies & Storage"
+  },
+  {
+    "n": "ClearProfileCookies",
+    "d": "Clear profile cookies",
+    "p": "iliteview2ctrl.html",
+    "s": "Cookies & Storage"
+  },
+  {
+    "n": "ClearBrowsingDataInTimeRange",
+    "d": "Clear data in time range",
+    "p": "iliteview2ctrl.html",
+    "s": "Cookies & Storage"
+  },
+  {
+    "n": "SetBasicAuthCredentials",
+    "d": "Set HTTP Basic Auth",
+    "p": "iliteview2ctrl.html",
+    "s": "Authentication & Proxy"
+  },
+  {
+    "n": "ClearBasicAuthCredentials",
+    "d": "Clear stored auth",
+    "p": "iliteview2ctrl.html",
+    "s": "Authentication & Proxy"
+  },
+  {
+    "n": "IgnoreCertificateErrors",
+    "d": "Ignore SSL errors",
+    "p": "iliteview2ctrl.html",
+    "s": "Authentication & Proxy"
+  },
+  {
+    "n": "AllowSingleSignOnUsingOSPrimaryAccount",
+    "d": "SSO using OS account",
+    "p": "iliteview2ctrl.html",
+    "s": "Authentication & Proxy"
+  },
+  {
+    "n": "HasAuthenticationSupport",
+    "d": "Enhanced auth available",
+    "p": "iliteview2ctrl.html",
+    "s": "Authentication & Proxy"
+  },
+  {
+    "n": "AddWebResourceRequestedFilter",
+    "d": "Add request filter",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Resource Interception"
+  },
+  {
+    "n": "RemoveWebResourceRequestedFilter",
+    "d": "Remove filter",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Resource Interception"
+  },
+  {
+    "n": "ClearAllWebResourceRequestedFilters",
+    "d": "Remove all filters",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Resource Interception"
+  },
+  {
+    "n": "GetWebResourceRequestedFilters",
+    "d": "Get active filters",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Resource Interception"
+  },
+  {
+    "n": "SetWebResourceBlocking",
+    "d": "Enable/disable blocking",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Resource Interception"
+  },
+  {
+    "n": "IsWebResourceBlockingEnabled",
+    "d": "Is blocking on",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Resource Interception"
+  },
+  {
+    "n": "BlockedRequestCount",
+    "d": "Blocked requests since reset",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Resource Interception"
+  },
+  {
+    "n": "ResetBlockedRequestCount",
+    "d": "Reset counter",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Resource Interception"
+  },
+  {
+    "n": "EnableWebResourceResponseTracking",
+    "d": "Enable response events",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Resource Interception"
+  },
+  {
+    "n": "CreateWebResourceRequest",
+    "d": "Create request handle",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Resource Interception"
+  },
+  {
+    "n": "CreateWebResourceResponse",
+    "d": "Create response handle",
+    "p": "iliteview2ctrl.html",
+    "s": "Web Resource Interception"
+  },
+  {
+    "n": "DefaultDownloadFolderPath",
+    "d": "Download folder",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "AllowDownloads",
+    "d": "Allow downloads",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "IsDownloadDialogOpen",
+    "d": "Dialog state",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "OpenDownloadDialog",
+    "d": "Open dialog",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "CloseDownloadDialog",
+    "d": "Close dialog",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "PauseDownload",
+    "d": "Pause download",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "ResumeDownload",
+    "d": "Resume download",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "CancelDownload",
+    "d": "Cancel download",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "ShowSaveAsDialog",
+    "d": "Show Save As",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "HiddenDownloadUI",
+    "d": "Silent downloads",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "DefaultDownloadDialogCornerAlignment",
+    "d": "Dialog position",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "DefaultDownloadDialogMarginX",
+    "d": "Dialog margin X",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "DefaultDownloadDialogMarginY",
+    "d": "Dialog margin Y",
+    "p": "iliteview2ctrl.html",
+    "s": "Downloads"
+  },
+  {
+    "n": "StartFind",
+    "d": "Start finding",
+    "p": "iliteview2ctrl.html",
+    "s": "Find in Page"
+  },
+  {
+    "n": "FindNext",
+    "d": "Next match",
+    "p": "iliteview2ctrl.html",
+    "s": "Find in Page"
+  },
+  {
+    "n": "FindPrevious",
+    "d": "Previous match",
+    "p": "iliteview2ctrl.html",
+    "s": "Find in Page"
+  },
+  {
+    "n": "StopFind",
+    "d": "Stop finding",
+    "p": "iliteview2ctrl.html",
+    "s": "Find in Page"
+  },
+  {
+    "n": "FindMatchCount",
+    "d": "Total matches",
+    "p": "iliteview2ctrl.html",
+    "s": "Find in Page"
+  },
+  {
+    "n": "FindActiveMatchIndex",
+    "d": "Current match (1-based)",
+    "p": "iliteview2ctrl.html",
+    "s": "Find in Page"
+  },
+  {
+    "n": "IsFindActive",
+    "d": "Session active",
+    "p": "iliteview2ctrl.html",
+    "s": "Find in Page"
+  },
+  {
+    "n": "SuppressFindUI",
+    "d": "Hide default Find UI",
+    "p": "iliteview2ctrl.html",
+    "s": "Find in Page"
+  },
+  {
+    "n": "FindHighlightAllMatches",
+    "d": "Highlight all",
+    "p": "iliteview2ctrl.html",
+    "s": "Find in Page"
+  },
+  {
+    "n": "TrySuspend",
+    "d": "Suspend WebView to reduce resources",
+    "p": "iliteview2ctrl.html",
+    "s": "Lifecycle & Resources"
+  },
+  {
+    "n": "Resume",
+    "d": "Resume after suspend",
+    "p": "iliteview2ctrl.html",
+    "s": "Lifecycle & Resources"
+  },
+  {
+    "n": "IsSuspended",
+    "d": "Check if suspended",
+    "p": "iliteview2ctrl.html",
+    "s": "Lifecycle & Resources"
+  },
+  {
+    "n": "GetMemoryUsage",
+    "d": "Approximate memory in bytes",
+    "p": "iliteview2ctrl.html",
+    "s": "Lifecycle & Resources"
+  },
+  {
+    "n": "ForceGarbageCollection",
+    "d": "Force JS GC",
+    "p": "iliteview2ctrl.html",
+    "s": "Lifecycle & Resources"
+  },
+  {
+    "n": "Dispose",
+    "d": "Release all WebView resources",
+    "p": "iliteview2ctrl.html",
+    "s": "Lifecycle & Resources"
+  },
+  {
+    "n": "CloseBrowserProcess",
+    "d": "Force close browser",
+    "p": "iliteview2ctrl.html",
+    "s": "Lifecycle & Resources"
+  },
+  {
+    "n": "IsVisible",
+    "d": "Visibility state",
+    "p": "iliteview2ctrl.html",
+    "s": "Lifecycle & Resources"
+  },
+  {
+    "n": "MemoryUsageTargetLevel",
+    "d": "0=Normal, 1=Low",
+    "p": "iliteview2ctrl.html",
+    "s": "Lifecycle & Resources"
+  },
+  {
+    "n": "MoveFocus",
+    "d": "Move focus in/out of WebView",
+    "p": "iliteview2ctrl.html",
+    "s": "Lifecycle & Resources"
+  },
+  {
+    "n": "NotifyParentWindowPositionChanged",
+    "d": "Fix DPI/rendering after move",
+    "p": "iliteview2ctrl.html",
+    "s": "Lifecycle & Resources"
+  },
+  {
+    "n": "EnableStealthMode",
+    "d": "Enable comprehensive privacy protection mode",
+    "p": "iliteview2ctrl.html",
+    "s": "Privacy & Compatibility"
+  },
+  {
+    "n": "HideWebDriver",
+    "d": "Remove automation indicators for browser compatibility",
+    "p": "iliteview2ctrl.html",
+    "s": "Privacy & Compatibility"
+  },
+  {
+    "n": "SpoofWebGL",
+    "d": "Set custom WebGL renderer strings for compatibility testing",
+    "p": "iliteview2ctrl.html",
+    "s": "Privacy & Compatibility"
+  },
+  {
+    "n": "RandomizeCanvasFingerprint",
+    "d": "Protect against cross-site canvas fingerprint tracking",
+    "p": "iliteview2ctrl.html",
+    "s": "Privacy & Compatibility"
+  },
+  {
+    "n": "SpoofScreenSize",
+    "d": "Set custom screen dimensions for responsive testing",
+    "p": "iliteview2ctrl.html",
+    "s": "Privacy & Compatibility"
+  },
+  {
+    "n": "DisableWebRTC",
+    "d": "Prevent WebRTC IP address exposure for privacy",
+    "p": "iliteview2ctrl.html",
+    "s": "Privacy & Compatibility"
+  },
+  {
+    "n": "EnableMouseNoise",
+    "d": "Natural mouse movement simulation for UI testing",
+    "p": "iliteview2ctrl.html",
+    "s": "Privacy & Compatibility"
+  },
+  {
+    "n": "EnableTimingNoise",
+    "d": "Randomized timing for realistic interaction testing",
+    "p": "iliteview2ctrl.html",
+    "s": "Privacy & Compatibility"
+  },
+  {
+    "n": "IsStealthEnabled",
+    "d": "Check if privacy mode is active",
+    "p": "iliteview2ctrl.html",
+    "s": "Privacy & Compatibility"
+  },
+  {
+    "n": "SetCaptchaService",
+    "d": "Configure CAPTCHA solving service for automated testing",
+    "p": "iliteview2ctrl.html",
+    "s": "CAPTCHA Handling"
+  },
+  {
+    "n": "DetectCaptcha",
+    "d": "Detect CAPTCHA presence on page (returns JSON)",
+    "p": "iliteview2ctrl.html",
+    "s": "CAPTCHA Handling"
+  },
+  {
+    "n": "SolveCaptcha",
+    "d": "Resolve detected CAPTCHA challenge",
+    "p": "iliteview2ctrl.html",
+    "s": "CAPTCHA Handling"
+  },
+  {
+    "n": "SolveRecaptchaV2",
+    "d": "Handle reCAPTCHA v2 challenge",
+    "p": "iliteview2ctrl.html",
+    "s": "CAPTCHA Handling"
+  },
+  {
+    "n": "SolveHCaptcha",
+    "d": "Handle hCaptcha challenge",
+    "p": "iliteview2ctrl.html",
+    "s": "CAPTCHA Handling"
+  },
+  {
+    "n": "SubmitCaptchaToken",
+    "d": "Submit resolved token to page",
+    "p": "iliteview2ctrl.html",
+    "s": "CAPTCHA Handling"
+  },
+  {
+    "n": "EmbedInHwnd",
+    "d": "Embed in external HWND (64-bit VBA only  -  use EmbedInHwndByLong for 32-bit)",
+    "p": "iliteview2ctrl.html",
+    "s": "Embedding"
+  },
+  {
+    "n": "EmbedInHwndByLong",
+    "d": "VB6/VFP compatibility",
+    "p": "iliteview2ctrl.html",
+    "s": "Embedding"
+  },
+  {
+    "n": "ResizeEmbedded",
+    "d": "Resize embedded browser",
+    "p": "iliteview2ctrl.html",
+    "s": "Embedding"
+  },
+  {
+    "n": "MoveEmbedded",
+    "d": "Reposition embedded browser",
+    "p": "iliteview2ctrl.html",
+    "s": "Embedding"
+  },
+  {
+    "n": "CloseEmbedded",
+    "d": "Destroy embedded browser",
+    "p": "iliteview2ctrl.html",
+    "s": "Embedding"
+  },
+  {
+    "n": "QuickInitInFrame",
+    "d": "Auto DPI/handle init in Frame",
+    "p": "iliteview2ctrl.html",
+    "s": "Embedding"
+  },
+  {
+    "n": "PointsToPixels",
+    "d": "DPI conversion",
+    "p": "iliteview2ctrl.html",
+    "s": "Embedding"
+  },
+  {
+    "n": "OpenDocument",
+    "d": "Open any document. viewMode: 0=Auto, 1=ForceHTML, 2=ForcePDF",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "OpenOfficeDocument",
+    "d": "Open Office doc for editing",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "CloseOfficeDocument",
+    "d": "Close embedded Office doc",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "SaveOfficeDocument",
+    "d": "Save",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "SaveOfficeDocumentAs",
+    "d": "Save As",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "IsOfficeDocumentOpen",
+    "d": "Is doc open",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "OfficeDocumentPath",
+    "d": "Current doc path",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "OfficeDocumentType",
+    "d": "Word/Excel/PowerPoint/Unknown",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "CurrentDocumentPath",
+    "d": "Current doc path (universal)",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "CurrentDocumentType",
+    "d": "Image/PDF/Video/Audio/Text/Word/Excel/PowerPoint",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "WordApplication",
+    "d": "Word.Application for automation",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "WordDocument",
+    "d": "Active Word.Document",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "ShowDocumentPreview",
+    "d": "Preview in separate window",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "ShowDocumentPreviewInBrowserFrame",
+    "d": "Preview in same Frame as WebView2",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "CloseDocumentPreview",
+    "d": "Close preview",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "EmbeddedParentHwnd",
+    "d": "Frame window handle",
+    "p": "iliteview2ctrl.html",
+    "s": "Document Hosting"
+  },
+  {
+    "n": "OpenDevToolsWindow",
+    "d": "Open F12 DevTools",
+    "p": "iliteview2ctrl.html",
+    "s": "DevTools Protocol"
+  },
+  {
+    "n": "CallDevToolsProtocolMethod",
+    "d": "Call CDP method",
+    "p": "iliteview2ctrl.html",
+    "s": "DevTools Protocol"
+  },
+  {
+    "n": "AddDevToolsProtocolEventHandler",
+    "d": "Subscribe to CDP event",
+    "p": "iliteview2ctrl.html",
+    "s": "DevTools Protocol"
+  },
+  {
+    "n": "RemoveDevToolsProtocolEventHandler",
+    "d": "Unsubscribe",
+    "p": "iliteview2ctrl.html",
+    "s": "DevTools Protocol"
+  },
+  {
+    "n": "HasDevToolsProtocol",
+    "d": "CDP available",
+    "p": "iliteview2ctrl.html",
+    "s": "DevTools Protocol"
+  },
+  {
+    "n": "OpenTaskManagerWindow",
+    "d": "Browser task manager",
+    "p": "iliteview2ctrl.html",
+    "s": "DevTools Protocol"
+  },
+  {
+    "n": "PreferredColorScheme",
+    "d": "Auto/Light/Dark",
+    "p": "iliteview2ctrl.html",
+    "s": "Profile Settings"
+  },
+  {
+    "n": "PreferredTrackingPreventionLevel",
+    "d": "Tracking prevention",
+    "p": "iliteview2ctrl.html",
+    "s": "Profile Settings"
+  },
+  {
+    "n": "ProfileIsPasswordAutosaveEnabled",
+    "d": "Profile password save",
+    "p": "iliteview2ctrl.html",
+    "s": "Profile Settings"
+  },
+  {
+    "n": "ProfileIsGeneralAutofillEnabled",
+    "d": "Profile autofill",
+    "p": "iliteview2ctrl.html",
+    "s": "Profile Settings"
+  },
+  {
+    "n": "GetBrowserExtensionList",
+    "d": "Extensions",
+    "p": "iliteview2ctrl.html",
+    "s": "Profile Settings"
+  },
+  {
+    "n": "PopupMode",
+    "d": "Popup handling",
+    "p": "iliteview2ctrl.html",
+    "s": "Profile Settings"
+  },
+  {
+    "n": "OpenPopupsInSameWindow",
+    "d": "Legacy popup control",
+    "p": "iliteview2ctrl.html",
+    "s": "Profile Settings"
+  },
+  {
+    "n": "LicenseStatus",
+    "d": "VALID, TRIAL, EXPIRED, UNLICENSED",
+    "p": "iliteview2ctrl.html",
+    "s": "Licensing"
+  },
+  {
+    "n": "LicenseType",
+    "d": "TRIAL, PRO, ENTERPRISE, NONE",
+    "p": "iliteview2ctrl.html",
+    "s": "Licensing"
+  },
+  {
+    "n": "TrialDaysRemaining",
+    "d": "Days left in trial",
+    "p": "iliteview2ctrl.html",
+    "s": "Licensing"
+  },
+  {
+    "n": "LicenseExpiry",
+    "d": "Expiry date",
+    "p": "iliteview2ctrl.html",
+    "s": "Licensing"
+  },
+  {
+    "n": "LicenseVersion",
+    "d": "Licensed version range",
+    "p": "iliteview2ctrl.html",
+    "s": "Licensing"
+  },
+  {
+    "n": "LicenseState",
+    "d": "Enum state",
+    "p": "iliteview2ctrl.html",
+    "s": "Licensing"
+  },
+  {
+    "n": "ActivateLicense",
+    "d": "Activate with HMAC key",
+    "p": "iliteview2ctrl.html",
+    "s": "Licensing"
+  },
+  {
+    "n": "ToggleBridgeInspector",
+    "d": "Toggle HUD showing live JS/VBA message traffic",
+    "p": "iliteview2ctrl.html",
+    "s": "Bridge Inspector"
+  },
+  {
+    "n": "SynchronousTimeOut",
+    "d": "Timeout in ms for NavigateSync etc. (default 30000)",
+    "p": "iliteview2ctrl.html",
+    "s": "Synchronous Navigation"
+  },
+  {
+    "n": "Create",
+    "d": "Create browser, returns index (1,2,3...) or 0 on failure",
+    "p": "ibrowserpool.html",
+    "s": "Create & Destroy"
+  },
+  {
+    "n": "Destroy",
+    "d": "Destroy browser",
+    "p": "ibrowserpool.html",
+    "s": "Create & Destroy"
+  },
+  {
+    "n": "DestroySync",
+    "d": "Destroy synchronously",
+    "p": "ibrowserpool.html",
+    "s": "Create & Destroy"
+  },
+  {
+    "n": "CreateWithProfile",
+    "d": "Create with named profile",
+    "p": "ibrowserpool.html",
+    "s": "Create & Destroy"
+  },
+  {
+    "n": "CreateWithProfileInPrivate",
+    "d": "Create with InPrivate profile",
+    "p": "ibrowserpool.html",
+    "s": "Create & Destroy"
+  },
+  {
+    "n": "Park",
+    "d": "Hide browser (park)  -  preserves state for reuse",
+    "p": "ibrowserpool.html",
+    "s": "Parking"
+  },
+  {
+    "n": "DestroyAllParked",
+    "d": "Destroy all parked browsers, returns count destroyed",
+    "p": "ibrowserpool.html",
+    "s": "Parking"
+  },
+  {
+    "n": "GetParkedBrowserCount",
+    "d": "Count of currently parked browsers",
+    "p": "ibrowserpool.html",
+    "s": "Parking"
+  },
+  {
+    "n": "EmbedInControl",
+    "d": "Embed browser in VBA Frame control",
+    "p": "ibrowserpool.html",
+    "s": "Embedding"
+  },
+  {
+    "n": "CreateInControl",
+    "d": "Create + embed in one call, returns index",
+    "p": "ibrowserpool.html",
+    "s": "Embedding"
+  },
+  {
+    "n": "CreateInControlWithProfile",
+    "d": "Create + embed with named profile",
+    "p": "ibrowserpool.html",
+    "s": "Embedding"
+  },
+  {
+    "n": "Reparent",
+    "d": "Move browser to new parent window",
+    "p": "ibrowserpool.html",
+    "s": "Embedding"
+  },
+  {
+    "n": "GetProfileName",
+    "d": "Get profile name for browser",
+    "p": "ibrowserpool.html",
+    "s": "Profiles"
+  },
+  {
+    "n": "IsInPrivateMode",
+    "d": "Check if browser is InPrivate",
+    "p": "ibrowserpool.html",
+    "s": "Profiles"
+  },
+  {
+    "n": "GetProfilePath",
+    "d": "On-disk profile folder path",
+    "p": "ibrowserpool.html",
+    "s": "Profiles"
+  },
+  {
+    "n": "ClearProfileBrowsingData",
+    "d": "Clear browsing data by kind flags",
+    "p": "ibrowserpool.html",
+    "s": "Profiles"
+  },
+  {
+    "n": "ClearProfileBrowsingDataAll",
+    "d": "Clear all browsing data for profile",
+    "p": "ibrowserpool.html",
+    "s": "Profiles"
+  },
+  {
+    "n": "IsValidIndex",
+    "d": "Check if browser index is still valid",
+    "p": "ibrowserpool.html",
+    "s": "Management"
+  },
+  {
+    "n": "GetBrowserCount",
+    "d": "Count of active browsers in pool",
+    "p": "ibrowserpool.html",
+    "s": "Management"
+  },
+  {
+    "n": "Resize",
+    "d": "Resize browser",
+    "p": "ibrowserpool.html",
+    "s": "Management"
+  },
+  {
+    "n": "SetVisible",
+    "d": "Set browser visibility",
+    "p": "ibrowserpool.html",
+    "s": "Management"
+  },
+  {
+    "n": "TrySuspend",
+    "d": "Suspend browser to save resources",
+    "p": "ibrowserpool.html",
+    "s": "Management"
+  },
+  {
+    "n": "ResumeBrowser",
+    "d": "Resume suspended browser",
+    "p": "ibrowserpool.html",
+    "s": "Management"
+  },
+  {
+    "n": "IsSuspended",
+    "d": "Check if browser is suspended",
+    "p": "ibrowserpool.html",
+    "s": "Management"
+  },
+  {
+    "n": "IsWebView2RuntimeInstalled",
+    "d": "Check if WebView2 runtime is installed",
+    "p": "ibrowserpool.html",
+    "s": "Runtime Detection"
+  },
+  {
+    "n": "GetWebView2RuntimeVersion",
+    "d": "Get installed runtime version string",
+    "p": "ibrowserpool.html",
+    "s": "Runtime Detection"
+  },
+  {
+    "n": "GetWebView2RuntimePath",
+    "d": "Get runtime installation path",
+    "p": "ibrowserpool.html",
+    "s": "Runtime Detection"
+  },
+  {
+    "n": "Printing &amp; PDF",
+    "d": "ILiteView2Ctrl › Printing & PDF",
+    "p": "ibrowserpool.html",
+    "s": "Runtime Detection"
+  },
+  {
+    "n": "Cookies &amp; Storage",
+    "d": "ILiteView2Ctrl › Cookies & Storage",
+    "p": "ibrowserpool.html",
+    "s": "Runtime Detection"
+  },
+  {
+    "n": "WebViewReady",
+    "d": "WebView2 engine initialized. Safe to call SetLocalContentRoot, Navigate, etc. Primary readiness signal.",
+    "p": "events.html",
+    "s": "Core Events"
+  },
+  {
+    "n": "NavigationStarting Cancelable",
+    "d": "Before navigation begins. Set Cancel = True to block.",
+    "p": "events.html",
+    "s": "Core Events"
+  },
+  {
+    "n": "NavigationCompleted",
+    "d": "After navigation completes. Fires AFTER window.onload.",
+    "p": "events.html",
+    "s": "Core Events"
+  },
+  {
+    "n": "WebMessageReceived",
+    "d": "JS called window.chrome.webview.postMessage(). NEVER call JsonGetValue here.",
+    "p": "events.html",
+    "s": "Core Events"
+  },
+  {
+    "n": "DocumentTitleChanged",
+    "d": "Page title changed.",
+    "p": "events.html",
+    "s": "Core Events"
+  },
+  {
+    "n": "SourceChanged",
+    "d": "Source URL changed.",
+    "p": "events.html",
+    "s": "Core Events"
+  },
+  {
+    "n": "CreateWebViewCompleted",
+    "d": "Controller creation complete.",
+    "p": "events.html",
+    "s": "Core Events"
+  },
+  {
+    "n": "PrintToPdfCompleted",
+    "d": "PDF generation finished.",
+    "p": "events.html",
+    "s": "Print & Capture Events"
+  },
+  {
+    "n": "CaptureScreenshotCompleted",
+    "d": "Screenshot captured.",
+    "p": "events.html",
+    "s": "Print & Capture Events"
+  },
+  {
+    "n": "DOMContentLoaded",
+    "d": "DOMContentLoaded fired in page.",
+    "p": "events.html",
+    "s": "Navigation Detail Events"
+  },
+  {
+    "n": "ContentLoading",
+    "d": "Content starting to load.",
+    "p": "events.html",
+    "s": "Navigation Detail Events"
+  },
+  {
+    "n": "HistoryChanged",
+    "d": "Back/forward availability changed.",
+    "p": "events.html",
+    "s": "Navigation Detail Events"
+  },
+  {
+    "n": "NewWindowRequested Cancelable",
+    "d": "Popup window requested. Set Cancel = True to block.",
+    "p": "events.html",
+    "s": "Window & UI Events"
+  },
+  {
+    "n": "WindowCloseRequested",
+    "d": "window.close() called from JS.",
+    "p": "events.html",
+    "s": "Window & UI Events"
+  },
+  {
+    "n": "ScriptDialogOpening",
+    "d": "alert/confirm/prompt dialog.",
+    "p": "events.html",
+    "s": "Window & UI Events"
+  },
+  {
+    "n": "ContainsFullScreenElementChanged",
+    "d": "Fullscreen state changed.",
+    "p": "events.html",
+    "s": "Window & UI Events"
+  },
+  {
+    "n": "StatusBarTextChanged",
+    "d": "Status bar text changed.",
+    "p": "events.html",
+    "s": "Window & UI Events"
+  },
+  {
+    "n": "ZoomFactorChanged",
+    "d": "Zoom level changed.",
+    "p": "events.html",
+    "s": "Window & UI Events"
+  },
+  {
+    "n": "FaviconChanged",
+    "d": "Page favicon changed.",
+    "p": "events.html",
+    "s": "Window & UI Events"
+  },
+  {
+    "n": "DownloadStarting Cancelable",
+    "d": "Download about to begin. Cancel = True to block. Set resultFilePath to change save location.",
+    "p": "events.html",
+    "s": "Download Events"
+  },
+  {
+    "n": "DownloadProgressChanged",
+    "d": "Download progress update.",
+    "p": "events.html",
+    "s": "Download Events"
+  },
+  {
+    "n": "DownloadCompleted",
+    "d": "Download finished.",
+    "p": "events.html",
+    "s": "Download Events"
+  },
+  {
+    "n": "IsDefaultDownloadDialogOpenChanged",
+    "d": "Download dialog state changed.",
+    "p": "events.html",
+    "s": "Download Events"
+  },
+  {
+    "n": "SaveAsUIShowing Cancelable",
+    "d": "Save As dialog about to show.",
+    "p": "events.html",
+    "s": "Download Events"
+  },
+  {
+    "n": "BasicAuthenticationRequested",
+    "d": "Server requests HTTP Basic Auth credentials.",
+    "p": "events.html",
+    "s": "Authentication Events"
+  },
+  {
+    "n": "ClientCertificateRequested",
+    "d": "Client certificate requested.",
+    "p": "events.html",
+    "s": "Authentication Events"
+  },
+  {
+    "n": "ServerCertificateErrorDetected",
+    "d": "SSL/TLS certificate error.",
+    "p": "events.html",
+    "s": "Authentication Events"
+  },
+  {
+    "n": "ProcessFailed",
+    "d": "Browser process crashed or exited unexpectedly.",
+    "p": "events.html",
+    "s": "Process Events"
+  },
+  {
+    "n": "BrowserProcessExited",
+    "d": "Browser process exited.",
+    "p": "events.html",
+    "s": "Process Events"
+  },
+  {
+    "n": "WebResourceRequested Cancelable",
+    "d": "Intercepted request (requires AddWebResourceRequestedFilter). Cancel = True to block.",
+    "p": "events.html",
+    "s": "Web Resource Events"
+  },
+  {
+    "n": "WebResourceResponseReceived",
+    "d": "Response received for tracked request.",
+    "p": "events.html",
+    "s": "Web Resource Events"
+  },
+  {
+    "n": "FindMatchCountChanged",
+    "d": "Total match count updated during find.",
+    "p": "events.html",
+    "s": "Find Events"
+  },
+  {
+    "n": "FindActiveMatchChanged",
+    "d": "Active/current match changed.",
+    "p": "events.html",
+    "s": "Find Events"
+  },
+  {
+    "n": "FindCompleted",
+    "d": "Find session completed.",
+    "p": "events.html",
+    "s": "Find Events"
+  },
+  {
+    "n": "FrameCreated",
+    "d": "New iFrame created in page.",
+    "p": "events.html",
+    "s": "Frame (iFrame) Events"
+  },
+  {
+    "n": "FrameNavigationStarting Cancelable",
+    "d": "iFrame navigating. Cancel = True to block.",
+    "p": "events.html",
+    "s": "Frame (iFrame) Events"
+  },
+  {
+    "n": "FrameNavigationCompleted",
+    "d": "iFrame navigation completed.",
+    "p": "events.html",
+    "s": "Frame (iFrame) Events"
+  },
+  {
+    "n": "FrameDestroyed",
+    "d": "iFrame removed from DOM.",
+    "p": "events.html",
+    "s": "Frame (iFrame) Events"
+  },
+  {
+    "n": "Click",
+    "d": "Control clicked.",
+    "p": "events.html",
+    "s": "Input Events"
+  },
+  {
+    "n": "DblClick",
+    "d": "Control double-clicked.",
+    "p": "events.html",
+    "s": "Input Events"
+  },
+  {
+    "n": "KeyPress",
+    "d": "Key pressed while control has focus.",
+    "p": "events.html",
+    "s": "Input Events"
+  },
+  {
+    "n": "MouseEnter",
+    "d": "Mouse entered control area.",
+    "p": "events.html",
+    "s": "Input Events"
+  },
+  {
+    "n": "MouseLeave",
+    "d": "Mouse left control area.",
+    "p": "events.html",
+    "s": "Input Events"
+  },
+  {
+    "n": "GotFocus",
+    "d": "Control received focus.",
+    "p": "events.html",
+    "s": "Input Events"
+  },
+  {
+    "n": "LostFocus",
+    "d": "Control lost focus.",
+    "p": "events.html",
+    "s": "Input Events"
+  },
+  {
+    "n": "AcceleratorKeyPressed",
+    "d": "Keyboard accelerator pressed.",
+    "p": "events.html",
+    "s": "Input Events"
+  },
+  {
+    "n": "MoveFocusRequested",
+    "d": "Focus move requested (Tab/Shift+Tab).",
+    "p": "events.html",
+    "s": "Input Events"
+  },
+  {
+    "n": "PermissionRequested",
+    "d": "Permission requested (camera, mic, location, etc.).",
+    "p": "events.html",
+    "s": "Permission & Security Events"
+  },
+  {
+    "n": "ContextMenuRequested",
+    "d": "Right-click context menu. args has LocationX, LocationY, PageUri, LinkUri, Handled properties.",
+    "p": "events.html",
+    "s": "Permission & Security Events"
+  },
+  {
+    "n": "LaunchingExternalUriScheme Cancelable",
+    "d": "Navigation to external scheme (mailto:, tel:, etc.).",
+    "p": "events.html",
+    "s": "Permission & Security Events"
+  },
+  {
+    "n": "NotificationReceived",
+    "d": "Browser notification received.",
+    "p": "events.html",
+    "s": "Permission & Security Events"
+  },
+  {
+    "n": "ScreenCaptureStarting Cancelable",
+    "d": "Screen capture about to start.",
+    "p": "events.html",
+    "s": "Permission & Security Events"
+  },
+  {
+    "n": "SaveFileSecurityCheckStarting Cancelable",
+    "d": "Save file security check.",
+    "p": "events.html",
+    "s": "Permission & Security Events"
+  },
+  {
+    "n": "IsMutedChanged",
+    "d": "Mute state changed.",
+    "p": "events.html",
+    "s": "Audio Events"
+  },
+  {
+    "n": "IsDocumentPlayingAudioChanged",
+    "d": "Audio playback state changed.",
+    "p": "events.html",
+    "s": "Audio Events"
+  },
+  {
+    "n": "CaptchaDetected",
+    "d": "CAPTCHA challenge detected on current page.",
+    "p": "events.html",
+    "s": "CAPTCHA Events"
+  },
+  {
+    "n": "CaptchaSolved",
+    "d": "CAPTCHA challenge resolution completed.",
+    "p": "events.html",
+    "s": "CAPTCHA Events"
+  },
+  {
+    "n": "NavigationCompletedHex",
+    "d": "Hex variant of NavigationCompleted.",
+    "p": "events.html",
+    "s": "VB6/Hex Variants"
+  },
+  {
+    "n": "ContentLoadingHex",
+    "d": "Hex variant of ContentLoading.",
+    "p": "events.html",
+    "s": "VB6/Hex Variants"
+  },
+  {
+    "n": "DownloadStartingHex",
+    "d": "Hex variant of DownloadStarting.",
+    "p": "events.html",
+    "s": "VB6/Hex Variants"
+  },
+  {
+    "n": "DownloadProgressChangedHex",
+    "d": "Hex variant of DownloadProgressChanged.",
+    "p": "events.html",
+    "s": "VB6/Hex Variants"
+  },
+  {
+    "n": "DownloadCompletedHex",
+    "d": "Hex variant of DownloadCompleted.",
+    "p": "events.html",
+    "s": "VB6/Hex Variants"
+  },
+  {
+    "n": "LiteView2BrowsingDataKinds",
+    "d": "Bitfield flags for ClearBrowsingData. Combine with OR (e.g., LV2_DATA_COOKIES Or LV2_DATA_CACHE_STORAGE).",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LiteView2ResourceContext",
+    "d": "Resource types for AddWebResourceRequestedFilter.",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LV2_FOCUS_REASON",
+    "d": "Specifies the reason for a focus change.",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LV2_POPUP_MODE",
+    "d": "Controls how popup windows are handled.",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LV2_LICENSE_STATE",
+    "d": "Indicates the current license status.",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LV2_COLOR_SCHEME",
+    "d": "Sets the preferred color scheme for web content.",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LV2_PRINT_ORIENTATION",
+    "d": "Page orientation for printing and PDF export.",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LV2_TRACKING_PREVENTION",
+    "d": "Tracking prevention level for the browser profile.",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LV2_MEMORY_USAGE",
+    "d": "Memory usage target level.",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LV2_SCROLLBAR_STYLE",
+    "d": "Scrollbar rendering style.",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT",
+    "d": "Corner alignment for the download dialog.",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LV2_PDF_TOOLBAR_ITEMS",
+    "d": "Bitfield flags for controlling PDF viewer toolbar visibility.",
+    "p": "enums.html",
+    "s": "Enum Type"
+  },
+  {
+    "n": "LV2_DATA_FILE_SYSTEMS",
+    "d": "File systems",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_INDEXED_DB",
+    "d": "IndexedDB",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_LOCAL_STORAGE",
+    "d": "Local storage",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_WEB_SQL",
+    "d": "Web SQL",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_CACHE_STORAGE",
+    "d": "Cache storage",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_DOM_STORAGE",
+    "d": "DOM storage",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_COOKIES",
+    "d": "Cookies",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_ALL_SITE",
+    "d": "All site data",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_DISK_CACHE",
+    "d": "Disk cache",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_DOWNLOAD_HISTORY",
+    "d": "Download history",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_GENERAL_AUTOFILL",
+    "d": "Autofill data",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_PASSWORD_AUTOSAVE",
+    "d": "Saved passwords",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_BROWSING_HISTORY",
+    "d": "Browsing history",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_SETTINGS",
+    "d": "Settings",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_DATA_ALL_PROFILE",
+    "d": "All profile data",
+    "p": "enums.html",
+    "s": "LiteView2BrowsingDataKinds"
+  },
+  {
+    "n": "LV2_RESOURCE_ALL",
+    "d": "All resources",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_DOCUMENT",
+    "d": "HTML documents",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_STYLESHEET",
+    "d": "CSS",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_IMAGE",
+    "d": "Images",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_MEDIA",
+    "d": "Audio/Video",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_FONT",
+    "d": "Web fonts",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_SCRIPT",
+    "d": "JavaScript",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_XHR",
+    "d": "XMLHttpRequest",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_FETCH",
+    "d": "Fetch API",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_TEXTTRACK",
+    "d": "WebVTT",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_EVENTSOURCE",
+    "d": "Server-sent events",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_WEBSOCKET",
+    "d": "WebSocket",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_MANIFEST",
+    "d": "Web App manifests",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_RESOURCE_OTHER",
+    "d": "Other",
+    "p": "enums.html",
+    "s": "LiteView2ResourceContext"
+  },
+  {
+    "n": "LV2_FOCUS_TABFORWARD",
+    "d": "Tab forward",
+    "p": "enums.html",
+    "s": "LV2_FOCUS_REASON"
+  },
+  {
+    "n": "LV2_FOCUS_TABBACKWARD",
+    "d": "Tab backward",
+    "p": "enums.html",
+    "s": "LV2_FOCUS_REASON"
+  },
+  {
+    "n": "LV2_FOCUS_PROGRAMMATIC",
+    "d": "Programmatic focus",
+    "p": "enums.html",
+    "s": "LV2_FOCUS_REASON"
+  },
+  {
+    "n": "LV2_POPUP_ALLOW",
+    "d": "Allow popups",
+    "p": "enums.html",
+    "s": "LV2_POPUP_MODE"
+  },
+  {
+    "n": "LV2_POPUP_BLOCK",
+    "d": "Block popups",
+    "p": "enums.html",
+    "s": "LV2_POPUP_MODE"
+  },
+  {
+    "n": "LV2_POPUP_SAME_WINDOW",
+    "d": "Open in same window",
+    "p": "enums.html",
+    "s": "LV2_POPUP_MODE"
+  },
+  {
+    "n": "LV2_LICENSE_VALID",
+    "d": "License valid",
+    "p": "enums.html",
+    "s": "LV2_LICENSE_STATE"
+  },
+  {
+    "n": "LV2_LICENSE_TRIAL",
+    "d": "Trial mode",
+    "p": "enums.html",
+    "s": "LV2_LICENSE_STATE"
+  },
+  {
+    "n": "LV2_LICENSE_EXPIRED",
+    "d": "License expired",
+    "p": "enums.html",
+    "s": "LV2_LICENSE_STATE"
+  },
+  {
+    "n": "LV2_LICENSE_INVALID",
+    "d": "Invalid license",
+    "p": "enums.html",
+    "s": "LV2_LICENSE_STATE"
+  },
+  {
+    "n": "LV2_COLOR_AUTO",
+    "d": "Follow system",
+    "p": "enums.html",
+    "s": "LV2_COLOR_SCHEME"
+  },
+  {
+    "n": "LV2_COLOR_LIGHT",
+    "d": "Force light",
+    "p": "enums.html",
+    "s": "LV2_COLOR_SCHEME"
+  },
+  {
+    "n": "LV2_COLOR_DARK",
+    "d": "Force dark",
+    "p": "enums.html",
+    "s": "LV2_COLOR_SCHEME"
+  },
+  {
+    "n": "LV2_PRINT_PORTRAIT",
+    "d": "Portrait",
+    "p": "enums.html",
+    "s": "LV2_PRINT_ORIENTATION"
+  },
+  {
+    "n": "LV2_PRINT_LANDSCAPE",
+    "d": "Landscape",
+    "p": "enums.html",
+    "s": "LV2_PRINT_ORIENTATION"
+  },
+  {
+    "n": "LV2_TRACKING_NONE",
+    "d": "No prevention",
+    "p": "enums.html",
+    "s": "LV2_TRACKING_PREVENTION"
+  },
+  {
+    "n": "LV2_TRACKING_BASIC",
+    "d": "Basic",
+    "p": "enums.html",
+    "s": "LV2_TRACKING_PREVENTION"
+  },
+  {
+    "n": "LV2_TRACKING_BALANCED",
+    "d": "Balanced",
+    "p": "enums.html",
+    "s": "LV2_TRACKING_PREVENTION"
+  },
+  {
+    "n": "LV2_TRACKING_STRICT",
+    "d": "Strict",
+    "p": "enums.html",
+    "s": "LV2_TRACKING_PREVENTION"
+  },
+  {
+    "n": "LV2_MEMORY_NORMAL",
+    "d": "Normal",
+    "p": "enums.html",
+    "s": "LV2_MEMORY_USAGE"
+  },
+  {
+    "n": "LV2_MEMORY_LOW",
+    "d": "Low memory target",
+    "p": "enums.html",
+    "s": "LV2_MEMORY_USAGE"
+  },
+  {
+    "n": "LV2_SCROLLBAR_DEFAULT",
+    "d": "Default scrollbar",
+    "p": "enums.html",
+    "s": "LV2_SCROLLBAR_STYLE"
+  },
+  {
+    "n": "LV2_SCROLLBAR_FLUENT_OVERLAY",
+    "d": "Fluent overlay",
+    "p": "enums.html",
+    "s": "LV2_SCROLLBAR_STYLE"
+  },
+  {
+    "n": "LV2_DOWNLOAD_CORNER_TOP_LEFT",
+    "d": "Top left",
+    "p": "enums.html",
+    "s": "LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT"
+  },
+  {
+    "n": "LV2_DOWNLOAD_CORNER_TOP_RIGHT",
+    "d": "Top right",
+    "p": "enums.html",
+    "s": "LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT"
+  },
+  {
+    "n": "LV2_DOWNLOAD_CORNER_BOTTOM_LEFT",
+    "d": "Bottom left",
+    "p": "enums.html",
+    "s": "LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT"
+  },
+  {
+    "n": "LV2_DOWNLOAD_CORNER_BOTTOM_RIGHT",
+    "d": "Bottom right",
+    "p": "enums.html",
+    "s": "LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT"
+  },
+  {
+    "n": "LV2_PDF_NONE",
+    "d": "No items",
+    "p": "enums.html",
+    "s": "LV2_PDF_TOOLBAR_ITEMS"
+  },
+  {
+    "n": "LV2_PDF_SAVE",
+    "d": "Save button",
+    "p": "enums.html",
+    "s": "LV2_PDF_TOOLBAR_ITEMS"
+  },
+  {
+    "n": "LV2_PDF_PRINT",
+    "d": "Print button",
+    "p": "enums.html",
+    "s": "LV2_PDF_TOOLBAR_ITEMS"
+  },
+  {
+    "n": "LV2_PDF_SAVE_AS",
+    "d": "Save As button",
+    "p": "enums.html",
+    "s": "LV2_PDF_TOOLBAR_ITEMS"
+  },
+  {
+    "n": "LV2_PDF_ZOOM_IN",
+    "d": "Zoom In button",
+    "p": "enums.html",
+    "s": "LV2_PDF_TOOLBAR_ITEMS"
+  },
+  {
+    "n": "LV2_PDF_ZOOM_OUT",
+    "d": "Zoom Out button",
+    "p": "enums.html",
+    "s": "LV2_PDF_TOOLBAR_ITEMS"
+  }
+]
