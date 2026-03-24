@@ -157,9 +157,16 @@
 <pre><code><span class="kw">Dim</span> pool <span class="kw">As</span> <span class="typ">Object</span>
 <span class="kw">Set</span> pool = GetPool()
 
+<span class="cmt">' Map a local folder to the virtual hostname https://lv2.local/</span>
+pool.SetLocalContentRoot idx, CurrentProject.Path &amp; <span class="str">"\html"</span>
+
+<span class="cmt">' Create a browser and load a local HTML file</span>
 <span class="kw">Dim</span> idx <span class="kw">As</span> <span class="typ">Long</span>
-idx = pool.CreateInControl(<span class="str">"https://example.com"</span>, Me.Frame1)
-pool.Navigate idx, <span class="str">"https://lv2.local/dashboard.html"</span></code></pre>
+idx = pool.CreateInControl(<span class="str">"https://lv2.local/dashboard.html"</span>, Me.Frame1)</code></pre>
+            <div class="callout callout-note">
+                <span class="callout-title">What is lv2.local?</span>
+                <p><code>SetLocalContentRoot</code> maps a folder on disk to the virtual hostname <code>https://lv2.local/</code>. Files in that folder are then accessible via URLs like <code>https://lv2.local/dashboard.html</code>. This avoids <code>file://</code> URLs (which have security restrictions) and gives your local HTML files a proper HTTPS origin. See <a href="iliteview2ctrl.html#local-content">ILiteView2Ctrl &rsaquo; Local Content Mapping</a> for details.</p>
+            </div>
         </section>
 
         <!-- ================================================================== -->
@@ -211,7 +218,10 @@ idx = pool.Create(Me.hwnd, <span class="str">"about:blank"</span>, <span class="
     <span class="kw">Exit Sub</span>
 <span class="kw">End If</span>
 
-<span class="cmt">' Navigate</span>
+<span class="cmt">' Map local folder to https://lv2.local/ (call once per browser)</span>
+pool.SetLocalContentRoot idx, CurrentProject.Path &amp; <span class="str">"\html"</span>
+
+<span class="cmt">' Navigate to a local HTML file</span>
 pool.Navigate idx, <span class="str">"https://lv2.local/dashboard.html"</span>
 
 <span class="cmt">' Cleanup</span>
@@ -278,7 +288,10 @@ freed = pool.DestroyAllParked
 
                 <h4>Embedding Example</h4>
                 <p class="code-source">Source: src\frmBrowser.cls</p>
-<pre><code><span class="cmt">' Create and embed in an Access Frame control in one call</span>
+<pre><code><span class="cmt">' Map local folder first (required for lv2.local URLs)</span>
+pool.SetLocalContentRoot idx, CurrentProject.Path &amp; <span class="str">"\html"</span>
+
+<span class="cmt">' Create and embed in an Access Frame control in one call</span>
 <span class="kw">Dim</span> idx <span class="kw">As</span> <span class="typ">Long</span>
 idx = pool.CreateInControl(<span class="str">"https://lv2.local/app.html"</span>, Me.fraWebView)
 <span class="kw">If</span> idx > <span class="num">0</span> <span class="kw">Then</span>
