@@ -96,6 +96,7 @@
                     return;
                 }
 
+                // Filter grouped nav links
                 navGroups.forEach(function (group) {
                     var links = group.querySelectorAll('.nav-link');
                     var anyVisible = false;
@@ -112,6 +113,13 @@
 
                     group.style.display = anyVisible ? '' : 'none';
                     if (anyVisible) group.classList.remove('collapsed');
+                });
+
+                // Filter ungrouped nav links (e.g. enums page)
+                navLinks.forEach(function (link) {
+                    if (link.closest('.nav-group')) return; // already handled above
+                    var text = link.textContent.toLowerCase();
+                    link.style.display = text.indexOf(query) !== -1 ? '' : 'none';
                 });
             });
         }
