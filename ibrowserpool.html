@@ -50,6 +50,7 @@
             <div class="nav-group-title"><span class="chevron">&#9654;</span> Overview</div>
             <div class="nav-group-items">
                 <a href="#overview" class="nav-link">Overview</a>
+                <a href="#getting-started" class="nav-link">Getting Started</a>
                 <a href="#key-difference" class="nav-link">Key Difference</a>
             </div>
         </div>
@@ -106,6 +107,60 @@
         </div>
 
         <button class="expand-all-btn">Expand All</button>
+
+        <!-- ================================================================== -->
+        <!-- Getting Started (Reg-Free Setup) -->
+        <!-- ================================================================== -->
+        <section id="getting-started">
+            <h2>Getting Started &mdash; Reg-Free Setup</h2>
+            <p>Before you can use IBrowserPool, add this standard module to your project. It declares the Win32 API calls needed to load the OCX without COM registration, then exposes a <code>GetPool()</code> singleton you can call from any form.</p>
+            <p><strong>Place the OCX in the same folder as your <code>.accdb</code> or <code>.xlsm</code>.</strong></p>
+
+            <h4>modLV2Pool.bas &mdash; add once per project</h4>
+<pre><code><span class="kw">Option Explicit</span>
+
+<span class="cmt">' --- Win32 + OCX declarations (64-bit / 32-bit) ---</span>
+<span class="kw">#If</span> Win64 <span class="kw">Then</span>
+    <span class="kw">Private Declare PtrSafe Function</span> SetDllDirectory <span class="kw">Lib</span> <span class="str">"kernel32"</span> _
+        <span class="kw">Alias</span> <span class="str">"SetDllDirectoryW"</span> (<span class="kw">ByVal</span> lpPathName <span class="kw">As</span> <span class="typ">LongPtr</span>) <span class="kw">As</span> <span class="typ">Long</span>
+    <span class="kw">Private Declare PtrSafe Function</span> LiteView2_ActivateManifest _
+        <span class="kw">Lib</span> <span class="str">"LiteView2_x64.ocx"</span> (<span class="kw">ByVal</span> path <span class="kw">As</span> <span class="typ">LongPtr</span>) <span class="kw">As</span> <span class="typ">Long</span>
+    <span class="kw">Private Declare PtrSafe Function</span> LiteView2_CreateBrowserPool _
+        <span class="kw">Lib</span> <span class="str">"LiteView2_x64.ocx"</span> () <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">#Else</span>
+    <span class="kw">Private Declare PtrSafe Function</span> SetDllDirectory <span class="kw">Lib</span> <span class="str">"kernel32"</span> _
+        <span class="kw">Alias</span> <span class="str">"SetDllDirectoryW"</span> (<span class="kw">ByVal</span> lpPathName <span class="kw">As</span> <span class="typ">LongPtr</span>) <span class="kw">As</span> <span class="typ">Long</span>
+    <span class="kw">Private Declare PtrSafe Function</span> LiteView2_ActivateManifest _
+        <span class="kw">Lib</span> <span class="str">"LiteView2_x86.ocx"</span> (<span class="kw">ByVal</span> path <span class="kw">As</span> <span class="typ">LongPtr</span>) <span class="kw">As</span> <span class="typ">Long</span>
+    <span class="kw">Private Declare PtrSafe Function</span> LiteView2_CreateBrowserPool _
+        <span class="kw">Lib</span> <span class="str">"LiteView2_x86.ocx"</span> () <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">#End If</span>
+
+<span class="kw">Private</span> m_Pool <span class="kw">As</span> <span class="typ">Object</span>
+
+<span class="kw">Public Function</span> GetPool() <span class="kw">As</span> <span class="typ">Object</span>
+    <span class="kw">If</span> m_Pool <span class="kw">Is Nothing Then</span>
+        <span class="kw">Dim</span> p <span class="kw">As</span> <span class="typ">String</span>
+        p = CurrentProject.Path          <span class="cmt">' Access  (Excel: ThisWorkbook.Path)</span>
+        SetDllDirectory StrPtr(p)        <span class="cmt">' Tell Windows where the OCX lives</span>
+        <span class="kw">#If</span> Win64 <span class="kw">Then</span>
+            LiteView2_ActivateManifest StrPtr(p &amp; <span class="str">"\LiteView2_x64.ocx"</span>)
+        <span class="kw">#Else</span>
+            LiteView2_ActivateManifest StrPtr(p &amp; <span class="str">"\LiteView2_x86.ocx"</span>)
+        <span class="kw">#End If</span>
+        <span class="kw">Set</span> m_Pool = LiteView2_CreateBrowserPool()
+    <span class="kw">End If</span>
+    <span class="kw">Set</span> GetPool = m_Pool
+<span class="kw">End Function</span></code></pre>
+
+            <h4>Usage from any form</h4>
+<pre><code><span class="kw">Dim</span> pool <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> pool = GetPool()
+
+<span class="kw">Dim</span> idx <span class="kw">As</span> <span class="typ">Long</span>
+idx = pool.CreateInControl(<span class="str">"https://example.com"</span>, Me.Frame1)
+pool.Navigate idx, <span class="str">"https://lv2.local/dashboard.html"</span></code></pre>
+        </section>
 
         <!-- ================================================================== -->
         <!-- Key Difference -->
