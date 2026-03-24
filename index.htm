@@ -166,6 +166,14 @@
                     <p>Drop the OCX file next to your application. No <code
                             style="color:var(--accent-light);background:rgba(59,130,246,0.1);padding:2px 6px;border-radius:4px;font-size:13px">regsvr32</code>,
                         no admin rights, no registry entries. Your app runs instantly on any machine.</p>
+                    <p style="margin-top:10px;font-size:13px;color:var(--text-mid);line-height:1.6;">
+                        <strong style="color:var(--text-bright);">How it works:</strong> The OCX contains an embedded
+                        SxS manifest (Resource&nbsp;ID&nbsp;2) that declares its COM classes. Your VBA code calls
+                        <code style="color:var(--accent-light);background:rgba(59,130,246,0.1);padding:2px 6px;border-radius:4px;font-size:12px">SetDllDirectory</code>
+                        to point Windows at the OCX folder, then
+                        <code style="color:var(--accent-light);background:rgba(59,130,246,0.1);padding:2px 6px;border-radius:4px;font-size:12px">LiteView2_ActivateManifest</code>
+                        creates a Windows Activation Context — enabling COM object creation without any registry entries. See the Quick&nbsp;Start code below for the complete bootstrap.
+                    </p>
                     <ul class="deploy-list">
                         <li><span>&#10003;</span> No COM registration required</li>
                         <li><span>&#10003;</span> No administrator permissions needed</li>
@@ -294,16 +302,56 @@
         <!-- QUICK START CODE -->
         <!-- ============================================================ -->
         <section class="section animate-on-scroll" id="quickstart">
-            <h2 class="section-title">Up and Running in 3 Lines</h2>
-            <p class="section-sub">No configuration files. No registry entries. No dependencies to manage.</p>
+            <h2 class="section-title">Up and Running in Minutes</h2>
+            <p class="section-sub">No configuration files. No registry entries. No dependencies to manage.<br>
+                Place the OCX next to your <code style="color:var(--accent-light);background:rgba(59,130,246,0.1);padding:2px 6px;border-radius:4px;font-size:13px">.accdb</code> or <code style="color:var(--accent-light);background:rgba(59,130,246,0.1);padding:2px 6px;border-radius:4px;font-size:13px">.xlsm</code>, add one standard module, and you're ready to go.</p>
 
             <div class="code-preview">
                 <button class="copy-btn">Copy</button>
-                <span class="code-label">VBA — Reg-Free Quick Start</span>
-                <code><span class="code-comment">' Create a browser pool — no regsvr32, no admin rights</span>
-<span class="code-keyword">Set</span> lv = LiteView2_CreateBrowserPool()
+                <span class="code-label">Standard Module — modLV2Pool (add once per project)</span>
+                <code><span class="code-comment">' --- LiteView2 Reg-Free Bootstrap ---</span>
+<span class="code-comment">' OCX must be in the same folder as your .accdb / .xlsm</span>
 
-<span class="code-comment">' Embed a Chromium browser inside your VBA form</span>
+<span class="code-keyword">#If</span> Win64 <span class="code-keyword">Then</span>
+    <span class="code-keyword">Private Declare PtrSafe Function</span> SetDllDirectory <span class="code-keyword">Lib</span> <span class="code-string">"kernel32"</span> _
+        <span class="code-keyword">Alias</span> <span class="code-string">"SetDllDirectoryW"</span> (<span class="code-keyword">ByVal</span> lpPathName <span class="code-keyword">As</span> <span class="code-type">LongPtr</span>) <span class="code-keyword">As</span> <span class="code-type">Long</span>
+    <span class="code-keyword">Private Declare PtrSafe Function</span> LiteView2_ActivateManifest _
+        <span class="code-keyword">Lib</span> <span class="code-string">"LiteView2_x64.ocx"</span> (<span class="code-keyword">ByVal</span> path <span class="code-keyword">As</span> <span class="code-type">LongPtr</span>) <span class="code-keyword">As</span> <span class="code-type">Long</span>
+    <span class="code-keyword">Private Declare PtrSafe Function</span> LiteView2_CreateBrowserPool _
+        <span class="code-keyword">Lib</span> <span class="code-string">"LiteView2_x64.ocx"</span> () <span class="code-keyword">As</span> <span class="code-type">Object</span>
+<span class="code-keyword">#Else</span>
+    <span class="code-keyword">Private Declare PtrSafe Function</span> SetDllDirectory <span class="code-keyword">Lib</span> <span class="code-string">"kernel32"</span> _
+        <span class="code-keyword">Alias</span> <span class="code-string">"SetDllDirectoryW"</span> (<span class="code-keyword">ByVal</span> lpPathName <span class="code-keyword">As</span> <span class="code-type">LongPtr</span>) <span class="code-keyword">As</span> <span class="code-type">Long</span>
+    <span class="code-keyword">Private Declare PtrSafe Function</span> LiteView2_ActivateManifest _
+        <span class="code-keyword">Lib</span> <span class="code-string">"LiteView2_x86.ocx"</span> (<span class="code-keyword">ByVal</span> path <span class="code-keyword">As</span> <span class="code-type">LongPtr</span>) <span class="code-keyword">As</span> <span class="code-type">Long</span>
+    <span class="code-keyword">Private Declare PtrSafe Function</span> LiteView2_CreateBrowserPool _
+        <span class="code-keyword">Lib</span> <span class="code-string">"LiteView2_x86.ocx"</span> () <span class="code-keyword">As</span> <span class="code-type">Object</span>
+<span class="code-keyword">#End If</span>
+
+<span class="code-keyword">Private</span> m_Pool <span class="code-keyword">As</span> <span class="code-type">Object</span>
+
+<span class="code-keyword">Public Function</span> <span class="code-func">GetPool</span>() <span class="code-keyword">As</span> <span class="code-type">Object</span>
+    <span class="code-keyword">If</span> m_Pool <span class="code-keyword">Is Nothing Then</span>
+        <span class="code-keyword">Dim</span> p <span class="code-keyword">As</span> <span class="code-type">String</span>
+        p = CurrentProject.Path          <span class="code-comment">' Access  (Excel: ThisWorkbook.Path)</span>
+        SetDllDirectory <span class="code-func">StrPtr</span>(p)       <span class="code-comment">' Tell Windows where the OCX lives</span>
+        <span class="code-keyword">#If</span> Win64 <span class="code-keyword">Then</span>
+            LiteView2_ActivateManifest <span class="code-func">StrPtr</span>(p & <span class="code-string">"\LiteView2_x64.ocx"</span>)
+        <span class="code-keyword">#Else</span>
+            LiteView2_ActivateManifest <span class="code-func">StrPtr</span>(p & <span class="code-string">"\LiteView2_x86.ocx"</span>)
+        <span class="code-keyword">#End If</span>
+        <span class="code-keyword">Set</span> m_Pool = LiteView2_CreateBrowserPool()
+    <span class="code-keyword">End If</span>
+    <span class="code-keyword">Set</span> <span class="code-func">GetPool</span> = m_Pool
+<span class="code-keyword">End Function</span></code>
+            </div>
+
+            <div class="code-preview" style="margin-top: 16px;">
+                <button class="copy-btn">Copy</button>
+                <span class="code-label">VBA — Use the Pool in Any Form</span>
+                <code><span class="code-comment">' Get the singleton pool and embed a browser in a Frame control</span>
+<span class="code-keyword">Dim</span> lv <span class="code-keyword">As</span> <span class="code-type">Object</span>
+<span class="code-keyword">Set</span> lv = <span class="code-func">GetPool</span>()
 idx = lv.CreateInControl(<span class="code-string">"https://example.com"</span>, Me.Frame1)
 
 <span class="code-comment">' Execute JavaScript and get the result back in VBA</span>
@@ -476,8 +524,7 @@ rs.Close</code>
                     <div class="feature-card">
                         <span class="feature-icon">&#128230;</span>
                         <h3>Zero-Install Deployment</h3>
-                        <p>Reg-free mode: drop the OCX next to your app. No regsvr32, no admin, no registry entries. XCopy
-                            deploy.</p>
+                        <p>Reg-free mode: drop the OCX next to your app, activate the embedded manifest from VBA, and go. No regsvr32, no admin, no registry entries. XCopy deploy.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-icon">&#128276;</span>
