@@ -149,6 +149,7 @@
             LiteView2_ActivateManifest StrPtr(p &amp; <span class="str">"\LiteView2_x86.ocx"</span>)
         <span class="kw">#End If</span>
         <span class="kw">Set</span> m_Pool = LiteView2_CreateBrowserPool()
+        m_Pool.ActivateLicense <span class="str">"Your Company"</span>, <span class="str">"YOUR-LICENSE-KEY"</span>  <span class="cmt">' omit this line during 30-day trial</span>
     <span class="kw">End If</span>
     <span class="kw">Set</span> GetPool = m_Pool
 <span class="kw">End Function</span></code></pre>
@@ -167,6 +168,26 @@ idx = pool.CreateInControl(<span class="str">"https://lv2.local/dashboard.html"<
                 <span class="callout-title">What is lv2.local?</span>
                 <p><code>SetLocalContentRoot</code> maps a folder on disk to the virtual hostname <code>https://lv2.local/</code>. Files in that folder are then accessible via URLs like <code>https://lv2.local/dashboard.html</code>. This avoids <code>file://</code> URLs (which have security restrictions) and gives your local HTML files a proper HTTPS origin. See <a href="iliteview2ctrl.html#local-content">ILiteView2Ctrl &rsaquo; Local Content Mapping</a> for details.</p>
             </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- Licensing -->
+        <!-- ================================================================== -->
+        <section id="licensing">
+            <h2>Licensing</h2>
+            <p><code>ActivateLicense</code> is called <strong>once per process</strong>, before creating any browser instances. The recommended place is inside <code>GetPool()</code>, right after <code>LiteView2_CreateBrowserPool()</code>:</p>
+<pre><code>m_Pool.ActivateLicense <span class="str">"Your Company"</span>, <span class="str">"YOUR-LICENSE-KEY"</span></code></pre>
+            <div class="callout callout-note">
+                <span class="callout-title">Trial &amp; Activation</span>
+                <p>A 30-day trial starts automatically — all features are fully functional with no limitations. After trial expiry, the control displays a watermark and API methods return <code>E_ACCESSDENIED</code>. Add the <code>ActivateLicense</code> line with your purchased key to activate immediately. No license files, no registry entries — just one line of VBA code.</p>
+            </div>
+
+            <h4>License Status Properties</h4>
+<pre><code>pool.ActivateLicense <span class="str">"My Company"</span>, <span class="str">"LICENSE-KEY-HERE"</span>
+Debug.Print <span class="str">"Status: "</span> &amp; pool.LicenseStatus
+Debug.Print <span class="str">"Type: "</span>   &amp; pool.LicenseType
+Debug.Print <span class="str">"State: "</span>  &amp; pool.LicenseState       <span class="cmt">' 0=Valid, 1=Trial, 2=Expired, 3=Invalid</span>
+Debug.Print <span class="str">"Days: "</span>   &amp; pool.TrialDaysRemaining</code></pre>
         </section>
 
         <!-- ================================================================== -->

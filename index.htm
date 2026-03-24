@@ -339,6 +339,7 @@
             LiteView2_ActivateManifest <span class="code-func">StrPtr</span>(p & <span class="code-string">"\LiteView2_x86.ocx"</span>)
         <span class="code-keyword">#End If</span>
         <span class="code-keyword">Set</span> m_Pool = LiteView2_CreateBrowserPool()
+        m_Pool.ActivateLicense <span class="code-string">"Your Company"</span>, <span class="code-string">"YOUR-LICENSE-KEY"</span>  <span class="code-comment">' omit this line during 30-day trial</span>
     <span class="code-keyword">End If</span>
     <span class="code-keyword">Set</span> <span class="code-func">GetPool</span> = m_Pool
 <span class="code-keyword">End Function</span></code>
@@ -667,7 +668,7 @@ rs.Close</code>
 
                 <div class="faq-item">
                     <button class="faq-q">What happens after the 30-day trial?</button>
-                    <div class="faq-a"><p>The control stops functioning after 30 days. No nag screens, no degraded mode — it simply requires a license to continue. Your code and projects remain intact.</p></div>
+                    <div class="faq-a"><p>The control displays a watermark after 30 days. To activate, add a single line to your bootstrap module: <code>pool.ActivateLicense "Your Company", "YOUR-LICENSE-KEY"</code>. Your code and projects remain intact — just add the key and you're back in business.</p></div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-q">Can I upgrade from Developer to Site License later?</button>
