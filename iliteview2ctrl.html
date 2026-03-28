@@ -3,20 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ILiteView2Ctrl — LiteView2</title>
+    <title>ILiteView2Ctrl API Reference — LiteView2 WebView2 VBA Control</title>
+    <meta name="description" content="ILiteView2Ctrl reference: 245+ methods for navigation, DOM, JavaScript, printing, screenshots, and more. WebView2 OCX for Access, Excel, VB6. Browse the full API →">
+    <link rel="canonical" href="https://imranosoft.github.io/LiteView2-Website/iliteview2ctrl.html">
+    <link rel="alternate" hreflang="en" href="https://imranosoft.github.io/LiteView2-Website/iliteview2ctrl.html">
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "LiteView2",
+          "item": "https://imranosoft.github.io/LiteView2-Website/index.htm" },
+        { "@type": "ListItem", "position": 2, "name": "API Reference",
+          "item": "https://imranosoft.github.io/LiteView2-Website/landing.html" },
+        { "@type": "ListItem", "position": 3, "name": "ILiteView2Ctrl",
+          "item": "https://imranosoft.github.io/LiteView2-Website/iliteview2ctrl.html" }
+      ]
+    }
+    </script>
+    <!-- Structured Data: TechArticle -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "name": "ILiteView2Ctrl API Reference — LiteView2 WebView2 VBA Control",
+      "description": "Complete method and property reference for the ILiteView2Ctrl interface of the LiteView2 WebView2 ActiveX OCX control for VBA developers. Covers navigation, DOM manipulation, JavaScript execution, PDF generation, screenshots, and browser lifecycle.",
+      "url": "https://imranosoft.github.io/LiteView2-Website/iliteview2ctrl.html",
+      "author": { "@type": "Person", "name": "Muhammad Imran" },
+      "publisher": { "@type": "Person", "name": "Muhammad Imran" },
+      "datePublished": "2026-03-01",
+      "dateModified": "2026-03-28",
+      "proficiencyLevel": "Expert",
+      "dependencies": "Microsoft WebView2 Runtime, Windows 10 1809+"
+    }
+    </script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is ILiteView2Ctrl?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ILiteView2Ctrl is the primary COM interface of the LiteView2 WebView2 ActiveX OCX control. It exposes 245+ methods for embedding a full Chromium browser inside Microsoft Access forms, Excel UserForms, VB6 forms, and any COM-capable host application — with no admin rights or COM registration required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I navigate to a URL from VBA using LiteView2?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Call m_lv.Navigate \"https://www.example.com\" where m_lv is a reference to the LiteView2Ctrl control. For synchronous navigation (VB6/VFP only) use m_lv.NavigateSync. You can also load raw HTML strings via m_lv.NavigateToString."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I run JavaScript from VBA and get the return value?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use m_lv.ExecuteScript(\"document.title\") which returns the JS result as a VBA String. For async fire-and-forget use ExecuteScriptAsync. For structured error handling use ExecuteScriptWithResult which returns the JSON result, a success Boolean, and an exception message via ByRef parameters."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
 <!-- Site Header -->
 <header class="site-header">
-    <a href="index.html" class="brand">
+    <a href="index.htm" class="brand">
         <div class="brand-icon">LV</div>
         <span>LiteView2</span>
     </a>
     <nav class="header-nav">
         <a href="landing.html">Home</a>
-        <a href="index.html">Overview</a>
+        <a href="index.htm">Overview</a>
         <a href="enums.html">Enums</a>
         <a href="iliteview2ctrl.html" class="active">ILiteView2Ctrl</a>
         <a href="events.html">Events</a>
@@ -43,7 +118,7 @@
 <aside class="sidebar">
     <nav class="page-links">
         <a href="landing.html" class="page-link"><span class="icon">&#8962;</span> Home</a>
-        <a href="index.html" class="page-link"><span class="icon">&#9776;</span> Overview</a>
+        <a href="index.htm" class="page-link"><span class="icon">&#9776;</span> Overview</a>
         <a href="enums.html" class="page-link"><span class="icon">&#69;</span> Enums</a>
         <a href="iliteview2ctrl.html" class="page-link current"><span class="icon">&#73;</span> ILiteView2Ctrl</a>
         <a href="events.html" class="page-link"><span class="icon">&#9889;</span> Events</a>

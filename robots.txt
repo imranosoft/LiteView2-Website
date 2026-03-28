@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://imranosoft.github.io/LiteView2-Website/sitemap.xml

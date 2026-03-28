@@ -3,20 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Object Model Reference — LiteView2</title>
+    <title>LiteView2 API Reference — WebView2 VBA OCX Object Model</title>
+    <meta name="description" content="Complete LiteView2 API reference — ILiteView2Ctrl, IBrowserPool, 60+ Events, 12 Enumerations. Full documentation for the WebView2 VBA OCX control. Start integrating today →">
+    <link rel="canonical" href="https://imranosoft.github.io/LiteView2-Website/landing.html">
+    <link rel="alternate" hreflang="en" href="https://imranosoft.github.io/LiteView2-Website/landing.html">
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "LiteView2",
+          "item": "https://imranosoft.github.io/LiteView2-Website/index.htm" },
+        { "@type": "ListItem", "position": 2, "name": "API Reference",
+          "item": "https://imranosoft.github.io/LiteView2-Website/landing.html" }
+      ]
+    }
+    </script>
+    <!-- Structured Data: TechArticle -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "name": "LiteView2 API Reference — WebView2 VBA OCX Object Model",
+      "description": "Complete API object model reference for LiteView2 — the WebView2 ActiveX OCX for VBA developers. Covers ILiteView2Ctrl (245+ methods), IBrowserPool (reg-free multi-browser), events, and enumerations.",
+      "url": "https://imranosoft.github.io/LiteView2-Website/landing.html",
+      "author": { "@type": "Person", "name": "Muhammad Imran" },
+      "publisher": { "@type": "Person", "name": "Muhammad Imran" },
+      "datePublished": "2026-03-01",
+      "dateModified": "2026-03-28",
+      "proficiencyLevel": "Expert",
+      "dependencies": "Microsoft WebView2 Runtime, Windows 10 1809+"
+    }
+    </script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between ILiteView2Ctrl and IBrowserPool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ILiteView2Ctrl is the design-time OCX interface — you place it on a form in the Visual Basic editor and it manages a single embedded WebView2 browser. IBrowserPool is the registration-free pattern — no COM registration needed, no admin rights, supports multiple browser instances. Every IBrowserPool method takes a browserIndex As Long as its first parameter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the first VBA event I should handle in LiteView2?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Handle the WebViewReady event — it fires when the Chromium WebView2 engine has fully initialised. This is the correct point to call SetLocalContentRoot and Navigate. Do not call navigation methods before WebViewReady fires."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
 <!-- Site Header -->
 <header class="site-header">
-    <a href="index.html" class="brand">
+    <a href="index.htm" class="brand">
         <span class="brand-icon">LV2</span>
         <span>LiteView2</span>
     </a>
     <nav class="header-nav">
         <a href="landing.html">Home</a>
-        <a href="index.html" class="current">Overview</a>
+        <a href="index.htm" class="current">Overview</a>
         <a href="enums.html">Enums</a>
         <a href="iliteview2ctrl.html">ILiteView2Ctrl</a>
         <a href="events.html">Events</a>
@@ -40,7 +105,7 @@
 <aside class="sidebar">
     <nav class="page-links">
         <a href="landing.html" class="page-link"><span class="icon">&#8962;</span> Home</a>
-        <a href="index.html" class="page-link current"><span class="icon">&#9776;</span> Overview</a>
+        <a href="index.htm" class="page-link current"><span class="icon">&#9776;</span> Overview</a>
         <a href="enums.html" class="page-link">Enums</a>
         <a href="iliteview2ctrl.html" class="page-link">ILiteView2Ctrl</a>
         <a href="events.html" class="page-link">Events</a>
@@ -65,7 +130,7 @@
         <p class="subtitle">Complete API reference for the LiteView2 WebView2 ActiveX control</p>
 
         <!-- Architecture Diagram -->
-        <h2>Architecture</h2>
+        <h2>LiteView2 API Architecture — IBrowserPool vs ILiteView2Ctrl</h2>
 <pre class="arch-diagram">LiteView2Lib
   |
   +-- IBrowserPool          (Multi-browser, reg-free pattern)
@@ -83,7 +148,7 @@
         Default interface for Access IntelliSense</pre>
 
         <!-- When to Use Which -->
-        <h2>When to Use Which</h2>
+        <h2>Choosing the Right Interface for Your VBA Project</h2>
         <table class="comparison-table">
             <thead>
                 <tr>
@@ -136,7 +201,7 @@
         </div>
 
         <!-- Key Rules -->
-        <h2>Key Rules</h2>
+        <h2>Important VBA Integration Rules</h2>
 
         <div class="callout callout-danger">
             <span class="callout-title">Danger</span>
@@ -154,8 +219,8 @@
         </div>
 
         <!-- Getting Started -->
-        <h2>Getting Started</h2>
-        <p>The basic design-time OCX pattern used across all production demos:</p>
+        <h2>Getting Started with WebView2 in VBA (5-Line Pattern)</h2>
+        <p>The basic design-time OCX pattern used across all production demos — works in Access, Excel, and VB6:</p>
 
 <pre><code><span class="cmt">' Late-bound pattern &mdash; avoids type library dependency</span>
 <span class="kw">Private</span> m_lv <span class="kw">As</span> <span class="typ">Object</span>
@@ -171,13 +236,16 @@
     m_lv.Navigate <span class="str">"https://lv2.local/index.html"</span>
 <span class="kw">End Sub</span></code></pre>
         <p><small>Source: Proven pattern from production demos</small></p>
+        <p style="margin-top:2rem;text-align:center;">
+            <a href="index.htm" class="btn btn-primary" style="display:inline-block;padding:0.75rem 2rem;background:var(--accent);color:#fff;border-radius:8px;font-weight:600;text-decoration:none;">View Pricing &amp; Download Free Trial →</a>
+        </p>
 
     </main>
 </div>
 
 <!-- Footer -->
 <footer class="page-footer">
-    <p>Generated from <code>LiteView2.idl</code> &mdash; <a href="https://github.com">View source on GitHub</a></p>
+    <p>Generated from <code>LiteView2.idl</code> &mdash; <a href="https://imranosoft.github.io/LiteView2-Website/index.htm">LiteView2 WebView2 ActiveX OCX control</a></p>
 </footer>
 
 <!-- Back to Top -->

@@ -3,20 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events — LiteView2</title>
+    <title>LiteView2 Events Reference — 60+ WebView2 VBA Event Handlers</title>
+    <meta name="description" content="60+ LiteView2 WebView2 events for navigation, DOM changes, downloads, auth, focus, process, and screen capture. Full VBA event handler signatures. View all events →">
+    <link rel="canonical" href="https://imranosoft.github.io/LiteView2-Website/events.html">
+    <link rel="alternate" hreflang="en" href="https://imranosoft.github.io/LiteView2-Website/events.html">
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "LiteView2",
+          "item": "https://imranosoft.github.io/LiteView2-Website/index.htm" },
+        { "@type": "ListItem", "position": 2, "name": "API Reference",
+          "item": "https://imranosoft.github.io/LiteView2-Website/landing.html" },
+        { "@type": "ListItem", "position": 3, "name": "Events",
+          "item": "https://imranosoft.github.io/LiteView2-Website/events.html" }
+      ]
+    }
+    </script>
+    <!-- Structured Data: TechArticle -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "name": "LiteView2 Events Reference — 60+ WebView2 VBA Event Handlers",
+      "description": "Complete reference for the _DLiteView2CtrlEvents dispinterface. Covers 60+ events across navigation, content loading, web messaging, downloads, authentication, process lifecycle, web resources, find-in-page, frames, input, permission, audio, and CAPTCHA categories.",
+      "url": "https://imranosoft.github.io/LiteView2-Website/events.html",
+      "author": { "@type": "Person", "name": "Muhammad Imran" },
+      "publisher": { "@type": "Person", "name": "Muhammad Imran" },
+      "datePublished": "2026-03-01",
+      "dateModified": "2026-03-28",
+      "proficiencyLevel": "Expert",
+      "dependencies": "Microsoft WebView2 Runtime, Windows 10 1809+"
+    }
+    </script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I handle WebView2 events in VBA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Name your event handler sub as LiteView2Ctrl1_EventName where LiteView2Ctrl1 matches the Name property of the control on your form. For example: Private Sub LiteView2Ctrl1_WebViewReady(). You do not use WithEvents — event sinks are wired by naming convention, identical to how you handle standard ActiveX events in Access or Excel VBA."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my VBA app freeze when I call JsonGetValue inside WebMessageReceived?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JsonGetValue executes async JavaScript internally. Calling it inside the WebMessageReceived event creates a deadlock because WebView2 is already blocked waiting for the event handler to return. Use InStr() to parse simple action strings inside the event handler, then store the full message in a module-level variable and process it after the event returns."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
 <!-- Site Header -->
 <header class="site-header">
-    <a href="index.html" class="brand">
+    <a href="index.htm" class="brand">
         <span class="brand-icon">LV2</span>
         <span>LiteView2</span>
     </a>
     <nav class="header-nav">
         <a href="landing.html">Home</a>
-        <a href="index.html">Overview</a>
+        <a href="index.htm">Overview</a>
         <a href="enums.html">Enums</a>
         <a href="iliteview2ctrl.html">ILiteView2Ctrl</a>
         <a href="events.html" class="active">Events</a>
@@ -46,7 +113,7 @@
 <aside class="sidebar">
     <nav class="page-links">
         <a href="landing.html" class="page-link"><span class="icon">&#8962;</span> Home</a>
-        <a href="index.html" class="page-link"><span class="icon">&#9776;</span> Overview</a>
+        <a href="index.htm" class="page-link"><span class="icon">&#9776;</span> Overview</a>
         <a href="enums.html" class="page-link"><span class="icon">E</span> Enums</a>
         <a href="iliteview2ctrl.html" class="page-link"><span class="icon">I</span> ILiteView2Ctrl</a>
         <a href="events.html" class="page-link current"><span class="icon">&#9889;</span> Events</a>
