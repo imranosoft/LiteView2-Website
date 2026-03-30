@@ -235,7 +235,7 @@
   },
   {
     "n": "PushRecordset",
-    "d": "Push DAO/ADO Recordset as JSON array. Calls window[jsCallback](jsonArray) in JS. Native C++ serialization.",
+    "d": "Push DAO/ADO Recordset as JSON array. Calls window[jsCallback](jsonArray) in JS.",
     "p": "iliteview2ctrl.html",
     "s": "Data Bridge  -  VBA to JS"
   },
@@ -313,9 +313,93 @@
   },
   {
     "n": "JsonToArray",
-    "d": "Convert JSON array to VBA 2D array",
+    "d": "Validate and return JSON string. For 2D array output use JsonToRowArray.",
     "p": "iliteview2ctrl.html",
     "s": "JSON Helpers"
+  },
+  {
+    "n": "JsonCreateObject",
+    "d": "Create empty JSON object (returns \"{}\")",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonCreateArray",
+    "d": "Create empty JSON array (returns \"[]\")",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonSetValue",
+    "d": "Set or create a value at path. Auto-creates intermediate objects/arrays.",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonRemoveKey",
+    "d": "Remove a key or array element by path",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonExists",
+    "d": "Check if a path exists in JSON",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonAppend",
+    "d": "Append value to array at path. Auto-creates array if missing.",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonInsert",
+    "d": "Insert value at specific array position",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonMerge",
+    "d": "Merge two JSON objects (shallow or deep)",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonCount",
+    "d": "Count keys (object) or elements (array) at path",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonClear",
+    "d": "Empty a container at path ({} or [])",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonPrettyPrint",
+    "d": "Format JSON with 2-space indentation for debugging",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonFlatten",
+    "d": "Flatten nested JSON to dot-notation keys",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonUnflatten",
+    "d": "Unflatten dot-notation keys back to nested JSON",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonToRowArray",
+    "d": "Convert JSON array of objects to 2D VBA array (row 1 = headers, typed values)",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
   },
   {
     "n": "GetElementValueById",
@@ -1771,7 +1855,7 @@
   },
   {
     "n": "WebMessageReceived",
-    "d": "JS called window.chrome.webview.postMessage(). NEVER call JsonGetValue here.",
+    "d": "JS called window.chrome.webview.postMessage(). Parse with JsonGetValue.",
     "p": "events.html",
     "s": "Core Events"
   },

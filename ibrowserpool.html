@@ -233,12 +233,15 @@
 <pre><code><span class="kw">Dim</span> pool <span class="kw">As</span> <span class="typ">Object</span>
 <span class="kw">Set</span> pool = GetPool()
 
+<span class="cmt">' Create a browser and embed it in a Frame control</span>
+<span class="kw">Dim</span> idx <span class="kw">As</span> <span class="typ">Long</span>
+idx = pool.CreateInControl(<span class="str">"about:blank"</span>, Me.Frame1)
+
 <span class="cmt">' Map a local folder to the virtual hostname https://lv2.local/</span>
 pool.SetLocalContentRoot idx, CurrentProject.Path &amp; <span class="str">"\html"</span>
 
-<span class="cmt">' Create a browser and load a local HTML file</span>
-<span class="kw">Dim</span> idx <span class="kw">As</span> <span class="typ">Long</span>
-idx = pool.CreateInControl(<span class="str">"https://lv2.local/dashboard.html"</span>, Me.Frame1)</code></pre>
+<span class="cmt">' Navigate to a local HTML file</span>
+pool.Navigate idx, <span class="str">"https://lv2.local/dashboard.html"</span></code></pre>
             <div class="callout callout-note">
                 <span class="callout-title">What is lv2.local?</span>
                 <p><code>SetLocalContentRoot</code> maps a folder on disk to the virtual hostname <code>https://lv2.local/</code>. Files in that folder are then accessible via URLs like <code>https://lv2.local/dashboard.html</code>. This avoids <code>file://</code> URLs (which have security restrictions) and gives your local HTML files a proper HTTPS origin. See <a href="iliteview2ctrl.html#local-content">ILiteView2Ctrl &rsaquo; Local Content Mapping</a> for details.</p>
@@ -507,13 +510,24 @@ idx = pool.CreateInControl(<span class="str">"https://lv2.local/app.html"</span>
                     <tr><td class="member-name">Navigation</td><td>Navigate, GoBack, GoForward, etc.</td><td><a href="iliteview2ctrl.html#navigation">ILiteView2Ctrl &rsaquo; Navigation</a></td></tr>
                     <tr><td class="member-name">Script Execution</td><td>ExecuteScript, ExecuteScriptWithArgs, etc.</td><td><a href="iliteview2ctrl.html#script-execution">ILiteView2Ctrl &rsaquo; Script Execution</a></td></tr>
                     <tr><td class="member-name">Data Bridge</td><td>PostWebMessageAsJson, PushRecordset, etc.</td><td><a href="iliteview2ctrl.html#data-bridge">ILiteView2Ctrl &rsaquo; Data Bridge</a></td></tr>
-                    <tr><td class="member-name">JSON Helpers</td><td>BuildJson, JsonGetValue, etc.</td><td><a href="iliteview2ctrl.html#json-helpers">ILiteView2Ctrl &rsaquo; JSON Helpers</a></td></tr>
+                    <tr><td class="member-name">JSON Helpers</td><td>BuildJson, JsonGetValue, JsonIsValid, etc.</td><td><a href="iliteview2ctrl.html#json-helpers">ILiteView2Ctrl &rsaquo; JSON Helpers</a></td></tr>
+                    <tr><td class="member-name">JSON Mutation</td><td>JsonCreateObject, JsonSetValue, JsonMerge, JsonToRowArray, etc.</td><td><a href="iliteview2ctrl.html#json-mutation">ILiteView2Ctrl &rsaquo; JSON Mutation</a></td></tr>
                     <tr><td class="member-name">DOM Manipulation</td><td>GetElementValueById, SetInnerHtmlById, etc.</td><td><a href="iliteview2ctrl.html#dom-manipulation">ILiteView2Ctrl &rsaquo; DOM Manipulation</a></td></tr>
                     <tr><td class="member-name">Printing &amp; PDF</td><td>PrintToPdf, CaptureScreenshot, etc.</td><td><a href="iliteview2ctrl.html#printing-pdf">ILiteView2Ctrl &rsaquo; Printing &amp; PDF</a></td></tr>
                     <tr><td class="member-name">Settings</td><td>IsScriptEnabled, UserAgent, etc.</td><td><a href="iliteview2ctrl.html#settings">ILiteView2Ctrl &rsaquo; Settings</a></td></tr>
                     <tr><td class="member-name">Cookies &amp; Storage</td><td>GetCookies, SetCookie, etc.</td><td><a href="iliteview2ctrl.html#cookies-storage">ILiteView2Ctrl &rsaquo; Cookies &amp; Storage</a></td></tr>
                     <tr><td class="member-name">Stealth Mode</td><td>EnableStealthMode, SpoofWebGL, etc.</td><td><a href="iliteview2ctrl.html#stealth-mode">ILiteView2Ctrl &rsaquo; Stealth Mode</a></td></tr>
                     <tr><td class="member-name">Document Hosting</td><td>OpenDocument, OpenOfficeDocument, etc.</td><td><a href="iliteview2ctrl.html#document-hosting">ILiteView2Ctrl &rsaquo; Document Hosting</a></td></tr>
+                    <tr><td class="member-name">Find in Page</td><td>StartFind, FindNext, StopFind, etc.</td><td><a href="iliteview2ctrl.html#find-in-page">ILiteView2Ctrl &rsaquo; Find in Page</a></td></tr>
+                    <tr><td class="member-name">Lifecycle</td><td>TrySuspend, Resume, Dispose, etc.</td><td><a href="iliteview2ctrl.html#lifecycle">ILiteView2Ctrl &rsaquo; Lifecycle</a></td></tr>
+                    <tr><td class="member-name">CAPTCHA</td><td>DetectCaptcha, SolveCaptcha, etc.</td><td><a href="iliteview2ctrl.html#captcha">ILiteView2Ctrl &rsaquo; CAPTCHA</a></td></tr>
+                    <tr><td class="member-name">Downloads</td><td>AllowDownloads, PauseDownload, etc.</td><td><a href="iliteview2ctrl.html#downloads">ILiteView2Ctrl &rsaquo; Downloads</a></td></tr>
+                    <tr><td class="member-name">Web Resources</td><td>AddWebResourceRequestedFilter, etc.</td><td><a href="iliteview2ctrl.html#web-resources">ILiteView2Ctrl &rsaquo; Web Resources</a></td></tr>
+                    <tr><td class="member-name">Auth &amp; Proxy</td><td>SetBasicAuthCredentials, etc.</td><td><a href="iliteview2ctrl.html#auth-proxy">ILiteView2Ctrl &rsaquo; Auth &amp; Proxy</a></td></tr>
+                    <tr><td class="member-name">Host Objects</td><td>AddHostObjectToScript, etc.</td><td><a href="iliteview2ctrl.html#host-objects">ILiteView2Ctrl &rsaquo; Host Objects</a></td></tr>
+                    <tr><td class="member-name">DevTools</td><td>CallDevToolsProtocolMethod, etc.</td><td><a href="iliteview2ctrl.html#devtools">ILiteView2Ctrl &rsaquo; DevTools</a></td></tr>
+                    <tr><td class="member-name">Embedding</td><td>EmbedInHwnd, QuickInitInFrame, etc.</td><td><a href="iliteview2ctrl.html#embedding">ILiteView2Ctrl &rsaquo; Embedding</a></td></tr>
+                    <tr><td class="member-name">Licensing</td><td>ActivateLicense, LicenseState, etc.</td><td><a href="iliteview2ctrl.html#licensing">ILiteView2Ctrl &rsaquo; Licensing</a></td></tr>
                 </tbody>
             </table>
         </section>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ILiteView2Ctrl API Reference — LiteView2 WebView2 VBA Control</title>
-    <meta name="description" content="ILiteView2Ctrl reference: 245+ methods for navigation, DOM, JavaScript, printing, screenshots, and more. WebView2 OCX for Access, Excel, VB6. Browse the full API →">
+    <meta name="description" content="ILiteView2Ctrl reference: 270+ methods for navigation, DOM, JavaScript, printing, screenshots, and more. WebView2 OCX for Access, Excel, VB6. Browse the full API →">
     <link rel="canonical" href="https://imranosoft.github.io/LiteView2-Website/iliteview2ctrl.html">
     <link rel="alternate" hreflang="en" href="https://imranosoft.github.io/LiteView2-Website/iliteview2ctrl.html">
     <link rel="stylesheet" href="styles.css">
@@ -58,7 +58,7 @@
           "name": "What is ILiteView2Ctrl?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "ILiteView2Ctrl is the primary COM interface of the LiteView2 WebView2 ActiveX OCX control. It exposes 245+ methods for embedding a full Chromium browser inside Microsoft Access forms, Excel UserForms, VB6 forms, and any COM-capable host application — with no admin rights or COM registration required."
+            "text": "ILiteView2Ctrl is the primary COM interface of the LiteView2 WebView2 ActiveX OCX control. It exposes 270+ methods for embedding a full Chromium browser inside Microsoft Access forms, Excel UserForms, VB6 forms, and any COM-capable host application — with no admin rights or COM registration required."
           }
         },
         {
@@ -146,6 +146,7 @@
                 <a href="#data-bridge" class="nav-link">Data Bridge <span class="member-count">7</span></a>
                 <a href="#lv-facade" class="nav-link">window.lv Facade <span class="member-count">2</span></a>
                 <a href="#json-helpers" class="nav-link">JSON Helpers <span class="member-count">7</span></a>
+                <a href="#json-mutation" class="nav-link">JSON Mutation <span class="member-count">14</span></a>
             </div>
         </div>
         <!-- DOM & Forms -->
@@ -528,8 +529,8 @@ m_lv.RemoveScriptToExecuteOnDocumentCreated scriptId</code></pre>
                     <tbody>
                         <tr><td class="member-name">PostWebMessageAsJson</td><td class="param-type">webMessageAsJson <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Post JSON message to JS. JS receives via <code>window.chrome.webview.addEventListener('message', ...)</code></td></tr>
                         <tr><td class="member-name">PostWebMessageAsString</td><td class="param-type">webMessageAsString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Post string message to JS</td></tr>
-                        <tr><td class="member-name">PushRecordset</td><td class="param-type">recordset <span class="kw">As</span> <span class="typ">Object</span>, jsCallback <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Push DAO/ADO Recordset as JSON array. Calls <code>window[jsCallback](jsonArray)</code> in JS. Native C++ serialization.</td></tr>
-                        <tr><td class="member-name">BuildJson</td><td class="param-type">inputData <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Convert any VBA data (string, number, array) to JSON string. Works without WebView2.</td></tr>
+                        <tr><td class="member-name">PushRecordset</td><td class="param-type">recordset <span class="kw">As</span> <span class="typ">Object</span>, jsCallback <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Push DAO/ADO Recordset as JSON array. Calls <code>window[jsCallback](jsonArray)</code> in JS.</td></tr>
+                        <tr><td class="member-name">BuildJson</td><td class="param-type">inputData <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Convert VBA data to JSON string. See <a href="#json-helpers">JSON Helpers</a>.</td></tr>
                         <tr><td class="member-name">FireJsEvent</td><td class="param-type">eventName <span class="kw">As</span> <span class="typ">String</span>, jsonData <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Fire a CustomEvent in the page. JS listens with <code>addEventListener</code> or <code>window.lv.on()</code></td></tr>
                         <tr><td class="member-name">CallJsFunction</td><td class="param-type">funcPath <span class="kw">As</span> <span class="typ">String</span>, jsonArgs <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Call JS function by dot-path with JSON args</td></tr>
                         <tr><td class="member-name">SetJsVariable</td><td class="param-type">path <span class="kw">As</span> <span class="typ">String</span>, jsonValue <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set a JS variable</td></tr>
@@ -622,13 +623,40 @@ m_lv.Navigate <span class="str">"https://lv2.local/my_page.html"</span>
                         <tr><td class="member-name">JsonGetArrayItem</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span>, index <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">String</td><td>Get array item as JSON string</td></tr>
                         <tr><td class="member-name">JsonGetKeys</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Get all keys from object at path</td></tr>
                         <tr><td class="member-name">JsonIsValid</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Boolean</td><td>Validate JSON syntax</td></tr>
-                        <tr><td class="member-name">JsonToArray</td><td class="param-type">jsonArrayString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Variant (2D array)</td><td>Convert JSON array to VBA 2D array</td></tr>
+                        <tr><td class="member-name">JsonToArray</td><td class="param-type">jsonArrayString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Variant (String)</td><td>Validate and return JSON string. For 2D array output, use <code>JsonToRowArray</code> instead. Respects <code>JsonToArrayMaxSize</code> (default 50&nbsp;MB).</td></tr>
                     </tbody>
                 </table>
 
-                <div class="callout callout-danger">
-                    <span class="callout-title">Danger</span>
-                    <p><strong>NEVER</strong> call <code>JsonGetValue</code> inside the <code>WebMessageReceived</code> event handler &mdash; it executes async script internally and will deadlock WebView2.</p>
+                <div class="callout callout-tip">
+                    <span class="callout-title">Tip</span>
+                    <p>All JSON helper methods work without WebView2 &mdash; safe to call from any context, including inside event handlers such as <code>WebMessageReceived</code>.</p>
+                </div>
+
+                <h4>JsonGetValue &mdash; Return Type Mapping</h4>
+                <p><code>JsonGetValue</code> returns a typed <code>Variant</code> whose VBA type depends on the JSON value:</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>JSON Value</th><th>VBA Type</th><th>Example</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>String</td><td><code>String</code></td><td><code>"Jane"</code> &rarr; <code>"Jane"</code></td></tr>
+                        <tr><td>Integer</td><td><code>Long</code></td><td><code>42</code> &rarr; <code>42</code></td></tr>
+                        <tr><td>Decimal</td><td><code>Double</code></td><td><code>3.14</code> &rarr; <code>3.14</code></td></tr>
+                        <tr><td>Boolean</td><td><code>Boolean</code></td><td><code>true</code> &rarr; <code>True</code></td></tr>
+                        <tr><td>Null</td><td><code>Null</code></td><td><code>null</code> &rarr; <code>Null</code> (use <code>IsNull()</code> to check)</td></tr>
+                        <tr><td>Object / Array</td><td><code>String</code></td><td><code>{"a":1}</code> &rarr; raw JSON string</td></tr>
+                        <tr><td>Key not found</td><td><code>Null</code></td><td>(path absent) &rarr; <code>Null</code></td></tr>
+                    </tbody>
+                </table>
+
+                <div class="callout callout-warning">
+                    <span class="callout-title">IBrowserPool Difference</span>
+                    <p><code>JsonGetValue</code> behaves differently on each interface:</p>
+                    <ul>
+                        <li><strong>ILiteView2Ctrl</strong> (design-time OCX) &rarr; returns typed <code>Variant</code> (<code>Long</code>, <code>Double</code>, <code>Boolean</code>, <code>Null</code>, <code>String</code>)</li>
+                        <li><strong>IBrowserPool</strong> (reg-free) &rarr; always returns <code>String</code></li>
+                    </ul>
+                    <p>This affects type checking, <code>Null</code> handling, and numeric comparisons. When using IBrowserPool, use <code>CLng()</code> or <code>CDbl()</code> to convert numeric results.</p>
                 </div>
 
                 <h4>Per-Member Usage</h4>
@@ -657,10 +685,184 @@ keys = m_lv.JsonGetKeys(<span class="str">"{""name"":""Jane"",""age"":30}"</span
 <span class="cmt">' JsonIsValid — check if string is valid JSON</span>
 <span class="kw">If</span> m_lv.JsonIsValid(myJson) <span class="kw">Then</span> Debug.Print <span class="str">"Valid!"</span>
 
-<span class="cmt">' JsonToArray — convert JSON array to VBA 2D array</span>
+<span class="cmt">' JsonToArray — validate JSON and return as String</span>
+<span class="kw">Dim</span> validated <span class="kw">As</span> <span class="typ">Variant</span>
+validated = m_lv.JsonToArray(<span class="str">"[{""name"":""Alice""},{""name"":""Bob""}]"</span>)
+<span class="cmt">' Returns the validated JSON string (not a 2D array)</span>
+<span class="cmt">' For 2D array output, use JsonToRowArray instead</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section 8b: JSON Mutation -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="json-mutation" data-section-id="json-mutation">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">JSON Mutation</span>
+                <span class="section-count">14 methods</span>
+            </div>
+            <div class="section-body">
+                <div class="callout callout-note">
+                    <span class="callout-title">Fail-Safe Contract</span>
+                    <p>All JSON mutation functions follow a fail-safe contract:</p>
+                    <ul>
+                        <li>Never throw COM errors to the caller</li>
+                        <li>Return the <strong>original JSON string unchanged</strong> on any failure</li>
+                        <li>Error details are available via the <code>LastError</code> property</li>
+                        <li>All work without WebView2 &mdash; they can be called even before the browser is created</li>
+                    </ul>
+                </div>
+
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">JsonCreateObject</td><td class="param-type"></td><td class="param-type">String</td><td>Returns <code>"{}"</code></td></tr>
+                        <tr><td class="member-name">JsonCreateArray</td><td class="param-type"></td><td class="param-type">String</td><td>Returns <code>"[]"</code></td></tr>
+                        <tr><td class="member-name">JsonSetValue</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span>, value <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Set or create a value at path. Auto-creates intermediate objects/arrays.</td></tr>
+                        <tr><td class="member-name">JsonRemoveKey</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Remove a key or array element by path</td></tr>
+                        <tr><td class="member-name">JsonExists</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Boolean</td><td>Check if a path exists in JSON</td></tr>
+                        <tr><td class="member-name">JsonAppend</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span>, value <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Append value to array at path. Auto-creates array if missing.</td></tr>
+                        <tr><td class="member-name">JsonInsert</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span>, index <span class="kw">As</span> <span class="typ">Long</span>, value <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Insert value at specific array position</td></tr>
+                        <tr><td class="member-name">JsonMerge</td><td class="param-type">json1 <span class="kw">As</span> <span class="typ">String</span>, json2 <span class="kw">As</span> <span class="typ">String</span>, deepMerge <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type">String</td><td>Merge two JSON objects. <code>deepMerge=True</code> for recursive merge.</td></tr>
+                        <tr><td class="member-name">JsonCount</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Count keys (object) or elements (array) at path</td></tr>
+                        <tr><td class="member-name">JsonClear</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Empty a container at path (<code>{}</code> or <code>[]</code>)</td></tr>
+                        <tr><td class="member-name">JsonPrettyPrint</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Format JSON with 2-space indentation (max 5&nbsp;MB input)</td></tr>
+                        <tr><td class="member-name">JsonFlatten</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Flatten nested JSON to dot-notation keys</td></tr>
+                        <tr><td class="member-name">JsonUnflatten</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Unflatten dot-notation keys back to nested JSON</td></tr>
+                        <tr><td class="member-name">JsonToRowArray</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Variant (2D array)</td><td>Convert JSON array of objects to 2D VBA array (row&nbsp;1&nbsp;=&nbsp;headers, typed values). Respects <code>JsonToArrayMaxSize</code>.</td></tr>
+                    </tbody>
+                </table>
+
+                <!-- When to Use What -->
+                <div class="callout callout-tip">
+                    <span class="callout-title">When to Use What</span>
+                    <p><strong>Reading:</strong> <code>JsonGetValue</code>, <code>JsonGetArrayLength</code>, <code>JsonGetArrayItem</code>, <code>JsonGetKeys</code>, <code>JsonExists</code>, <code>JsonCount</code></p>
+                    <p><strong>Building:</strong> <code>JsonCreateObject</code> / <code>JsonCreateArray</code> &rarr; <code>JsonSetValue</code>, <code>JsonAppend</code>, <code>JsonInsert</code></p>
+                    <p><strong>Modifying:</strong> <code>JsonRemoveKey</code>, <code>JsonClear</code>, <code>JsonMerge</code></p>
+                    <p><strong>Converting:</strong> <code>BuildJson</code> (VBA&rarr;JSON), <code>JsonToRowArray</code> (JSON&rarr;2D array), <code>JsonFlatten</code> / <code>JsonUnflatten</code></p>
+                    <p><strong>Debugging:</strong> <code>JsonPrettyPrint</code>, <code>JsonIsValid</code></p>
+                </div>
+
+                <h4>Per-Member Usage</h4>
+<pre><code><span class="cmt">' ── Create ──</span>
+<span class="cmt">' JsonCreateObject / JsonCreateArray — starting points</span>
+<span class="kw">Dim</span> json <span class="kw">As</span> <span class="typ">String</span>
+json = m_lv.JsonCreateObject()                     <span class="cmt">' "{}"</span>
+
+<span class="cmt">' ── Set Values ──</span>
+<span class="cmt">' JsonSetValue — set or create value at any path</span>
+json = m_lv.JsonSetValue(json, <span class="str">"name"</span>, <span class="str">"Imran"</span>)
+json = m_lv.JsonSetValue(json, <span class="str">"address.city"</span>, <span class="str">"London"</span>)
+<span class="cmt">' {"name":"Imran","address":{"city":"London"}}</span>
+
+<span class="cmt">' Overwrite existing value</span>
+json = m_lv.JsonSetValue(json, <span class="str">"name"</span>, <span class="str">"Ali"</span>)
+
+<span class="cmt">' Auto-create array with null padding</span>
+json = m_lv.JsonSetValue(json, <span class="str">"scores[2]"</span>, <span class="num">95</span>)
+<span class="cmt">' scores = [null, null, 95]</span>
+
+<span class="cmt">' ── Remove ──</span>
+<span class="cmt">' JsonRemoveKey — remove key or array element</span>
+json = <span class="str">"{""name"":""Imran"",""age"":30,""temp"":true}"</span>
+json = m_lv.JsonRemoveKey(json, <span class="str">"temp"</span>)
+<span class="cmt">' {"name":"Imran","age":30}</span>
+
+<span class="cmt">' Remove array element (remaining elements shift)</span>
+json = <span class="str">"{""items"":[10,20,30]}"</span>
+json = m_lv.JsonRemoveKey(json, <span class="str">"items[1]"</span>)
+<span class="cmt">' {"items":[10,30]}</span>
+
+<span class="cmt">' ── Exists ──</span>
+<span class="cmt">' JsonExists — check if path exists</span>
+json = <span class="str">"{""user"":{""name"":""Imran""}}"</span>
+<span class="kw">If</span> m_lv.JsonExists(json, <span class="str">"user.name"</span>) <span class="kw">Then</span> Debug.Print <span class="str">"Found"</span>
+<span class="kw">If Not</span> m_lv.JsonExists(json, <span class="str">"user.email"</span>) <span class="kw">Then</span>
+    json = m_lv.JsonSetValue(json, <span class="str">"user.email"</span>, <span class="str">"imran@example.com"</span>)
+<span class="kw">End If</span>
+
+<span class="cmt">' ── Append / Insert ──</span>
+<span class="cmt">' JsonAppend — push to end of array (auto-creates if missing)</span>
+json = <span class="str">"{""tags"":[]}"</span>
+json = m_lv.JsonAppend(json, <span class="str">"tags"</span>, <span class="str">"vba"</span>)
+json = m_lv.JsonAppend(json, <span class="str">"tags"</span>, <span class="str">"com"</span>)
+<span class="cmt">' {"tags":["vba","com"]}</span>
+
+<span class="cmt">' JsonInsert — insert at specific position</span>
+json = <span class="str">"[""a"",""c"",""d""]"</span>
+json = m_lv.JsonInsert(json, <span class="str">""</span>, <span class="num">1</span>, <span class="str">"b"</span>)
+<span class="cmt">' ["a","b","c","d"]</span>
+
+<span class="cmt">' ── Merge ──</span>
+<span class="cmt">' JsonMerge — combine two objects</span>
+<span class="kw">Dim</span> base <span class="kw">As</span> <span class="typ">String</span>, overlay <span class="kw">As</span> <span class="typ">String</span>
+base = <span class="str">"{""name"":""Imran"",""settings"":{""theme"":""dark"",""lang"":""en""}}"</span>
+overlay = <span class="str">"{""age"":30,""settings"":{""theme"":""light""}}"</span>
+
+<span class="cmt">' Shallow — settings completely replaced</span>
+json = m_lv.JsonMerge(base, overlay, <span class="kw">False</span>)
+
+<span class="cmt">' Deep — settings.theme updated, settings.lang preserved</span>
+json = m_lv.JsonMerge(base, overlay, <span class="kw">True</span>)
+
+<span class="cmt">' ── Count / Clear ──</span>
+<span class="cmt">' JsonCount — count keys (object) or elements (array)</span>
+<span class="kw">Dim</span> n <span class="kw">As</span> <span class="typ">Long</span>
+n = m_lv.JsonCount(<span class="str">"{""a"":1,""b"":2,""c"":3}"</span>, <span class="str">""</span>)  <span class="cmt">' 3</span>
+n = m_lv.JsonCount(<span class="str">"{""items"":[10,20,30]}"</span>, <span class="str">"items"</span>)  <span class="cmt">' 3</span>
+
+<span class="cmt">' JsonClear — empty a container</span>
+json = <span class="str">"{""cache"":{""a"":1},""tags"":[""x""]}"</span>
+json = m_lv.JsonClear(json, <span class="str">"cache"</span>)   <span class="cmt">' cache becomes {}</span>
+json = m_lv.JsonClear(json, <span class="str">"tags"</span>)    <span class="cmt">' tags becomes []</span>
+
+<span class="cmt">' ── Pretty Print ──</span>
+<span class="cmt">' JsonPrettyPrint — format for debugging (max 5 MB)</span>
+Debug.Print m_lv.JsonPrettyPrint(<span class="str">"{""name"":""Imran"",""scores"":[95,88]}"</span>)
+
+<span class="cmt">' ── Flatten / Unflatten ──</span>
+<span class="cmt">' JsonFlatten — nested to dot-notation</span>
+<span class="kw">Dim</span> flat <span class="kw">As</span> <span class="typ">String</span>
+flat = m_lv.JsonFlatten(<span class="str">"{""user"":{""name"":""Imran"",""address"":{""city"":""London""}}}"</span>)
+<span class="cmt">' {"user.name":"Imran","user.address.city":"London"}</span>
+
+<span class="cmt">' JsonUnflatten — dot-notation back to nested</span>
+<span class="kw">Dim</span> nested <span class="kw">As</span> <span class="typ">String</span>
+nested = m_lv.JsonUnflatten(flat)
+<span class="cmt">' {"user":{"name":"Imran","address":{"city":"London"}}}</span>
+
+<span class="cmt">' ── JsonToRowArray — JSON array → 2D VBA array ──</span>
+<span class="cmt">' Row 1 = headers, Rows 2+ = typed data, 1-based indexing</span>
+json = <span class="str">"[{""name"":""Imran"",""age"":30},{""name"":""Ali"",""age"":25,""city"":""London""}]"</span>
 <span class="kw">Dim</span> arr <span class="kw">As</span> <span class="typ">Variant</span>
-arr = m_lv.JsonToArray(<span class="str">"[{""name"":""Alice"",""age"":25},{""name"":""Bob"",""age"":30}]"</span>)
-<span class="cmt">' arr(0,0)="Alice", arr(0,1)=25, arr(1,0)="Bob", arr(1,1)=30</span></code></pre>
+arr = m_lv.JsonToRowArray(json)
+<span class="cmt">' arr(1,1)="name"  arr(1,2)="age"  arr(1,3)="city"    ← headers</span>
+<span class="cmt">' arr(2,1)="Imran" arr(2,2)=30     arr(2,3)=Null       ← row 1</span>
+<span class="cmt">' arr(3,1)="Ali"   arr(3,2)=25     arr(3,3)="London"   ← row 2</span>
+
+<span class="cmt">' Paste into Excel range</span>
+<span class="cmt">' ws.Range("A1").Resize(UBound(arr,1), UBound(arr,2)).Value = arr</span></code></pre>
+
+                <!-- JsonToRowArray type mapping -->
+                <h4>JsonToRowArray &mdash; Type Mapping</h4>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>JSON Type</th><th>VBA Type</th><th>Example</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>String</td><td><code>String</code></td><td><code>"hello"</code> &rarr; <code>"hello"</code></td></tr>
+                        <tr><td>Integer</td><td><code>Long</code></td><td><code>42</code> &rarr; <code>42</code></td></tr>
+                        <tr><td>Decimal</td><td><code>Double</code></td><td><code>3.14</code> &rarr; <code>3.14</code></td></tr>
+                        <tr><td>Boolean</td><td><code>Boolean</code></td><td><code>true</code> &rarr; <code>True</code></td></tr>
+                        <tr><td>Null</td><td><code>Null</code></td><td><code>null</code> &rarr; <code>Null</code></td></tr>
+                        <tr><td>Object / Array</td><td><code>String</code> (raw JSON)</td><td><code>{"a":1}</code> &rarr; <code>"{""a"":1}"</code></td></tr>
+                        <tr><td>Missing key</td><td><code>Null</code></td><td>(key absent) &rarr; <code>Null</code></td></tr>
+                    </tbody>
+                </table>
+                <p><strong>Limits:</strong> Max 100,000 rows, 1,000 columns. Input size limited by <code>JsonToArrayMaxSize</code> (default 50&nbsp;MB).</p>
             </div>
         </div>
 
@@ -1086,7 +1288,7 @@ m_lv.SmartResize = <span class="kw">True</span></code></pre>
                         <tr><td class="member-name">RequiredMinimumVersion</td><td class="param-type">String</td><td><span class="badge badge-rw">R/W</span></td><td>Min runtime version</td></tr>
                         <tr><td class="member-name">AutoRecoverOnCrash</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>Auto-recreate on crash</td></tr>
                         <tr><td class="member-name">EventsUseHexadecimal</td><td class="param-type">Boolean</td><td><span class="badge badge-rw">R/W</span></td><td>VB6 Int64 workaround</td></tr>
-                        <tr><td class="member-name">JsonToArrayMaxSize</td><td class="param-type">Long</td><td><span class="badge badge-rw">R/W</span></td><td>Max JSON size (default 50MB)</td></tr>
+                        <tr><td class="member-name">JsonToArrayMaxSize</td><td class="param-type">Long</td><td><span class="badge badge-rw">R/W</span></td><td>Max JSON size for <code>JsonToArray</code> and <code>JsonToRowArray</code> (default 50&nbsp;MB). Unlike other pre-init properties, this can be changed at any time.</td></tr>
                     </tbody>
                 </table>
 

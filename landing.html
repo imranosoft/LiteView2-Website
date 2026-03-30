@@ -35,7 +35,7 @@
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "name": "LiteView2 API Reference — WebView2 VBA OCX Object Model",
-      "description": "Complete API object model reference for LiteView2 — the WebView2 ActiveX OCX for VBA developers. Covers ILiteView2Ctrl (245+ methods), IBrowserPool (reg-free multi-browser), events, and enumerations.",
+      "description": "Complete API object model reference for LiteView2 — the WebView2 ActiveX OCX for VBA developers. Covers ILiteView2Ctrl (270+ methods), IBrowserPool (reg-free multi-browser), events, and enumerations.",
       "url": "https://imranosoft.github.io/LiteView2-Website/landing.html",
       "author": { "@type": "Person", "name": "Muhammad Imran" },
       "publisher": { "@type": "Person", "name": "Muhammad Imran" },
@@ -183,8 +183,8 @@
             <a href="iliteview2ctrl.html" class="card">
                 <span class="card-icon">I</span>
                 <span class="card-title">ILiteView2Ctrl</span>
-                <span class="card-desc">245+ methods and properties across 32 categories</span>
-                <span class="card-count">245+ Members</span>
+                <span class="card-desc">270+ methods and properties across 32 categories</span>
+                <span class="card-count">270+ Members</span>
             </a>
             <a href="events.html" class="card">
                 <span class="card-icon">E</span>
@@ -203,9 +203,9 @@
         <!-- Key Rules -->
         <h2>Important VBA Integration Rules</h2>
 
-        <div class="callout callout-danger">
-            <span class="callout-title">Danger</span>
-            <p><strong>NEVER</strong> call <code>JsonGetValue</code> inside <code>WebMessageReceived</code> &mdash; causes WebView2 deadlock. Use <code>InStr()</code> for all action parsing.</p>
+        <div class="callout callout-tip">
+            <span class="callout-title">Tip</span>
+            <p>All JSON methods work without WebView2 &mdash; safe to call from any event handler, including <code>WebMessageReceived</code>.</p>
         </div>
 
         <div class="callout callout-warning">

@@ -63,10 +63,10 @@
         },
         {
           "@type": "Question",
-          "name": "Why does my VBA app freeze when I call JsonGetValue inside WebMessageReceived?",
+          "name": "Can I call JsonGetValue inside the WebMessageReceived event handler?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "JsonGetValue executes async JavaScript internally. Calling it inside the WebMessageReceived event creates a deadlock because WebView2 is already blocked waiting for the event handler to return. Use InStr() to parse simple action strings inside the event handler, then store the full message in a module-level variable and process it after the event returns."
+            "text": "Yes. JsonGetValue and all other JSON helper and mutation methods work without WebView2. They are safe to call from any context, including inside WebMessageReceived and other event handlers. You can parse the received JSON message directly: Dim action As Variant: action = m_lv.JsonGetValue(message, \"action\")."
           }
         }
       ]
@@ -302,9 +302,9 @@
             <p>In VBA, name handler subs as <code>LiteView2Ctrl1_EventName</code> (matching the control's Name property). Events use the design-time OCX naming convention, not <code>WithEvents</code>.</p>
         </div>
 
-        <div class="callout callout-danger">
-            <span class="callout-title">Danger</span>
-            <p><strong>NEVER</strong> call <code>JsonGetValue</code> inside <code>WebMessageReceived</code> &mdash; this executes async script internally and deadlocks WebView2. Use <code>InStr()</code> for all action parsing.</p>
+        <div class="callout callout-tip">
+            <span class="callout-title">Tip</span>
+            <p>All JSON methods (<code>JsonGetValue</code>, <code>JsonSetValue</code>, <code>JsonExists</code>, etc.) work without WebView2 and are safe to call from any event handler, including <code>WebMessageReceived</code>.</p>
         </div>
 
         <div class="callout callout-tip">
@@ -347,7 +347,7 @@
                         <tr id="WebMessageReceived" data-section-id="WebMessageReceived">
                             <td class="member-name">WebMessageReceived</td>
                             <td class="param-type">message <span class="kw">As</span> <span class="typ">String</span>, source <span class="kw">As</span> <span class="typ">String</span></td>
-                            <td class="desc">JS called <code>window.chrome.webview.postMessage()</code>. <strong>NEVER</strong> call <code>JsonGetValue</code> here.</td>
+                            <td class="desc">JS called <code>window.chrome.webview.postMessage()</code>. Use <code>JsonGetValue</code> to parse the message.</td>
                         </tr>
                         <tr id="DocumentTitleChanged" data-section-id="DocumentTitleChanged">
                             <td class="member-name">DocumentTitleChanged</td>
@@ -384,9 +384,13 @@
     <span class="kw">If Not</span> success <span class="kw">Then</span> lblStatus.Caption = <span class="str">"Failed: "</span> &amp; m_lv.LastError
 <span class="kw">End Sub</span>
 
-<span class="cmt">' WebMessageReceived — JS called postMessage(). NEVER use JsonGetValue here!</span>
+<span class="cmt">' WebMessageReceived — JS called postMessage(). Parse with JsonGetValue.</span>
 <span class="kw">Private Sub</span> LiteView2Ctrl1_WebMessageReceived(<span class="kw">ByVal</span> message <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> source <span class="kw">As</span> <span class="typ">String</span>)
-    <span class="kw">If</span> InStr(message, <span class="str">"""action"":""ready"""</span>) &gt; <span class="num">0</span> <span class="kw">Then</span> m_pageReady = <span class="kw">True</span>
+    <span class="kw">Dim</span> action <span class="kw">As</span> <span class="typ">Variant</span>
+    action = m_lv.JsonGetValue(message, <span class="str">"action"</span>)
+    <span class="kw">If Not</span> IsNull(action) <span class="kw">Then</span>
+        <span class="kw">If</span> action = <span class="str">"ready"</span> <span class="kw">Then</span> m_pageReady = <span class="kw">True</span>
+    <span class="kw">End If</span>
 <span class="kw">End Sub</span>
 
 <span class="cmt">' DocumentTitleChanged — page &lt;title&gt; changed</span>
@@ -404,11 +408,14 @@
     <span class="kw">If Not</span> success <span class="kw">Then</span> MsgBox <span class="str">"WebView2 creation failed: 0x"</span> &amp; Hex(hResult)
 <span class="kw">End Sub</span></code></pre>
 
-                <h4>WebMessageReceived Antipattern</h4>
-<pre class="antipattern"><code><span class="cmt">' DEADLOCK: JsonGetValue executes async script internally</span>
+                <h4>WebMessageReceived &mdash; JSON Parsing</h4>
+<pre><code><span class="cmt">' Safe: JsonGetValue works without WebView2 — no deadlock risk</span>
 <span class="kw">Private Sub</span> LiteView2Ctrl1_WebMessageReceived(<span class="kw">ByVal</span> message <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> source <span class="kw">As</span> <span class="typ">String</span>)
-    <span class="kw">Dim</span> action <span class="kw">As</span> <span class="typ">String</span>
-    action = m_lv.JsonGetValue(message, <span class="str">"action"</span>)  <span class="cmt">' &lt;-- DEADLOCK!</span>
+    <span class="kw">Dim</span> action <span class="kw">As</span> <span class="typ">Variant</span>
+    action = m_lv.JsonGetValue(message, <span class="str">"action"</span>)
+    <span class="kw">If Not</span> IsNull(action) <span class="kw">Then</span>
+        Debug.Print <span class="str">"Action: "</span> &amp; action
+    <span class="kw">End If</span>
 <span class="kw">End Sub</span></code></pre>
             </div>
         </div>
