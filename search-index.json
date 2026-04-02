@@ -402,6 +402,18 @@
     "s": "JSON Mutation"
   },
   {
+    "n": "WaitForElement",
+    "d": "Wait for element matching CSS selector to appear in DOM (polls every 50ms, UI stays responsive)",
+    "p": "iliteview2ctrl.html",
+    "s": "Automation API"
+  },
+  {
+    "n": "GetTextBySelector",
+    "d": "Get text content of first element matching CSS selector",
+    "p": "iliteview2ctrl.html",
+    "s": "Automation API"
+  },
+  {
     "n": "GetElementValueById",
     "d": "Get element value by ID",
     "p": "iliteview2ctrl.html",
@@ -2650,5 +2662,287 @@
     "d": "Zoom Out button",
     "p": "enums.html",
     "s": "LV2_PDF_TOOLBAR_ITEMS"
+  },
+  {
+    "n": "GetValue",
+    "d": "Parse JSON and return typed value at path — Tier 1 stateless",
+    "p": "ilv2json.html",
+    "s": "Read — Stateless"
+  },
+  {
+    "n": "GetItem",
+    "d": "Return serialised JSON of array element at path[index]",
+    "p": "ilv2json.html",
+    "s": "Read — Stateless"
+  },
+  {
+    "n": "GetKeys",
+    "d": "Return comma-separated object keys at path",
+    "p": "ilv2json.html",
+    "s": "Read — Stateless"
+  },
+  {
+    "n": "Count",
+    "d": "Return element or member count at path",
+    "p": "ilv2json.html",
+    "s": "Read — Stateless"
+  },
+  {
+    "n": "Exists",
+    "d": "Return True if path exists (even if value is null)",
+    "p": "ilv2json.html",
+    "s": "Read — Stateless"
+  },
+  {
+    "n": "IsValid",
+    "d": "Return True if JSON string is syntactically valid — no error on invalid input",
+    "p": "ilv2json.html",
+    "s": "Read — Stateless"
+  },
+  {
+    "n": "CreateObject",
+    "d": "Return empty JSON object: {}",
+    "p": "ilv2json.html",
+    "s": "Write — Stateless"
+  },
+  {
+    "n": "CreateArray",
+    "d": "Return empty JSON array: []",
+    "p": "ilv2json.html",
+    "s": "Write — Stateless"
+  },
+  {
+    "n": "SetValue",
+    "d": "Set or add value at path — intermediate objects created automatically",
+    "p": "ilv2json.html",
+    "s": "Write — Stateless"
+  },
+  {
+    "n": "Remove",
+    "d": "Remove key or array element at path",
+    "p": "ilv2json.html",
+    "s": "Write — Stateless"
+  },
+  {
+    "n": "Append",
+    "d": "Append value to array at path",
+    "p": "ilv2json.html",
+    "s": "Write — Stateless"
+  },
+  {
+    "n": "Insert",
+    "d": "Insert value into array at path before position index (0-based)",
+    "p": "ilv2json.html",
+    "s": "Write — Stateless"
+  },
+  {
+    "n": "Clear",
+    "d": "Clear all elements from array or object at path",
+    "p": "ilv2json.html",
+    "s": "Write — Stateless"
+  },
+  {
+    "n": "Merge",
+    "d": "Merge json2 into json1 — shallow or deep recursive merge",
+    "p": "ilv2json.html",
+    "s": "Write — Stateless"
+  },
+  {
+    "n": "PrettyPrint",
+    "d": "Return human-readable indented JSON string",
+    "p": "ilv2json.html",
+    "s": "Transform — Stateless"
+  },
+  {
+    "n": "Flatten",
+    "d": "Flatten nested object to dot-path keys: {\"a\":{\"b\":1}} → {\"a.b\":1}",
+    "p": "ilv2json.html",
+    "s": "Transform — Stateless"
+  },
+  {
+    "n": "Unflatten",
+    "d": "Expand dot-path keys back into nested objects — reverse of Flatten",
+    "p": "ilv2json.html",
+    "s": "Transform — Stateless"
+  },
+  {
+    "n": "ToArray",
+    "d": "Convert JSON array to 1D VBA Variant array of serialised elements",
+    "p": "ilv2json.html",
+    "s": "Transform — Stateless"
+  },
+  {
+    "n": "ToRowArray",
+    "d": "Convert JSON array-of-objects to 2D Variant grid with headers in row 0",
+    "p": "ilv2json.html",
+    "s": "Transform — Stateless"
+  },
+  {
+    "n": "BuildJson",
+    "d": "Convert VBA value or array to JSON string",
+    "p": "ilv2json.html",
+    "s": "Transform — Stateless"
+  },
+  {
+    "n": "Parse",
+    "d": "Parse JSON into DOM handle for repeated queries — Tier 2",
+    "p": "ilv2json.html",
+    "s": "JSON Handles"
+  },
+  {
+    "n": "Release",
+    "d": "Free DOM handle — safe to call multiple times",
+    "p": "ilv2json.html",
+    "s": "JSON Handles"
+  },
+  {
+    "n": "ReleaseAll",
+    "d": "Free all JSON handles and release all DOM memory",
+    "p": "ilv2json.html",
+    "s": "JSON Handles"
+  },
+  {
+    "n": "GetValueH",
+    "d": "Query pre-parsed DOM for typed value at path",
+    "p": "ilv2json.html",
+    "s": "JSON Handles"
+  },
+  {
+    "n": "GetItemH",
+    "d": "Return serialised JSON of array element at path[index] from DOM",
+    "p": "ilv2json.html",
+    "s": "JSON Handles"
+  },
+  {
+    "n": "GetKeysH",
+    "d": "Return comma-separated object keys at path from DOM",
+    "p": "ilv2json.html",
+    "s": "JSON Handles"
+  },
+  {
+    "n": "CountH",
+    "d": "Return element or member count at path from DOM",
+    "p": "ilv2json.html",
+    "s": "JSON Handles"
+  },
+  {
+    "n": "ExistsH",
+    "d": "Return True if path exists in DOM",
+    "p": "ilv2json.html",
+    "s": "JSON Handles"
+  },
+  {
+    "n": "CompilePath",
+    "d": "Pre-parse path into handle for zero-allocation queries — Tier 3",
+    "p": "ilv2json.html",
+    "s": "Compiled Paths"
+  },
+  {
+    "n": "ReleasePath",
+    "d": "Free compiled path handle — safe to call multiple times",
+    "p": "ilv2json.html",
+    "s": "Compiled Paths"
+  },
+  {
+    "n": "GetValueHP",
+    "d": "Query DOM with compiled path — zero parsing, zero allocation",
+    "p": "ilv2json.html",
+    "s": "Compiled Paths"
+  },
+  {
+    "n": "GetItemHP",
+    "d": "Return array element at compiled path, position index",
+    "p": "ilv2json.html",
+    "s": "Compiled Paths"
+  },
+  {
+    "n": "CountHP",
+    "d": "Return element or member count at compiled path",
+    "p": "ilv2json.html",
+    "s": "Compiled Paths"
+  },
+  {
+    "n": "ExistsHP",
+    "d": "Return True if compiled path exists in DOM",
+    "p": "ilv2json.html",
+    "s": "Compiled Paths"
+  },
+  {
+    "n": "GetValues",
+    "d": "Bulk stateless query — parse once, return array of values for multiple paths",
+    "p": "ilv2json.html",
+    "s": "Bulk Operations"
+  },
+  {
+    "n": "GetValuesH",
+    "d": "Bulk DOM query — query pre-parsed DOM for multiple paths in one call",
+    "p": "ilv2json.html",
+    "s": "Bulk Operations"
+  },
+  {
+    "n": "GetValuesHP",
+    "d": "Bulk compiled-path query — zero allocation per result",
+    "p": "ilv2json.html",
+    "s": "Bulk Operations"
+  },
+  {
+    "n": "MaxSize",
+    "d": "Max JSON byte limit for Parse/ToArray/ToRowArray and DOM memory (default 50MB)",
+    "p": "ilv2json.html",
+    "s": "Properties"
+  },
+  {
+    "n": "JsonUnwrapString",
+    "d": "Unwrap double-encoded JSON string literal from ExecuteScriptWithResult",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonCompact",
+    "d": "Remove null entries from a JSON array at path",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "UnwrapString",
+    "d": "Unwrap double-encoded JSON string literal and unescape all sequences",
+    "p": "ilv2json.html",
+    "s": "Transform"
+  },
+  {
+    "n": "Compact",
+    "d": "Remove null entries from a JSON array at path",
+    "p": "ilv2json.html",
+    "s": "Transform"
+  },
+  {
+    "n": "CallJsFunction (IBrowserPool)",
+    "d": "Call a JavaScript function by dot-path with JSON-encoded arguments",
+    "p": "ibrowserpool.html",
+    "s": "Data Bridge"
+  },
+  {
+    "n": "SetJsVariable (IBrowserPool)",
+    "d": "Set a JavaScript variable to a JSON-encoded value without re-encoding",
+    "p": "ibrowserpool.html",
+    "s": "Data Bridge"
+  },
+  {
+    "n": "JsonSetValue (IBrowserPool)",
+    "d": "Set a value in JSON by path — consistent-name alias for JsonSetValue2",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonRemoveKey (IBrowserPool)",
+    "d": "Remove a key or array element by path — consistent-name alias for JsonRemoveKey2",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
+  },
+  {
+    "n": "JsonToRowArray (IBrowserPool)",
+    "d": "Convert JSON array of objects to 2D SAFEARRAY — consistent-name alias for JsonToRowArray2",
+    "p": "iliteview2ctrl.html",
+    "s": "JSON Mutation"
   }
 ]

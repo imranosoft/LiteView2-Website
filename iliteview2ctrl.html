@@ -96,6 +96,7 @@
         <a href="iliteview2ctrl.html" class="active">ILiteView2Ctrl</a>
         <a href="events.html">Events</a>
         <a href="ibrowserpool.html">IBrowserPool</a>
+        <a href="ilv2json.html">ILV2Json</a>
     </nav>
     <div class="header-actions">
         <div class="global-search">
@@ -123,6 +124,7 @@
         <a href="iliteview2ctrl.html" class="page-link current"><span class="icon">&#73;</span> ILiteView2Ctrl</a>
         <a href="events.html" class="page-link"><span class="icon">&#9889;</span> Events</a>
         <a href="ibrowserpool.html" class="page-link"><span class="icon">&#66;</span> IBrowserPool</a>
+        <a href="ilv2json.html" class="page-link"><span class="icon">&#74;</span> ILV2Json</a>
     </nav>
     <div class="sidebar-search">
         <input type="search" placeholder="Search members...">
@@ -194,6 +196,7 @@
                 <a href="#lifecycle" class="nav-link">Lifecycle <span class="member-count">11</span></a>
                 <a href="#stealth-mode" class="nav-link">Privacy <span class="member-count">9</span></a>
                 <a href="#captcha" class="nav-link">CAPTCHA <span class="member-count">6</span></a>
+                <a href="#automation-api" class="nav-link">Automation API <span class="member-count">3</span></a>
             </div>
         </div>
         <!-- Embedding & Docs -->
@@ -700,7 +703,7 @@ validated = m_lv.JsonToArray(<span class="str">"[{""name"":""Alice""},{""name"":
             <div class="section-header">
                 <span class="expand-icon">&#9654;</span>
                 <span class="section-title">JSON Mutation</span>
-                <span class="section-count">14 methods</span>
+                <span class="section-count">16 methods</span>
             </div>
             <div class="section-body">
                 <div class="callout callout-note">
@@ -712,6 +715,11 @@ validated = m_lv.JsonToArray(<span class="str">"[{""name"":""Alice""},{""name"":
                         <li>Error details are available via the <code>LastError</code> property</li>
                         <li>All work without WebView2 &mdash; they can be called even before the browser is created</li>
                     </ul>
+                </div>
+
+                <div class="callout callout-tip">
+                    <span class="callout-title">IBrowserPool Naming</span>
+                    <p>On <code>IBrowserPool</code>, three methods have historical <code>2</code>-suffix aliases: <code>JsonSetValue2</code>, <code>JsonRemoveKey2</code>, <code>JsonToRowArray2</code>. Both names work &mdash; the non-suffix versions (<code>JsonSetValue</code>, <code>JsonRemoveKey</code>, <code>JsonToRowArray</code>) are preferred and match the names shown here.</p>
                 </div>
 
                 <table class="api-table">
@@ -733,6 +741,8 @@ validated = m_lv.JsonToArray(<span class="str">"[{""name"":""Alice""},{""name"":
                         <tr><td class="member-name">JsonFlatten</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Flatten nested JSON to dot-notation keys</td></tr>
                         <tr><td class="member-name">JsonUnflatten</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Unflatten dot-notation keys back to nested JSON</td></tr>
                         <tr><td class="member-name">JsonToRowArray</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Variant (2D array)</td><td>Convert JSON array of objects to 2D VBA array (row&nbsp;1&nbsp;=&nbsp;headers, typed values). Respects <code>JsonToArrayMaxSize</code>.</td></tr>
+                        <tr><td class="member-name">JsonUnwrapString</td><td class="param-type">jsonValue <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>If <em>jsonValue</em> is a JSON string literal (double-encoded by <code>ExecuteScriptWithResult</code>), unwrap one layer and unescape all sequences. Otherwise return unchanged.</td></tr>
+                        <tr><td class="member-name">JsonCompact</td><td class="param-type">jsonString <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Remove <code>null</code> entries from a JSON array at <em>path</em>. Pass empty string for root array.</td></tr>
                     </tbody>
                 </table>
 
@@ -742,7 +752,8 @@ validated = m_lv.JsonToArray(<span class="str">"[{""name"":""Alice""},{""name"":
                     <p><strong>Reading:</strong> <code>JsonGetValue</code>, <code>JsonGetArrayLength</code>, <code>JsonGetArrayItem</code>, <code>JsonGetKeys</code>, <code>JsonExists</code>, <code>JsonCount</code></p>
                     <p><strong>Building:</strong> <code>JsonCreateObject</code> / <code>JsonCreateArray</code> &rarr; <code>JsonSetValue</code>, <code>JsonAppend</code>, <code>JsonInsert</code></p>
                     <p><strong>Modifying:</strong> <code>JsonRemoveKey</code>, <code>JsonClear</code>, <code>JsonMerge</code></p>
-                    <p><strong>Converting:</strong> <code>BuildJson</code> (VBA&rarr;JSON), <code>JsonToRowArray</code> (JSON&rarr;2D array), <code>JsonFlatten</code> / <code>JsonUnflatten</code></p>
+                    <p><strong>Converting:</strong> <code>BuildJson</code> (VBA&rarr;JSON), <code>JsonToRowArray</code> (JSON&rarr;2D array), <code>JsonFlatten</code> / <code>JsonUnflatten</code>, <code>JsonUnwrapString</code> (unwrap double-encoded strings)</p>
+                    <p><strong>Cleaning:</strong> <code>JsonCompact</code> (remove nulls from arrays)</p>
                     <p><strong>Debugging:</strong> <code>JsonPrettyPrint</code>, <code>JsonIsValid</code></p>
                 </div>
 
@@ -844,7 +855,30 @@ arr = m_lv.JsonToRowArray(json)
 <span class="cmt">' arr(3,1)="Ali"   arr(3,2)=25     arr(3,3)="London"   ← row 2</span>
 
 <span class="cmt">' Paste into Excel range</span>
-<span class="cmt">' ws.Range("A1").Resize(UBound(arr,1), UBound(arr,2)).Value = arr</span></code></pre>
+<span class="cmt">' ws.Range("A1").Resize(UBound(arr,1), UBound(arr,2)).Value = arr</span>
+
+<span class="cmt">' ── Unwrap ──</span>
+<span class="cmt">' JsonUnwrapString — fix double-encoded string from ExecuteScriptWithResult</span>
+<span class="kw">Dim</span> raw <span class="kw">As</span> <span class="typ">String</span>, ok <span class="kw">As</span> <span class="typ">Boolean</span>, errMsg <span class="kw">As</span> <span class="typ">String</span>
+m_lv.ExecuteScriptWithResult <span class="str">"document.body.dataset.config"</span>, raw, ok, errMsg
+<span class="cmt">' raw = """{\""name\"":\""Apple\""}"""  (double-encoded by WebView2)</span>
+<span class="kw">Dim</span> clean <span class="kw">As</span> <span class="typ">String</span>
+clean = m_lv.JsonUnwrapString(raw)
+<span class="cmt">' clean = "{""name"":""Apple""}"        (usable JSON)</span>
+<span class="kw">Debug</span>.Print m_lv.JsonGetValue(clean, <span class="str">"name"</span>)  <span class="cmt">' "Apple"</span>
+
+<span class="cmt">' ── Compact ──</span>
+<span class="cmt">' JsonCompact — remove null entries from padded arrays</span>
+<span class="kw">Dim</span> padded <span class="kw">As</span> <span class="typ">String</span>
+padded = <span class="str">"[null,null,{""id"":1},null,{""id"":2}]"</span>
+<span class="kw">Debug</span>.Print m_lv.JsonCompact(padded, <span class="str">""</span>)
+<span class="cmt">' → [{"id":1},{"id":2}]</span>
+
+<span class="cmt">' Path-based compact — only compact array inside nested object</span>
+<span class="kw">Dim</span> nested <span class="kw">As</span> <span class="typ">String</span>
+nested = <span class="str">"{""data"":[null,{""v"":1},null,{""v"":2}]}"</span>
+<span class="kw">Debug</span>.Print m_lv.JsonCompact(nested, <span class="str">"data"</span>)
+<span class="cmt">' → {"data":[{"v":1},{"v":2}]}</span></code></pre>
 
                 <!-- JsonToRowArray type mapping -->
                 <h4>JsonToRowArray &mdash; Type Mapping</h4>
@@ -1912,6 +1946,70 @@ token = m_lv.SolveHCaptcha(<span class="str">"HCAPTCHA-SITE-KEY"</span>, <span c
 
 <span class="cmt">' SubmitCaptchaToken — inject resolved token into page</span>
 m_lv.SubmitCaptchaToken token</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Section: Automation API (Playwright-style) -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="automation-api" data-section-id="automation-api">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Automation API</span>
+                <span class="section-count">3 methods</span>
+            </div>
+            <div class="section-body">
+                <div class="callout callout-note">
+                    <span class="callout-title">Playwright-Style Helpers</span>
+                    <p>High-level automation methods that simplify common patterns. <code>WaitForElement</code> polls every 50&nbsp;ms using <code>ElementExistsBySelector</code> &mdash; the UI stays responsive (messages are pumped between checks). All methods accept <strong>CSS selectors</strong>.</p>
+                </div>
+
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">WaitForElement</td><td class="param-type">cssSelector <span class="kw">As</span> <span class="typ">String</span>, timeoutMs <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Boolean</td><td>Wait for element matching CSS selector to appear in DOM. Returns <code>True</code> if found, <code>False</code> on timeout. Polls every 50&nbsp;ms.</td></tr>
+                        <tr><td class="member-name">ClickElementBySelector</td><td class="param-type">cssSelector <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">&mdash;</td><td>Click the first element matching CSS selector.</td></tr>
+                        <tr><td class="member-name">GetTextBySelector</td><td class="param-type">cssSelector <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Get <code>textContent</code> of first element matching CSS selector.</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="callout callout-tip">
+                    <span class="callout-title">Timeout Behaviour</span>
+                    <p><code>WaitForElement</code> checks immediately first &mdash; if the element already exists, it returns instantly. Otherwise it polls every 50&nbsp;ms, pumping messages between checks so the UI stays responsive. If <code>timeoutMs</code> is 0 or omitted, the <code>SynchronousTimeOut</code> property value is used (default 30&nbsp;s).</p>
+                </div>
+
+                <h4>Usage &mdash; Login Automation Example</h4>
+<pre><code><span class="cmt">' Navigate and wait for login form to appear</span>
+m_lv.Navigate <span class="str">"https://example.com/login"</span>
+
+<span class="cmt">' Wait up to 10 seconds for the form element</span>
+<span class="kw">If</span> m_lv.WaitForElement(<span class="str">"#loginForm"</span>, <span class="num">10000</span>) <span class="kw">Then</span>
+    <span class="cmt">' Fill fields (use existing SetElementValueById or selector methods)</span>
+    m_lv.SetElementValueById <span class="str">"email"</span>, <span class="str">"user@example.com"</span>
+    m_lv.SetElementValueById <span class="str">"password"</span>, <span class="str">"secret123"</span>
+
+    <span class="cmt">' Click submit button by CSS selector</span>
+    m_lv.ClickElementBySelector <span class="str">"#loginForm button[type='submit']"</span>
+
+    <span class="cmt">' Wait for dashboard to render</span>
+    <span class="kw">If</span> m_lv.WaitForElement(<span class="str">".dashboard-panel"</span>, <span class="num">15000</span>) <span class="kw">Then</span>
+        <span class="cmt">' Read welcome message</span>
+        <span class="kw">Dim</span> welcome <span class="kw">As</span> <span class="typ">String</span>
+        welcome = m_lv.GetTextBySelector(<span class="str">".welcome-message"</span>)
+        Debug.Print <span class="str">"Logged in: "</span> &amp; welcome
+    <span class="kw">End If</span>
+<span class="kw">Else</span>
+    Debug.Print <span class="str">"Login form did not appear within 10 seconds"</span>
+<span class="kw">End If</span></code></pre>
+
+                <h4>Reg-Free (BrowserPool) Usage</h4>
+<pre><code><span class="cmt">' Same methods, with browserIndex as first parameter</span>
+<span class="kw">If</span> m_Pool.WaitForElement(m_Idx, <span class="str">"#dashboard"</span>, <span class="num">10000</span>) <span class="kw">Then</span>
+    <span class="kw">Dim</span> msg <span class="kw">As</span> <span class="typ">String</span>
+    msg = m_Pool.GetTextBySelector(m_Idx, <span class="str">".status-text"</span>)
+<span class="kw">End If</span></code></pre>
             </div>
         </div>
 

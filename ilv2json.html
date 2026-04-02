@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILV2Json API Reference — LiteView2 Standalone JSON Engine for VBA</title>
+    <meta name="description" content="ILV2Json reference: standalone JSON parsing and manipulation for VBA with no WebView2 dependency. Three performance tiers — stateless, DOM handles, compiled paths. Works in Access, Excel, VB6 →">
+    <link rel="canonical" href="https://imranosoft.github.io/LiteView2-Website/ilv2json.html">
+    <link rel="alternate" hreflang="en" href="https://imranosoft.github.io/LiteView2-Website/ilv2json.html">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-19C759YR5X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-19C759YR5X');
+    </script>
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "LiteView2",
+          "item": "https://imranosoft.github.io/LiteView2-Website/index.htm" },
+        { "@type": "ListItem", "position": 2, "name": "API Reference",
+          "item": "https://imranosoft.github.io/LiteView2-Website/landing.html" },
+        { "@type": "ListItem", "position": 3, "name": "ILV2Json",
+          "item": "https://imranosoft.github.io/LiteView2-Website/ilv2json.html" }
+      ]
+    }
+    </script>
+    <!-- Structured Data: TechArticle -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "name": "ILV2Json API Reference — LiteView2 Standalone JSON Engine for VBA",
+      "description": "Complete reference for the ILV2Json interface — the standalone JSON engine shipped with LiteView2. Works in any VBA host (Access, Excel, VB6) with or without WebView2. Covers three performance tiers: stateless, DOM handle, and compiled path.",
+      "url": "https://imranosoft.github.io/LiteView2-Website/ilv2json.html",
+      "author": { "@type": "Person", "name": "Muhammad Imran" },
+      "publisher": { "@type": "Person", "name": "Muhammad Imran" },
+      "datePublished": "2026-04-01",
+      "dateModified": "2026-04-01",
+      "proficiencyLevel": "Expert",
+      "dependencies": "Windows 10 1809+ (WebView2 NOT required)"
+    }
+    </script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does LiteView2.Json require WebView2?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. LiteView2.Json is a completely standalone COM object. It performs all JSON parsing in native C++ with no WebView2 dependency. You can use it in any VBA host (Access, Excel, VB6) even if WebView2 is not installed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the three performance tiers of LiteView2.Json?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tier 1 (Stateless): call GetValue(jsonString, path) — simplest, re-parses on every call. Tier 2 (DOM Handle): call Parse() once to get a handle, then call GetValueH(handle, path) many times — parses once, queries many. Tier 3 (Compiled Path): call CompilePath() to pre-parse a path into a handle, then call GetValueHP(jsonHandle, pathHandle) — zero parsing overhead, zero allocation in hot loops."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I activate LiteView2.Json?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use CreateObject(\"LiteView2.Json\") — this works in both registered mode (after regsvr32) and registration-free mode (when the OCX is placed next to your database and LiteView2_ActivateManifest has been called). Object creation always succeeds; the license is checked at method invocation."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+<!-- Site Header -->
+<header class="site-header">
+    <a href="index.htm" class="brand">
+        <div class="brand-icon">LV</div>
+        <span>LiteView2</span>
+    </a>
+    <nav class="header-nav">
+        <a href="landing.html">Home</a>
+        <a href="index.htm">Overview</a>
+        <a href="enums.html">Enums</a>
+        <a href="iliteview2ctrl.html">ILiteView2Ctrl</a>
+        <a href="events.html">Events</a>
+        <a href="ibrowserpool.html">IBrowserPool</a>
+        <a href="ilv2json.html" class="active">ILV2Json</a>
+    </nav>
+    <div class="header-actions">
+        <div class="global-search">
+            <span class="global-search-icon">&#128269;</span>
+            <input type="search" class="global-search-input" placeholder="Search all docs..." aria-label="Search documentation">
+            <kbd class="search-kbd">/</kbd>
+            <div class="global-search-results"></div>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle theme"></button>
+        <span class="version-badge">v1.0</span>
+    </div>
+    <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <nav class="page-links">
+        <a href="landing.html" class="page-link"><span class="icon">&#8962;</span> Home</a>
+        <a href="index.htm" class="page-link"><span class="icon">&#9776;</span> Overview</a>
+        <a href="enums.html" class="page-link"><span class="icon">&#69;</span> Enums</a>
+        <a href="iliteview2ctrl.html" class="page-link"><span class="icon">&#73;</span> ILiteView2Ctrl</a>
+        <a href="events.html" class="page-link"><span class="icon">&#9889;</span> Events</a>
+        <a href="ibrowserpool.html" class="page-link"><span class="icon">&#66;</span> IBrowserPool</a>
+        <a href="ilv2json.html" class="page-link current"><span class="icon">&#74;</span> ILV2Json</a>
+    </nav>
+    <div class="sidebar-search">
+        <input type="search" placeholder="Search members...">
+    </div>
+    <nav>
+        <!-- Overview -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Overview</div>
+            <div class="nav-group-items">
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#getting-started" class="nav-link">Getting Started</a>
+                <a href="#performance-tiers" class="nav-link">Performance Tiers</a>
+                <a href="#error-contract" class="nav-link">Error Contract</a>
+            </div>
+        </div>
+        <!-- Read -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Read &mdash; Stateless</div>
+            <div class="nav-group-items">
+                <a href="#read-stateless" class="nav-link">Read Methods <span class="member-count">6</span></a>
+            </div>
+        </div>
+        <!-- Write -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Write &mdash; Stateless</div>
+            <div class="nav-group-items">
+                <a href="#write-stateless" class="nav-link">Write Methods <span class="member-count">8</span></a>
+            </div>
+        </div>
+        <!-- Transform -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Transform &mdash; Stateless</div>
+            <div class="nav-group-items">
+                <a href="#transform" class="nav-link">Transform Methods <span class="member-count">8</span></a>
+            </div>
+        </div>
+        <!-- Handle Model -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Handle Model</div>
+            <div class="nav-group-items">
+                <a href="#handle-json" class="nav-link">JSON Handles <span class="member-count">8</span></a>
+                <a href="#handle-path" class="nav-link">Compiled Paths <span class="member-count">6</span></a>
+            </div>
+        </div>
+        <!-- Bulk -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Bulk Operations</div>
+            <div class="nav-group-items">
+                <a href="#bulk" class="nav-link">Bulk Methods <span class="member-count">3</span></a>
+            </div>
+        </div>
+        <!-- Properties -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Properties</div>
+            <div class="nav-group-items">
+                <a href="#properties" class="nav-link">Properties <span class="member-count">1</span></a>
+            </div>
+        </div>
+    </nav>
+</aside>
+<div class="sidebar-overlay"></div>
+
+<!-- Main Content -->
+<div class="page-wrapper">
+    <main class="main-content">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <span>LiteView2</span>
+            <span class="sep">/</span>
+            <span>API Reference</span>
+            <span class="sep">/</span>
+            <span class="current">ILV2Json</span>
+        </nav>
+
+        <!-- Page Title -->
+        <h1>ILV2Json Interface
+            <span class="subtitle">coclass LiteView2Json | Standalone JSON engine | No WebView2 required</span>
+        </h1>
+
+        <div class="callout callout-note" id="overview">
+            <span class="callout-title">Note</span>
+            <p><code>LiteView2.Json</code> is a <strong>standalone COM object</strong> — it works in any VBA host (Access, Excel, VB6) with or without WebView2. All JSON parsing is performed in native C++. No browser instance is required. Activate with <code>CreateObject("LiteView2.Json")</code> in both registered and registration-free modes.</p>
+        </div>
+
+        <button class="expand-all-btn">Expand All</button>
+
+        <!-- ================================================================== -->
+        <!-- Getting Started -->
+        <!-- ================================================================== -->
+        <section id="getting-started">
+            <h2>Getting Started</h2>
+            <p>In registered mode (after <code>regsvr32</code>) or registration-free mode (OCX placed next to your database), activate with a single line:</p>
+<pre><code><span class="kw">Dim</span> j <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> j = CreateObject(<span class="str">"LiteView2.Json"</span>)</code></pre>
+
+            <h4>Registration-Free Setup</h4>
+            <p>If using the OCX without registration (no admin rights), call <code>LiteView2_ActivateManifest</code> first — the same call you make for IBrowserPool. Once the manifest is active, <code>CreateObject("LiteView2.Json")</code> resolves automatically.</p>
+<pre><code><span class="cmt">' Inside your GetPool() or init function, before CreateObject</span>
+<span class="kw">#If</span> Win64 <span class="kw">Then</span>
+    LiteView2_ActivateManifest StrPtr(CurrentProject.Path &amp; <span class="str">"\LiteView2_x64.ocx"</span>)
+<span class="kw">#Else</span>
+    LiteView2_ActivateManifest StrPtr(CurrentProject.Path &amp; <span class="str">"\LiteView2_x86.ocx"</span>)
+<span class="kw">#End If</span>
+
+<span class="kw">Dim</span> j <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> j = CreateObject(<span class="str">"LiteView2.Json"</span>)   <span class="cmt">' works in both modes</span></code></pre>
+
+            <h4>Licensing</h4>
+            <p>Object creation always succeeds regardless of license state. The license is checked at the first method call. During the 30-day trial, all methods are fully functional. After trial expiry, methods return <code>E_ACCESSDENIED</code>.</p>
+<pre><code><span class="cmt">' No ActivateLicense call on the Json object itself.</span>
+<span class="cmt">' License is shared with LiteView2 — activate once via IBrowserPool or ILiteView2Ctrl:</span>
+pool.ActivateLicense <span class="str">"My Company"</span>, <span class="str">"LICENSE-KEY-HERE"</span>   <span class="cmt">' unlocks all LiteView2 objects</span></code></pre>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- Performance Tiers -->
+        <!-- ================================================================== -->
+        <section id="performance-tiers">
+            <h2>Three Performance Tiers</h2>
+<pre class="arch-diagram">LiteView2.Json — Three Performance Tiers
+  |
+  +-- Tier 1: Stateless
+  |     j.GetValue(jsonString, "path")
+  |     Simplest. Re-parses the JSON string on every call.
+  |     Use for one-off lookups or small JSON.
+  |
+  +-- Tier 2: DOM Handle
+  |     h = j.Parse(jsonString)        &larr; parse once
+  |     j.GetValueH(h, "path")         &larr; query many times
+  |     j.CountH(h, "items")
+  |     j.Release(h)
+  |     Use when querying the same JSON multiple times.
+  |
+  +-- Tier 3: Compiled Path
+        h  = j.Parse(jsonString)       &larr; parse once
+        pp = j.CompilePath("user.name") &larr; compile once
+        For i = 1 To 10000
+            v = j.GetValueHP(h, pp)    &larr; zero parsing, zero allocation
+        Next i
+        j.ReleasePath pp
+        j.Release h
+        Use for hot loops or high-frequency repeated queries.</pre>
+
+            <h4>All Three Tiers — Complete Example</h4>
+<pre><code><span class="kw">Dim</span> j <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> j = CreateObject(<span class="str">"LiteView2.Json"</span>)
+
+<span class="kw">Dim</span> js <span class="kw">As</span> <span class="typ">String</span>
+js = <span class="str">"{""user"":{""name"":""Alice"",""age"":30,""active"":true}}"</span>
+
+<span class="cmt">' Tier 1 — stateless (re-parses each call)</span>
+<span class="kw">Debug</span>.Print j.GetValue(js, <span class="str">"user.name"</span>)   <span class="cmt">' → "Alice"</span>
+<span class="kw">Debug</span>.Print j.GetValue(js, <span class="str">"user.age"</span>)    <span class="cmt">' → 30</span>
+
+<span class="cmt">' Tier 2 — parse once, query many times</span>
+<span class="kw">Dim</span> h <span class="kw">As</span> <span class="typ">Long</span>
+h = j.Parse(js)
+<span class="kw">Debug</span>.Print j.GetValueH(h, <span class="str">"user.name"</span>)   <span class="cmt">' → "Alice"</span>
+<span class="kw">Debug</span>.Print j.GetValueH(h, <span class="str">"user.age"</span>)    <span class="cmt">' → 30</span>
+<span class="kw">Debug</span>.Print j.GetValueH(h, <span class="str">"user.active"</span>) <span class="cmt">' → True</span>
+j.Release h
+
+<span class="cmt">' Tier 3 — compiled path (zero allocation hot loop)</span>
+h = j.Parse(js)
+<span class="kw">Dim</span> pp <span class="kw">As</span> <span class="typ">Long</span>
+pp = j.CompilePath(<span class="str">"user.name"</span>)
+<span class="kw">Dim</span> i <span class="kw">As</span> <span class="typ">Long</span>
+<span class="kw">For</span> i = <span class="num">1</span> <span class="kw">To</span> <span class="num">10000</span>
+    <span class="kw">Dim</span> v <span class="kw">As</span> <span class="typ">Variant</span>
+    v = j.GetValueHP(h, pp)  <span class="cmt">' zero parsing, zero allocation</span>
+<span class="kw">Next</span> i
+j.ReleasePath pp
+j.Release h</code></pre>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- Error Contract -->
+        <!-- ================================================================== -->
+        <section id="error-contract">
+            <h2>Error Contract</h2>
+            <table class="api-table">
+                <thead>
+                    <tr><th>Condition</th><th>Return Value</th><th>VBA Err.Number</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Path not found</td><td><code>Empty</code> (VT_EMPTY)</td><td>0 (no error)</td></tr>
+                    <tr><td>JSON null value</td><td><code>Null</code> (VT_NULL)</td><td>0 (no error)</td></tr>
+                    <tr><td>Array index out of range</td><td><code>Empty</code> (VT_EMPTY)</td><td>0 (no error)</td></tr>
+                    <tr><td>Invalid JSON string</td><td>—</td><td>E_INVALIDARG — "Invalid JSON at position N"</td></tr>
+                    <tr><td>Invalid handle number</td><td>—</td><td>E_HANDLE — "Invalid JSON handle: N"</td></tr>
+                    <tr><td>Invalid path syntax</td><td>—</td><td>E_INVALIDARG — "Invalid path syntax at position N"</td></tr>
+                    <tr><td>JSON exceeds MaxSize</td><td>—</td><td>E_FAIL — "JSON exceeds maximum size (50MB)"</td></tr>
+                    <tr><td>DOM memory limit exceeded</td><td>—</td><td>E_OUTOFMEMORY — "DOM build exceeded memory limit"</td></tr>
+                    <tr><td>Nesting depth &gt; 256</td><td>—</td><td>E_FAIL — "JSON nesting depth exceeds 256"</td></tr>
+                    <tr><td>License not activated</td><td>—</td><td>E_ACCESSDENIED — "LiteView2 license required"</td></tr>
+                </tbody>
+            </table>
+            <div class="callout callout-tip">
+                <span class="callout-title">Tip</span>
+                <p>Methods never raise a VBA error for "not found" — they return <code>Empty</code>. Use <code>IsEmpty(j.GetValue(...))</code> to check for missing paths. Use <code>IsNull(j.GetValue(...))</code> to detect JSON <code>null</code> values.</p>
+            </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- Read — Stateless -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="read-stateless" data-section-id="read-stateless">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Read &mdash; Stateless</span>
+                <span class="section-count">6 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Stateless read methods — each call parses the JSON string from scratch (Tier 1). Use these for simple one-off lookups. For repeated queries on the same JSON, use the <a href="#handle-json">Handle Model</a> instead.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">GetValue</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Variant</td><td>Return typed value at path. <code>Empty</code> if not found, <code>Null</code> if JSON null. Numeric types return <code>Long</code> or <code>Double</code>; booleans return <code>Boolean</code>.</td></tr>
+                        <tr><td class="member-name">GetItem</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span>, index <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">String</td><td>Return the serialised JSON of the array element at <em>path</em>[<em>index</em>] (0-based). Empty string if out of range.</td></tr>
+                        <tr><td class="member-name">GetKeys</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Return comma-separated list of object keys at <em>path</em>. Empty string if path points to a non-object.</td></tr>
+                        <tr><td class="member-name">Count</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Return number of elements (array) or members (object) at <em>path</em>. Returns 0 if path not found or value is scalar.</td></tr>
+                        <tr><td class="member-name">Exists</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Boolean</td><td>Return <code>True</code> if the path exists in the JSON (even if the value is <code>null</code>).</td></tr>
+                        <tr><td class="member-name">IsValid</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Boolean</td><td>Return <code>True</code> if <em>json</em> is syntactically valid JSON. Does not raise an error on invalid input.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Path Syntax</h4>
+                <p>Paths use dot notation for object keys and bracket notation for array indices:</p>
+<pre><code><span class="cmt">' Object key navigation</span>
+j.GetValue(js, <span class="str">"user.address.city"</span>)
+
+<span class="cmt">' Array index (0-based)</span>
+j.GetValue(js, <span class="str">"items[0].name"</span>)
+j.GetValue(js, <span class="str">"items[2].price"</span>)
+
+<span class="cmt">' Root value (empty path)</span>
+j.GetValue(<span class="str">"""hello"""</span>, <span class="str">""</span>)   <span class="cmt">' → "hello"</span>
+
+<span class="cmt">' Nested arrays</span>
+j.GetValue(js, <span class="str">"matrix[0][1]"</span>)</code></pre>
+
+                <h4>Read Examples</h4>
+<pre><code><span class="kw">Dim</span> j <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> j = CreateObject(<span class="str">"LiteView2.Json"</span>)
+
+<span class="kw">Dim</span> js <span class="kw">As</span> <span class="typ">String</span>
+js = <span class="str">"{""items"":[{""id"":1,""name"":""Widget""},{""id"":2,""name"":""Gadget""}]}"</span>
+
+<span class="cmt">' GetValue — typed return</span>
+<span class="kw">Debug</span>.Print j.GetValue(js, <span class="str">"items[0].id"</span>)     <span class="cmt">' → 1 (Long)</span>
+<span class="kw">Debug</span>.Print j.GetValue(js, <span class="str">"items[1].name"</span>)   <span class="cmt">' → "Gadget" (String)</span>
+<span class="kw">Debug</span>.Print IsEmpty(j.GetValue(js, <span class="str">"missing"</span>)) <span class="cmt">' → True</span>
+
+<span class="cmt">' Count — array length</span>
+<span class="kw">Debug</span>.Print j.Count(js, <span class="str">"items"</span>)             <span class="cmt">' → 2</span>
+
+<span class="cmt">' GetKeys — object member names</span>
+<span class="kw">Debug</span>.Print j.GetKeys(js, <span class="str">"items[0]"</span>)        <span class="cmt">' → "id,name"</span>
+
+<span class="cmt">' Exists — presence check</span>
+<span class="kw">Debug</span>.Print j.Exists(js, <span class="str">"items[0].id"</span>)     <span class="cmt">' → True</span>
+<span class="kw">Debug</span>.Print j.Exists(js, <span class="str">"items[5]"</span>)        <span class="cmt">' → False</span>
+
+<span class="cmt">' IsValid — syntax check</span>
+<span class="kw">Debug</span>.Print j.IsValid(<span class="str">"{""a"":1}"</span>)            <span class="cmt">' → True</span>
+<span class="kw">Debug</span>.Print j.IsValid(<span class="str">"{bad json}"</span>)         <span class="cmt">' → False (no error raised)</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Write — Stateless -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="write-stateless" data-section-id="write-stateless">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Write &mdash; Stateless</span>
+                <span class="section-count">8 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Stateless mutation methods — each returns a new JSON string with the modification applied. The original string is never modified. Methods are chainable: pass the result of one call as input to the next.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">CreateObject</td><td class="param-type"></td><td class="param-type">String</td><td>Return an empty JSON object: <code>{}</code></td></tr>
+                        <tr><td class="member-name">CreateArray</td><td class="param-type"></td><td class="param-type">String</td><td>Return an empty JSON array: <code>[]</code></td></tr>
+                        <tr><td class="member-name">SetValue</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span>, value <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Set (or add) the value at <em>path</em>. Intermediate objects are created automatically. Accepts <code>String</code>, <code>Long</code>, <code>Double</code>, <code>Boolean</code>, or <code>Null</code>.</td></tr>
+                        <tr><td class="member-name">Remove</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Remove the key or array element at <em>path</em>. No-op if path does not exist.</td></tr>
+                        <tr><td class="member-name">Append</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span>, value <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Append <em>value</em> to the array at <em>path</em>. The target must be an array.</td></tr>
+                        <tr><td class="member-name">Insert</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span>, index <span class="kw">As</span> <span class="typ">Long</span>, value <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Insert <em>value</em> into the array at <em>path</em> before position <em>index</em> (0-based).</td></tr>
+                        <tr><td class="member-name">Clear</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Clear all elements from the array or object at <em>path</em>, leaving it empty.</td></tr>
+                        <tr><td class="member-name">Merge</td><td class="param-type">json1 <span class="kw">As</span> <span class="typ">String</span>, json2 <span class="kw">As</span> <span class="typ">String</span>, deep <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type">String</td><td>Merge <em>json2</em> into <em>json1</em>. If <em>deep</em> is <code>True</code>, nested objects are merged recursively; otherwise top-level keys from <em>json2</em> overwrite <em>json1</em>.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Write Examples</h4>
+<pre><code><span class="kw">Dim</span> j <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> j = CreateObject(<span class="str">"LiteView2.Json"</span>)
+
+<span class="cmt">' Build a JSON object from scratch</span>
+<span class="kw">Dim</span> js <span class="kw">As</span> <span class="typ">String</span>
+js = j.CreateObject()                              <span class="cmt">' → {}</span>
+js = j.SetValue(js, <span class="str">"name"</span>, <span class="str">"Alice"</span>)            <span class="cmt">' → {"name":"Alice"}</span>
+js = j.SetValue(js, <span class="str">"age"</span>, <span class="num">30</span>)                  <span class="cmt">' → {"name":"Alice","age":30}</span>
+js = j.SetValue(js, <span class="str">"active"</span>, <span class="kw">True</span>)             <span class="cmt">' → {"name":"Alice","age":30,"active":true}</span>
+
+<span class="cmt">' Append to array</span>
+<span class="kw">Dim</span> arr <span class="kw">As</span> <span class="typ">String</span>
+arr = j.CreateArray()                              <span class="cmt">' → []</span>
+arr = j.Append(arr, <span class="str">""</span>, <span class="str">"first"</span>)                 <span class="cmt">' → ["first"]</span>
+arr = j.Append(arr, <span class="str">""</span>, <span class="str">"second"</span>)                <span class="cmt">' → ["first","second"]</span>
+arr = j.Insert(arr, <span class="str">""</span>, <span class="num">0</span>, <span class="str">"zeroth"</span>)             <span class="cmt">' → ["zeroth","first","second"]</span>
+
+<span class="cmt">' Remove a key</span>
+js = j.Remove(js, <span class="str">"active"</span>)                      <span class="cmt">' → {"name":"Alice","age":30}</span>
+
+<span class="cmt">' Deep merge</span>
+<span class="kw">Dim</span> merged <span class="kw">As</span> <span class="typ">String</span>
+merged = j.Merge(<span class="str">"{""a"":1,""b"":{""x"":1}}"</span>, _
+                 <span class="str">"{""b"":{""y"":2},""c"":3}"</span>, <span class="kw">True</span>)
+<span class="cmt">' → {"a":1,"b":{"x":1,"y":2},"c":3}</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Transform — Stateless -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="transform" data-section-id="transform">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Transform &mdash; Stateless</span>
+                <span class="section-count">8 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Structural transformation methods. All accept a JSON string and return a transformed string or SAFEARRAY.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">PrettyPrint</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Return a human-readable, indented version of <em>json</em>.</td></tr>
+                        <tr><td class="member-name">Flatten</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Flatten a nested JSON object into dot-path keys: <code>{"a":{"b":1}}</code> &rarr; <code>{"a.b":1}</code>.</td></tr>
+                        <tr><td class="member-name">Unflatten</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Reverse of <code>Flatten</code> — expand dot-path keys back into nested objects.</td></tr>
+                        <tr><td class="member-name">ToArray</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Variant (1D array)</td><td>Convert a JSON array to a VBA <code>Variant</code> containing a 1-based <code>String()</code> array of serialised JSON elements. Subject to <code>MaxSize</code> limit.</td></tr>
+                        <tr><td class="member-name">ToRowArray</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Variant (2D array)</td><td>Convert a JSON array-of-objects into a 2D <code>Variant()</code> with headers in row 0 and typed values in subsequent rows. Subject to <code>MaxSize</code> limit.</td></tr>
+                        <tr><td class="member-name">BuildJson</td><td class="param-type">inputData <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">String</td><td>Convert a VBA value to a JSON string. Accepts <code>String</code>, <code>Long</code>, <code>Double</code>, <code>Boolean</code>, <code>Null</code>, or a 1D/2D SAFEARRAY of Variants.</td></tr>
+                        <tr><td class="member-name">UnwrapString</td><td class="param-type">jsonValue <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>If <em>jsonValue</em> is a JSON string literal (double-encoded), unwrap one layer and unescape all JSON sequences (<code>\"</code>, <code>\\</code>, <code>\n</code>, <code>\uXXXX</code>, etc.). Otherwise return unchanged.</td></tr>
+                        <tr><td class="member-name">Compact</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Remove <code>null</code> entries from a JSON array at <em>path</em>. Pass empty string for root array. Useful for financial API data with null-padded timeseries.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Transform Examples</h4>
+<pre><code><span class="kw">Dim</span> j <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> j = CreateObject(<span class="str">"LiteView2.Json"</span>)
+
+<span class="cmt">' PrettyPrint</span>
+<span class="kw">Debug</span>.Print j.PrettyPrint(<span class="str">"{""a"":1,""b"":[1,2]}"</span>)
+<span class="cmt">' {
+'   "a": 1,
+'   "b": [
+'     1,
+'     2
+'   ]
+' }</span>
+
+<span class="cmt">' Flatten / Unflatten</span>
+<span class="kw">Dim</span> flat <span class="kw">As</span> <span class="typ">String</span>
+flat = j.Flatten(<span class="str">"{""user"":{""name"":""Alice"",""age"":30}}"</span>)
+<span class="cmt">' → {"user.name":"Alice","user.age":30}</span>
+<span class="kw">Debug</span>.Print j.Unflatten(flat)
+<span class="cmt">' → {"user":{"name":"Alice","age":30}}</span>
+
+<span class="cmt">' ToRowArray — convert array-of-objects to 2D grid (like a recordset)</span>
+<span class="kw">Dim</span> js <span class="kw">As</span> <span class="typ">String</span>
+js = <span class="str">"[{""id"":1,""name"":""Alice""},{""id"":2,""name"":""Bob""}]"</span>
+<span class="kw">Dim</span> grid <span class="kw">As</span> <span class="typ">Variant</span>
+grid = j.ToRowArray(js)
+<span class="cmt">' grid(0,0)="id"  grid(0,1)="name"   ← headers in row 0
+' grid(1,0)=1     grid(1,1)="Alice"
+' grid(2,0)=2     grid(2,1)="Bob"</span>
+
+<span class="cmt">' BuildJson — VBA array → JSON</span>
+<span class="kw">Dim</span> arr(1) <span class="kw">As</span> <span class="typ">Variant</span>
+arr(<span class="num">0</span>) = <span class="str">"hello"</span> : arr(<span class="num">1</span>) = <span class="num">42</span>
+<span class="kw">Debug</span>.Print j.BuildJson(arr)   <span class="cmt">' → ["hello",42]</span>
+
+<span class="cmt">' UnwrapString — fix double-encoded JSON string from WebView2</span>
+<span class="kw">Debug</span>.Print j.UnwrapString(<span class="str">"""{\""name\"":\""Apple\""}"""</span>)
+<span class="cmt">' → {"name":"Apple"}</span>
+
+<span class="cmt">' Compact — remove null entries from JSON array</span>
+<span class="kw">Debug</span>.Print j.Compact(<span class="str">"[null,{""id"":1},null,{""id"":2}]"</span>, <span class="str">""</span>)
+<span class="cmt">' → [{"id":1},{"id":2}]</span>
+
+<span class="cmt">' Path-based compact</span>
+<span class="kw">Debug</span>.Print j.Compact(<span class="str">"{""data"":[null,{""v"":1},null]}"</span>, <span class="str">"data"</span>)
+<span class="cmt">' → {"data":[{"v":1}]}</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Handle Model — JSON Handles -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="handle-json" data-section-id="handle-json">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Handle Model &mdash; JSON Handles</span>
+                <span class="section-count">8 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Tier 2 performance model. <code>Parse()</code> builds a DOM tree from the JSON string once. The returned handle can be queried many times with zero re-parsing. Always call <code>Release()</code> when done to free the DOM memory.</p>
+                <div class="callout callout-warning">
+                    <span class="callout-title">Warning</span>
+                    <p>Handles are per-object — a handle from one <code>LiteView2.Json</code> instance cannot be used with a different instance. Always release handles you no longer need; they are not freed automatically until <code>ReleaseAll()</code> or object destruction.</p>
+                </div>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">Parse</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Parse <em>json</em> into an internal DOM tree. Returns a handle (&gt;0) on success. Raises <code>E_INVALIDARG</code> on invalid JSON or <code>E_OUTOFMEMORY</code> if the DOM exceeds <code>MaxSize</code>.</td></tr>
+                        <tr><td class="member-name">Release</td><td class="param-type">handle <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Free the DOM tree for <em>handle</em>. Safe to call multiple times on the same handle.</td></tr>
+                        <tr><td class="member-name">ReleaseAll</td><td class="param-type"></td><td class="param-type"></td><td>Free all JSON handles and release all DOM memory. Use at form unload or module cleanup.</td></tr>
+                        <tr><td class="member-name">GetValueH</td><td class="param-type">handle <span class="kw">As</span> <span class="typ">Long</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Variant</td><td>Return typed value at <em>path</em> from the pre-built DOM. Raises <code>E_HANDLE</code> on invalid handle.</td></tr>
+                        <tr><td class="member-name">GetItemH</td><td class="param-type">handle <span class="kw">As</span> <span class="typ">Long</span>, path <span class="kw">As</span> <span class="typ">String</span>, index <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">String</td><td>Return serialised JSON of the array element at <em>path</em>[<em>index</em>] (0-based).</td></tr>
+                        <tr><td class="member-name">GetKeysH</td><td class="param-type">handle <span class="kw">As</span> <span class="typ">Long</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">String</td><td>Return comma-separated keys of the object at <em>path</em>.</td></tr>
+                        <tr><td class="member-name">CountH</td><td class="param-type">handle <span class="kw">As</span> <span class="typ">Long</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Return number of elements (array) or members (object) at <em>path</em>.</td></tr>
+                        <tr><td class="member-name">ExistsH</td><td class="param-type">handle <span class="kw">As</span> <span class="typ">Long</span>, path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Boolean</td><td>Return <code>True</code> if <em>path</em> exists in the DOM.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Handle Model Example — Iterating an Array</h4>
+<pre><code><span class="kw">Dim</span> j <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> j = CreateObject(<span class="str">"LiteView2.Json"</span>)
+
+<span class="kw">Dim</span> js <span class="kw">As</span> <span class="typ">String</span>
+js = <span class="str">"[{""id"":1,""price"":9.99},{""id"":2,""price"":14.99},{""id"":3,""price"":4.99}]"</span>
+
+<span class="kw">Dim</span> h <span class="kw">As</span> <span class="typ">Long</span>
+h = j.Parse(js)            <span class="cmt">' parse once</span>
+
+<span class="kw">Dim</span> n <span class="kw">As</span> <span class="typ">Long</span>
+n = j.CountH(h, <span class="str">""</span>)        <span class="cmt">' → 3 (array length at root)</span>
+
+<span class="kw">Dim</span> i <span class="kw">As</span> <span class="typ">Long</span>
+<span class="kw">For</span> i = <span class="num">0</span> <span class="kw">To</span> n - <span class="num">1</span>
+    <span class="kw">Dim</span> id    <span class="kw">As</span> <span class="typ">Long</span>
+    <span class="kw">Dim</span> price <span class="kw">As</span> <span class="typ">Double</span>
+    id    = j.GetValueH(h, <span class="str">"["</span> &amp; i &amp; <span class="str">"].id"</span>)
+    price = j.GetValueH(h, <span class="str">"["</span> &amp; i &amp; <span class="str">"].price"</span>)
+    <span class="kw">Debug</span>.Print <span class="str">"Item "</span> &amp; id &amp; <span class="str">": $"</span> &amp; price
+<span class="kw">Next</span> i
+
+j.Release h                 <span class="cmt">' always release when done</span></code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Handle Model — Compiled Paths -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="handle-path" data-section-id="handle-path">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Handle Model &mdash; Compiled Paths</span>
+                <span class="section-count">6 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Tier 3 performance model. <code>CompilePath()</code> pre-parses a path string into a reusable handle. Combined with a parsed JSON handle, <code>GetValueHP()</code> performs the query with <strong>zero string parsing and zero memory allocation</strong> — ideal for high-frequency loops processing many JSON documents with the same structure.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">CompilePath</td><td class="param-type">path <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type">Long</td><td>Pre-parse <em>path</em> into an internal segment list. Returns a path handle (&gt;0). Raises <code>E_INVALIDARG</code> on invalid path syntax.</td></tr>
+                        <tr><td class="member-name">ReleasePath</td><td class="param-type">pathHandle <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Free a compiled path handle. Safe to call multiple times.</td></tr>
+                        <tr><td class="member-name">GetValueHP</td><td class="param-type">jsonHandle <span class="kw">As</span> <span class="typ">Long</span>, pathHandle <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Variant</td><td>Query the DOM using a pre-compiled path. Zero parsing, zero allocation (except the returned Variant for strings). Fastest possible query method.</td></tr>
+                        <tr><td class="member-name">GetItemHP</td><td class="param-type">jsonHandle <span class="kw">As</span> <span class="typ">Long</span>, pathHandle <span class="kw">As</span> <span class="typ">Long</span>, index <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">String</td><td>Return serialised JSON of the array element at the compiled path, at position <em>index</em> (0-based).</td></tr>
+                        <tr><td class="member-name">CountHP</td><td class="param-type">jsonHandle <span class="kw">As</span> <span class="typ">Long</span>, pathHandle <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Long</td><td>Return element or member count at the compiled path.</td></tr>
+                        <tr><td class="member-name">ExistsHP</td><td class="param-type">jsonHandle <span class="kw">As</span> <span class="typ">Long</span>, pathHandle <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Boolean</td><td>Return <code>True</code> if the compiled path exists in the DOM.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Compiled Path Example — High-Frequency Processing</h4>
+<pre><code><span class="kw">Dim</span> j <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> j = CreateObject(<span class="str">"LiteView2.Json"</span>)
+
+<span class="cmt">' Compile the paths once outside the loop</span>
+<span class="kw">Dim</span> ppName  <span class="kw">As</span> <span class="typ">Long</span> : ppName  = j.CompilePath(<span class="str">"user.name"</span>)
+<span class="kw">Dim</span> ppScore <span class="kw">As</span> <span class="typ">Long</span> : ppScore = j.CompilePath(<span class="str">"user.score"</span>)
+
+<span class="cmt">' Process thousands of JSON documents — minimal overhead per iteration</span>
+<span class="kw">Dim</span> i <span class="kw">As</span> <span class="typ">Long</span>
+<span class="kw">For</span> i = <span class="num">1</span> <span class="kw">To</span> 50000
+    <span class="kw">Dim</span> h <span class="kw">As</span> <span class="typ">Long</span>
+    h = j.Parse(GetJsonForRow(i))       <span class="cmt">' parse each document</span>
+    <span class="kw">Dim</span> name  <span class="kw">As</span> <span class="typ">String</span>  : name  = j.GetValueHP(h, ppName)   <span class="cmt">' zero alloc</span>
+    <span class="kw">Dim</span> score <span class="kw">As</span> <span class="typ">Double</span>  : score = j.GetValueHP(h, ppScore)  <span class="cmt">' zero alloc</span>
+    ProcessRow name, score
+    j.Release h
+<span class="kw">Next</span> i
+
+<span class="cmt">' Release path handles when fully done</span>
+j.ReleasePath ppName
+j.ReleasePath ppScore</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Bulk Operations -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="bulk" data-section-id="bulk">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Bulk Operations</span>
+                <span class="section-count">3 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Query multiple paths in a single call. The input is a 1D <code>Variant</code> array of path strings (for <code>GetValues</code>/<code>GetValuesH</code>) or path handles (for <code>GetValuesHP</code>). Returns a parallel 1D <code>Variant</code> array of results.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">GetValues</td><td class="param-type">json <span class="kw">As</span> <span class="typ">String</span>, pathsArray <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">Variant (array)</td><td>Stateless bulk query. Parse <em>json</em> once and return an array of typed values for each path in <em>pathsArray</em>.</td></tr>
+                        <tr><td class="member-name">GetValuesH</td><td class="param-type">handle <span class="kw">As</span> <span class="typ">Long</span>, pathsArray <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">Variant (array)</td><td>DOM handle bulk query. Query a pre-parsed DOM for multiple paths in one call.</td></tr>
+                        <tr><td class="member-name">GetValuesHP</td><td class="param-type">handle <span class="kw">As</span> <span class="typ">Long</span>, pathHandlesArray <span class="kw">As</span> <span class="typ">Variant</span></td><td class="param-type">Variant (array)</td><td>Compiled path bulk query. Supply an array of path handles — each query is zero-allocation. Fastest batch extraction method.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Bulk Query Example</h4>
+<pre><code><span class="kw">Dim</span> j <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> j = CreateObject(<span class="str">"LiteView2.Json"</span>)
+
+<span class="kw">Dim</span> js <span class="kw">As</span> <span class="typ">String</span>
+js = <span class="str">"{""name"":""Alice"",""age"":30,""city"":""London"",""score"":98.5}"</span>
+
+<span class="cmt">' GetValues — stateless bulk (parses once internally)</span>
+<span class="kw">Dim</span> paths(3) <span class="kw">As</span> <span class="typ">Variant</span>
+paths(<span class="num">0</span>) = <span class="str">"name"</span> : paths(<span class="num">1</span>) = <span class="str">"age"</span> : paths(<span class="num">2</span>) = <span class="str">"city"</span> : paths(<span class="num">3</span>) = <span class="str">"score"</span>
+<span class="kw">Dim</span> results <span class="kw">As</span> <span class="typ">Variant</span>
+results = j.GetValues(js, paths)
+<span class="cmt">' results(0) = "Alice", results(1) = 30, results(2) = "London", results(3) = 98.5</span>
+
+<span class="cmt">' GetValuesHP — maximum performance with compiled paths</span>
+<span class="kw">Dim</span> pp(3) <span class="kw">As</span> <span class="typ">Variant</span>
+pp(<span class="num">0</span>) = j.CompilePath(<span class="str">"name"</span>)
+pp(<span class="num">1</span>) = j.CompilePath(<span class="str">"age"</span>)
+pp(<span class="num">2</span>) = j.CompilePath(<span class="str">"city"</span>)
+pp(<span class="num">3</span>) = j.CompilePath(<span class="str">"score"</span>)
+
+<span class="kw">Dim</span> h <span class="kw">As</span> <span class="typ">Long</span>
+h = j.Parse(js)
+results = j.GetValuesHP(h, pp)   <span class="cmt">' zero allocation per result (except strings)</span>
+j.Release h
+
+<span class="cmt">' Release path handles when fully done</span>
+<span class="kw">Dim</span> k <span class="kw">As</span> <span class="typ">Long</span>
+<span class="kw">For</span> k = <span class="num">0</span> <span class="kw">To</span> <span class="num">3</span>
+    j.ReleasePath pp(k)
+<span class="kw">Next</span> k</code></pre>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Properties -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="properties" data-section-id="properties">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Properties</span>
+                <span class="section-count">1 property</span>
+            </div>
+            <div class="section-body">
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Property</th><th>Type</th><th>Default</th><th>Range</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">MaxSize</td><td class="param-type">Long (get/let)</td><td class="param-type">52428800 (50 MB)</td><td class="param-type">1024 – 524288000</td><td>Maximum allowed JSON byte count for <code>Parse()</code>, <code>ToArray()</code>, and <code>ToRowArray()</code>, and the maximum DOM memory budget. Checked <strong>before</strong> allocation. Values outside the range are clamped silently.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>MaxSize Example</h4>
+<pre><code><span class="kw">Dim</span> j <span class="kw">As</span> <span class="typ">Object</span>
+<span class="kw">Set</span> j = CreateObject(<span class="str">"LiteView2.Json"</span>)
+
+<span class="cmt">' Reduce limit to 1 MB for untrusted input</span>
+j.MaxSize = <span class="num">1048576</span>
+
+<span class="cmt">' Increase limit to 100 MB for known large data</span>
+j.MaxSize = <span class="num">104857600</span>
+
+<span class="kw">Debug</span>.Print j.MaxSize    <span class="cmt">' → 104857600</span></code></pre>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+    <p>Generated from <code>LiteView2.idl</code> &mdash; <a href="https://imranosoft.github.io/LiteView2-Website/index.htm">LiteView2 WebView2 ActiveX OCX control</a></p>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" aria-label="Back to top">&#8593;</button>
+
+<script src="docs.js"></script>
+</body>
+</html>

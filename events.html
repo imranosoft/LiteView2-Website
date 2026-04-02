@@ -66,7 +66,7 @@
           "name": "Can I call JsonGetValue inside the WebMessageReceived event handler?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. JsonGetValue and all other JSON helper and mutation methods work without WebView2. They are safe to call from any context, including inside WebMessageReceived and other event handlers. You can parse the received JSON message directly: Dim action As Variant: action = m_lv.JsonGetValue(message, \"action\")."
+            "text": "Yes. Since v2, all JSON methods (JsonGetValue, JsonSetValue, JsonExists, etc.) use a native C++ parser with zero WebView2 round-trips. They are safe to call from any context, including inside WebMessageReceived. Earlier versions used ExecuteScript internally, which caused deadlocks. The native parser eliminates this risk entirely."
           }
         }
       ]
@@ -88,6 +88,7 @@
         <a href="iliteview2ctrl.html">ILiteView2Ctrl</a>
         <a href="events.html" class="active">Events</a>
         <a href="ibrowserpool.html">IBrowserPool</a>
+        <a href="ilv2json.html">ILV2Json</a>
     </nav>
     <div class="header-actions">
         <div class="global-search">
@@ -118,6 +119,7 @@
         <a href="iliteview2ctrl.html" class="page-link"><span class="icon">I</span> ILiteView2Ctrl</a>
         <a href="events.html" class="page-link current"><span class="icon">&#9889;</span> Events</a>
         <a href="ibrowserpool.html" class="page-link">IBrowserPool</a>
+        <a href="ilv2json.html" class="page-link">ILV2Json</a>
     </nav>
     <div class="sidebar-search">
         <input type="search" placeholder="Search events...">
@@ -192,6 +194,13 @@
             <div class="nav-group-items">
                 <a href="#ProcessFailed" class="nav-link">ProcessFailed</a>
                 <a href="#BrowserProcessExited" class="nav-link">BrowserProcessExited</a>
+            </div>
+        </div>
+        <!-- DevTools Protocol -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> DevTools Protocol</div>
+            <div class="nav-group-items">
+                <a href="#DevToolsProtocolEventReceived" class="nav-link">DevToolsProtocolEventReceived</a>
             </div>
         </div>
         <!-- Web Resource -->
@@ -304,7 +313,7 @@
 
         <div class="callout callout-tip">
             <span class="callout-title">Tip</span>
-            <p>All JSON methods (<code>JsonGetValue</code>, <code>JsonSetValue</code>, <code>JsonExists</code>, etc.) work without WebView2 and are safe to call from any event handler, including <code>WebMessageReceived</code>.</p>
+            <p>All JSON methods (<code>JsonGetValue</code>, <code>JsonSetValue</code>, <code>JsonExists</code>, etc.) use a native C++ parser &mdash; no WebView2 round-trips. They are safe to call from any event handler, including <code>WebMessageReceived</code>. (Earlier versions used <code>ExecuteScript</code> internally, which caused deadlocks. The v2 native parser eliminates this.)</p>
         </div>
 
         <div class="callout callout-tip">
@@ -409,7 +418,7 @@
 <span class="kw">End Sub</span></code></pre>
 
                 <h4>WebMessageReceived &mdash; JSON Parsing</h4>
-<pre><code><span class="cmt">' Safe: JsonGetValue works without WebView2 — no deadlock risk</span>
+<pre><code><span class="cmt">' Safe: JsonGetValue uses native C++ parser (no WebView2 round-trip, no deadlock)</span>
 <span class="kw">Private Sub</span> LiteView2Ctrl1_WebMessageReceived(<span class="kw">ByVal</span> message <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> source <span class="kw">As</span> <span class="typ">String</span>)
     <span class="kw">Dim</span> action <span class="kw">As</span> <span class="typ">Variant</span>
     action = m_lv.JsonGetValue(message, <span class="str">"action"</span>)
@@ -1299,6 +1308,42 @@ m_lv.EventsUseHexadecimal = <span class="kw">True</span>
 <span class="cmt">' DownloadProgressChangedHex — downloadId/bytes as hex BSTR</span>
 <span class="cmt">' DownloadCompletedHex — downloadId as hex BSTR</span>
 <span class="cmt">' All fire INSTEAD OF their standard counterparts when hex mode is on</span></code></pre>
+            </div>
+        </div>
+
+        <!-- DevTools Protocol Events -->
+        <div class="member-section" id="section-devtools">
+            <div class="member-header">
+                <h3>DevTools Protocol</h3>
+            </div>
+            <div class="member-body">
+                <table class="member-table">
+                    <thead>
+                        <tr>
+                            <th class="col-name">Event</th>
+                            <th class="col-params">Parameters</th>
+                            <th class="col-desc">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="DevToolsProtocolEventReceived" data-section-id="DevToolsProtocolEventReceived">
+                            <td class="member-name">DevToolsProtocolEventReceived</td>
+                            <td class="param-type">eventName As String, eventDataJson As String</td>
+                            <td class="desc">Fired when a subscribed Chrome DevTools Protocol (CDP) event occurs. Subscribe to events using <code>CallDevToolsProtocolMethod</code> first, then handle incoming events here. <code>eventName</code> is the CDP event name (e.g. <code>"Network.requestWillBeSent"</code>). <code>eventDataJson</code> is the event payload as a JSON string.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Usage</h4>
+<pre><code><span class="cmt">' Subscribe to a CDP event</span>
+m_lv.CallDevToolsProtocolMethod <span class="str">"Network.enable"</span>, <span class="str">"{}"</span>
+
+<span class="cmt">' Handle the event</span>
+<span class="kw">Private Sub</span> m_lv_DevToolsProtocolEventReceived(<span class="kw">ByVal</span> eventName <span class="kw">As</span> <span class="typ">String</span>, <span class="kw">ByVal</span> eventDataJson <span class="kw">As</span> <span class="typ">String</span>)
+    <span class="kw">If</span> eventName = <span class="str">"Network.requestWillBeSent"</span> <span class="kw">Then</span>
+        Debug.Print <span class="str">"Network request: "</span> &amp; m_lv.JsonGetValue(eventDataJson, <span class="str">"request.url"</span>)
+    <span class="kw">End If</span>
+<span class="kw">End Sub</span></code></pre>
             </div>
         </div>
 

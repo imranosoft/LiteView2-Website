@@ -18,6 +18,85 @@
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="landing.css">
+    <style>
+    /* ========== CONVERSION SYSTEM CSS ========== */
+
+    /* Hero CTAs */
+    .hero-cta-group{display:flex;gap:16px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+    .btn-cta{display:inline-flex;align-items:center;padding:14px 32px;background:var(--accent);color:#fff;border-radius:10px;font-weight:600;font-size:16px;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+    .btn-cta:hover{background:var(--accent-light);transform:translateY(-1px);box-shadow:0 4px 20px rgba(59,130,246,.3)}
+    .btn-cta-secondary{background:transparent;border:1px solid var(--border);color:var(--text)}
+    .btn-cta-secondary:hover{border-color:var(--accent);color:var(--accent-light);background:transparent}
+    .hero-trust{color:var(--text-dim);font-size:.85rem;margin-top:16px;letter-spacing:.3px}
+    .hero-proof{margin-top:24px;text-align:center;animation:heroFadeUp .8s ease both}
+    .hero-proof img{max-width:680px;width:100%;border-radius:12px;border:1px solid var(--border);cursor:pointer;transition:transform .2s}
+    .hero-proof img:hover{transform:scale(1.01)}
+    .hero-proof-caption{color:var(--text-dim);font-size:.8rem;margin-top:8px;cursor:pointer}
+    .hero-proof-caption:hover{color:var(--accent-light)}
+    @keyframes heroFadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Section CTAs (repeated after sections) */
+    .section-cta{text-align:center;margin:40px 0 16px}
+
+    /* Before/After cards */
+    .ba-section-title{text-align:center;font-size:clamp(1.4rem,3vw,1.8rem);font-weight:700;color:var(--text-bright);margin-bottom:8px}
+    .ba-section-sub{text-align:center;color:var(--text-dim);margin-bottom:32px}
+    .before-after-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:0 0 16px}
+    @media(max-width:768px){.before-after-grid{grid-template-columns:1fr}}
+    .ba-card{padding:28px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg-card)}
+    .ba-card.before{border-top:3px solid var(--danger);background:rgba(239,68,68,.03)}
+    .ba-card.after{border-top:3px solid var(--success);background:rgba(16,185,129,.03)}
+    [data-theme="light"] .ba-card.before{background:rgba(239,68,68,.04)}
+    [data-theme="light"] .ba-card.after{background:rgba(16,185,129,.04)}
+    .ba-card h3{margin:0 0 16px;font-size:1.1rem}
+    .ba-card.before h3{color:var(--danger)}
+    .ba-card.after h3{color:var(--success)}
+    .ba-item{display:flex;align-items:flex-start;gap:10px;margin:10px 0;font-size:.95rem;color:var(--text);line-height:1.5}
+    .ba-icon{flex-shrink:0;font-size:1.1rem;width:22px;text-align:center}
+
+    /* Use case cards — first card highlight */
+    .usecase-card.uc-primary{border-color:var(--accent);background:rgba(59,130,246,.05);position:relative}
+    .uc-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;white-space:nowrap;letter-spacing:.4px}
+
+    /* Get Started steps */
+    .steps-section-title{text-align:center;font-size:clamp(1.4rem,3vw,1.8rem);font-weight:700;color:var(--text-bright);margin-bottom:8px}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:32px 0}
+    @media(max-width:768px){.steps-grid{grid-template-columns:1fr}}
+    .step-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 20px;text-align:center}
+    .step-number{width:44px;height:44px;background:var(--accent);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;margin-bottom:12px}
+    .step-card h4{margin:0 0 8px;color:var(--text-bright);font-size:1rem}
+    .step-card p{margin:0;color:var(--text-dim);font-size:.9rem}
+    .trust-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin:24px 0;color:var(--text-dim);font-size:.85rem}
+    .trust-badges span{display:inline-flex;align-items:center;gap:4px}
+    .trust-badges span::before{content:"\2713 ";color:var(--success);font-weight:700}
+    .steps-code{max-width:500px;margin:16px auto 0;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;font-family:Consolas,'SF Mono','Fira Code',monospace;font-size:14px;color:var(--accent-light);text-align:center;position:relative}
+    .steps-code .copy-btn{position:absolute;top:8px;right:10px;background:rgba(255,255,255,.08);border:1px solid var(--border);color:var(--text-dim);padding:3px 10px;border-radius:4px;cursor:pointer;font-size:12px}
+
+    /* Features collapse */
+    .features-expand{margin-top:16px}
+    .features-expand summary{cursor:pointer;color:var(--accent-light);font-size:1rem;font-weight:500;padding:12px;text-align:center;list-style:none}
+    .features-expand summary::-webkit-details-marker{display:none}
+    .features-expand summary::before{content:"+ "}
+    .features-expand[open] summary::before{content:"- "}
+    .features-expand summary:hover{color:var(--accent)}
+
+    /* Pricing urgency + risk reversal */
+    .urgency-text{color:var(--danger);font-size:.8rem;font-weight:600;margin-top:4px;letter-spacing:.3px}
+    .risk-reversal{text-align:center;color:var(--text-dim);font-size:.95rem;margin-top:24px}
+
+    /* Trial lead-capture modal */
+    .trial-modal{display:none;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;text-align:center;margin:24px auto 0;max-width:500px}
+    .trial-modal.open{display:block;animation:fadeSlideUp .3s ease both}
+    @keyframes fadeSlideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Sticky CTA bar */
+    .sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(10,14,26,.95);backdrop-filter:blur(8px);border-top:1px solid var(--border);padding:10px 16px;text-align:center;transform:translateY(100%);transition:transform .3s ease;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 -4px 20px rgba(0,0,0,.3);padding-bottom:max(10px,env(safe-area-inset-bottom))}
+    .sticky-cta.visible{transform:translateY(0)}
+    .sticky-cta.dismissed{display:none!important}
+    [data-theme="light"] .sticky-cta{background:rgba(255,255,255,.95);box-shadow:0 -4px 20px rgba(0,0,0,.1)}
+    .sticky-dismiss{background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:18px;padding:4px 8px;line-height:1;position:absolute;right:12px;top:50%;transform:translateY(-50%)}
+    .sticky-dismiss:hover{color:var(--text-bright)}
+    </style>
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-19C759YR5X"></script>
     <script>
@@ -158,14 +237,21 @@
         <!-- ============================================================ -->
         <section class="hero" id="hero">
             <div class="hero-badge">Version 1.0 — March 2026</div>
-            <h1>Embed Chromium in VBA.<br><span>Ship in 60 Seconds.</span></h1>
-            <p>
-                Microsoft's VBA WebBrowser control is <span class="hero-pain">based on Internet Explorer</span> and
-                cannot render modern websites. LiteView2 embeds a full <strong
-                    style="color:var(--text-bright)">Microsoft Edge
-                    (WebView2)</strong> browser directly inside Excel, Access, VB6, Delphi and any COM application —
-                with 270+ APIs, zero-install reg-free deployment, and a 30-day free trial.
-            </p>
+            <h1>Replace the Internet Explorer control in VBA<br><span>— permanently.</span></h1>
+            <p>Run modern websites, dashboards, and JavaScript inside Excel &amp; Access forms using WebView2.</p>
+            <p style="color:var(--accent-light);font-style:italic;font-size:.95rem;margin-top:8px;">Stop fighting with the IE control.</p>
+            <div class="hero-cta-group">
+                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','hero_cta_click',{event_category:'conversion'});var m=document.getElementById('trialModal');if(m){var r=document.getElementById('trial-cta').getBoundingClientRect();if(r.top>=0&&r.bottom<=window.innerHeight){m.classList.add('open');m.scrollIntoView({behavior:'smooth',block:'center'});return false;}}">Get Free Trial (Limited Access)</a>
+                <a href="#screenshot" class="btn-cta btn-cta-secondary">Watch Demo</a>
+            </div>
+            <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
+            <div class="hero-trust">Works in Excel &amp; Access &bull; No registration &bull; 32/64-bit supported</div>
+            <div style="color:var(--text-dim);font-size:.82rem;margin-top:4px;">Built by a professional VBA developer with real-world Excel &amp; Access automation experience.</div>
+            <div style="color:var(--success);font-size:.82rem;margin-top:6px;">&#10003; Early users are already testing LiteView2 in real projects.</div>
+            <div class="hero-proof" onclick="var lb=document.getElementById('lightbox');lb.querySelector('img').src='Access_Form.PNG';lb.classList.add('open');">
+                <img src="Access_Form.PNG" alt="LiteView2 running inside Microsoft Access — modern analytics dashboard with charts" loading="eager" width="820" height="600">
+                <div class="hero-proof-caption">Real Access form running LiteView2 — click to enlarge</div>
+            </div>
         </section>
 
         <!-- ===== Stats ===== -->
@@ -194,6 +280,71 @@
         </h2>
 
         <!-- ============================================================ -->
+        <!-- BEFORE vs AFTER -->
+        <!-- ============================================================ -->
+        <section class="section animate-on-scroll" id="before-after">
+            <h2 class="ba-section-title">Why developers are abandoning the IE control</h2>
+            <p class="ba-section-sub">The WebBrowser control was built for a web that no longer exists.</p>
+            <div class="before-after-grid">
+                <div class="ba-card before">
+                    <h3>&#10060; Before (IE WebBrowser)</h3>
+                    <div class="ba-item"><span class="ba-icon">&#10060;</span> Broken layouts on every modern website</div>
+                    <div class="ba-item"><span class="ba-icon">&#10060;</span> No ES6, no Promises, no Fetch API</div>
+                    <div class="ba-item"><span class="ba-icon">&#10060;</span> Constant "script error" popups</div>
+                    <div class="ba-item"><span class="ba-icon">&#10060;</span> No security updates since 2016</div>
+                    <div class="ba-item"><span class="ba-icon">&#10060;</span> No developer tools for debugging</div>
+                </div>
+                <div class="ba-card after">
+                    <h3>&#9989; After (LiteView2)</h3>
+                    <div class="ba-item"><span class="ba-icon">&#9989;</span> Full Chromium rendering — every site works</div>
+                    <div class="ba-item"><span class="ba-icon">&#9989;</span> Complete JavaScript ES6+ support</div>
+                    <div class="ba-item"><span class="ba-icon">&#9989;</span> Stable, zero script errors</div>
+                    <div class="ba-item"><span class="ba-icon">&#9989;</span> Active security via WebView2 runtime</div>
+                    <div class="ba-item"><span class="ba-icon">&#9989;</span> Full Chrome DevTools access</div>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'before_after'});">Get Free Trial (Limited Access)</a>
+                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- USE CASES (MOVED UP) -->
+        <!-- ============================================================ -->
+        <section class="section animate-on-scroll" id="usecases">
+            <h2 class="section-title">What Developers Build With LiteView2</h2>
+            <p class="section-sub">Real-world use cases from VBA developers who replaced the old WebBrowser control.</p>
+            <div class="usecases-grid">
+                <div class="usecase-card uc-primary" style="position:relative;overflow:visible;">
+                    <div class="uc-badge">MOST COMMON</div>
+                    <span class="uc-icon">&#128260;</span>
+                    <h3>Replace the IE Control Permanently</h3>
+                    <p>Drop LiteView2 into your existing VBA project. Your forms instantly support modern HTML, CSS, and JavaScript — no rewrite needed.</p>
+                </div>
+                <div class="usecase-card">
+                    <span class="uc-icon">&#127760;</span>
+                    <h3>Embed ChatGPT or Any Website</h3>
+                    <p>Load any URL — Google Maps, ChatGPT, internal portals — right inside your Access or Excel forms.</p>
+                </div>
+                <div class="usecase-card">
+                    <span class="uc-icon">&#128202;</span>
+                    <h3>Build Real-Time Dashboards</h3>
+                    <p>Push DAO recordset data directly to Chart.js, D3, or Plotly charts. No file exports, no middleware.</p>
+                </div>
+                <div class="usecase-card">
+                    <span class="uc-icon">&#9889;</span>
+                    <h3>Run JavaScript from VBA</h3>
+                    <p>Two-way communication: VBA calls JS functions, JS sends data back to VBA. Full bidirectional bridge.</p>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'usecases'});">Get Free Trial (Limited Access)</a>
+                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
         <!-- SCREENSHOT PLACEHOLDER -->
         <!-- ============================================================ -->
         <section class="screenshot-section animate-on-scroll" id="screenshot">
@@ -219,6 +370,47 @@
                        style="width:100%;height:100%;border-radius:var(--radius);display:block;object-fit:contain;background:#000;"></video>
             </div>
             <p class="video-caption">Live demo: Analytics dashboard with real-time data visualization powered by LiteView2</p>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- GET STARTED IN 2 MINUTES -->
+        <!-- ============================================================ -->
+        <section class="section animate-on-scroll" id="getstarted">
+            <h2 class="steps-section-title">Working in under 2 minutes</h2>
+            <p class="section-sub">No installers. No configuration files. No registry entries.</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Copy OCX to your folder</h4>
+                    <p>Place the OCX file next to your .accdb or .xlsm. That's the entire install.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Add the bootstrap module</h4>
+                    <p>Paste a small standard module (included below). It activates the control from VBA.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Load any website</h4>
+                    <p>One line of VBA — and you have a full Chromium browser inside your form.</p>
+                </div>
+            </div>
+            <div class="steps-code">
+                <button class="copy-btn" onclick="navigator.clipboard.writeText('lv.CreateInControl \"https://example.com\", Me.Frame1').then(function(){this.textContent='Copied!'}.bind(this));setTimeout(function(){this.textContent='Copy'}.bind(this),2000)">Copy</button>
+                <code>lv.CreateInControl <span style="color:var(--accent-light)">"https://example.com"</span>, Me.Frame1</code>
+            </div>
+            <div class="trust-badges">
+                <span>No registration required</span>
+                <span>No admin rights</span>
+                <span>Works in Excel &amp; Access</span>
+                <span>32-bit and 64-bit</span>
+                <span>Does not modify your system</span>
+            </div>
+            <p style="text-align:center;color:var(--text-dim);font-size:.85rem;margin-top:4px;">Tested with real-world Access and Excel VBA applications.</p>
+            <div class="section-cta">
+                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'getstarted'});">Get Free Trial (Limited Access)</a>
+                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
+            </div>
         </section>
 
         <!-- ============================================================ -->
@@ -487,40 +679,7 @@ rs.Close</code>
             </div>
         </section>
 
-        <!-- ============================================================ -->
-        <!-- WHAT DEVELOPERS BUILD -->
-        <!-- ============================================================ -->
-        <section class="section animate-on-scroll" id="usecases">
-            <h2 class="section-title">What Developers Build With LiteView2</h2>
-            <p class="section-sub">Real-world use cases from VBA developers who replaced the old WebBrowser control.</p>
-
-            <div class="usecases-grid">
-                <div class="usecase-card">
-                    <span class="uc-icon">&#128202;</span>
-                    <h3>Modern Dashboards in Excel</h3>
-                    <p>Render Chart.js, D3.js, or Plotly charts inside Excel UserForms — fed directly from spreadsheet
-                        data via PushRecordset.</p>
-                </div>
-                <div class="usecase-card">
-                    <span class="uc-icon">&#127970;</span>
-                    <h3>Web Apps Inside Access</h3>
-                    <p>Embed full React or Vue applications inside Access forms. Push recordsets, receive user actions
-                        back via PostMessage.</p>
-                </div>
-                <div class="usecase-card">
-                    <span class="uc-icon">&#129302;</span>
-                    <h3>Automation & Web Interfaces</h3>
-                    <p>Navigate sites, fill forms, click buttons, extract data — all from VBA using 28 DOM functions. No
-                        Selenium required.</p>
-                </div>
-                <div class="usecase-card">
-                    <span class="uc-icon">&#128256;</span>
-                    <h3>Hybrid Desktop + Web Apps</h3>
-                    <p>Build modern HTML/CSS/JS interfaces for legacy desktop apps. Keep your VBA business logic,
-                        modernize your UI.</p>
-                </div>
-            </div>
-        </section>
+        <!-- (Use cases section moved above screenshot for conversion flow) -->
 
         <!-- ============================================================ -->
         <!-- FULL FEATURE GRID -->
@@ -588,6 +747,8 @@ rs.Close</code>
                 </div>
             </div>
 
+            <details class="features-expand">
+                <summary>View all 18 advanced features</summary>
             <div class="feature-category">
                 <h3 class="feature-cat-title">Output & Capture</h3>
                 <div class="features-grid">
@@ -654,42 +815,17 @@ rs.Close</code>
                     </div>
                 </div>
             </div>
+            </details>
+            <div class="section-cta">
+                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'features'});">Get Free Trial (Limited Access)</a>
+                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
+            </div>
         </section>
 
         <!-- ============================================================ -->
         <!-- WHO IS THIS FOR -->
         <!-- ============================================================ -->
-        <section class="section animate-on-scroll" id="audience">
-            <h2 class="section-title">Built for Real Developers</h2>
-            <p class="section-sub">If you've ever fought the IE WebBrowser control, this is your upgrade path.</p>
-
-            <div class="audience-grid">
-                <div class="audience-item">
-                    <span class="audience-icon">&#127970;</span>
-                    <span>Access developers modernizing internal apps</span>
-                </div>
-                <div class="audience-item">
-                    <span class="audience-icon">&#128202;</span>
-                    <span>Excel VBA automation engineers</span>
-                </div>
-                <div class="audience-item">
-                    <span class="audience-icon">&#128421;&#65039;</span>
-                    <span>VB6 & Delphi classic Windows developers</span>
-                </div>
-                <div class="audience-item">
-                    <span class="audience-icon">&#127981;</span>
-                    <span>Enterprise teams replacing IE WebBrowser</span>
-                </div>
-                <div class="audience-item">
-                    <span class="audience-icon">&#129489;&#8205;&#128187;</span>
-                    <span>Consultants building client dashboards</span>
-                </div>
-                <div class="audience-item">
-                    <span class="audience-icon">&#128260;</span>
-                    <span>Anyone needing Chromium + COM without rewriting</span>
-                </div>
-            </div>
-        </section>
+        <!-- (Audience section merged into footer for cleaner conversion flow) -->
 
         <!-- ============================================================ -->
         <!-- PRICING -->
@@ -707,6 +843,7 @@ rs.Close</code>
                     <div class="pricing-tier">Developer</div>
                     <div class="pricing-price"><span style="text-decoration:line-through;opacity:0.45;font-size:0.55em;vertical-align:middle;">$199</span> <sup>$</sup>99</div>
                     <div class="pricing-period">one-time payment &middot; limited time</div>
+                    <div class="urgency-text">&#128293; Early Access — price increases after initial users</div>
                     <p class="pricing-desc">For individual developers shipping apps with embedded browsers.</p>
                     <ul class="pricing-features">
                         <li>1 named developer</li>
@@ -771,6 +908,12 @@ rs.Close</code>
                     <a href="#license-inquiry" class="btn-pricing">Renew Support</a>
                 </div>
 
+            </div>
+
+            <p class="risk-reversal">Try free for 30 days — full functionality, no credit card, no commitment.</p>
+            <div class="section-cta">
+                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'pricing'});">Get Free Trial (Limited Access)</a>
+                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
             </div>
 
             <div id="license-inquiry" style="max-width:700px;margin:48px auto 0;text-align:center;">
@@ -841,11 +984,30 @@ rs.Close</code>
             </div>
         </section>
 
-        <!-- ===== Trial CTA ===== -->
-        <div class="trial-cta animate-on-scroll">
-            <h2>Try LiteView2 Free for 30 Days</h2>
-            <p>Full functionality. No credit card. No limitations. No watermark during trial.</p>
-            <a href="https://github.com/imranosoft/LiteView2/raw/main/LiteView2_Demos.zip" class="btn-trial">&#11015; Download Free Trial</a>
+        <!-- ===== Trial CTA — Lead Capture ===== -->
+        <div class="trial-cta animate-on-scroll" id="trial-cta">
+            <h2>Still using the IE control?</h2>
+            <p>I'm offering early access and personally helping developers integrate LiteView2.</p>
+            <a href="javascript:void(0)" class="btn-cta" id="trialCtaBtn" style="font-size:18px;padding:16px 40px;"
+               onclick="var m=document.getElementById('trialModal');m.classList.toggle('open');if(m.classList.contains('open')){m.scrollIntoView({behavior:'smooth',block:'center'});if(typeof gtag==='function')gtag('event','trial_modal_open',{event_category:'conversion'});}if(typeof gtag==='function')gtag('event','trial_cta_click',{event_category:'conversion'});">
+                Get Free Trial (Limited Access)
+            </a>
+            <div class="trial-modal" id="trialModal">
+                <p style="font-size:1.2rem;font-weight:600;color:var(--text-bright);margin:0 0 12px;">
+                    Comment <strong style="color:var(--accent)">'VBA'</strong> on my LinkedIn post or DM me — I'll personally help you set it up.
+                </p>
+                <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Trial%20Request&body=Hi%2C%20I%20want%20to%20try%20LiteView2.%20My%20use%20case%3A%20" class="btn-cta" style="margin:12px 8px;">
+                    Email Me
+                </a>
+                <!-- TODO: Replace with actual LinkedIn profile URL when available -->
+                <!--<a href="https://www.linkedin.com/in/ACTUAL-PROFILE" target="_blank" class="btn-cta btn-cta-secondary" style="margin:12px 8px;">Open LinkedIn</a>-->
+                <p style="margin-top:12px;color:var(--success);font-size:.85rem;font-weight:500;">I usually respond within a few hours.</p>
+                <p style="margin-top:12px;color:var(--text-dim);font-size:.85rem;">
+                    Or <a href="https://github.com/imranosoft/LiteView2/raw/main/LiteView2_Demos.zip"
+                          style="color:var(--accent-light);"
+                          onclick="if(typeof gtag==='function')gtag('event','direct_download_click',{event_category:'conversion'});">download directly from GitHub</a> (no support / self-setup)
+                </p>
+            </div>
         </div>
 
     </div>
@@ -874,6 +1036,13 @@ rs.Close</code>
                     <a href="https://github.com/imranosoft/LiteView2/raw/main/LiteView2_Demos.zip">Sample Projects</a>
                 </div>
                 <div class="footer-col">
+                    <h4>Built For</h4>
+                    <p>Access &amp; Excel VBA developers</p>
+                    <p>VB6 &amp; Delphi applications</p>
+                    <p>Enterprise teams replacing IE</p>
+                    <p>Consultants &amp; freelancers</p>
+                </div>
+                <div class="footer-col">
                     <h4>System Requirements</h4>
                     <p>Windows 10 (1809+) or Windows 11</p>
                     <p>Office 2016, 2019, 2021, or 365</p>
@@ -891,6 +1060,12 @@ rs.Close</code>
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close">&times;</button>
         <img src="" alt="Screenshot">
+    </div>
+
+    <!-- ===== Sticky CTA Bar ===== -->
+    <div class="sticky-cta" id="stickyCta">
+        <a href="#trial-cta" class="btn-cta" style="padding:10px 24px;font-size:14px;">Get Free Trial (Limited Access)</a>
+        <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss">&times;</button>
     </div>
 
     <script>
@@ -920,6 +1095,26 @@ rs.Close</code>
                 apply(next);
             });
         }
+
+        // Smart CTA: if trial-cta is in view, open modal directly instead of scrolling
+        window.lv2TrialCTA = function(label) {
+            var tc = document.getElementById('trial-cta');
+            var m = document.getElementById('trialModal');
+            if (typeof gtag === 'function') gtag('event', 'section_cta_click', {event_category: 'conversion', event_label: label || 'unknown'});
+            if (tc && m) {
+                var r = tc.getBoundingClientRect();
+                if (r.top >= 0 && r.bottom <= window.innerHeight) {
+                    // Already visible — open modal directly
+                    if (!m.classList.contains('open')) {
+                        m.classList.add('open');
+                        m.scrollIntoView({behavior: 'smooth', block: 'center'});
+                        if (typeof gtag === 'function') gtag('event', 'trial_modal_open', {event_category: 'conversion'});
+                    }
+                    return false; // prevent scroll
+                }
+            }
+            return true; // allow default scroll
+        };
 
         // Nav link hover using CSS variables
         document.querySelectorAll('.lv2-nav-link').forEach(function(a) {
@@ -1016,6 +1211,31 @@ rs.Close</code>
 
         var statsBar = document.querySelector('.stats-bar');
         if (statsBar) statsObserver.observe(statsBar);
+
+        // Sticky CTA bar — show after scrolling past hero, with dismiss
+        var stickyCta = document.getElementById('stickyCta');
+        var stickyDismiss = document.getElementById('stickyDismiss');
+        var heroSection = document.getElementById('hero');
+        if (stickyCta && heroSection) {
+            // Check if previously dismissed this session
+            if (sessionStorage.getItem('lv2-sticky-dismissed')) {
+                stickyCta.classList.add('dismissed');
+            }
+            var stickyObs = new IntersectionObserver(function(entries) {
+                if (!stickyCta.classList.contains('dismissed')) {
+                    stickyCta.classList.toggle('visible', !entries[0].isIntersecting);
+                }
+            }, { threshold: 0 });
+            stickyObs.observe(heroSection);
+
+            if (stickyDismiss) {
+                stickyDismiss.addEventListener('click', function() {
+                    stickyCta.classList.add('dismissed');
+                    stickyCta.classList.remove('visible');
+                    sessionStorage.setItem('lv2-sticky-dismissed', '1');
+                });
+            }
+        }
     })();
     </script>
 

@@ -86,6 +86,7 @@
         <a href="iliteview2ctrl.html">ILiteView2Ctrl</a>
         <a href="events.html">Events</a>
         <a href="ibrowserpool.html">IBrowserPool</a>
+        <a href="ilv2json.html">ILV2Json</a>
     </nav>
     <div class="header-actions">
         <button class="theme-toggle" aria-label="Toggle theme">
@@ -110,6 +111,7 @@
         <a href="iliteview2ctrl.html" class="page-link">ILiteView2Ctrl</a>
         <a href="events.html" class="page-link">Events</a>
         <a href="ibrowserpool.html" class="page-link">IBrowserPool</a>
+        <a href="ilv2json.html" class="page-link">ILV2Json</a>
     </nav>
 </aside>
 <div class="sidebar-overlay"></div>
@@ -130,7 +132,7 @@
         <p class="subtitle">Complete API reference for the LiteView2 WebView2 ActiveX control</p>
 
         <!-- Architecture Diagram -->
-        <h2>LiteView2 API Architecture — IBrowserPool vs ILiteView2Ctrl</h2>
+        <h2>LiteView2 API Architecture</h2>
 <pre class="arch-diagram">LiteView2Lib
   |
   +-- IBrowserPool          (Multi-browser, reg-free pattern)
@@ -140,6 +142,10 @@
   +-- ILiteView2Ctrl        (Single-browser, design-time OCX)
   |     coclass: LiteView2Ctrl
   |     No browserIndex &mdash; operates on embedded WebView
+  |
+  +-- ILV2Json              (Standalone JSON engine &mdash; no WebView2 required)
+  |     coclass: LiteView2Json
+  |     CreateObject("LiteView2.Json") &mdash; works in any VBA host
   |
   +-- _DLiteView2CtrlEvents (Event dispinterface)
   |     Source of all OCX events
@@ -168,9 +174,14 @@
                     <td><a href="ibrowserpool.html">IBrowserPool</a></td>
                     <td>Multiple browsers, reg-free, Access Frame embedding. Events via <code>SetWebMessageCallback</code>.</td>
                 </tr>
+                <tr>
+                    <td>JSON Engine</td>
+                    <td><a href="ilv2json.html">ILV2Json</a></td>
+                    <td>Standalone JSON parsing and manipulation. No browser or WebView2 required. Three performance tiers: stateless, DOM handle, compiled path.</td>
+                </tr>
             </tbody>
         </table>
-        <p><strong>Key difference:</strong> <code>IBrowserPool</code> methods all take <code>browserIndex</code> (<code>Long</code>) as first parameter. <code>ILiteView2Ctrl</code> methods omit it.</p>
+        <p><strong>Key difference:</strong> <code>IBrowserPool</code> methods all take <code>browserIndex</code> (<code>Long</code>) as first parameter. <code>ILiteView2Ctrl</code> methods omit it. <code>ILV2Json</code> requires no browser at all — activate with <code>CreateObject("LiteView2.Json")</code>.</p>
 
         <!-- Card Grid -->
         <div class="card-grid">
@@ -198,6 +209,12 @@
                 <span class="card-desc">Multi-browser pool with 17 additional lifecycle methods</span>
                 <span class="card-count">17+ Methods</span>
             </a>
+            <a href="ilv2json.html" class="card">
+                <span class="card-icon">J</span>
+                <span class="card-title">ILV2Json</span>
+                <span class="card-desc">Standalone JSON engine — no WebView2 required</span>
+                <span class="card-count">36 Members</span>
+            </a>
         </div>
 
         <!-- Key Rules -->
@@ -205,7 +222,7 @@
 
         <div class="callout callout-tip">
             <span class="callout-title">Tip</span>
-            <p>All JSON methods work without WebView2 &mdash; safe to call from any event handler, including <code>WebMessageReceived</code>.</p>
+            <p><a href="ilv2json.html">ILV2Json</a> works without WebView2 in any VBA host &mdash; use <code>CreateObject("LiteView2.Json")</code>. JSON helper methods on ILiteView2Ctrl and IBrowserPool are also safe to call from any event handler, including <code>WebMessageReceived</code>.</p>
         </div>
 
         <div class="callout callout-warning">

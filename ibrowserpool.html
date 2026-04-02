@@ -88,6 +88,7 @@
         <a href="iliteview2ctrl.html">ILiteView2Ctrl</a>
         <a href="events.html">Events</a>
         <a href="ibrowserpool.html" class="active">IBrowserPool</a>
+        <a href="ilv2json.html">ILV2Json</a>
     </nav>
     <div class="header-actions">
         <div class="global-search">
@@ -115,6 +116,7 @@
         <a href="iliteview2ctrl.html" class="page-link"><span class="icon">&#73;</span> ILiteView2Ctrl</a>
         <a href="events.html" class="page-link"><span class="icon">&#9889;</span> Events</a>
         <a href="ibrowserpool.html" class="page-link current"><span class="icon">&#66;</span> IBrowserPool</a>
+        <a href="ilv2json.html" class="page-link"><span class="icon">&#74;</span> ILV2Json</a>
     </nav>
     <div class="sidebar-search">
         <input type="search" placeholder="Search members...">
@@ -145,6 +147,15 @@
             <div class="nav-group-title"><span class="chevron">&#9654;</span> Runtime</div>
             <div class="nav-group-items">
                 <a href="#runtime-detection" class="nav-link">Runtime Detection <span class="member-count">3</span></a>
+            </div>
+        </div>
+        <!-- Pool-Only Features -->
+        <div class="nav-group">
+            <div class="nav-group-title"><span class="chevron">&#9654;</span> Pool-Only Features</div>
+            <div class="nav-group-items">
+                <a href="#vba-dispatch" class="nav-link">VBA Auto-Dispatch <span class="member-count">6</span></a>
+                <a href="#audio-control" class="nav-link">Audio Control <span class="member-count">3</span></a>
+                <a href="#pool-utilities" class="nav-link">Pool Utilities <span class="member-count">6</span></a>
             </div>
         </div>
         <!-- Shared Methods -->
@@ -497,6 +508,84 @@ idx = pool.CreateInControl(<span class="str">"https://lv2.local/app.html"</span>
         </div>
 
         <!-- ================================================================== -->
+        <!-- VBA Auto-Dispatch & Callbacks -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="vba-dispatch" data-section-id="vba-dispatch">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">VBA Auto-Dispatch &amp; Callbacks</span>
+                <span class="section-count">6 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Allow JavaScript in the browser to call VBA macros directly, without manual <code>WebMessageReceived</code> routing.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">EnableAutoDispatch</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span>, enabled <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Enable or disable auto-dispatch of HTML/JS calls to VBA macros</td></tr>
+                        <tr><td class="member-name">IsAutoDispatchEnabled</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Boolean</td><td>Check whether auto-dispatch is currently enabled for this browser</td></tr>
+                        <tr><td class="member-name">SetAllowedVBAMacros</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span>, macroList <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Set comma-separated whitelist of VBA macro names that JS is allowed to call</td></tr>
+                        <tr><td class="member-name">ClearAllowedVBAMacros</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Clear the VBA macro whitelist (blocks all auto-dispatch calls)</td></tr>
+                        <tr><td class="member-name">RegisterVbaCallback</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span>, jsName <span class="kw">As</span> <span class="typ">String</span>, callbackObject <span class="kw">As</span> <span class="typ">Object</span>, methodName <span class="kw">As</span> <span class="typ">String</span></td><td class="param-type"></td><td>Register a VBA object method as a callable function from JavaScript. <code>jsName</code> is the name JS uses to call it.</td></tr>
+                        <tr><td class="member-name">UnregisterVbaCallback</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Unregister all VBA callbacks for this browser</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Audio Control -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="audio-control" data-section-id="audio-control">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Audio Control</span>
+                <span class="section-count">3 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Query and control audio playback state for a browser instance.</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">GetIsDocumentPlayingAudio</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Boolean</td><td>Check if the document is currently playing audio</td></tr>
+                        <tr><td class="member-name">GetIsMuted</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Boolean</td><td>Get the current mute state of the browser</td></tr>
+                        <tr><td class="member-name">SetIsMuted</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span>, muted <span class="kw">As</span> <span class="typ">Boolean</span></td><td class="param-type"></td><td>Mute or unmute the browser audio</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
+        <!-- Pool-Only Utilities -->
+        <!-- ================================================================== -->
+        <div class="collapsible-section" id="pool-utilities" data-section-id="pool-utilities">
+            <div class="section-header">
+                <span class="expand-icon">&#9654;</span>
+                <span class="section-title">Pool-Only Utilities</span>
+                <span class="section-count">6 methods</span>
+            </div>
+            <div class="section-body">
+                <p>Additional methods available only on IBrowserPool (not on ILiteView2Ctrl).</p>
+                <table class="api-table">
+                    <thead>
+                        <tr><th>Member</th><th>Parameters</th><th>Returns</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="member-name">GetUserAgent</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">String</td><td>Get the current User-Agent string for this browser</td></tr>
+                        <tr><td class="member-name">SetDefaultBackgroundColor</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span>, argbColor <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Set the default background color as ARGB (e.g. <code>&amp;HFF000000</code> for opaque black)</td></tr>
+                        <tr><td class="member-name">ShowSaveAsDialog</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Show the browser's native Save As dialog</td></tr>
+                        <tr><td class="member-name">GetLastError</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">String</td><td>Get the last error message for this browser instance</td></tr>
+                        <tr><td class="member-name">GetLastErrorCode</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type">Long</td><td>Get the last error code (HRESULT) for this browser instance</td></tr>
+                        <tr><td class="member-name">DestroyBrowserSync</td><td class="param-type">browserIndex <span class="kw">As</span> <span class="typ">Long</span>, timeoutMs <span class="kw">As</span> <span class="typ">Long</span></td><td class="param-type"></td><td>Synchronously destroy a browser with a timeout. Blocks until the browser is destroyed or the timeout expires.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ================================================================== -->
         <!-- Shared Methods Reference -->
         <!-- ================================================================== -->
         <section id="shared-methods">
@@ -509,9 +598,10 @@ idx = pool.CreateInControl(<span class="str">"https://lv2.local/app.html"</span>
                 <tbody>
                     <tr><td class="member-name">Navigation</td><td>Navigate, GoBack, GoForward, etc.</td><td><a href="iliteview2ctrl.html#navigation">ILiteView2Ctrl &rsaquo; Navigation</a></td></tr>
                     <tr><td class="member-name">Script Execution</td><td>ExecuteScript, ExecuteScriptWithArgs, etc.</td><td><a href="iliteview2ctrl.html#script-execution">ILiteView2Ctrl &rsaquo; Script Execution</a></td></tr>
-                    <tr><td class="member-name">Data Bridge</td><td>PostWebMessageAsJson, PushRecordset, etc.</td><td><a href="iliteview2ctrl.html#data-bridge">ILiteView2Ctrl &rsaquo; Data Bridge</a></td></tr>
+                    <tr><td class="member-name">Data Bridge</td><td>PostWebMessageAsJson, PushRecordset, CallJsFunction, SetJsVariable, etc.</td><td><a href="iliteview2ctrl.html#data-bridge">ILiteView2Ctrl &rsaquo; Data Bridge</a></td></tr>
                     <tr><td class="member-name">JSON Helpers</td><td>BuildJson, JsonGetValue, JsonIsValid, etc.</td><td><a href="iliteview2ctrl.html#json-helpers">ILiteView2Ctrl &rsaquo; JSON Helpers</a></td></tr>
-                    <tr><td class="member-name">JSON Mutation</td><td>JsonCreateObject, JsonSetValue, JsonMerge, JsonToRowArray, etc.</td><td><a href="iliteview2ctrl.html#json-mutation">ILiteView2Ctrl &rsaquo; JSON Mutation</a></td></tr>
+                    <tr><td class="member-name">JSON Mutation</td><td>JsonCreateObject, JsonSetValue, JsonMerge, JsonToRowArray, JsonUnwrapString, JsonCompact, etc.</td><td><a href="iliteview2ctrl.html#json-mutation">ILiteView2Ctrl &rsaquo; JSON Mutation</a></td></tr>
+                    <tr><td class="member-name">Automation API</td><td>WaitForElement, ClickElementBySelector, GetTextBySelector</td><td><a href="iliteview2ctrl.html#automation-api">ILiteView2Ctrl &rsaquo; Automation API</a></td></tr>
                     <tr><td class="member-name">DOM Manipulation</td><td>GetElementValueById, SetInnerHtmlById, etc.</td><td><a href="iliteview2ctrl.html#dom-manipulation">ILiteView2Ctrl &rsaquo; DOM Manipulation</a></td></tr>
                     <tr><td class="member-name">Printing &amp; PDF</td><td>PrintToPdf, CaptureScreenshot, etc.</td><td><a href="iliteview2ctrl.html#printing-pdf">ILiteView2Ctrl &rsaquo; Printing &amp; PDF</a></td></tr>
                     <tr><td class="member-name">Settings</td><td>IsScriptEnabled, UserAgent, etc.</td><td><a href="iliteview2ctrl.html#settings">ILiteView2Ctrl &rsaquo; Settings</a></td></tr>

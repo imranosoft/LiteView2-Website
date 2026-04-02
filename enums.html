@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiteView2 Enumerations — 12 WebView2 VBA Constants Reference</title>
+    <title>LiteView2 Enumerations — 13 WebView2 VBA Constants Reference</title>
     <meta name="description" content="12 LiteView2 enumerations with 60+ constants for the WebView2 VBA OCX. Complete values and descriptions. Copy-ready for VBA code. Browse all enumerations →">
     <link rel="canonical" href="https://imranosoft.github.io/LiteView2-Website/enums.html">
     <link rel="alternate" hreflang="en" href="https://imranosoft.github.io/LiteView2-Website/enums.html">
@@ -36,8 +36,8 @@
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "name": "LiteView2 Enumerations — 12 WebView2 VBA Constants Reference",
-      "description": "Complete enumeration reference for the LiteView2 WebView2 ActiveX OCX control. Covers 12 enums: browsing data kinds, resource context, focus reasons, popup mode, license state, color scheme, print orientation, tracking prevention, memory usage, scrollbar style, download dialog alignment, and PDF toolbar items.",
+      "name": "LiteView2 Enumerations — 13 WebView2 VBA Constants Reference",
+      "description": "Complete enumeration reference for the LiteView2 WebView2 ActiveX OCX control. Covers 13 enums: browsing data kinds, resource context, focus reasons, popup mode, license state, color scheme, print orientation, tracking prevention, memory usage, scrollbar style, download dialog alignment, and PDF toolbar items.",
       "url": "https://imranosoft.github.io/LiteView2-Website/enums.html",
       "author": { "@type": "Person", "name": "Muhammad Imran" },
       "publisher": { "@type": "Person", "name": "Muhammad Imran" },
@@ -63,6 +63,7 @@
         <a href="iliteview2ctrl.html">ILiteView2Ctrl</a>
         <a href="events.html">Events</a>
         <a href="ibrowserpool.html">IBrowserPool</a>
+        <a href="ilv2json.html">ILV2Json</a>
     </nav>
     <div class="header-actions">
         <div class="global-search">
@@ -93,6 +94,7 @@
         <a href="iliteview2ctrl.html" class="page-link">ILiteView2Ctrl</a>
         <a href="events.html" class="page-link">Events</a>
         <a href="ibrowserpool.html" class="page-link">IBrowserPool</a>
+        <a href="ilv2json.html" class="page-link">ILV2Json</a>
     </nav>
     <div class="sidebar-search">
         <input type="search" placeholder="Search enums...">
@@ -110,6 +112,7 @@
         <a href="#ScrollbarStyle" class="nav-link">LV2_SCROLLBAR_STYLE</a>
         <a href="#DownloadCorner" class="nav-link">LV2_DOWNLOAD_DIALOG_CORNER_ALIGNMENT</a>
         <a href="#PdfToolbar" class="nav-link">LV2_PDF_TOOLBAR_ITEMS</a>
+        <a href="#BoundsMode" class="nav-link">LV2_BOUNDS_MODE</a>
     </nav>
 </aside>
 <div class="sidebar-overlay"></div>
@@ -127,7 +130,7 @@
 
         <!-- Page Title -->
         <h1>Enumerations</h1>
-        <p class="subtitle">12 enums defining constants used across the LiteView2 API</p>
+        <p class="subtitle">13 enums defining constants used across the LiteView2 API</p>
 
         <div class="callout callout-note">
             <span class="callout-title">Note</span>
@@ -354,6 +357,26 @@ m_lv.ClearBrowsingData <span class="kw">LV2_DATA_COOKIES</span> <span class="kw"
             </table>
 <pre><code><span class="cmt">' Hide Save and Print buttons from PDF toolbar</span>
 m_lv.HiddenPdfToolbarItems = <span class="kw">LV2_PDF_SAVE</span> <span class="kw">Or</span> <span class="kw">LV2_PDF_PRINT</span></code></pre>
+        </section>
+
+        <section id="BoundsMode" data-section-id="BoundsMode">
+            <h2>LV2_BOUNDS_MODE</h2>
+            <p>Controls how bounds coordinates are interpreted when embedding the browser.</p>
+            <table class="member-table">
+                <thead>
+                    <tr>
+                        <th class="col-name">Constant</th>
+                        <th class="col-value">Value</th>
+                        <th class="col-desc">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="member-name">LV2_BOUNDS_RAW_PIXELS</td><td>0</td><td>Bounds are specified in raw pixels (default). The WebView2 control is positioned using raw pixel coordinates regardless of DPI scaling.</td></tr>
+                    <tr><td class="member-name">LV2_BOUNDS_RASTERIZATION_SCALE</td><td>1</td><td>Bounds use the rasterization scale. Coordinates are automatically adjusted for the current DPI/scaling factor of the display.</td></tr>
+                </tbody>
+            </table>
+<pre><code><span class="cmt">' Use DPI-aware bounds</span>
+pool.SetBoundsMode browserIndex, <span class="kw">LV2_BOUNDS_RASTERIZATION_SCALE</span></code></pre>
         </section>
 
     </main>
