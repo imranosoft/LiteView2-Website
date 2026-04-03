@@ -900,9 +900,22 @@ footer a:hover {
     text-decoration: underline;
 }
 
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+.footer-social a {
+    color: var(--text-dim);
+    transition: color 0.2s;
+}
+.footer-social a:hover {
+    color: var(--accent-light);
+}
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 32px;
     text-align: left;
     padding-bottom: 32px;
