@@ -117,7 +117,6 @@
       "operatingSystem": "Windows 10 1809+, Windows 11",
       "softwareVersion": "1.0",
       "releaseNotes": "Initial commercial release — March 2026",
-      "downloadUrl": "https://github.com/imranosoft/LiteView2/raw/main/LiteView2_Demos.zip",
       "url": "https://imranosoft.github.io/LiteView2-Website/index.htm",
       "author": { "@type": "Person", "name": "Muhammad Imran", "email": "imranbhatti800@gmail.com" },
       "offers": [
@@ -236,18 +235,15 @@
         <!-- HERO -->
         <!-- ============================================================ -->
         <section class="hero" id="hero">
-            <div class="hero-badge">Version 1.0 — March 2026</div>
-            <h1>Replace the Internet Explorer control in VBA<br><span>— permanently.</span></h1>
-            <p>Run modern websites, dashboards, and JavaScript inside Excel &amp; Access forms using WebView2.</p>
-            <p style="color:var(--accent-light);font-style:italic;font-size:.95rem;margin-top:8px;">Stop fighting with the IE control.</p>
+            <div class="hero-badge">Now Available — Free 30-Day Trial</div>
+            <h1>Embed a full Chromium browser<br><span>inside your VBA forms.</span></h1>
+            <p>270+ VBA-callable APIs. Full JavaScript execution. DAO recordset-to-chart in one call. Built for Access, Excel, and VB6.</p>
             <div class="hero-cta-group">
-                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','hero_cta_click',{event_category:'conversion'});var m=document.getElementById('trialModal');if(m){var r=document.getElementById('trial-cta').getBoundingClientRect();if(r.top>=0&&r.bottom<=window.innerHeight){m.classList.add('open');m.scrollIntoView({behavior:'smooth',block:'center'});return false;}}">Get Free Trial (Limited Access)</a>
+                <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Trial%20Request&body=Hi%2C%20I%27d%20like%20to%20try%20LiteView2.%20Please%20send%20me%20the%20trial%20package." class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','hero_cta_click',{event_category:'conversion'});">Get Free Trial</a>
                 <a href="#screenshot" class="btn-cta btn-cta-secondary">Watch Demo</a>
             </div>
-            <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
-            <div class="hero-trust">Works in Excel &amp; Access &bull; No registration &bull; 32/64-bit supported</div>
-            <div style="color:var(--text-dim);font-size:.82rem;margin-top:4px;">Built by a professional VBA developer with real-world Excel &amp; Access automation experience.</div>
-            <div style="color:var(--success);font-size:.82rem;margin-top:6px;">&#10003; Early users are already testing LiteView2 in real projects.</div>
+            <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Full-feature 30-day trial &bull; I'll personally set you up</div>
+            <div class="hero-trust">Works in Excel &amp; Access &bull; 32/64-bit &bull; Reg-free or COM registered</div>
             <div class="hero-proof" onclick="var lb=document.getElementById('lightbox');lb.querySelector('img').src='Access_Form.PNG';lb.classList.add('open');">
                 <img src="Access_Form.PNG" alt="LiteView2 running inside Microsoft Access — modern analytics dashboard with charts" loading="eager" width="820" height="600">
                 <div class="hero-proof-caption">Real Access form running LiteView2 — click to enlarge</div>
@@ -274,6 +270,18 @@
             </div>
         </div>
 
+        <!-- ===== Trust / Authority ===== -->
+        <div style="max-width:700px;margin:24px auto 32px;text-align:center;">
+            <p style="color:var(--text);font-size:.95rem;line-height:1.7;margin-bottom:12px;">
+                Built in <strong style="color:var(--text-bright)">C++ and ATL</strong> — not a managed wrapper or JavaScript shim.
+                LiteView2 calls the WebView2 COM API directly. Every method is a native implementation with full error handling and VBA-safe memory management.
+            </p>
+            <p style="color:var(--text-dim);font-size:.88rem;line-height:1.6;">
+                Created by <strong style="color:var(--text-bright)">Muhammad Imran</strong> — a developer who builds production Access and Excel applications for enterprise clients
+                and needed a real WebView2 control that didn't exist.
+            </p>
+        </div>
+
         <!-- SEO: Primary commercial keyword heading -->
         <h2 style="text-align:center;font-size:1.4rem;color:var(--text-dim);font-weight:400;margin:0 0 2rem;letter-spacing:0;">
             The Only <strong style="color:var(--text-bright)">WebView2 ActiveX OCX Control</strong> Built for VBA Developers
@@ -283,7 +291,7 @@
         <!-- BEFORE vs AFTER -->
         <!-- ============================================================ -->
         <section class="section animate-on-scroll" id="before-after">
-            <h2 class="ba-section-title">Why developers are abandoning the IE control</h2>
+            <h2 class="ba-section-title">Your IE WebBrowser control is holding you back</h2>
             <p class="ba-section-sub">The WebBrowser control was built for a web that no longer exists.</p>
             <div class="before-after-grid">
                 <div class="ba-card before">
@@ -293,6 +301,7 @@
                     <div class="ba-item"><span class="ba-icon">&#10060;</span> Constant "script error" popups</div>
                     <div class="ba-item"><span class="ba-icon">&#10060;</span> No security updates since 2016</div>
                     <div class="ba-item"><span class="ba-icon">&#10060;</span> No developer tools for debugging</div>
+                    <div class="ba-item"><span class="ba-icon">&#10060;</span> Many modern websites refuse to load at all</div>
                 </div>
                 <div class="ba-card after">
                     <h3>&#9989; After (LiteView2)</h3>
@@ -301,11 +310,12 @@
                     <div class="ba-item"><span class="ba-icon">&#9989;</span> Stable, zero script errors</div>
                     <div class="ba-item"><span class="ba-icon">&#9989;</span> Active security via WebView2 runtime</div>
                     <div class="ba-item"><span class="ba-icon">&#9989;</span> Full Chrome DevTools access</div>
+                    <div class="ba-item"><span class="ba-icon">&#9989;</span> Two-way VBA-to-JavaScript communication built in</div>
                 </div>
             </div>
             <div class="section-cta">
-                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'before_after'});">Get Free Trial (Limited Access)</a>
-                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
+                <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Trial%20Request&body=Hi%2C%20I%27d%20like%20to%20try%20LiteView2.%20Please%20send%20me%20the%20trial%20package." class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'before_after'});">Get Free Trial</a>
+                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; I respond within a few hours</div>
             </div>
         </section>
 
@@ -314,13 +324,13 @@
         <!-- ============================================================ -->
         <section class="section animate-on-scroll" id="usecases">
             <h2 class="section-title">What Developers Build With LiteView2</h2>
-            <p class="section-sub">Real-world use cases from VBA developers who replaced the old WebBrowser control.</p>
+            <p class="section-sub">What developers are building with LiteView2.</p>
             <div class="usecases-grid">
                 <div class="usecase-card uc-primary" style="position:relative;overflow:visible;">
                     <div class="uc-badge">MOST COMMON</div>
                     <span class="uc-icon">&#128260;</span>
                     <h3>Replace the IE Control Permanently</h3>
-                    <p>Swap the old WebBrowser control for LiteView2 and your forms render modern HTML, CSS, and JavaScript — same VBA workflow, modern Chromium engine.</p>
+                    <p>Add a modern Chromium browser to your VBA forms with a dedicated API designed for Access, Excel, and VB6. Full control over navigation, JavaScript, and DOM — all from VBA code.</p>
                 </div>
                 <div class="usecase-card">
                     <span class="uc-icon">&#127760;</span>
@@ -339,8 +349,8 @@
                 </div>
             </div>
             <div class="section-cta">
-                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'usecases'});">Get Free Trial (Limited Access)</a>
-                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
+                <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Trial%20Request&body=Hi%2C%20I%27d%20like%20to%20try%20LiteView2.%20Please%20send%20me%20the%20trial%20package." class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'usecases'});">Get Free Trial</a>
+                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; I respond within a few hours</div>
             </div>
         </section>
 
@@ -373,10 +383,37 @@
         </section>
 
         <!-- ============================================================ -->
-        <!-- GET STARTED IN 2 MINUTES -->
+        <!-- SEE WHAT YOU CAN BUILD -->
+        <!-- ============================================================ -->
+        <section class="section animate-on-scroll" id="see-it">
+            <h2 class="section-title">See What You Can Build</h2>
+            <p class="section-sub">Real output from the included demo projects — running inside Microsoft Access.</p>
+            <div class="before-after-grid">
+                <div class="ba-card before" style="border-top-color:var(--danger);">
+                    <h3 style="color:var(--danger);">Standard Access Form</h3>
+                    <p style="color:var(--text-dim);font-size:.9rem;">Traditional Access UI — buttons, text boxes, subforms. Functional, but dated.</p>
+                    <div style="margin-top:16px;padding:20px;background:rgba(239,68,68,.05);border-radius:8px;border:1px dashed var(--border);text-align:center;color:var(--text-dim);font-size:.85rem;">
+                        <!-- Replace with actual screenshot of plain Access form -->
+                        [Screenshot: Standard Access form with native controls]
+                    </div>
+                </div>
+                <div class="ba-card after" style="border-top-color:var(--success);">
+                    <h3 style="color:var(--success);">Same App + LiteView2</h3>
+                    <p style="color:var(--text-dim);font-size:.9rem;">Same database, same VBA backend — with a modern HTML dashboard powered by LiteView2.</p>
+                    <div style="margin-top:16px;padding:20px;background:rgba(16,185,129,.05);border-radius:8px;border:1px dashed var(--border);text-align:center;color:var(--text-dim);font-size:.85rem;">
+                        <!-- Replace with actual screenshot of LiteView2 dashboard in Access -->
+                        [Screenshot: Access form with LiteView2 rendering Chart.js dashboard]
+                    </div>
+                </div>
+            </div>
+            <p style="text-align:center;color:var(--text-dim);font-size:.82rem;margin-top:16px;">Both screenshots from the included demo projects. Download the trial to run them yourself.</p>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- GET STARTED -->
         <!-- ============================================================ -->
         <section class="section animate-on-scroll" id="getstarted">
-            <h2 class="steps-section-title">Working in under 2 minutes</h2>
+            <h2 class="steps-section-title">Get Started in 3 Steps</h2>
             <p class="section-sub">No installers. No configuration files. No registry entries.</p>
             <div class="steps-grid">
                 <div class="step-card">
@@ -392,7 +429,7 @@
                 <div class="step-card">
                     <div class="step-number">3</div>
                     <h4>Load any website</h4>
-                    <p>One line of VBA — and you have a full Chromium browser inside your form.</p>
+                    <p>Create a browser in any Frame control. Navigate, execute JavaScript, and handle events from VBA.</p>
                 </div>
             </div>
             <div class="steps-code">
@@ -408,52 +445,8 @@
             </div>
             <p style="text-align:center;color:var(--text-dim);font-size:.85rem;margin-top:4px;">Tested with real-world Access and Excel VBA applications.</p>
             <div class="section-cta">
-                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'getstarted'});">Get Free Trial (Limited Access)</a>
-                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
-            </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- WHY LITEVIEW2 EXISTS — PROBLEM / SOLUTION -->
-        <!-- ============================================================ -->
-        <section class="section animate-on-scroll" id="why">
-            <h2 class="section-title">Why LiteView2 Exists</h2>
-            <p class="section-sub">The old WebBrowser control was built for a web that no longer exists.</p>
-
-            <div class="ps-grid">
-                <!-- Problem -->
-                <div class="ps-card problem">
-                    <div class="ps-label">&#10060; The Problem</div>
-                    <h3>VBA's WebBrowser Control Is Obsolete</h3>
-                    <ul class="ps-list">
-                        <li><span class="ps-icon">&#128128;</span> Uses Internet Explorer — officially retired by Microsoft
-                        </li>
-                        <li><span class="ps-icon">&#128683;</span> Cannot render modern HTML5, CSS3, or Flexbox layouts</li>
-                        <li><span class="ps-icon">&#9888;&#65039;</span> Broken JavaScript — no ES6, no Promises, no Fetch API</li>
-                        <li><span class="ps-icon">&#128274;</span> Many modern websites refuse to load entirely</li>
-                        <li><span class="ps-icon">&#128201;</span> No security updates — known vulnerabilities remain unpatched
-                        </li>
-                        <li><span class="ps-icon">&#129335;</span> No two-way communication between VBA and JavaScript</li>
-                    </ul>
-                </div>
-
-                <!-- Solution -->
-                <div class="ps-card solution">
-                    <div class="ps-label">&#9989; The Solution</div>
-                    <h3>LiteView2 — The Modern Replacement</h3>
-                    <p class="ps-desc">
-                        LiteView2 embeds Microsoft's official WebView2 engine (the same Chromium engine that powers
-                        Microsoft Edge) directly inside your VBA forms. Every modern website renders perfectly.
-                    </p>
-                    <ul class="ps-highlights">
-                        <li><span class="ps-icon">&#9889;</span> Full ES6+ JavaScript, CSS Grid, Flexbox, Web Animations</li>
-                        <li><span class="ps-icon">&#128279;</span> Bidirectional VBA &#8596; JavaScript messaging (3 channels)</li>
-                        <li><span class="ps-icon">&#128202;</span> Push DAO/ADO recordsets directly to web pages</li>
-                        <li><span class="ps-icon">&#128230;</span> Zero-install deployment — no admin rights needed</li>
-                        <li><span class="ps-icon">&#128260;</span> Automatic security updates via Edge Evergreen runtime</li>
-                        <li><span class="ps-icon">&#128736;&#65039;</span> 270+ APIs designed specifically for VBA developers</li>
-                    </ul>
-                </div>
+                <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Trial%20Request&body=Hi%2C%20I%27d%20like%20to%20try%20LiteView2.%20Please%20send%20me%20the%20trial%20package." class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'getstarted'});">Request Trial Access</a>
+                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Includes sample projects and documentation</div>
             </div>
         </section>
 
@@ -472,7 +465,7 @@
                     <h3>Registration-Free Mode</h3>
                     <p>Drop the OCX file next to your application. No <code
                             style="color:var(--accent-light);background:rgba(59,130,246,0.1);padding:2px 6px;border-radius:4px;font-size:13px">regsvr32</code>,
-                        no admin rights, no registry entries. Your app runs instantly on any machine.</p>
+                        no admin rights, no registry entries. Your app runs on any machine with the WebView2 Runtime.</p>
                     <p style="margin-top:10px;font-size:13px;color:var(--text-mid);line-height:1.6;">
                         <strong style="color:var(--text-bright);">How it works:</strong> Add a small bootstrap module
                         (included below) that calls two functions from the OCX — one to set the folder path, one to
@@ -694,25 +687,25 @@ rs.Close</code>
                 <div class="features-grid">
                     <div class="feature-card">
                         <span class="feature-icon">&#127760;</span>
-                        <h3>Navigation & Sync Loading</h3>
+                        <h3>Load Any URL or HTML String</h3>
                         <p>Navigate, NavigateSync, NavigateToString, history, custom HTTP requests with headers and POST
                             data.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-icon">&#128295;</span>
-                        <h3>28 DOM Functions</h3>
+                        <h3>Read &amp; Manipulate Web Pages From VBA</h3>
                         <p>Read, write, click, check, select, scroll, focus — by ID, by name, by CSS selector. No JavaScript
                             required.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-icon">&#9889;</span>
-                        <h3>Script Execution</h3>
+                        <h3>Run JavaScript and Get Results Back</h3>
                         <p>Sync and async JavaScript. Typed arguments. Return values. Persistent document-creation scripts.
                         </p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-icon">&#128196;</span>
-                        <h3>Document Preview</h3>
+                        <h3>Preview PDFs, Office Files &amp; Media</h3>
                         <p>Open images, PDFs, videos, audio, Word, Excel, and PowerPoint files directly in the browser
                             frame.</p>
                     </div>
@@ -724,23 +717,23 @@ rs.Close</code>
                 <div class="features-grid">
                     <div class="feature-card">
                         <span class="feature-icon">&#128172;</span>
-                        <h3>3 Messaging Channels</h3>
+                        <h3>Two-Way VBA-to-JavaScript Bridge</h3>
                         <p>PostMessage, WebMessageCallback, and Host Object Bridge. VBA &#8596; JavaScript in both directions.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-icon">&#128202;</span>
-                        <h3>PushRecordset</h3>
+                        <h3>Send Database Records to Charts Directly</h3>
                         <p>Serialize DAO or ADO recordsets directly to the browser. One call: VBA &#8594; JSON &#8594; JavaScript
                             callback.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-icon">&#129513;</span>
-                        <h3>Built-in JSON</h3>
+                        <h3>Parse &amp; Build JSON Without External Libraries</h3>
                         <p>Parse, query, validate, build JSON natively. No external VBA JSON library required.</p>
                     </div>
                     <div class="feature-card">
                         <span class="feature-icon">&#127850;</span>
-                        <h3>Cookie & Storage</h3>
+                        <h3>Full Control Over Browser State</h3>
                         <p>Get, set, and clear cookies. Clear cache, localStorage, IndexedDB, browsing history —
                             individually or all.</p>
                     </div>
@@ -817,8 +810,8 @@ rs.Close</code>
             </div>
             </details>
             <div class="section-cta">
-                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'features'});">Get Free Trial (Limited Access)</a>
-                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
+                <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Trial%20Request&body=Hi%2C%20I%27d%20like%20to%20try%20LiteView2.%20Please%20send%20me%20the%20trial%20package." class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'features'});">Get Free Trial</a>
+                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Full-feature 30-day trial</div>
             </div>
         </section>
 
@@ -854,7 +847,7 @@ rs.Close</code>
                         <li>1 year of updates</li>
                         <li>Email support</li>
                     </ul>
-                    <a href="#license-inquiry" class="btn-pricing">Get Developer License</a>
+                    <a href="#license-inquiry" class="btn-pricing">Buy Developer License — $99</a>
                 </div>
 
                 <!-- Site -->
@@ -872,7 +865,7 @@ rs.Close</code>
                         <li>1 year of updates</li>
                         <li>Priority email support</li>
                     </ul>
-                    <a href="#license-inquiry" class="btn-pricing">Get Site License</a>
+                    <a href="#license-inquiry" class="btn-pricing">Buy Site License — $699</a>
                 </div>
 
                 <!-- Enterprise -->
@@ -890,7 +883,7 @@ rs.Close</code>
                         <li>1 year of updates</li>
                         <li>Priority support with SLA</li>
                     </ul>
-                    <a href="#license-inquiry" class="btn-pricing">Get Enterprise License</a>
+                    <a href="#license-inquiry" class="btn-pricing">Buy Enterprise License — $1,299</a>
                 </div>
 
                 <!-- Support Renewal -->
@@ -905,21 +898,22 @@ rs.Close</code>
                         <li>Bug fixes and patches</li>
                         <li>Continued email support</li>
                     </ul>
-                    <a href="#license-inquiry" class="btn-pricing">Renew Support</a>
+                    <a href="#license-inquiry" class="btn-pricing">Renew Annual Support — $79</a>
                 </div>
 
             </div>
 
             <p class="risk-reversal">Try free for 30 days — full functionality, no credit card, no commitment.</p>
             <div class="section-cta">
-                <a href="#trial-cta" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'pricing'});">Get Free Trial (Limited Access)</a>
-                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; Instant access via DM/email</div>
+                <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Trial%20Request&body=Hi%2C%20I%27d%20like%20to%20try%20LiteView2.%20Please%20send%20me%20the%20trial%20package." class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','section_cta_click',{event_category:'conversion',event_label:'pricing'});">Start Your Free 30-Day Trial</a>
+                <div style="color:var(--text-dim);font-size:.78rem;margin-top:8px;">No credit card &bull; I respond within a few hours</div>
             </div>
 
             <div id="license-inquiry" style="max-width:700px;margin:48px auto 0;text-align:center;">
-                <h3 style="font-size:24px;font-weight:700;color:var(--text-bright);margin-bottom:8px;">Request a License</h3>
-                <p style="color:var(--text-dim);margin-bottom:24px;">Fill out the form below and we'll respond within 1 business day.</p>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdaeIOH3Z6crbx39N9GKOfd_GQyaMa54KMxtYllOaApFtZWxw/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0" style="border-radius:12px;max-width:640px;">Loading...</iframe>
+                <h3 style="font-size:24px;font-weight:700;color:var(--text-bright);margin-bottom:8px;">Ready to Purchase?</h3>
+                <p style="color:var(--text-dim);margin-bottom:24px;">Email me with the license tier you need. I'll send your invoice and license key within 1 business day.</p>
+                <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20License%20Inquiry" class="btn-cta" style="font-size:16px;padding:14px 36px;">Email for License</a>
+                <p style="color:var(--text-dim);font-size:.82rem;margin-top:12px;">imranbhatti800@gmail.com</p>
             </div>
 
             <div class="faq-section" style="max-width:700px;margin:48px auto 0;">
@@ -986,19 +980,16 @@ rs.Close</code>
 
         <!-- ===== Trial CTA — Lead Capture ===== -->
         <div class="trial-cta animate-on-scroll" id="trial-cta">
-            <h2>Still using the IE control?</h2>
-            <p>I'm offering early access and personally helping developers integrate LiteView2.</p>
-            <a href="javascript:void(0)" class="btn-cta" id="trialCtaBtn" style="font-size:18px;padding:16px 40px;"
-               onclick="var m=document.getElementById('trialModal');m.classList.toggle('open');if(m.classList.contains('open')){m.scrollIntoView({behavior:'smooth',block:'center'});if(typeof gtag==='function')gtag('event','trial_modal_open',{event_category:'conversion'});}if(typeof gtag==='function')gtag('event','trial_cta_click',{event_category:'conversion'});">
-                Get Free Trial (Limited Access)
+            <h2>Ready to try it?</h2>
+            <p>Full functionality for 30 days. Sample projects and documentation included.</p>
+            <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Trial%20Request&body=Hi%2C%20I%27d%20like%20to%20try%20LiteView2.%20Please%20send%20me%20the%20trial%20package." class="btn-cta" style="font-size:18px;padding:16px 40px;"
+               onclick="if(typeof gtag==='function')gtag('event','trial_cta_click',{event_category:'conversion'});">
+                Get Free Trial
             </a>
-            <div class="trial-modal" id="trialModal">
-                <p style="font-size:1.2rem;font-weight:600;color:var(--text-bright);margin:0 0 16px;">
-                    Send me a quick email — I'll personally help you get started.
-                </p>
-                <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Trial%20Request&body=Hi%2C%20I%20want%20to%20try%20LiteView2.%20Please%20guide%20me." class="btn-cta" style="margin:12px 8px;">Email Me</a>
-                <p style="margin-top:14px;color:var(--success);font-size:.85rem;font-weight:500;">I usually respond within a few hours.</p>
-            </div>
+            <p style="color:var(--text-dim);font-size:.85rem;margin-top:16px;">
+                Send me a quick email and I'll set you up with the full trial package — 32-bit and 64-bit OCX, bootstrap module, sample projects, and documentation.<br>
+                I usually respond within a few hours.
+            </p>
         </div>
 
     </div>
@@ -1011,7 +1002,7 @@ rs.Close</code>
                     <h4>Product</h4>
                     <a href="#features">Features</a>
                     <a href="#pricing">Pricing</a>
-                    <a href="https://github.com/imranosoft/LiteView2/raw/main/LiteView2_Demos.zip">Download Trial</a>
+                    <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Trial%20Request">Get Trial</a>
                     <a href="https://github.com/imranosoft/LiteView2-Website/releases">Changelog</a>
                 </div>
                 <div class="footer-col">
@@ -1024,7 +1015,7 @@ rs.Close</code>
                 <div class="footer-col">
                     <h4>Resources</h4>
                     <a href="ibrowserpool.html">Browser Pool</a>
-                    <a href="https://github.com/imranosoft/LiteView2/raw/main/LiteView2_Demos.zip">Sample Projects</a>
+                    <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Sample%20Projects">Sample Projects</a>
                 </div>
                 <div class="footer-col">
                     <h4>Built For</h4>
@@ -1069,7 +1060,7 @@ rs.Close</code>
 
     <!-- ===== Sticky CTA Bar ===== -->
     <div class="sticky-cta" id="stickyCta">
-        <a href="#trial-cta" class="btn-cta" style="padding:10px 24px;font-size:14px;">Get Free Trial (Limited Access)</a>
+        <a href="mailto:imranbhatti800@gmail.com?subject=LiteView2%20Trial%20Request&body=Hi%2C%20I%27d%20like%20to%20try%20LiteView2.%20Please%20send%20me%20the%20trial%20package." class="btn-cta" style="padding:10px 24px;font-size:14px;">Get Free Trial</a>
         <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss">&times;</button>
     </div>
 
@@ -1100,26 +1091,6 @@ rs.Close</code>
                 apply(next);
             });
         }
-
-        // Smart CTA: if trial-cta is in view, open modal directly instead of scrolling
-        window.lv2TrialCTA = function(label) {
-            var tc = document.getElementById('trial-cta');
-            var m = document.getElementById('trialModal');
-            if (typeof gtag === 'function') gtag('event', 'section_cta_click', {event_category: 'conversion', event_label: label || 'unknown'});
-            if (tc && m) {
-                var r = tc.getBoundingClientRect();
-                if (r.top >= 0 && r.bottom <= window.innerHeight) {
-                    // Already visible — open modal directly
-                    if (!m.classList.contains('open')) {
-                        m.classList.add('open');
-                        m.scrollIntoView({behavior: 'smooth', block: 'center'});
-                        if (typeof gtag === 'function') gtag('event', 'trial_modal_open', {event_category: 'conversion'});
-                    }
-                    return false; // prevent scroll
-                }
-            }
-            return true; // allow default scroll
-        };
 
         // Nav link hover using CSS variables
         document.querySelectorAll('.lv2-nav-link').forEach(function(a) {
