@@ -3,21 +3,29 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>LiteView2 — WebView2 ActiveX OCX Control for VBA, Access &amp; Excel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="LiteView2 is a WebView2 ActiveX control for VBA developers. Run modern HTML, CSS, and JavaScript inside Excel and Access without COM registration.">
+    <title>LiteView2 – WebView2 ActiveX for Excel &amp; Access (VBA)</title>
+    <meta name="description" content="Embed a full Chromium WebView2 browser inside Excel, Access, and VB6. 270+ APIs, JavaScript ↔ VBA bridge, and registration-free deployment. Try LiteView2 today.">
+    <meta name="keywords" content="WebView2 ActiveX, VBA browser control, Excel WebView2, Access WebView2, ActiveX control VBA, embed Chromium VBA">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <link rel="canonical" href="https://imranosoft.github.io/LiteView2-Website/index.htm">
     <link rel="alternate" hreflang="en" href="https://imranosoft.github.io/LiteView2-Website/index.htm">
-    <meta property="og:title" content="LiteView2 — WebView2 ActiveX OCX Control for VBA &amp; COM">
-    <meta property="og:description" content="Embed a full Chromium browser inside Access, Excel, VB6, and any COM host. 270+ APIs, registration-free deployment, production-ready.">
+    <meta property="og:title" content="LiteView2 – WebView2 ActiveX for Excel &amp; Access (VBA)">
+    <meta property="og:description" content="Embed a full Chromium WebView2 browser inside Excel, Access, and VB6. 270+ APIs, JavaScript-VBA bridge, registration-free deployment.">
     <meta property="og:image" content="https://imranosoft.github.io/LiteView2-Website/Access_Form.PNG">
-    <meta property="og:image:width" content="820">
-    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://imranosoft.github.io/LiteView2-Website/index.htm">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="LiteView2">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LiteView2 – WebView2 ActiveX for Excel &amp; Access (VBA)">
+    <meta name="twitter:description" content="Embed a full Chromium WebView2 browser inside Excel, Access, and VB6. 270+ APIs, JavaScript-VBA bridge, registration-free.">
+    <meta name="twitter:image" content="https://imranosoft.github.io/LiteView2-Website/Access_Form.PNG">
+    <meta name="twitter:image:alt" content="LiteView2 WebView2 ActiveX control running inside Microsoft Access">
+    <link rel="icon" type="image/png" href="Access_Form.PNG">
     <link rel="stylesheet" href="landing.css">
+    <link rel="preload" as="image" href="Access_Form.PNG">
     <style>
     /* ========== CONVERSION SYSTEM CSS ========== */
 
@@ -159,6 +167,8 @@
         { "@type": "Offer", "name": "Site License", "price": "699.00", "priceCurrency": "USD",
           "availability": "https://schema.org/InStock" },
         { "@type": "Offer", "name": "Enterprise License", "price": "1299.00", "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock" },
+        { "@type": "Offer", "name": "Free Trial", "price": "0", "priceCurrency": "USD",
           "availability": "https://schema.org/InStock" }
       ]
     }
@@ -276,8 +286,8 @@
             <p>Build modern UI inside Excel &amp; Access using HTML, CSS, and JavaScript — powered by Chromium.</p>
             <p style="color:var(--text-dim);font-size:.9rem;margin-top:6px;">Simple RegFree setup. No OCX registration required.</p>
             <div class="hero-cta-group">
-                <a href="#trial-form" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','hero_cta_click',{event_category:'conversion'});">Download Trial</a>
-                <a href="#visual-demo" class="btn-cta btn-cta-secondary">View Demo</a>
+                <a href="#trial-form" class="btn-cta" id="hero-download-trial-btn" onclick="if(typeof gtag==='function')gtag('event','hero_cta_click',{event_category:'conversion'});">Download Trial</a>
+                <a href="#visual-demo" class="btn-cta btn-cta-secondary" id="hero-view-demo-btn">View Demo</a>
             </div>
             <div class="hero-trust">Works in Excel &amp; Access &bull; 32/64-bit &bull; Reg-free or COM registered</div>
             <div class="hero-stats">
@@ -966,7 +976,7 @@ rs.Close</code>
     <!-- ===== Lightbox ===== -->
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close">&times;</button>
-        <img src="" alt="Screenshot">
+        <img src="Access_Form.PNG" alt="LiteView2 WebView2 ActiveX running in Microsoft Access form">
     </div>
 
     <!-- ===== Sticky CTA Bar ===== -->

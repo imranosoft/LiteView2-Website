@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /index-DESKTOP-22IFR29.htm
 Sitemap: https://imranosoft.github.io/LiteView2-Website/sitemap.xml
