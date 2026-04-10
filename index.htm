@@ -10,7 +10,7 @@
     <link rel="canonical" href="https://imranosoft.github.io/LiteView2-Website/index.htm">
     <link rel="alternate" hreflang="en" href="https://imranosoft.github.io/LiteView2-Website/index.htm">
     <meta property="og:title" content="LiteView2 — WebView2 ActiveX OCX Control for VBA &amp; COM">
-    <meta property="og:description" content="Embed a full Chromium browser inside Access, Excel, VB6, and any COM host. 270+ APIs, zero-install deployment, production-ready.">
+    <meta property="og:description" content="Embed a full Chromium browser inside Access, Excel, VB6, and any COM host. 270+ APIs, registration-free deployment, production-ready.">
     <meta property="og:image" content="https://imranosoft.github.io/LiteView2-Website/Access_Form.PNG">
     <meta property="og:image:width" content="820">
     <meta property="og:image:height" content="600">
@@ -145,7 +145,7 @@
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "LiteView2",
-      "description": "WebView2 ActiveX OCX control that embeds a full Chromium browser inside Microsoft Access, Excel, VB6, Delphi and any COM application. 270+ APIs, zero-install reg-free deployment, production-ready.",
+      "description": "WebView2 ActiveX OCX control that embeds a full Chromium browser inside Microsoft Access, Excel, VB6, Delphi and any COM application. 270+ APIs, registration-free deployment, production-ready.",
       "applicationCategory": "DeveloperApplication",
       "applicationSubCategory": "ActiveX Control",
       "operatingSystem": "Windows 10 1809+, Windows 11",
@@ -273,7 +273,8 @@
             <div class="hero-badge">Free 30-Day Trial — No Credit Card Required</div>
             <h1>Embed Modern Web Apps Inside VBA<br><span>Without COM Registration</span></h1>
             <p class="hero-pain">Still stuck with the old IE WebBrowser control?</p>
-            <p>Build modern, web-powered interfaces inside Excel and Access using HTML, CSS, and JavaScript — powered by Chromium.</p>
+            <p>Build modern UI inside Excel &amp; Access using HTML, CSS, and JavaScript — powered by Chromium.</p>
+            <p style="color:var(--text-dim);font-size:.9rem;margin-top:6px;">Simple RegFree setup. No OCX registration required.</p>
             <div class="hero-cta-group">
                 <a href="#trial-form" class="btn-cta" onclick="if(typeof gtag==='function')gtag('event','hero_cta_click',{event_category:'conversion'});">Download Trial</a>
                 <a href="#visual-demo" class="btn-cta btn-cta-secondary">View Demo</a>
@@ -282,7 +283,7 @@
             <div class="hero-stats">
                 <span>270+ APIs</span>
                 <span>60+ Events</span>
-                <span>Zero-install deployment</span>
+                <span>Registration-free deployment</span>
             </div>
             <p class="hero-credibility">Designed for professional VBA developers working with Excel, Access, and legacy systems.</p>
         </section>
@@ -358,7 +359,7 @@
                 <div class="fh-card">
                     <span class="fh-icon">&#128230;</span>
                     <h3>Registration-Free Deployment</h3>
-                    <p>Drop the OCX next to your app. No regsvr32, no admin rights, no registry entries. XCopy deploy to any machine.</p>
+                    <p>Copy the OCX next to your app and add a small bootstrap module. No regsvr32, no admin rights, no registry entries.</p>
                 </div>
                 <div class="fh-card">
                     <span class="fh-icon">&#127760;</span>
@@ -398,7 +399,7 @@
         <!-- ============================================================ -->
         <section class="section animate-on-scroll" id="quickstart">
             <h2 class="section-title">Start in Minutes — Not Hours</h2>
-            <p class="section-sub">No setup. No browser hacks. Just drop and run.</p>
+            <p class="section-sub">Initialize once, then control everything from VBA.</p>
 
             <div class="code-preview">
                 <button class="copy-btn">Copy</button>
@@ -463,6 +464,31 @@ rs.Close</code>
         </section>
 
         <!-- ============================================================ -->
+        <!-- HOW DEPLOYMENT WORKS -->
+        <!-- ============================================================ -->
+        <section class="section animate-on-scroll">
+            <h2 class="section-title">How Deployment Works</h2>
+            <div class="steps-grid" style="max-width:800px;margin:24px auto;">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Copy LiteView2 files with your project</h4>
+                    <p>Place the OCX next to your .accdb or .xlsm file.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Add the bootstrap module</h4>
+                    <p>A small VBA module activates the manifest embedded in the OCX.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Run inside Excel or Access</h4>
+                    <p>Create browsers, navigate, execute JavaScript — all from VBA.</p>
+                </div>
+            </div>
+            <p style="text-align:center;color:var(--text-dim);font-size:.88rem;margin-top:12px;">No installation. No admin rights required.</p>
+        </section>
+
+        <!-- ============================================================ -->
         <!-- SECTION 7: FINAL CTA + TRIAL FORM -->
         <!-- ============================================================ -->
         <section class="section" id="trial-cta">
@@ -502,7 +528,7 @@ rs.Close</code>
                 <div class="stat-label">DOM Functions</div>
             </div>
             <div class="stat">
-                <div class="stat-number">Zero-Install</div>
+                <div class="stat-number">Reg-Free</div>
                 <div class="stat-label">No Admin Required</div>
             </div>
         </div>
@@ -734,7 +760,7 @@ rs.Close</code>
                     <div class="feature-card"><span class="feature-icon">&#128451;&#65039;</span><h3>Browser Pool</h3><p>Create, park, destroy, reparent, resize. Run 10 browsers on one form. Each with its own profile.</p></div>
                     <div class="feature-card"><span class="feature-icon">&#128274;</span><h3>Profile Isolation</h3><p>Named profiles with separate cookies, localStorage, IndexedDB. InPrivate mode. Per-profile browsing data.</p></div>
                     <div class="feature-card"><span class="feature-icon">&#128229;</span><h3>Download Management</h3><p>Pause, resume, cancel. Progress tracking. Custom download dialogs. File save security events.</p></div>
-                    <div class="feature-card"><span class="feature-icon">&#128230;</span><h3>Zero-Install Deployment</h3><p>Reg-free mode: drop the OCX next to your app, activate the embedded manifest from VBA, and go. No regsvr32, no admin, no registry entries. XCopy deploy.</p></div>
+                    <div class="feature-card"><span class="feature-icon">&#128230;</span><h3>Registration-Free Deployment</h3><p>Copy the OCX next to your app and add a small bootstrap module to activate it from VBA. No regsvr32, no admin, no registry entries.</p></div>
                     <div class="feature-card"><span class="feature-icon">&#128276;</span><h3>45+ Events</h3><p>Navigation, DOM, downloads, frames, audio, focus, authentication, permissions, process, screen capture.</p></div>
                     <div class="feature-card"><span class="feature-icon">&#9881;&#65039;</span><h3>30+ Settings</h3><p>Script, context menus, DevTools, autofill, passwords, zoom, color scheme, scrollbars, hardware acceleration.</p></div>
                 </div>
