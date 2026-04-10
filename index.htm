@@ -55,6 +55,14 @@
     /* Credibility line */
     .hero-credibility{color:var(--text-dim);font-size:.82rem;margin-top:12px;font-style:italic}
 
+    /* Built-by credibility card */
+    .built-by{display:flex;align-items:center;gap:16px;max-width:520px;margin:0 auto 20px;padding:16px 24px;border-radius:12px;background:var(--bg-card,rgba(255,255,255,0.03));border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,0.05);transition:all .2s ease}
+    .built-by:hover{border-color:var(--accent);transform:translateY(-1px)}
+    .built-by-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0}
+    .built-by-text{font-size:.88rem;color:var(--text-dim);line-height:1.5}
+    .built-by-name{color:var(--text-bright,#fff);font-weight:600;font-size:.95rem}
+    @media(max-width:600px){.built-by{flex-direction:column;text-align:center;gap:10px}}
+
     /* Section CTAs (repeated after sections) */
     .section-cta{text-align:center;margin:40px 0 16px}
 
@@ -297,6 +305,18 @@
             </div>
             <p class="hero-credibility">Designed for professional VBA developers working with Excel, Access, and legacy systems.</p>
         </section>
+
+        <!-- ============================================================ -->
+        <!-- BUILT BY — CREDIBILITY -->
+        <!-- ============================================================ -->
+        <div class="built-by">
+            <img src="imran.jpg" alt="Imran Bhatti — LiteView2 developer" class="built-by-avatar" width="56" height="56" loading="lazy" decoding="async">
+            <div class="built-by-text">
+                <strong class="built-by-name">Built by Imran Bhatti</strong><br>
+                ActiveX and COM specialist focused on high-performance controls for Excel and Access VBA.
+                <span style="display:block;margin-top:4px;">Used in real-world VBA applications and production environments.</span>
+            </div>
+        </div>
 
         <!-- ============================================================ -->
         <!-- SECTION 2: PROBLEM vs SOLUTION -->
